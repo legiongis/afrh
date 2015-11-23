@@ -1,0 +1,64 @@
+{% extends "views/forms/base.htm" %}
+{% load i18n %}
+{% block form_content %}
+
+<div id="current-use-section">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="padding-left-10">
+                <dl>
+                    <dt>
+                        <h5 id="arches-names-form" class="section-headline">Function Summary</h5>
+                    </dt>
+                    <dd>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <form class="form-inline hidden-xs" role="form">
+                                    <div class="form-group" style="width: 100%">
+                                        <input style="width:80%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CURRENT_USER.E55', 'value'), placeholder: '{% trans "current user" %}', multiple: false, dataKey: 'CURRENT_USER.E55'}"></input>
+                                        <input style="width:80%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CURRENT_OPERATIONAL_STATUS.E55', 'value'), placeholder: '{% trans "current user" %}', multiple: false, dataKey: 'CURRENT_OPERATIONAL_STATUS.E55'}"></input>
+                                        <div class="arches-html-editor margin-top-5" style="width: 80%;">
+                                            <div class="summernote" data-bind="summernote: {value: getEditedNode('CURRENT_OPERATIONAL_STATUS_NOTES.E62', 'value'), options:{}}"></div>
+                                        </div>
+                                        <input style="width:80%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('HERITAGE_ASSET_CONDITION.E3', 'value'), placeholder: '{% trans "current user" %}', multiple: false, dataKey: 'HERITAGE_ASSET_CONDITION.E3'}"></input>
+                                        <input style="width:80%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('HERITAGE_ASSET_CLASSIFICATION.E55', 'value'), placeholder: '{% trans "current user" %}', multiple: false, dataKey: 'HERITAGE_ASSET_CLASSIFICATION.E55'}"></input>
+                                        <input style="width:80%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('HERITAGE_ASSET_PURPOSE.E55', 'value'), placeholder: '{% trans "current user" %}', multiple: false, dataKey: 'HERITAGE_ASSET_PURPOSE.E55'}"></input>
+                                        {% include 'views/components/add-item-button.htm' %}
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="arches-crud-child-section">
+                <dl>
+                    <dt class="arches-CRUD-child-title">
+                        This resource has these functions:
+                    </dt>
+                    <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                        <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue">{% trans "No styles selected" %}</div>   
+                        <div data-bind="foreach: getBranchLists()">
+                            <div class="arches-crud-record">
+                                <a href="javascript:void(0)" class="arches-CRUD-child" title="remove this style"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'Edit this style' %}">
+                                    <span data-bind="text: nodes.get('CURRENT_USER.E55', 'label')" style="padding-right:2px;"></span>
+                                    <span data-bind="text: nodes.get('CURRENT_OPERATIONAL_STATUS.E55', 'label')" style="padding-right:2px;"></span>
+                                    <span data-bind="text: nodes.get('CURRENT_OPERATIONAL_STATUS_NOTES.E62', 'value')" style="padding-right:2px;"></span>
+                                    <span data-bind="text: nodes.get('HERITAGE_ASSET_CONDITION.E3', 'label')" style="padding-right:2px;"></span>
+                                    <span data-bind="text: nodes.get('HERITAGE_ASSET_CLASSIFICATION.E55', 'label')" style="padding-right:2px;"></span>
+                                    <span data-bind="text: nodes.get('HERITAGE_ASSET_PURPOSE.E55', 'label')" style="padding-right:2px;"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock form_content %}

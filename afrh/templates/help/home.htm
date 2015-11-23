@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- this is the help that will be shown on the home page when help is shown -->
+
+<div class="help-page">
+    <div class="col-md-12 help-header">
+        <span>General Help</span>
+    </div>
+    <div class="col-md-12">
+        <div class="topic-button" id="topic1">
+            <a href="javascript:void(0);">
+                <h5>Get Started!</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic1"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic1">
+            <ul>
+                <li>Use the <b>SEARCH</b> and <b>MAP</b> pages to explore the inventory.</li>
+                <li>Click <b>SHOW HELP</b> on each page to get more information.</li>
+                <li>To login, use the <b>LOGIN</b> link at the top right of your screen, and view your account info here.</li>
+                <li>Bad page display or layout? The CRHIM functions best in a modern browser, like Chrome, Firefox, or Internet Explorer 8 and above.</li>
+            </ul>
+        </div>
+        <div class="topic-button" id="topic2">
+            <a href="javascript:void(0);">
+                <h5>What is in This Database?</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic2"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic2">
+            <p>Though the Cane River Heritage Inventory & Map has been created as a database for historic resources in the Cane River area, it is really much more. Not only can physical heritage be recorded, like plantation homes or graves, but the database will also hold records for people or organizations, digital files for photos or audio interviews, and management activities like an archaeological survey or preservation intervention.</p>
+            <p>The database places resources into six basic categories:</p>
+            <ul>
+                <li><b>Historic Resource</b> physical resources (buildings, graves, statues)</li>
+                <li><b>Historic Area</b> areas of historic or cultural importance</li>
+                <li><b>Activity</b> resource management or documentation activities</li>
+                <li><b>Historic Event</b> significant events of the past</li>
+                <li><b>Actors</b> individuals or organizations</li>
+                <li><b>Information Resource</b> any type of document, whether digital or physical</li>
+            </ul>
+            <p>These categories each hold different sets of information, and resources in any category may be related to those in any other category.   Furthermore, any resource may include spatial coordinates, to give it a location on the earth. That's where the <b>MAP</b> comes in, a way to view the resources spatially as they exist in the real world.  To enhance the map, we've added a number of overlays made from historic maps of the area--some of which have never been published before!</p>
+        </div>
+        {% if not user.is_anonymous %}
+        <div class="topic-button" id="topic3">
+            <a href="javascript:void(0);">
+                <h5>Your Account Summary</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic3"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic3">
+            {% if user_permissions.can_rdm %}
+                <p>You <b>do</b> have access to the Reference Data Manager (RDM).<p>
+            {% else %}
+                <p>You <b>do not</b> have access to the Reference Data Manager (RDM).<p>
+            {% endif %}
+            {% if user_permissions.can_create %}
+                <p>You can <b>create or edit</b> new resources of the following types:<p>
+                
+            {% else %}
+                <p>You can <b>edit</b> existing resources of the following types:<p>
+            {% endif %}
+            <ul>
+            {% for restype in user_permissions.entities_allowed %}
+                <li>{{restype}}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>

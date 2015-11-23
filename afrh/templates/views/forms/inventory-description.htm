@@ -1,0 +1,125 @@
+{% extends "views/forms/base.htm" %}
+{% load i18n %}
+
+{% block form_content %}
+
+
+<div class="form-full-content">
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Resource Descriptions" %}</span></div>
+        </div>
+    </div>
+    <div id="description-section">
+        <div class="row">
+            <dl>
+<!--
+                <dt>
+                    <div class="col-xs-12">
+                        <div class="form-section-subheader">{% trans "Classification" %}</div>
+                    </div>
+                </dt>
+-->
+                <dd>
+                    <div class="col-xs-10 hidden-xs">
+                        <input style="width:100%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('DESCRIPTION_TYPE.E55', 'value'), placeholder: '{% trans 'description type' %}', dataKey: 'DESCRIPTION_TYPE.E55'}"></input>
+                        <div class="arches-html-editor margin-top-5" style="width: 100%;">
+                            <div class="summernote" data-bind="summernote: {value: getEditedNode('DESCRIPTION.E62', 'value'), options:{}}"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 hidden-xs add-button-column">
+                        {% include 'views/components/add-item-button.htm' %}
+                    </div>
+                    <div class="col-xs-12  hidden-sm hidden-md hidden-lg">
+                        <input style="width:100%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('DESCRIPTION_TYPE.E55', 'value'), placeholder: '{% trans 'description type' %}', dataKey: 'DESCRIPTION_TYPE.E55'}"></input>
+                        <div class="arches-html-editor margin-top-5" style="width: 100%;">
+                            <div class="summernote" data-bind="summernote: {value: getEditedNode('DESCRIPTION.E62', 'value'), options:{}}"></div>
+                        </div>
+                        {% include 'views/components/add-item-button.htm' %}
+                    </div>
+                </dd>
+            </dl>
+            <div class="col-xs-12">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must populate both fields." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no descriptions" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <!--<a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans "Delete this description" %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'Edit this type' %}">
+                                        <span data-bind="text: nodes.get('NHRP_RESOURCE_TYPE.E55', 'label')" style="padding-right:2px;"></span>
+                                    </a>-->
+                                    <a href="javascript:void(0)" title="Remove this description"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" title="{% trans 'Edit this description' %}" data-bind='click: $parent.editItem.bind($parent)'>
+                                        <span data-bind="text: nodes.get('DESCRIPTION_TYPE.E55', 'label')"></span>
+                                    </a>
+                                    <div class="note-editable custom-scroll arches-evaluation-content" contenteditable="false" data-bind='{html: nodes.get("DESCRIPTION.E62", "value")}'></div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Styles" %}</span></div>
+        </div>
+    </div>
+    <div id="style-section">
+        <div class="row">
+            <dl>
+<!--
+                <dt>
+                    <div class="col-xs-12">
+                        <div class="form-section-subheader">{% trans "Classification" %}</div>
+                    </div>
+                </dt>
+-->
+                <dd>
+                    <div class="col-xs-10 hidden-xs">
+                        <input style="width:100%; display:inline-block;" class="select2 arches-select2-crud-form name-type designation" data-bind="select2: {value: getEditedNode('STYLE.E55', 'value'),  placeholder: '{% trans 'styles' %}', dataKey: 'STYLE.E55'}"></input>
+                     </div>
+                    <div class="col-xs-2 hidden-xs add-button-column">
+                        {% include 'views/components/add-item-button.htm' %}
+                    </div>
+                    <div class="col-xs-12  hidden-sm hidden-md hidden-lg">
+                        <input style="width:100%; display:inline-block;" class="select2 arches-select2-crud-form name-type designation" data-bind="select2: {value: getEditedNode('STYLE.E55', 'value'),  placeholder: '{% trans 'styles' %}', dataKey: 'STYLE.E55'}"></input>
+                        {% include 'views/components/add-item-button.htm' %}
+                    </div>
+                </dd>
+            </dl>
+            <div class="col-xs-12">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a style." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no descriptions" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record" style="display:inline;">
+                                    <a href="javascript:void(0)" title="Remove this style"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" title="{% trans 'Edit this description' %}" data-bind='click: $parent.editItem.bind($parent)'>
+                                        <span data-bind="text: nodes.get('STYLE.E55', 'label')"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock form_content %}

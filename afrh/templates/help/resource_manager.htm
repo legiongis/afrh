@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- this is the help that will be shown on the RDM page when help is shown -->
+
+<div class="help-page">
+    <div class="col-md-12 help-header">
+        <span>Managing Resources</span>
+    </div>
+    <div class="col-md-12">
+        <div class="topic-button" id="topic1">
+            <a href="javascript:void(0);">
+                <h5>Introduction</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic1"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic1">
+            </p>Welcome to the Resource Manager! Viewing this page means that you have the ability to create new resources, or at least edit existing ones. On the left, you will see the <b>Resource Description</b> panel, which lists all available forms for adding data to this type of resource. Each form collects a different set of information, and the database aggregates this information to create a "resource". Both editing and creating are very straight-forward tasks in an Arches database, so the following tips will be enough to get you started.</p>
+        </div>
+        <div class="topic-button" id="topic2">
+            <a href="javascript:void(0);">
+                <h5>Creating a New Resource</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic2"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic2">
+            <p>To create a new resource in the database, you only have to enter one piece of information about it. It could be any piece of information, but it's best to start with a name:</p>
+            <ol>
+                <li>From the <b>Resource Manager</b> menu, make sure you have chosen <b>Historic Resource</b>. You are now looking at an empty form, ready to record a new resource.</li>
+                <li>Type "Lemee House" in the <b>Name</b> box, and in the type box select <b>Primary</b>.</li>
+                <li>Click <b>Add</b> to add the new name and name type, and then click <b>Save edits</b>.</li>
+                <li>Notice that at the top of the page, where it used to say "New Resource, Arches ID: n/a", it now says "Lemee House" and gives a unique identifier for the Arches ID.</li>
+            </ol>
+            <p>Congratulations! That's all it takes to make a new resource in the database, and from here you will technically be editing it. The Value/Value Type pair (as you saw above with Name/Name Type) is a device that occurs frequently throughout the entry forms.  Just be sure to always <b>Add</b> an attribute before you click <b>Save edits</b>!</p>
+            <p>Just for good measure, we'll add a <b>Keyword</b> to this new resource as well.</p>
+            <ol>
+                <li>Without leaving the <b>Summary</b> form, scroll down to the <b>Keyword</b> entry box.</li>
+                <li>We'd like to add the Keyword <b>living history</b>, but we don't want to scroll all the way down the list...</li>
+                <li>Begin typing "living history", and you'll see the dropdown list automatically filter keywords to match.</li>
+                <li>Select <b>living history</b>, click <b>Add</b>, and click <b>Save edits</b></li>
+            </ol>
+            <p>As you can see, any dropdown lists can easily be searched by simply beginning to type the desired value.</p>
+        </div>
+        <div class="topic-button" id="topic3">
+            <a href="javascript:void(0);">
+                <h5>Adding a Location</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic3"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic3">
+            <p>Next, let's add some geometry to our resource, so the Lemee House will show up on the map.</p>
+            <ol>
+                <li>In the panel on the left, choose the <b>Location</b> form.</li>
+                <li>There are a few different types of location information that we can enter, but to we need to add geometry for the resource to appear on the map.</li>
+                <li>In the map window, zoom navigate the map to locate the Lemee House on the corner of Jefferson St. and Demeziere St. (If you are looking for a historic resource, you can turn on any of the historic maps too!).</li>
+                <li>Click <b>Add Geometry</b>, and choose what geometry type you'd like to draw.  To make lines or polygons, just click once for each new vertex, and double-click to finish the shape.</li>
+                <li>When your geometry is complete, you can select a qualifier for it if you like.</li>
+                <li>Click <b>Save edits</b>, and then go check out the MAP tab to see your handiwork.</li>
+            </ol>
+            <p>It's important to note that other location information can be added too--an address, a description, etc. You'll be able to search for these values like you would any other attribute, but adding geometry is the only way that you'll see the resource on the map.</p>
+        </div>
+        <div class="topic-button" id="topic4">
+            <a href="javascript:void(0);">
+                <h5>Wizard Forms</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic4"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic4">
+            <p>Some of the input forms are designed as "wizards"--multi-step procedures designed to guide you through data collection for more complex information. Click on the <b>Condition Assessment</b> form to see an example of this.</p>
+            <ol>
+                <li>To begin, click <b>+Add</b>. You're now presented with a four-step data entry wizard.</li>
+                <li>Begin by adding a <b>condition</b> and an <b>assessment date</b>. Click <b>Add</b>.</li>
+                <li>You can now move from step to step in the wizard, without losing data (as long as you are sure to <b>Add</b> it).</li>
+                <li>Only when you are finished recording the entire condition assessment is it time to finally click <b>Save</b></li>
+            </ol>
+        </div>
+        <div class="topic-button" id="topic5">
+            <a href="javascript:void(0);">
+                <h5>Creating Resource-to-Resource Relationships</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic5"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic5">
+            <p>One of the most powerful features of the Arches database engine is the ability to create relationships between separate resources.  For example, in the American Cemetery data present in the CRHIM, each grave is really a set of two (or more) related resources: a <b>Historic Resource</b> (the grave) and an <b>Actor</b> (the individual(s) interred in the grave). This allows for full database entries for both entities involved. The Actor, in turn, could be also related to the Historic Resource that represents his or her former home. By building these relationships, a complex web of history can be created and explored within the database.</p>
+            <p>To add relationships to a resource follow these steps:</p>
+            <ol>
+                <li>Go to the <b>Related Resources</b> form.</li>
+                <li>If there are any existing related resources, they will be listed here. To create a new one, click <b>+Find Resources</b>.</li>
+                <li>You are now presented a list of all the resources in the database, and three filter options to help you sift through them: the <b>Map Filter</b>, <b>Attribute Filter</b>, and <b>Time Filter</b>.
+                <li>Once you have found an existing resource by using one (or more) or these filters, click <b>Add Relationship</b>.<li>
+                <li>You now have to choose the relationship type that best describes this new relationship. If none apply, you can select <b>Is related to (general)</b>, or you could add a new relationship type in the <b>RDM</b> and go through this process again.</li>
+                <li>If you like, you can also add a time period to this relationship, or a description.</li>
+                <li>Once you are satisfied, click <b>Add</b>, and finally <b>Save edits</b>.</li>
+            </ol>
+            <p>The best way to view your new relationship is to find your resource using the main <b>SEARCH</b> page, and click on <b>Related Resources</b>.  You'll find more information about this in the help for the <b>SEARCH</b> page.</p>
+            <p><em><b>NOTE:</b> Only one relationship may exist between any two resources, but a resource may be related to as many other resources as necessary.</em></p>
+        </div>
+    </div>
+</div>

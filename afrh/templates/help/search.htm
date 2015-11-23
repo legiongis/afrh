@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- this is the help that will be shown on the search page when help is shown -->
+
+<div class="help-page">
+    <div class="col-md-12 help-header">
+        <span>Using the SEARCH Tab</span></a>
+    </div>
+    <div class="col-md-12">
+        <div class="topic-button" id="topic1">
+            <a href="javascript:void(0);">
+                <h5>Basic Filtering</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic1"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic1">
+            <p>To search, simply begin typing any search term into the search bar below. As you type, you'll see a continuously updated list of potential matches. Each potential match will appear as a pair: 1. the value and 2. the database field where that value is found.</p>
+            <p>For example, if you type in <b>church</b>, you'll see that you have a number of options, which should be interpreted like this:</p>
+            <ul>
+                <li><b>church</b> as a <b>Heritage Resource Type</b></li>
+                <li><b>church</b> as a <b>Keyword</b></li>
+                <li>etc.</li>
+            </ul>
+            <p>You can narrow your search by adding as many additional search terms as necessary. You can remove a search term by clicking the <b>x</b>, or you can negate a search term--to show resources that <em>do not</em> fit the criterion--by clicking on it (it will turn red).</p>
+        </div>
+        <div class="topic-button" id="topic2">
+            <a href="javascript:void(0);">
+                <h5>Advanced Filters</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic2"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic2">
+            <p>In addition to combining multiple search terms, you can apply the Location Filter and/or Time Filter. Once enabled, these filters are added to the search bar, and can be negated just like any other search term.</p>
+            <ul>
+                <li>The <b>Location Filter</b> allows you to make a spatial query to the database. <em>What resources are within 500ft of HWY 1? How many are along my way to work?</em> Use the <b>Map Tools</b> to create a point, line, or polygon on the map, and then apply a buffer to show resources that fit within a given distance of the shape. To create a line or polygon, click to create each new vertex, and double-click to finish the shape.</li>
+                <li>The <b>Time Filter</b> allows you to only show resources that fit within a given range of dates. <em>How many buildings were built before 1850? Where are the oldest graves in the American Cemetery?</em> Add some search terms and use the slider to narrow or broaden the range of dates.</li>
+            </ul>
+        </div>
+        <div class="topic-button" id="topic3">
+            <a href="javascript:void(0);">
+                <h5>Viewing Search Results</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic3"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic3">
+            <p>Your search results are listed at the bottom of the page, and they are updated any time that a filter is added or modified. For each resource, you'll see its name, resource type, and a description (if the resource has one). To view the full resource report, which contains all the information in the database for that resource, just click the resource name.</p>
+            <p>If you have the necessary privileges, you'll see an <b>Edit</b> option, if the resource has geometry, you'll see a <b>Map</b> option, and all resources will have a <b>Related Resource</b> option.<p> The latter two features are described below, and they are some of the strongest features of a database powered by Arches.</p>
+            <ul>
+                <li>The <b>Map</b> button will open a map window and center it on your resource. You can activate the historic maps or change the basemaps in order to learn more about the environment in which your resource exists.</li>
+                <li>The <b>Related Resources</b> view is a very exciting feature of the Arches platform, and the CRHIM takes full advantage of it. By activating this view, you will see a graph that shows the current resource in the middle, and all of its related resources connected to it. Each connection is some type of "resource-to-resource relationship", and these can also have descriptions or time-spans.</li>
+            </ul>
+            <p>For a good example of resource-to-resource relationships and how they enhance the CRHIM, use the popular search called <b>Graves in the American Cemetery</b> (use <b>Tools</b> > <b>View Popular Searches</b> if necessary), and scroll to find a grave resource that is associated with a name (try <b>Inez Barlow (grave)</b>). When you click <b>Related Resources</b>, you will see that there are actually two resources involved: one for the grave itself (a Historic Resource) and one for Inez Barlow, the individual interred there (an Actor resource).  You can imagine the web of connections that could be created between family members, their homes, graves, key historical events, etc.</p>
+        </div>
+        <div class="topic-button" id="topic4">
+            <a href="javascript:void(0);">
+                <h5>Exporting Search Results</h5>
+                <i class="expand-symbol fa fa-chevron-right" id="topic4"></i>
+            </a>
+        </div>
+        <div class="topic-content" id="topic4">
+            <p>Once you have created a subset of resources by using various search filters, you can export the results to a few different formats by clicking on the TOOLS button.</p>
+            <ul>
+                <li>.KML: This is the spatial data format used and created by <a href="https://www.google.com/earth/">Google Earth</a>, an easy-to-use free mapping program.  Google Earth includes 3-dimensional elevation data, so if you are interested in seeing resources in a 3-dimensional environment, just export your results and open the output file in Google Earth.</li>
+                <li>.CSV <em>(coming soon!)</em>: A Comma Separated Values file is a simple text file that can be opened as a spreadsheet in Excel, or read as a text file in any text editing software.</li>
+                <li>.SHP <em>(coming soon!)</em>: Shapefiles are the "industry standard" format for the exchange of spatial data, and can be viewed with all standard GIS software, such as <a href="http://www.qgis.org">Quantum GIS</a> (free), or <a href="http://www.esri.com/software/arcgis/arcgis-for-desktop">ArcGIS Desktop</a> (not free).</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+{% extends "views/forms/base.htm" %}
+{% load i18n %}
+
+{% block form_content %}
+
+<div class="form-full-content">
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Components" %}</span></div>
+        </div>
+    </div>
+    <div id="component-section">
+        <div class="row">
+            <dl>
+                <dd>
+                    <div class="col-xs-10 hidden-xs">
+                        <div>
+                            <input class="select2 arches-select2-crud-form" style="width:33%; padding-right:4px" data-bind="select2: {value: getEditedNode('COMPONENT_TYPE.E55', 'value'), placeholder: '{% trans 'condition' %}', multiple: false, dataKey: 'COMPONENT_TYPE.E55'}"></input>
+                            <input class="select2 arches-select2-crud-form" style="width:33%; padding-right:0px" data-bind="select2: {value: getEditedNode('CONSTRUCTION_TECHNIQUE.E55', 'value'), placeholder: '{% trans 'classification' %}', multiple: false, dataKey: 'CONSTRUCTION_TECHNIQUE.E55'}"></input>
+                            <input class="select2 arches-select2-crud-form" style="width:33%; padding-right:0px" data-bind="select2: {value: getEditedNode('MATERIAL.E57', 'value'), placeholder: '{% trans 'purpose' %}', multiple: false, dataKey: 'MATERIAL.E57'}"></input>
+                        </div>
+                        <div class="arches-html-editor margin-top-5" style="width: 100%;">
+                            <div class="summernote" data-bind="summernote: {value: getEditedNode('COMPONENT_DESCRIPTION.E62', 'value'), options:{}}"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 hidden-xs add-button-column">
+                        {% include 'views/components/add-item-button.htm' %}
+                    </div>
+                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                        <input class="select2 arches-select2-crud-form" style="width:100%; padding-right:0px" data-bind="select2: {value: getEditedNode('COMPONENT_TYPE.E55', 'value'), placeholder: '{% trans 'condition' %}', multiple: false, dataKey: 'COMPONENT_TYPE.E55'}"></input>
+                        <input class="select2 arches-select2-crud-form" style="width:100%; padding-right:0px" data-bind="select2: {value: getEditedNode('CONSTRUCTION_TECHNIQUE.E55', 'value'), placeholder: '{% trans 'classification' %}', multiple: false, dataKey: 'CONSTRUCTION_TECHNIQUE.E55'}"></input>
+                        <input class="select2 arches-select2-crud-form" style="width:100%; padding-right:0px" data-bind="select2: {value: getEditedNode('MATERIAL.E57', 'value'), placeholder: '{% trans 'purpose' %}', multiple: false, dataKey: 'MATERIAL.E57'}"></input>
+                        <div class="arches-html-editor margin-top-5" style="width: 100%;">
+                            <div class="summernote" data-bind="summernote: {value: getEditedNode('COMPONENT_DESCRIPTION.E62', 'value'), options:{}}"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                        {% include 'views/components/add-item-button.htm' %}
+                    </div>
+                </dd>
+            </dl>
+            <div class="col-xs-12">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must fill all three fields." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no components have been added" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="remove this component"><i data-bind='click: $parent.deleteItem.bind($parent)' class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind='click: $parent.editItem.bind($parent)' title="Edit this record">
+                                        <span data-bind="text: nodes.get('COMPONENT_TYPE.E55', 'label')+','"></span>
+                                        <span data-bind="text: nodes.get('CONSTRUCTION_TECHNIQUE.E55', 'label')+','"></span>
+                                        <span data-bind="text: nodes.get('MATERIAL.E57', 'label')"></span><br>
+                                    </a>    
+                                    <span class="text-muted arches-crud-type-identifier">{% trans "comments:" %}</span>
+                                    <div class="note-editable custom-scroll arches-evaluation-content" contenteditable="false" data-bind='{html: nodes.get("COMPONENT_DESCRIPTION.E62", "value")}'></div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Modifications" %}</span></div>
+        </div>
+    </div>
+    <div id="modification-section">
+        <div class="row">
+            <dl>
+                <dd>
+                    <div class="col-xs-10 hidden-xs">
+                        <div>
+                            <input class="select2 arches-select2-crud-form" style="width:100%; padding-right:0px" data-bind="select2: {value: getEditedNode('MODIFICATION_TYPE.E55', 'value'), placeholder: '{% trans 'modification type' %}', multiple: false, dataKey: 'MODIFICATION_TYPE.E55'}"></input>
+                        </div>
+                        <div class="arches-html-editor margin-top-5" style="width: 100%;">
+                            <div class="summernote" data-bind="summernote: {value: getEditedNode('MODIFICATION_DESCRIPTION.E62', 'value'), options:{}}"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 hidden-xs add-button-column">
+                        {% include 'views/components/add-item-button.htm' %}
+                    </div>
+                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                        <div>
+                            <input class="select2 arches-select2-crud-form" style="width:100%; padding-right:0px" data-bind="select2: {value: getEditedNode('MODIFICATION_TYPE.E55', 'value'), placeholder: '{% trans 'modification type' %}', multiple: false, dataKey: 'MODIFICATION_TYPE.E55'}"></input>
+                        </div>
+                        <div class="arches-html-editor margin-top-5" style="width: 100%;">
+                            <div class="summernote" data-bind="summernote: {value: getEditedNode('MODIFICATION_DESCRIPTION.E62', 'value'), options:{}}"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                        {% include 'views/components/add-item-button.htm' %}
+                    </div>
+                </dd>
+            </dl>
+            <div class="col-xs-12">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a modification type." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue">{% trans "no modifications described" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="remove this component"><i data-bind='click: $parent.deleteItem.bind($parent)' class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind='click: $parent.editItem.bind($parent)' title="Edit this record">
+                                        <span data-bind="text: nodes.get('MODIFICATION_TYPE.E55', 'label')"></span>
+                                    </a><br>
+                                    <span class="text-muted arches-crud-type-identifier">{% trans "comments:" %}</span>
+                                    <div class="note-editable custom-scroll arches-evaluation-content" contenteditable="false" data-bind='{html: nodes.get("MODIFICATION_DESCRIPTION.E62", "value")}'></div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock form_content %}
