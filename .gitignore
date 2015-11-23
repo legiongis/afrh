@@ -1,4 +1,5 @@
-afrh/logs
+afrh/logs/resource_graph_errors.txt
+afrh/logs/authority_file_errors.txt
 afrh/elasticsearch
 settings_local.py
 *.pyc

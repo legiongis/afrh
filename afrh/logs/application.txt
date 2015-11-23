@@ -1,0 +1,327 @@
+2015-10-30 17:33:07.201274: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:37:55.873516: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:41:36.839323: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:47:50.423891: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:50:04.887941: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:50:13.774025: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:50:46.526863: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:52:54.401899: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:53:09.172088: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:53:40.463761: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:53:52.427674: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:54:45.055633: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 17:55:17.809799: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:00:44.153508: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:06:03.169471: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:08:52.271489: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:14:29.848537: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:14:42.388424: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:17:29.377733: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:18:17.238146: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:19:24.677093: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:19:29.422528: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:19:38.040716: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:19:53.485287: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:24:24.385873: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:24:30.492950: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:26:07.970516: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:29:19.213833: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:31:12.557216: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:31:47.602248: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:31:56.681193: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:33:24.222036: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:35:25.635756: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:35:32.862822: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:38:04.985238: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:38:30.471876: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-10-30 18:43:43.205118: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-03 10:58:51.244816: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-07 17:32:28.697822: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-07 17:32:43.486212: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-07 17:32:56.032506: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-07 17:35:06.059302: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-07 17:49:35.607773: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-07 17:51:46.190843: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-07 18:14:05.584886: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-07 18:22:12.562559: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-07 18:23:55.730001: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-09 15:17:38.246000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:32:28.753000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:33:58.047000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:34:41.089000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:37:12.095000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:39:12.228000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:42:19.294000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:42:32.695000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:44:30.831000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:44:48.563000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:45:28.846000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:46:06.460000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:50:58.261000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:52:43.994000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:53:42.262000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:54:34.268000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 15:55:34.139000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:00:01.374000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:01:26.727000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:03:24.316000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:05:17.169000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:05:40.346000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:17:11.558000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:30:19.176000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:33:40.504000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:35:25.802000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:35:56.870000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:36:30.269000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:36:40.838000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:39:43.475000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:40:14.147000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:41:23.183000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:44:00.414000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:44:44.833000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:48:51.876000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:49:17.317000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:49:44.418000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 16:50:18.383000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 18:35:55.836000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 18:37:49.526000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-09 18:38:06.988000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-10 22:13:20.851000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-11 16:02:46.316000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-11 16:27:53.985000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-11 17:50:49.066000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-11 17:52:40.876000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-11 17:53:41.279000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-11 17:54:22.060000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-12 14:57:54.056000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-12 21:32:36.370000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-12 21:32:40.786000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-12 21:33:21.268000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-12 21:33:37.803000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-13 16:05:34.626000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-16 12:45:13.988000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-16 12:45:13.997000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-16 13:14:58.366000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-16 13:14:58.371000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-17 15:14:50.008000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-23 09:04:41.091000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-11-23 12:53:11.880000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
+2015-11-23 12:53:43.124000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: TransportError(404, u'IndexMissingException[[maplayers] missing]')
+
