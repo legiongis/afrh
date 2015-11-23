@@ -9,68 +9,6 @@ define(['jquery',
     function ($, _, ko, BaseForm, ValidationTools, BranchList, datetimepicker, summernote) {
         
         var vt = new ValidationTools;
-        
-        function isValidDate(dateString){
-            
-            console.log("validating: "+dateString);
-            justDate = dateString.split("T")[0]
-            
-            // Change to acceptable db format
-            var replaceDate = justDate.replace(/\//g,"-");
-            
-            // Create output array
-            var output = new Array(
-                false,
-                replaceDate
-            );       
-            
-            // Deal with empty dates (they're ok!)
-            if(output[1] == ""){
-                output[0] = true;
-                console.log("blank date ok");
-                return output;
-            }
-            
-            // First check for the pattern
-            if(!/^\d{4}\-\d{1,2}\-\d{1,2}$/.test(replaceDate)){
-                console.log("pattern fail");
-                return output;
-            }
-
-            // Parse the date parts, rebuild replaceDate
-            var parts = replaceDate.split("-");
-            for (i=1; i==2; i++) {
-                console.log(i);
-                if (parts[i].length == i) {
-                    parts[i] = "0"+parts[i];
-                }
-            }
-            replaceDate = parts.join("-");
-            
-            // make parts into integers for processing
-            var day = parseInt(parts[2], 10);
-            var month = parseInt(parts[1], 10);
-            var year = parseInt(parts[0], 10);
-
-            // Check the ranges of month and year
-            if(year > 3000 || month == 0 || month > 12){
-                return output;
-            }
-            var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
-
-            // Adjust for leap years
-            if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)){
-                monthLength[1] = 29;
-            }
-                
-            // Check the range of the day
-            output[0] = day > 0 && day <= monthLength[month - 1];
-            output[1] = replaceDate;
-            console.log(output);
-            return output;
-        };
-        
-        //insert validation functions here
 
         return BaseForm.extend({
 
