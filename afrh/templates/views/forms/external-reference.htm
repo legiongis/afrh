@@ -1,0 +1,71 @@
+{% extends "views/forms/base.htm" %}
+{% load i18n %}
+
+{% block form_content %}
+
+<div class="form-full-content">
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "References" %}</span></div>
+        </div>
+    </div>
+    <div id="xref-section">
+        <div class="row">
+            <dl>
+                <dd class="arches-RDM-labels">
+                    <form class="form-inline hidden-xs" role="form">
+                        <div class="col-xs-10">
+                            <div class="form-group  hidden-xs" style="width: 100%; margin-left:12px">
+                            <input style="width:58%;" class="select2 arches-select2-crud-form reference-type  hidden-xs" id="" data-bind="select2: {value: getEditedNode('EXTERNAL_XREF_TYPE.E55', 'value'), placeholder: '{% trans 'reference type' %}', multiple: false, dataKey: 'EXTERNAL_XREF_TYPE.E55'}"></input>&nbsp;
+                            <input class="form-control arches-form-input hidden-xs" id="resource-name" style="width: 40%;" placeholder="value" data-bind='value: getEditedNode("EXTERNAL_XREF.E42", "value")'>     
+                            </div>
+                        </div>
+                        <div class="col-xs-2 add-button-column">
+                            {% include 'views/components/add-item-button.htm' %}
+                        </div>
+                    </form>
+                    <form class="form-inline hidden-sm hidden-md hidden-lg" role="form">
+                        <div class="form-group" style="width: 100%;">
+                        <input style="width:100%; height: 36px; padding: 2px;" class="select2 arches-select2-crud-form reference-type" id="" data-bind="select2: {value: getEditedNode('EXTERNAL_XREF_TYPE.E55', 'value'), placeholder: '{% trans 'reference type' %}', multiple: false, dataKey: 'EXTERNAL_XREF_TYPE.E55'}"></input>
+                        <div class="margin-top-5"></div>
+                        <input class="form-control arches-form-input" id="resource-name" style="width: 100%;" placeholder="value" data-bind='value: getEditedNode("EXTERNAL_XREF.E42", "value")'>     
+                        <div class="margin-top-5"></div>
+                        {% include 'views/components/add-item-button.htm' %} 
+                        </div>
+                    </form>
+                </dd>
+            </dl>
+            <div class="col-xs-12">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must fill both fields." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                   <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no references" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                        <span class="text-muted arches-crud-type-identifier">
+                                            <span data-bind='text: nodes.get("EXTERNAL_XREF_TYPE.E55", "label")+":"'></span>
+                                        </span><br>
+                                        <span data-bind='text: nodes.get("EXTERNAL_XREF.E42", "value")' style="padding-right:2px;"></span>
+                                    </a>
+                                    <span data-bind='if: $parent.isUrl(nodes.get("EXTERNAL_XREF.E42", "value"))' style="padding-right:2px;">
+                                        <a href="#" target="_blank" data-bind="attr: { 'href': $parent.getLink(nodes.get('EXTERNAL_XREF.E42', 'value')) }">
+                                            <i class="fa fa-link"></i> follow link
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock form_content %}
