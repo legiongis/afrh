@@ -83,7 +83,7 @@ class Resource(ArchesResource):
                 forms.ActorSummaryForm.get_info(), 
                 forms.InventoryDescriptionForm.get_info(),
                 forms.LocationForm.get_info(),
-                forms.RoleForm.get_info(),
+                #forms.RoleForm.get_info(),
             ]
 
 
@@ -100,7 +100,7 @@ class Resource(ArchesResource):
             description_group['forms'][:0] = [
                 forms.InformationResourceSummaryForm.get_info(), 
                 forms.PublicationForm.get_info(),
-                forms.CoverageForm.get_info(),
+                forms.LocationForm.get_info(),
                 forms.DescriptionForm.get_info(),
                 forms.FileUploadForm.get_info()
             ]

@@ -199,6 +199,7 @@
         </div>
     </div>
     {% endif %}
+    
     <div class="row">
         <div class="col-xs-12 margin-bottom-10">
             <div class="form-section-header"><span>{% trans "Addresses" %}</span></div>
@@ -209,8 +210,12 @@
             <dl>
                 <dd>
                     <div class="col-xs-10 hidden-xs">
-                        <input class="form-control arches-form-input" style="width: 69%;" placeholder='{% trans "address" %}' data-bind='value: getEditedNode("PLACE_ADDRESS.E45", "value")'>                                    
-                        <input style="width:30%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('ADDRESS_TYPE.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'ADDRESS_TYPE.E55'}"></input>
+                        <div class="col-xs-9" style="padding-left:0px; padding-right: 4px;">
+                            <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "address" %}' data-bind='value: getEditedNode("PLACE_ADDRESS.E45", "value")'>                                    
+                        </div>
+                        <div class="col-xs-3" style="padding-left:0px; padding-right: 0px;">
+                            <input class="select2 arches-select2-crud-form" style="width: 100%;" data-bind="select2: {value: getEditedNode('ADDRESS_TYPE.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'ADDRESS_TYPE.E55'}"></input>
+                        </div>
                     </div>
                     <div class="col-xs-2 hidden-xs add-button-column">
                         {% include 'views/components/add-item-button.htm' %}

@@ -883,25 +883,34 @@ class InventoryDescriptionForm(ResourceForm):
         }
 
     def update(self, data, files):
-        self.update_nodes('DESCRIPTION.E62', data)       
-        self.update_nodes('STYLE.E55', data)
+    
+        self.update_nodes('DESCRIPTION.E62', data)
+        if self.resource.entitytypeid == 'ACTOR.E39':
+            self.update_nodes('PHASE_TYPE_ASSIGNMENT.E17', data)
+        if self.resource.entitytypeid == 'INVENTORY_RESOURCE.E18':
+            self.update_nodes('STYLE.E55', data)
 
     def load(self, lang):
-        ## this is a good example of how to set the default in a dropdown
-        #description_types = Concept().get_e55_domain('DESCRIPTION_TYPE.E55')
-        #default_description_type = description_types[0]
-        #PRETTY SURE THAT IS NOT TRUE!!
         
         if self.resource:
+        
+            # used only for actors
+            self.data['PHASE_TYPE_ASSIGNMENT.E17'] = {
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('PHASE_TYPE_ASSIGNMENT.E17')),
+                'domains': {
+                    'ACTOR_TYPE.E55' : Concept().get_e55_domain('ACTOR_TYPE.E55'),
+                    'CULTURAL_PERIOD.E55' : Concept().get_e55_domain('CULTURAL_PERIOD.E55')
+                }
+            }
+        
             self.data['DESCRIPTION.E62'] = {
                 'branch_lists': self.get_nodes('DESCRIPTION.E62'),
                 'domains': {
                     'DESCRIPTION_TYPE.E55' : Concept().get_e55_domain('DESCRIPTION_TYPE.E55'), 
-                    },                
-                #'defaults': {
-                #    'DESCRIPTION_TYPE.E55': default_description_type['id'],
-                #}
+                    },
             }
+            
+            # used only for inventory resources
             self.data['STYLE.E55'] = {
                 'branch_lists': self.get_nodes('STYLE.E55'),
                 'domains': {
@@ -1098,13 +1107,17 @@ class LocationForm(ResourceForm):
         }
 
     def update(self, data, files):
-        if self.resource.entitytypeid == 'INVENTORY_RESOURCE.E18':
+        
+        self.update_nodes('PLACE_ADDRESS.E45', data)
+        self.update_nodes('DESCRIPTION_OF_LOCATION.E62', data)
+        if self.resource.entitytypeid in ['INVENTORY_RESOURCE.E18','ACTIVITY.E7','INFORMATION_RESOURCE.E73']:
             self.update_nodes('SPATIAL_COORDINATES_GEOMETRY.E47', data)
-            self.update_nodes('PLACE_ADDRESS.E45', data)
-            self.update_nodes('DESCRIPTION_OF_LOCATION.E62', data)
             self.update_nodes('CHARACTER_AREA.E44', data)
             self.update_nodes('MASTER_PLAN_ZONE.E44', data)
             self.update_nodes('ARCHAEOLOGICAL_ZONE.E44', data)
+        if self.resource.entitytypeid  == 'INFORMATION_RESOURCE.E73':
+            self.update_nodes('TEMPORAL_COVERAGE_TIME-SPAN.E52', data)
+        
 ##        if self.resource.entitytypeid not in ['ACTOR.E39']:
 ##            self.update_nodes('SPATIAL_COORDINATES_GEOMETRY.E47', data)
 ##            self.update_nodes('ADMINISTRATIVE_SUBDIVISION_NAME.E55', data)
@@ -1157,9 +1170,14 @@ class LocationForm(ResourceForm):
             }
         }
         
+        self.data['TEMPORAL_COVERAGE_TIME-SPAN.E52'] = {
+            'branch_lists': self.get_nodes('TEMPORAL_COVERAGE_TIME-SPAN.E52'),
+            'domains': {}
+        }
+        
         return
 
-
+#not used
 class CoverageForm(ResourceForm):
     @staticmethod
     def get_info():

@@ -13,9 +13,10 @@ define([
         initialize: function() {
             var self = this;
             var resourcetypeid = $('#resourcetypeid').val();
+            
             var includeMap = (resourcetypeid !== 'ACTOR.E39');
-            var includeAdminAreas = (resourcetypeid !== 'ACTOR.E39');
-            var includeParcels = !_.contains(['ACTOR.E39', 'ACTIVITY.E7', 'HISTORICAL_EVENT.E5'], resourcetypeid);
+            var includeAreas = (resourcetypeid !== 'ACTOR.E39');
+
             var adminAreaTypeLookup = {};
 
             BaseForm.prototype.initialize.apply(this);
@@ -24,7 +25,7 @@ define([
             //    adminAreaTypeLookup[typeRecord.text] = typeRecord.id;
             //});
 
-            // if (includeAdminAreas) {
+            // if (includeAreas) {
                 // var adminAreaBranchList = new BranchList({
                     // el: this.$el.find('#admin-area-section')[0],
                     // data: this.data,
@@ -98,7 +99,10 @@ define([
             this.addBranchList(new BranchList({
                 el: this.$el.find('#address-section')[0],
                 data: this.data,
-                dataKey: 'PLACE_ADDRESS.E45'
+                dataKey: 'PLACE_ADDRESS.E45',
+                validateBranch: function(nodes) {
+                    return this.validateHasValues(nodes);
+                }
             }));
 
             this.addBranchList(new BranchList({
@@ -108,32 +112,34 @@ define([
                 singleEdit: true
             }));
             
-            this.addBranchList(new BranchList({
-                el: this.$el.find('#character-area-section')[0],
-                data: this.data,
-                dataKey: 'CHARACTER_AREA.E44',
-                validateBranch: function(nodes) {
-                    return this.validateHasValues(nodes);
-                }
-            }));
-            
-            this.addBranchList(new BranchList({
-                el: this.$el.find('#master-plan-zone-section')[0],
-                data: this.data,
-                dataKey: 'MASTER_PLAN_ZONE.E44',
-                validateBranch: function(nodes) {
-                    return this.validateHasValues(nodes);
-                }
-            }));
-            
-            this.addBranchList(new BranchList({
-                el: this.$el.find('#archaeological-zone-section')[0],
-                data: this.data,
-                dataKey: 'ARCHAEOLOGICAL_ZONE.E44',
-                validateBranch: function(nodes) {
-                    return this.validateHasValues(nodes);
-                }
-            }));
+            if (includeAreas) {
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#character-area-section')[0],
+                    data: this.data,
+                    dataKey: 'CHARACTER_AREA.E44',
+                    validateBranch: function(nodes) {
+                        return this.validateHasValues(nodes);
+                    }
+                }));
+                
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#master-plan-zone-section')[0],
+                    data: this.data,
+                    dataKey: 'MASTER_PLAN_ZONE.E44',
+                    validateBranch: function(nodes) {
+                        return this.validateHasValues(nodes);
+                    }
+                }));
+                
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#archaeological-zone-section')[0],
+                    data: this.data,
+                    dataKey: 'ARCHAEOLOGICAL_ZONE.E44',
+                    validateBranch: function(nodes) {
+                        return this.validateHasValues(nodes);
+                    }
+                }));
+            }
         }
     });
 });

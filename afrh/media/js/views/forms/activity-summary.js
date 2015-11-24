@@ -54,8 +54,6 @@ define(['jquery',
                         var ck1 = vt.isValidDate(nodes,'FROM_DATE.E49');
                         var ck2 = vt.isValidDate(nodes,'TO_DATE.E49');
                         var ck3 = vt.nodesHaveValues(nodes, ['ACTIVITY_TYPE.E55']);
-                        console.log("chk3");
-                        console.log(ck3);
                         return ck1 == true && ck2 == true && ck3 == true;
                     }
                 }));
