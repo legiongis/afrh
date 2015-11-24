@@ -375,39 +375,33 @@ class ActivitySummaryForm(ResourceForm):
         return {
             'id': 'activity-summary',
             'icon': 'fa-tag',
-            'name': _('Resource Summary'),
+            'name': _('Summary'),
             'class': ActivitySummaryForm
         }
 
     def update(self, data, files):
         self.update_nodes('NAME.E41', data)
-        self.update_nodes('KEYWORD.E55', data)
-        self.update_nodes('BEGINNING_OF_EXISTENCE.E63', data)
-        self.update_nodes('END_OF_EXISTENCE.E64', data)
+        self.update_nodes('PHASE_TYPE_ASSIGNMENT.E17', data)
 
     def load(self, lang):
         if self.resource:
 
             self.data['NAME.E41'] = {
                 'branch_lists': self.get_nodes('NAME.E41'),
-                'domains': {'NAME_TYPE.E55' : Concept().get_e55_domain('NAME_TYPE.E55')}
+                'domains': {'ACTIVITY_NAME_TYPE.E55' : Concept().get_e55_domain('ACTIVITY_NAME_TYPE.E55')}
             }
 
-            self.data['BEGINNING_OF_EXISTENCE.E63'] = {
-                'branch_lists': datetime_nodes_to_dates(self.get_nodes('BEGINNING_OF_EXISTENCE.E63')),
-                'domains': {
-                    'BEGINNING_OF_EXISTENCE_TYPE.E55' : Concept().get_e55_domain('BEGINNING_OF_EXISTENCE_TYPE.E55')
-                }
-            }
+            phase_type_nodes = datetime_nodes_to_dates(self.get_nodes('PHASE_TYPE_ASSIGNMENT.E17'))
 
-            self.data['END_OF_EXISTENCE.E64'] = {
-                'branch_lists': datetime_nodes_to_dates(self.get_nodes('END_OF_EXISTENCE.E64')),
+            self.data['PHASE_TYPE_ASSIGNMENT.E17'] = {
+                'branch_lists': phase_type_nodes,
                 'domains': {
-                    'END_OF_EXISTENCE_TYPE.E55' : Concept().get_e55_domain('END_OF_EXISTENCE_TYPE.E55')
+                    'ACTIVITY_TYPE.E55': Concept().get_e55_domain('ACTIVITY_TYPE.E55'),
                 }
             }
+            
             try:
-                self.data['primaryname_conceptid'] = self.data['NAME.E41']['domains']['NAME_TYPE.E55'][3]['id']
+                self.data['primaryname_conceptid'] = self.data['NAME.E41']['domains']['ACTIVITY_NAME_TYPE.E55'][3]['id']
             except IndexError:
                 pass
 
@@ -1414,21 +1408,19 @@ class ActorSummaryForm(ResourceForm):
         self.update_nodes('EPITHET.E82', data)
         self.update_nodes('BEGINNING_OF_EXISTENCE.E63', data)
         self.update_nodes('END_OF_EXISTENCE.E64', data)
-        self.update_nodes('KEYWORD.E55', data)
 
     def load(self, lang):
         if self.resource:
             self.data['APPELLATION.E41'] = {
                 'branch_lists': self.get_nodes('APPELLATION.E41'),
                 'domains': {
-                    'NAME_TYPE.E55' : Concept().get_e55_domain('NAME_TYPE.E55')
+                    'ACTOR_NAME_TYPE.E55' : Concept().get_e55_domain('ACTOR_NAME_TYPE.E55')
                 }
             }
 
             self.data['EPITHET.E82'] = {
                 'branch_lists': self.get_nodes('EPITHET.E82'),
             }
-
 
             self.data['BEGINNING_OF_EXISTENCE.E63'] = {
                 'branch_lists': datetime_nodes_to_dates(self.get_nodes('BEGINNING_OF_EXISTENCE.E63')),
@@ -1443,17 +1435,6 @@ class ActorSummaryForm(ResourceForm):
                     'END_OF_EXISTENCE_TYPE.E55' : Concept().get_e55_domain('END_OF_EXISTENCE_TYPE.E55')
                 }
             }
-
-            self.data['KEYWORD.E55'] = {
-                'branch_lists': self.get_nodes('KEYWORD.E55'),
-                'domains': {
-                    'KEYWORD.E55' : Concept().get_e55_domain('KEYWORD.E55')}
-            }
-            try:
-                self.data['primaryname_conceptid'] = self.data['APPELLATION.E41']['domains']['NAME_TYPE.E55'][3]['id']
-            except IndexError:
-                pass
-
 
 class PhaseForm(ResourceForm):
     @staticmethod
@@ -1688,7 +1669,13 @@ class RelatedResourcesForm(ResourceForm):
             date_started = related_resource['relationship']['datestarted']
             date_ended = related_resource['relationship']['dateended']
             if not relationship_id:
-                relationship = self.resource.create_resource_relationship(resource_id, relationship_type_id=relationship_type_id, notes=notes, date_started=date_started, date_ended=date_ended)
+                relationship = self.resource.create_resource_relationship(resource_id,
+                    relationship_type_id=relationship_type_id,
+                    notes=notes,
+                    date_started=date_started,
+                    date_ended=date_ended
+                    )
+                    
             else:
                 relationship = RelatedResource.objects.get(pk=relationship_id)
                 relationship.relationshiptype = relationship_type_id
@@ -1723,8 +1710,6 @@ class RelatedResourcesForm(ResourceForm):
 
         try:
             default_relationship_type = relationship_types[0]['id']
-            if len(relationship_types) > 6:
-                default_relationship_type = relationship_types[6]['id']
 
             self.data['related-resources'] = {
                 'branch_lists': data,

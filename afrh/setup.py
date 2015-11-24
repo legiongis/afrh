@@ -37,5 +37,5 @@ def create_indexes():
     Resource().prepare_search_index('INFORMATION_RESOURCE.E73', create=True)
     Resource().prepare_search_index('ACTIVITY.E7', create=True)
     Resource().prepare_search_index('ACTOR.E39', create=True)
-    Resource().prepare_search_index('HISTORICAL_EVENT.E5', create=True)
+    #Resource().prepare_search_index('HISTORICAL_EVENT.E5', create=True)
 

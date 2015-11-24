@@ -52,7 +52,6 @@ class Resource(ArchesResource):
                 forms.ConditionForm.get_info(),
                 forms.RelatedFilesForm.get_info(),
                 forms.InventoryEvaluationForm.get_info(),
-                forms.RelatedResourcesSubsetForm.get_info(),
             ]
 
         elif self.entitytypeid == 'HERITAGE_RESOURCE_GROUP.E27':
@@ -73,16 +72,16 @@ class Resource(ArchesResource):
         elif self.entitytypeid == 'ACTIVITY.E7':
             description_group['forms'][:0] = [
                 forms.ActivitySummaryForm.get_info(),
-                forms.DescriptionForm.get_info(),
+                forms.InventoryDescriptionForm.get_info(),
                 forms.LocationForm.get_info(),
-                forms.ActivityActionsForm.get_info(),
+                #forms.ActivityActionsForm.get_info(),
             ]
      
 
         elif self.entitytypeid == 'ACTOR.E39':
             description_group['forms'][:0] = [
                 forms.ActorSummaryForm.get_info(), 
-                forms.DescriptionForm.get_info(),
+                forms.InventoryDescriptionForm.get_info(),
                 forms.LocationForm.get_info(),
                 forms.RoleForm.get_info(),
             ]

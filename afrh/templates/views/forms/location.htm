@@ -209,16 +209,16 @@
             <dl>
                 <dd>
                     <div class="col-xs-10 hidden-xs">
-                        <input class="form-control arches-form-input" style="width: 69%;" placeholder='{% trans "name" %}' data-bind='value: getEditedNode("PLACE_ADDRESS.E45", "value")'>                                    
-                        <input style="width:30%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('ADDRESS_TYPE.E55', 'value'), placeholder: '{% trans 'name type' %}', dataKey: 'ADDRESS_TYPE.E55'}"></input>
+                        <input class="form-control arches-form-input" style="width: 69%;" placeholder='{% trans "address" %}' data-bind='value: getEditedNode("PLACE_ADDRESS.E45", "value")'>                                    
+                        <input style="width:30%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('ADDRESS_TYPE.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'ADDRESS_TYPE.E55'}"></input>
                     </div>
                     <div class="col-xs-2 hidden-xs add-button-column">
                         {% include 'views/components/add-item-button.htm' %}
                     </div>
                     <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-                        <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "Name" %}' data-bind='value: getEditedNode("PLACE_ADDRESS.E45", "value")'>
+                        <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "address" %}' data-bind='value: getEditedNode("PLACE_ADDRESS.E45", "value")'>
                         <div class="margin-top-5"></div>
-                        <input style="width:100%; height: 36px; padding-top: 2px;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('ADDRESS_TYPE.E55', 'value'), placeholder: '{% trans 'name type' %}', dataKey: 'ADDRESS_TYPE.E55'}"></input>
+                        <input style="width:100%; height: 36px; padding-top: 2px;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('ADDRESS_TYPE.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'ADDRESS_TYPE.E55'}"></input>
                         <div class="margin-top-5"></div>
                         {% include 'views/components/add-item-button.htm' %}
                     </div>

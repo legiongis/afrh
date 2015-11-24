@@ -5,21 +5,25 @@
 
 
 <div class="form-full-content">
+
+    {% if resourcetypeid == 'ACTOR.E39' %}
     <div class="row">
         <div class="col-xs-12 margin-bottom-10">
-            <div class="form-section-header"><span>{% trans "Resource Descriptions" %}</span></div>
+            <div class="form-section-header"><span>{% trans "Roles" %}</span></div>
+        </div>
+    </div>
+    <div id="roles-section">
+    </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Descriptions" %}</span></div>
         </div>
     </div>
     <div id="description-section">
         <div class="row">
             <dl>
-<!--
-                <dt>
-                    <div class="col-xs-12">
-                        <div class="form-section-subheader">{% trans "Classification" %}</div>
-                    </div>
-                </dt>
--->
                 <dd>
                     <div class="col-xs-10 hidden-xs">
                         <input style="width:100%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('DESCRIPTION_TYPE.E55', 'value'), placeholder: '{% trans 'description type' %}', dataKey: 'DESCRIPTION_TYPE.E55'}"></input>
@@ -68,6 +72,7 @@
             </div>
         </div>
     </div>
+    
     
     <div class="row">
         <div class="col-xs-12 margin-bottom-10">
@@ -121,5 +126,6 @@
             </div>
         </div>
     </div>
+    
 </div>
 {% endblock form_content %}

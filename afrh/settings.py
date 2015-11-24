@@ -87,25 +87,25 @@ def RESOURCE_TYPE_CONFIGS():
             },
             'sort_order': 3
         },
-        'HISTORICAL_EVENT.E5':{
-            'resourcetypeid': 'HISTORICAL_EVENT.E5',
-            'name': _('Historic Event'),
-            'icon_class': 'fa fa-calendar',
-            'default_page': 'historical-event-summary',
-            'default_description': 'No description available',
-            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
-            'categories': [_('Resource')],
-            'has_layer': True,
-            'on_map': False,
-            'marker_color': '#4EBF41',
-            'stroke_color': '#61a659',
-            'fill_color': '#c2d8bf',
-            'primary_name_lookup': {
-                'entity_type': 'NAME.E41',
-                'lookup_value': 'Primary'
-            },
-            'sort_order': 4
-        },
+##        'HISTORICAL_EVENT.E5':{
+##            'resourcetypeid': 'HISTORICAL_EVENT.E5',
+##            'name': _('Historic Event'),
+##            'icon_class': 'fa fa-calendar',
+##            'default_page': 'historical-event-summary',
+##            'default_description': 'No description available',
+##            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
+##            'categories': [_('Resource')],
+##            'has_layer': True,
+##            'on_map': False,
+##            'marker_color': '#4EBF41',
+##            'stroke_color': '#61a659',
+##            'fill_color': '#c2d8bf',
+##            'primary_name_lookup': {
+##                'entity_type': 'NAME.E41',
+##                'lookup_value': 'Primary'
+##            },
+##            'sort_order': 4
+##        },
         'ACTOR.E39': {
             'resourcetypeid': 'ACTOR.E39',
             'name': _('Person/Organization'),
