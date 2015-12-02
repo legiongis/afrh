@@ -9,29 +9,30 @@
         </div>
     </div>
     <div id="nhrp-type-section">
-        <div class="row">
-            <dl>
-<!--
-                <dt>
-                    <div class="col-xs-12">
-                        <div class="form-section-subheader">{% trans "Classification" %}</div>
+        <form class="form-inline">
+            <div class="row hidden-xs">
+                <div class="col-xs-10">
+                    <div class="form-group" style="width:100%;">
+                        <input style="width:100%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_TYPE.E55', 'value'), placeholder: '{% trans 'NHRP resource type' %}', dataKey: 'NHRP_RESOURCE_TYPE.E55'}"></input>
                     </div>
-                </dt>
--->
-                <dd>
-                    <div class="col-xs-10 hidden-xs">
-                        <input style="width:100%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_TYPE.E55', 'value'), placeholder: '{% trans 'NHRP resource type' %}', dataKey: 'NHRP_RESOURCE_TYPE.E55'}"></input>
-                    </div>
-                    <div class="col-xs-2 hidden-xs add-button-column">
-                        {% include 'views/components/add-item-button.htm' %}
-                    </div>
-                    <div class="col-xs-12  hidden-sm hidden-md hidden-lg">
+                </div>
+                <div class="col-xs-2 hidden-xs add-button-column">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+            <div class="row hidden-sm hidden-md hidden-lg">
+                <div class="col-xs-12">
+                    <div class="form-group">
                         <input style="width:100%; height: 36px; padding-top: 2px; margin-bottom: 5px" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_TYPE.E55', 'value'), placeholder: '{% trans 'NHRP resource type' %}', multiple: false, dataKey: 'NHRP_RESOURCE_TYPE.E55'}"></input>
-                        {% include 'views/components/add-item-button.htm' %}
                     </div>
-                </dd>
-            </dl>
-            <div class="col-xs-12">
+                </div>
+                <div class="col-xs-12">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a resource type." %}</div>
             </div>
         </div>
@@ -43,8 +44,8 @@
                             <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no types defined" %}</div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:inline;">
-                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans "Delete this type" %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'Edit this type' %}">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans "remove" %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
                                         <span data-bind="text: nodes.get('NHRP_RESOURCE_TYPE.E55', 'label')" style="padding-right:2px;"></span>
                                     </a>
                                 </div>
@@ -55,30 +56,32 @@
             </div>
         </div>
     </div>
+    
     <div id="nhrp-category-section">
-        <div class="row">
-            <dl>
-<!--
-                <dt>
-                    <div class="col-xs-12">
-                        <div class="form-section-subheader">{% trans "Classification" %}</div>
+        <form class="form-inline">
+            <div class="row hidden-xs">
+                <div class="col-xs-10">
+                    <div class="form-group" style="width:100%;">
+                        <input style="width:100%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_CATEGORY.E55', 'value'), placeholder: '{% trans 'NHRP resource category' %}', dataKey: 'NHRP_RESOURCE_CATEGORY.E55'}"></input>
                     </div>
-                </dt>
--->
-                <dd>
-                    <div class="col-xs-10 hidden-xs">
-                        <input style="width:100%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_CATEGORY.E55', 'value'), placeholder: '{% trans 'NHRP resource category' %}', dataKey: 'NHRP_RESOURCE_CATEGORY.E55'}"></input>
-                    </div>
-                    <div class="col-xs-2 hidden-xs add-button-column">
-                        {% include 'views/components/add-item-button.htm' %}
-                    </div>
-                    <div class="col-xs-12  hidden-sm hidden-md hidden-lg">
+                </div>
+                <div class="col-xs-2 hidden-xs add-button-column">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+            <div class="row hidden-sm hidden-md hidden-lg">
+                <div class="col-xs-12">
+                    <div class="form-group">
                         <input style="width:100%; height: 36px; padding-top: 2px; margin-bottom: 5px" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_CATEGORY.E55', 'value'), placeholder: '{% trans 'NHRP resource category' %}', multiple: false, dataKey: 'NHRP_RESOURCE_CATEGORY.E55'}"></input>
-                        {% include 'views/components/add-item-button.htm' %}
                     </div>
-                </dd>
-            </dl>
-            <div class="col-xs-12">
+                </div>
+                <div class="col-xs-12">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a category." %}</div>
             </div>
         </div>
@@ -90,8 +93,9 @@
                             <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no categories defined" %}</div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:inline;">
-                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'Delete this category' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'Edit this category' %}"><span data-bind="text: nodes.get('NHRP_RESOURCE_CATEGORY.E55', 'label')" style="padding-right:2px;"></span>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans "remove" %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                        <span data-bind="text: nodes.get('NHRP_RESOURCE_CATEGORY.E55', 'label')" style="padding-right:2px;"></span>
                                     </a>
                                 </div>
                             </div>
@@ -103,29 +107,30 @@
     </div>
     
     <div id="resource-subcategory-section">
-        <div class="row">
-            <dl>
-<!--
-                <dt>
-                    <div class="col-xs-12">
-                        <div class="form-section-subheader">{% trans "Classification" %}</div>
+        <form class="form-inline">
+            <div class="row hidden-xs">
+                <div class="col-xs-10">
+                    <div class="form-group" style="width:100%;">
+                        <input style="width:100%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_SUBCATEGORY.E55', 'value'), placeholder: '{% trans 'NHRP resource subcategory' %}', dataKey: 'NHRP_RESOURCE_SUBCATEGORY.E55'}"></input>
                     </div>
-                </dt>
--->
-                <dd>
-                    <div class="col-xs-10 hidden-xs">
-                        <input style="width:100%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_SUBCATEGORY.E55', 'value'), placeholder: '{% trans 'NHRP resource subcategory' %}', dataKey: 'NHRP_RESOURCE_SUBCATEGORY.E55'}"></input>
-                    </div>
-                    <div class="col-xs-2 hidden-xs add-button-column">
-                        {% include 'views/components/add-item-button.htm' %}
-                    </div>
-                    <div class="col-xs-12  hidden-sm hidden-md hidden-lg">
+                </div>
+                <div class="col-xs-2 hidden-xs add-button-column">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+            <div class="row hidden-sm hidden-md hidden-lg">
+                <div class="col-xs-12">
+                    <div class="form-group">
                         <input style="width:100%; height: 36px; padding-top: 2px; margin-bottom: 5px" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_SUBCATEGORY.E55', 'value'), placeholder: '{% trans 'NHRP resource subcategory' %}', multiple: false, dataKey: 'NHRP_RESOURCE_SUBCATEGORY.E55'}"></input>
-                        {% include 'views/components/add-item-button.htm' %}
                     </div>
-                </dd>
-            </dl>
-            <div class="col-xs-12">
+                </div>
+                <div class="col-xs-12">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a subcategory." %}</div>
             </div>
         </div>
@@ -137,8 +142,9 @@
                             <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no subcategories defined" %}</div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:inline;">
-                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'Delete this category' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'Edit this category' %}"><span data-bind="text: nodes.get('NHRP_RESOURCE_SUBCATEGORY.E55', 'label')" style="padding-right:2px;"></span>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans "remove" %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                        <span data-bind="text: nodes.get('NHRP_RESOURCE_SUBCATEGORY.E55', 'label')" style="padding-right:2px;"></span>
                                     </a>
                                 </div>
                             </div>
@@ -148,30 +154,32 @@
             </div>
         </div>
     </div>
+    
     <div id="wuzit-section">
-        <div class="row">
-            <dl>
-<!--
-                <dt>
-                    <div class="col-xs-12">
-                        <div class="form-section-subheader">{% trans "Classification" %}</div>
+        <form class="form-inline">
+            <div class="row hidden-xs">
+                <div class="col-xs-10">
+                    <div class="form-group" style="width:100%;">
+                        <input style="width:100%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('WUZIT.E55', 'value'), placeholder: '{% trans 'Wuzit (original purpose)' %}', dataKey: 'WUZIT.E55'}"></input>
                     </div>
-                </dt>
--->
-                <dd>
-                    <div class="col-xs-10 hidden-xs">
-                        <input style="width:100%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('WUZIT.E55', 'value'), placeholder: '{% trans 'Wuzit (original purpose)' %}', dataKey: 'WUZIT.E55'}"></input>
-                    </div>
-                    <div class="col-xs-2 hidden-xs add-button-column">
-                        {% include 'views/components/add-item-button.htm' %}
-                    </div>
-                    <div class="col-xs-12  hidden-sm hidden-md hidden-lg">
+                </div>
+                <div class="col-xs-2 hidden-xs add-button-column">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+            <div class="row hidden-sm hidden-md hidden-lg">
+                <div class="col-xs-12">
+                    <div class="form-group">
                         <input style="width:100%; height: 36px; padding-top: 2px; margin-bottom: 5px" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('WUZIT.E55', 'value'), placeholder: '{% trans 'Wuzit (original purpose)' %}', multiple: false, dataKey: 'WUZIT.E55'}"></input>
-                        {% include 'views/components/add-item-button.htm' %}
                     </div>
-                </dd>
-            </dl>
-            <div class="col-xs-12">
+                </div>
+                <div class="col-xs-12">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a wuzit. Wuzza wuzza wuzit." %}</div>
             </div>
         </div>
@@ -183,8 +191,9 @@
                             <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no wuzits defined" %}</div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:inline;">
-                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'Delete this wuzit' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'Edit this category' %}"><span data-bind="text: nodes.get('WUZIT.E55', 'label')" style="padding-right:2px;"></span>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans "remove" %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                        <span data-bind="text: nodes.get('WUZIT.E55', 'label')" style="padding-right:2px;"></span>
                                     </a>
                                 </div>
                             </div>
@@ -193,6 +202,7 @@
                 </div>
             </div>
         </div>
+    
     </div>
     
     
@@ -203,18 +213,9 @@
         </div>
     </div>
     <div id="names-section">
-        <div class="row">
-            <dl>
-                <!-- SAMPLE DT HEADER -->
-                <!--
-                <dt>
-                    <div class="col-xs-12">
-                        <div class="form-section-subheader">{% trans "Names" %}</div>
-                    </div>
-                </dt>
-                -->
-                <dd>
-                    <div class="col-xs-10 hidden-xs">
+        <form class="form-inline">
+            <div class="row hidden-xs">
+                <div class="col-xs-10">
                         <input class="form-control arches-form-input" style="width: 69%;" placeholder='{% trans "name" %}' data-bind='value: getEditedNode("NAME.E41", "value")'>                                    
                         <input style="width:30%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('NAME_TYPE.E55', 'value'), placeholder: '{% trans 'name type' %}', dataKey: 'NAME_TYPE.E55'}"></input>
                     </div>
