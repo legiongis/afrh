@@ -66,8 +66,9 @@ define(['jquery',
                     data: this.data,
                     dataKey: 'OTHER_AFRH_W_DESIGNATION.E3',
                     validateBranch: function (nodes) {
-                        return true;
-                        return this.validateHasValues(nodes);
+                        var ck1 = vt.isValidDate(nodes,'OTHER_AFRH_W_DESIGNATION_DATE.E50');
+                        var ck2 = this.validateHasValues(nodes);
+                        return ck1 == true && ck2 == true;
                     }
                 }));
                 
@@ -76,8 +77,9 @@ define(['jquery',
                     data: this.data,
                     dataKey: 'OTHER_DESIGNATION.E3',
                     validateBranch: function (nodes) {
-                        return true;
-                        return this.validateHasValues(nodes);
+                        var ck1 = vt.isValidDate(nodes,'OTHER_DESIGNATION_DATE.E50');
+                        var ck2 = vt.nodesHaveValues(nodes,['OTHER_DESIGNATION_TYPE.E55','OTHER_DESIGNATION_STATUS.E55','OTHER_DESIGNATION_DATE.E50']);
+                        return ck1 == true && ck2 == true;
                     }
                 }));
                 
@@ -97,14 +99,12 @@ define(['jquery',
                         // return valid;
                     // }
                 }));
-                console.log("added score section branchlist");
                 
                 this.addBranchList(new BranchList({
                     el: this.$el.find('#hpmp-section')[0],
                     data: this.data,
                     dataKey: 'HPMP_STATUS.E55',
                     validateBranch: function (nodes) {
-                        return true;
                         return this.validateHasValues(nodes);
                     }
                 }));
@@ -114,18 +114,9 @@ define(['jquery',
                     data: this.data,
                     dataKey: 'RELATIVE_LEVEL_OF_SIGNIFICANCE.E55',
                     validateBranch: function (nodes) {
-                        var goodDate = true;
-                        _.each(nodes, function(node){
-                            if (node["entitytypeid"] == "RELATIVE_LEVEL_OF_SIGNIFICANCE_DATE.E50") {
-                                date_check = isValidDate(node["value"]);
-                                if (!date_check[0]){
-                                    goodDate = false;
-                                }
-                                node["value"] = date_check[1];
-                                node["label"] = date_check[1];
-                            }
-                        });
-                        return goodDate;
+                        var ck1 = vt.isValidDate(nodes,'RELATIVE_LEVEL_OF_SIGNIFICANCE_DATE.E50');
+                        var ck2 = this.validateHasValues(nodes);
+                        return ck1 == true && ck2 == true;
                     }
                 }));
                 

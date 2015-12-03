@@ -16,14 +16,14 @@
                         <input style="width:100%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_TYPE.E55', 'value'), placeholder: '{% trans 'NHRP resource type' %}', dataKey: 'NHRP_RESOURCE_TYPE.E55'}"></input>
                     </div>
                 </div>
-                <div class="col-xs-2 hidden-xs add-button-column">
+                <div class="col-xs-2 add-button-column">
                     {% include 'views/components/add-item-button.htm' %}
                 </div>
             </div>
             <div class="row hidden-sm hidden-md hidden-lg">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <input style="width:100%; height: 36px; padding-top: 2px; margin-bottom: 5px" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_TYPE.E55', 'value'), placeholder: '{% trans 'NHRP resource type' %}', multiple: false, dataKey: 'NHRP_RESOURCE_TYPE.E55'}"></input>
+                        <input style="width:100%; height: 36px;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_TYPE.E55', 'value'), placeholder: '{% trans 'NHRP resource type' %}', multiple: false, dataKey: 'NHRP_RESOURCE_TYPE.E55'}"></input>
                     </div>
                 </div>
                 <div class="col-xs-12">
@@ -72,7 +72,7 @@
             <div class="row hidden-sm hidden-md hidden-lg">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <input style="width:100%; height: 36px; padding-top: 2px; margin-bottom: 5px" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_CATEGORY.E55', 'value'), placeholder: '{% trans 'NHRP resource category' %}', multiple: false, dataKey: 'NHRP_RESOURCE_CATEGORY.E55'}"></input>
+                        <input style="width:100%; height: 36px;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_CATEGORY.E55', 'value'), placeholder: '{% trans 'NHRP resource category' %}', multiple: false, dataKey: 'NHRP_RESOURCE_CATEGORY.E55'}"></input>
                     </div>
                 </div>
                 <div class="col-xs-12">
@@ -121,7 +121,7 @@
             <div class="row hidden-sm hidden-md hidden-lg">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <input style="width:100%; height: 36px; padding-top: 2px; margin-bottom: 5px" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_SUBCATEGORY.E55', 'value'), placeholder: '{% trans 'NHRP resource subcategory' %}', multiple: false, dataKey: 'NHRP_RESOURCE_SUBCATEGORY.E55'}"></input>
+                        <input style="width:100%; height: 36px;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_SUBCATEGORY.E55', 'value'), placeholder: '{% trans 'NHRP resource subcategory' %}', multiple: false, dataKey: 'NHRP_RESOURCE_SUBCATEGORY.E55'}"></input>
                     </div>
                 </div>
                 <div class="col-xs-12">
@@ -170,7 +170,7 @@
             <div class="row hidden-sm hidden-md hidden-lg">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <input style="width:100%; height: 36px; padding-top: 2px; margin-bottom: 5px" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('WUZIT.E55', 'value'), placeholder: '{% trans 'Wuzit (original purpose)' %}', multiple: false, dataKey: 'WUZIT.E55'}"></input>
+                        <input style="width:100%; height: 36px;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('WUZIT.E55', 'value'), placeholder: '{% trans 'Wuzit (original purpose)' %}', multiple: false, dataKey: 'WUZIT.E55'}"></input>
                     </div>
                 </div>
                 <div class="col-xs-12">
@@ -202,10 +202,7 @@
                 </div>
             </div>
         </div>
-    
     </div>
-    
-    
     
     <div class="row">
         <div class="col-xs-12 margin-bottom-10">
@@ -216,22 +213,39 @@
         <form class="form-inline">
             <div class="row hidden-xs">
                 <div class="col-xs-10">
-                        <input class="form-control arches-form-input" style="width: 69%;" placeholder='{% trans "name" %}' data-bind='value: getEditedNode("NAME.E41", "value")'>                                    
-                        <input style="width:30%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('NAME_TYPE.E55', 'value'), placeholder: '{% trans 'name type' %}', dataKey: 'NAME_TYPE.E55'}"></input>
+                    <div class="col-sm-8" style="padding-left: 0px; padding-right: 5px;">
+                        <div class="form-group" style="width:100%">
+                            <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "name" %}' data-bind='value: getEditedNode("NAME.E41", "value")'>                                    
+                        </div>
                     </div>
-                    <div class="col-xs-2 hidden-xs add-button-column">
-                        {% include 'views/components/add-item-button.htm' %}
+                    <div class="col-sm-4" style="padding-left: 0px; padding-right: 0px;">
+                        <div class="form-group" style="width:100%">
+                            <input style="width:100%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NAME_TYPE.E55', 'value'), placeholder: '{% trans 'name type' %}', dataKey: 'NAME_TYPE.E55'}"></input>
+                        </div>
                     </div>
-                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-                        <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "Name" %}' data-bind='value: getEditedNode("NAME.E41", "value")'>
-                        <div class="margin-top-5"></div>
+                </div>
+                <div class="col-sm-2 add-button-column">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+            <div class="row hidden-sm hidden-md hidden-lg">
+                <div class="col-xs-12">
+                    <div class="form-group" style="width:100%">
+                        <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "name" %}' data-bind='value: getEditedNode("NAME.E41", "value")'>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="width:100%">
                         <input style="width:100%; height: 36px; padding-top: 2px;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NAME_TYPE.E55', 'value'), placeholder: '{% trans 'name type' %}', dataKey: 'NAME_TYPE.E55'}"></input>
-                        <div class="margin-top-5"></div>
-                        {% include 'views/components/add-item-button.htm' %}
                     </div>
-                </dd>
-            </dl>
-            <div class="col-xs-12">
+                </div>
+                <div class="col-xs-12">   
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must populate both fields." %}</div>
             </div>
         </div>
@@ -258,35 +272,44 @@
             </div>
         </div>
     </div>
+    
     <div id="building-number-section">
-        <div class="row">
-            <dl>
-                <!-- SAMPLE DT HEADER -->
-                <!--
-                <dt>
-                    <div class="col-xs-12">
-                        <div class="form-section-subheader">{% trans "Names" %}</div>
+        <form class="form-inline">
+            <div class="row hidden-xs">
+                <div class="col-xs-10">
+                    <div class="col-sm-8" style="padding-left: 0px; padding-right: 5px;">
+                        <div class="form-group" style="width:100%">
+                            <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "building number" %}' data-bind='value: getEditedNode("BUILDING_NUMBER.E42", "value")'>                                    
+                        </div>
                     </div>
-                </dt>
-                -->
-                <dd>
-                    <div class="col-xs-10 hidden-xs">
-                        <input class="form-control arches-form-input" style="width: 69%;" placeholder='{% trans "building number" %}' data-bind='value: getEditedNode("BUILDING_NUMBER.E42", "value")'>                                    
-                        <input style="width:30%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('BUILDING_NUMBER_TYPE.E55', 'value'), placeholder: '{% trans 'number type' %}', dataKey: 'BUILDING_NUMBER_TYPE.E55'}"></input>
+                    <div class="col-sm-4" style="padding-left: 0px; padding-right: 0px;">
+                        <div class="form-group" style="width:100%">
+                            <input style="width:100%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('BUILDING_NUMBER_TYPE.E55', 'value'), placeholder: '{% trans 'number type' %}', dataKey: 'BUILDING_NUMBER_TYPE.E55'}"></input>
+                        </div>
                     </div>
-                    <div class="col-xs-2 hidden-xs add-button-column">
-                        {% include 'views/components/add-item-button.htm' %}
-                    </div>
-                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                </div>
+                <div class="col-sm-2 add-button-column">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+            <div class="row hidden-sm hidden-md hidden-lg">
+                <div class="col-xs-12">
+                    <div class="form-group" style="width:100%">
                         <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "building number" %}' data-bind='value: getEditedNode("BUILDING_NUMBER.E42", "value")'>
-                        <div class="margin-top-5"></div>
-                        <input style="width:100%; height: 36px; padding-top: 2px;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('BUILDING_NUMBER_TYPE.E55', 'value'), placeholder: '{% trans 'number type' %}', dataKey: 'BUILDING_NUMBER_TYPE.E55'}"></input>
-                        <div class="margin-top-5"></div>
-                        {% include 'views/components/add-item-button.htm' %}
                     </div>
-                </dd>
-            </dl>
-            <div class="col-xs-12">
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="width:100%">
+                        <input style="width:100%; height: 36px; padding-top: 2px;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('BUILDING_NUMBER_TYPE.E55', 'value'), placeholder: '{% trans 'number type' %}', dataKey: 'BUILDING_NUMBER_TYPE.E55'}"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12">   
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must populate both fields." %}</div>
             </div>
         </div>
@@ -295,11 +318,11 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no building numbers" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no numbers" %}</div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
-                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'delete this number' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit this number' %}">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
                                         <span data-bind="text: nodes.get('BUILDING_NUMBER.E42', 'value')" style="padding-right:2px;"></span>
                                         <span class="text-muted arches-crud-type-identifier">
                                             (<span data-bind="text: nodes.get('BUILDING_NUMBER_TYPE.E55', 'label')"></span>)
@@ -320,42 +343,59 @@
         </div>
     </div>
     <div id="dates-section">
-        <div class="row">
-            <dl>
-                <dd>
-                    <form class="form-inline hidden-xs" role="form">
-                        <div class="col-xs-10">
-                            <div class="col-sm-4 form-group hidden-xs" style="padding-left: 0px; padding-right: 4px; width: 40%;">
-                                <div class="input-group datetimepicker" style ="width:100%;" >
-                                    <input style="font-size: 13px; height:32px;" type="text" id="date" placeholder="{% trans 'yyyy-mm-dd' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49', 'value')} ">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                </div>
-                            </div>
-                            <input style="width:60%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('BEGINNING_OF_EXISTENCE_TYPE.E55,END_OF_EXISTENCE_TYPE.E55', 'value'), placeholder: '{% trans 'date type' %}', dataKey: 'important_dates'}"></input>
-                            <input class="form-control arches-form-input margin-top-5" style="width: 100%;" placeholder='{% trans "note" %}' data-bind="value: getEditedNode('BEGINNING_OF_EXISTENCE_NOTE.E62,END_OF_EXISTENCE_NOTE.E62', 'value')">
+        <form class="form-inline">
+            <div class="row hidden-xs">
+                <div class="col-xs-10">
+                
+                   <div class="col-sm-8" style="padding-left: 0px; padding-right: 5px;">
+                        <div class="form-group" style="width:100%">
+                            <input style="width:100%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('BEGINNING_OF_EXISTENCE_TYPE.E55,END_OF_EXISTENCE_TYPE.E55', 'value'), placeholder: '{% trans 'number type' %}', dataKey: 'important_dates'}"></input>
                         </div>
-                    </form>
-                    <form class="form-inline hidden-xs" role="form">
-                        <div class="col-xs-2 add-button-column">
-                            {% include 'views/components/add-item-button.htm' %}
-                        </div>
-                    </form>
-                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-                        <div class="col-sm-4 form-group hidden-xs" style="padding-left: 0px; padding-right: 0px; width: 45%;">
+                    </div>
+                    <div class="col-sm-4" style="padding-left: 0px; padding-right: 0px;">
+                        <div class="form-group" style="width:100%">
                             <div class="input-group datetimepicker" style ="width:100%;" >
                                 <input style="font-size: 13px; height:32px;" type="text" id="date" placeholder="{% trans 'yyyy-mm-dd' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49', 'value')} ">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                             </div>
                         </div>
-                        <input style="width:54%;" class="select2 arches-select2-crud-form hidden-xs" data-bind="select2: {value: getEditedNode('BEGINNING_OF_EXISTENCE_TYPE.E55,END_OF_EXISTENCE_TYPE.E55', 'value'), placeholder: '{% trans 'number type' %}', dataKey: 'important_dates'}"></input>
+                    </div>
+                    <div class="col-sm-12" style="padding-left: 0px; padding-right: 0px;">
+                        <div class="form-group" style="width:100%">
+                            <input class="form-control arches-form-input margin-top-5" style="width: 100%;" placeholder='{% trans "note" %}' data-bind="value: getEditedNode('BEGINNING_OF_EXISTENCE_NOTE.E62,END_OF_EXISTENCE_NOTE.E62', 'value')">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 add-button-column">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+            <div class="row hidden-sm hidden-md hidden-lg">
+                <div class="col-xs-12">
+                    <div class="form-group" style="width:100%">
+                        <input style="width:100%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('BEGINNING_OF_EXISTENCE_TYPE.E55,END_OF_EXISTENCE_TYPE.E55', 'value'), placeholder: '{% trans 'number type' %}', dataKey: 'important_dates'}"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="width:100%">
+                        <div class="input-group datetimepicker" style ="width:100%;" >
+                            <input style="font-size: 13px; height:32px;" type="text" id="date" placeholder="{% trans 'yyyy-mm-dd' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49', 'value')} ">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="width:100%">
                         <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "note" %}' data-bind="value: getEditedNode('BEGINNING_OF_EXISTENCE_NOTE.E62,END_OF_EXISTENCE_NOTE.E62', 'value')">
                     </div>
-                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-                        {% include 'views/components/add-item-button.htm' %}
-                    </div>
-                </dd>
-            </dl>
-            <div class="col-xs-12">
+                </div>
+                <div class="col-xs-12">   
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a correctly formatted date (yyyy-mm-dd) and date type." %}</div>
             </div>
         </div>
@@ -364,11 +404,11 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text">{% trans "no dates added" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no dates added" %}</div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
-                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'Delete this date' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'Edit this date' %}">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
                                         <span class="arches-CRUD-child arches-CRUD-edit" data-bind="text: nodes.get('BEGINNING_OF_EXISTENCE_TYPE.E55,END_OF_EXISTENCE_TYPE.E55', 'label') + ': ' + nodes.get('START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49', 'value').slice(0,10)" style="padding-right:2px;"></span>
                                         <br>
                                         <span class="text-muted arches-crud-type-identifier">
@@ -385,7 +425,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12 margin-bottom-10">
-            <div class="form-section-header"><span>{% trans 'Still want to add "Associations with Actors"' %}</span></div>
+            <div class="form-section-header"><span>{% trans '...would still like to add "associations with actors" function...' %}</span></div>
         </div>
     </div>
 </div>

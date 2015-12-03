@@ -10,33 +10,43 @@
         </div>
     </div>
     <div id="xref-section">
+        <form class="form-inline">
+            <div class="row hidden-xs">
+                <div class="col-sm-10">
+                    <div class="col-sm-7" style="padding-left:0px; padding-right:5px;">
+                        <div class="form-group" style="width:100%;">
+                            <input class="select2 arches-select2-crud-form" style="width:100%;" data-bind="select2: {value: getEditedNode('EXTERNAL_XREF_TYPE.E55', 'value'), placeholder: '{% trans 'reference type' %}', multiple: false, dataKey: 'EXTERNAL_XREF_TYPE.E55'}"></input>
+                        </div>
+                    </div>
+                    <div class="col-sm-5" style="padding-left:0px; padding-right:0px;">
+                        <div class="form-group" style="width:100%;">
+                            <input class="form-control arches-form-input" style="width: 100%;" placeholder="identifier" data-bind='value: getEditedNode("EXTERNAL_XREF.E42", "value")'>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 add-button-column">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+            <div class="row hidden-sm hidden-md hidden-lg">
+                <div class="col-xs-12">
+                    <div class="form-group" style="width:100%;">
+                        <input class="select2 arches-select2-crud-form" style="width:100%;" data-bind="select2: {value: getEditedNode('EXTERNAL_XREF_TYPE.E55', 'value'), placeholder: '{% trans 'reference type' %}', multiple: false, dataKey: 'EXTERNAL_XREF_TYPE.E55'}"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="width:100%;">
+                        <input class="form-control arches-form-input" style="width: 100%;" placeholder="identifier" data-bind='value: getEditedNode("EXTERNAL_XREF.E42", "value")'>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    {% include 'views/components/add-item-button.htm' %}
+                </div>
+            </div>
+        </form>
         <div class="row">
-            <dl>
-                <dd class="arches-RDM-labels">
-                    <form class="form-inline hidden-xs" role="form">
-                        <div class="col-xs-10">
-                            <div class="form-group  hidden-xs" style="width: 100%; margin-left:12px">
-                            <input style="width:58%;" class="select2 arches-select2-crud-form reference-type  hidden-xs" id="" data-bind="select2: {value: getEditedNode('EXTERNAL_XREF_TYPE.E55', 'value'), placeholder: '{% trans 'reference type' %}', multiple: false, dataKey: 'EXTERNAL_XREF_TYPE.E55'}"></input>&nbsp;
-                            <input class="form-control arches-form-input hidden-xs" id="resource-name" style="width: 40%;" placeholder="value" data-bind='value: getEditedNode("EXTERNAL_XREF.E42", "value")'>     
-                            </div>
-                        </div>
-                        <div class="col-xs-2 add-button-column">
-                            {% include 'views/components/add-item-button.htm' %}
-                        </div>
-                    </form>
-                    <form class="form-inline hidden-sm hidden-md hidden-lg" role="form">
-                        <div class="form-group" style="width: 100%;">
-                        <input style="width:100%; height: 36px; padding: 2px;" class="select2 arches-select2-crud-form reference-type" id="" data-bind="select2: {value: getEditedNode('EXTERNAL_XREF_TYPE.E55', 'value'), placeholder: '{% trans 'reference type' %}', multiple: false, dataKey: 'EXTERNAL_XREF_TYPE.E55'}"></input>
-                        <div class="margin-top-5"></div>
-                        <input class="form-control arches-form-input" id="resource-name" style="width: 100%;" placeholder="value" data-bind='value: getEditedNode("EXTERNAL_XREF.E42", "value")'>     
-                        <div class="margin-top-5"></div>
-                        {% include 'views/components/add-item-button.htm' %} 
-                        </div>
-                    </form>
-                </dd>
-            </dl>
-            <div class="col-xs-12">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must fill both fields." %}</div>
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose enter a reference." %}</div>
             </div>
         </div>
         <div class="row">

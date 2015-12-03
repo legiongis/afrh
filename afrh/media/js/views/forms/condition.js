@@ -77,21 +77,35 @@ define(['jquery',
 
             ko.applyBindings(this, this.$el.find('#existing-assessments')[0]);
 
-
             this.addBranchList(new BranchList({
                 data: currentEditedAssessment,
-                dataKey: 'CONDITION_ASSESSMENT.E14'
+                dataKey: 'CONDITION_ASSESSMENT.E14',
             }));
             this.addBranchList(new BranchList({
                 el: this.$el.find('#recommendations-section')[0],
                 data: currentEditedAssessment,
-                dataKey: 'RECOMMENDATION_TYPE.E55'
+                dataKey: 'RECOMMENDATION_TYPE.E55',
+                validateBranch: function (nodes) {
+                    return this.validateHasValues(nodes);
+                }
             }));
 
             this.addBranchList(new BranchList({
                 el: this.$el.find('#threats-section')[0],
                 data: currentEditedAssessment,
-                dataKey: 'THREAT_TYPE.E55'
+                dataKey: 'THREAT_TYPE.E55',
+                validateBranch: function (nodes) {
+                    return this.validateHasValues(nodes);
+                }
+            }));
+
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#disturbances-section')[0],
+                data: currentEditedAssessment,
+                dataKey: 'DISTURBANCE_TYPE.E55',
+                validateBranch: function (nodes) {
+                    return this.validateHasValues(nodes);
+                }
             }));
 
             this.addBranchList(new BranchList({
@@ -104,11 +118,6 @@ define(['jquery',
                 }
             }));
 
-            this.addBranchList(new BranchList({
-                el: this.$el.find('#disturbances-section')[0],
-                data: currentEditedAssessment,
-                dataKey: 'DISTURBANCE_TYPE.E55'
-            }));
 
             this.addBranchList(new BranchList({
                 el: this.$el.find('#description-section')[0],

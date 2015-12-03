@@ -17,7 +17,7 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'COMPONENT.E18',
                 validateBranch: function (nodes) {
-                    return vt.nodesHaveValues(nodes,['COMPONENT_TYPE.E55','CONSTRUCTION_TECHNIQUE.E55','MATERIAL.E57'])
+                    return vt.nodesHaveValues(nodes,['COMPONENT_TYPE.E55'])
                 }
             }));
             
