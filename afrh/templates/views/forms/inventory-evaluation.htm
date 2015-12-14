@@ -9,46 +9,26 @@
         </div>
     </div>
     <div id="afrh-hd-status-section">
-        <form class="form-inline">
-            <div class="row hidden-xs">
-                <div class="col-sm-10">
-                    <div class="col-sm-8" style="padding-left: 0px; padding-right: 5px;">
-                        <div class="form-group" style="width: 100%;">
-                            <input class="select2 arches-select2-crud-form" style="width:100%; padding-right: 0px;" data-bind="select2: {value: getEditedNode('AFRH_W_HISTORIC_DISTRICT_STATUS.E55', 'value'), placeholder: '{% trans 'status' %}', dataKey: 'AFRH_W_HISTORIC_DISTRICT_STATUS.E55'}"></input>
-                        </div>
-                    </div>
-                    <div class="col-sm-4" style="padding-left: 0px; padding-right: 0px;">
-                        <div class="form-group" style="width: 100%;">
-                            <div class="input-group datetimepicker" style ="width:100%;" >
-                                <input style="height:32px;" type="text" id="date" placeholder="{% trans 'status date (yyyy-mm-dd)' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('AFRH_W_HISTORIC_DISTRICT_STATUS_DATE.E50', 'value')} ">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            </div>
-                        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 col-sm-8 form-section-input add-padding-right">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('AFRH_W_HISTORIC_DISTRICT_STATUS.E55', 'value'), placeholder: '{% trans 'status' %}', dataKey: 'AFRH_W_HISTORIC_DISTRICT_STATUS.E55'}"></input>
                     </div>
                 </div>
-                <div class="col-sm-2 add-button-column">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
-            </div>
-            <div class="row hidden-sm hidden-md hidden-lg">
-                <div class="col-xs-12">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="select2 arches-select2-crud-form" style="width:100%; padding-right: 0px;" data-bind="select2: {value: getEditedNode('AFRH_W_HISTORIC_DISTRICT_STATUS.E55', 'value'), placeholder: '{% trans 'status' %}', dataKey: 'AFRH_W_HISTORIC_DISTRICT_STATUS.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div class="form-group" style="width: 100%;">
+                <div class="col-xs-12 col-sm-4 form-section-input add-margin-top">
+                    <div class="form-group">
                         <div class="input-group datetimepicker" style ="width:100%;" >
                             <input style="height:32px;" type="text" id="date" placeholder="{% trans 'status date (yyyy-mm-dd)' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('AFRH_W_HISTORIC_DISTRICT_STATUS_DATE.E50', 'value')} ">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
             </div>
-        </form>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must populate both fields." %}</div>
@@ -79,28 +59,18 @@
     </div>
     
     <div id="period-of-significance-section">
-        <form class="form-inline">
-            <div class="row hidden-xs">
-                <div class="col-sm-10">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="select2 arches-select2-crud-form" style="width:100%; padding-right: 0px;" data-bind="select2: {value: getEditedNode('PERIOD_OF_SIGNIFICANCE.E55', 'value'), placeholder: '{% trans 'period of significance' %}', dataKey: 'PERIOD_OF_SIGNIFICANCE.E55'}"></input>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('PERIOD_OF_SIGNIFICANCE.E55', 'value'), placeholder: '{% trans 'period of significance' %}', dataKey: 'PERIOD_OF_SIGNIFICANCE.E55'}"></input>
                     </div>
                 </div>
-                <div class="col-sm-2 add-button-column">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
             </div>
-            <div class="row hidden-sm hidden-md hidden-lg">
-                <div class="col-xs-12">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="select2 arches-select2-crud-form" style="width:100%; padding-right: 0px;" data-bind="select2: {value: getEditedNode('PERIOD_OF_SIGNIFICANCE.E55', 'value'), placeholder: '{% trans 'period of significance' %}', dataKey: 'PERIOD_OF_SIGNIFICANCE.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
             </div>
-        </form>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must select a period." %}</div>
@@ -127,28 +97,18 @@
     </div>
     
     <div id="area-of-significance-section">
-        <form class="form-inline">
-            <div class="row hidden-xs">
-                <div class="col-sm-10">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="select2 arches-select2-crud-form" style="width:100%; padding-right: 0px;" data-bind="select2: {value: getEditedNode('AREA_OF_SIGNIFICANCE.E55', 'value'), placeholder: '{% trans 'area of significance' %}', dataKey: 'AREA_OF_SIGNIFICANCE.E55'}"></input>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('AREA_OF_SIGNIFICANCE.E55', 'value'), placeholder: '{% trans 'area of significance' %}', dataKey: 'AREA_OF_SIGNIFICANCE.E55'}"></input>
                     </div>
                 </div>
-                <div class="col-sm-2 add-button-column">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
             </div>
-            <div class="row hidden-sm hidden-md hidden-lg">
-                <div class="col-xs-12">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="select2 arches-select2-crud-form" style="width:100%; padding-right: 0px;" data-bind="select2: {value: getEditedNode('AREA_OF_SIGNIFICANCE.E55', 'value'), placeholder: '{% trans 'area of significance' %}', dataKey: 'AREA_OF_SIGNIFICANCE.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
             </div>
-        </form>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must select an area." %}</div>
@@ -180,93 +140,83 @@
         </div>
     </div>
     <div id="score-section">
-        <form class="form-inline" role="form">
-            <div class="row">
-                <div class="col-xs-12 col-sm-10">
-                    <div class="col-xs-12 col-md-8">
-                        <dl class="score-table" style="display:inline">
-                            <div class="col-xs-12">
-                                <dt class="form-section-subheader" style="display:inline">{% trans "Criterion A" %}</dt>
-                                <dd style="display:inline">
-                                    <div class="form-group">
-                                        <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_A_SCORE.E60", "value")'>
-                                            <option>0</option><option>1</option><option>2</option><option>3</option>
-                                        </select>
-                                    </div>
-                                </dd>
-                            </div>
-                            <div class="col-xs-12 margin-top-5">
-                                <dt class="form-section-subheader" style="display:inline">{% trans "Criterion B" %}</dt>
-                                <dd style="display:inline">
-                                    <div class="form-group">
-                                        <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_B_SCORE.E60", "value")'>
-                                            <option>0</option><option>1</option><option>2</option><option>3</option>
-                                        </select>
-                                    </div>
-                                </dd>
-                            </div>
-                            <div class="col-xs-12 margin-top-5">
-                                <dt class="form-section-subheader" style="display:inline">{% trans "Criterion C" %}</dt>
-                                <dd style="display:inline">
-                                    <div class="form-group">
-                                        <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_C_SCORE.E60", "value")'>
-                                            <option>0</option><option>1</option><option>2</option><option>3</option>
-                                        </select>
-                                    </div>
-                                </dd>
-                            </div>
-                            <div class="col-xs-12 margin-top-5">
-                                <dt class="form-section-subheader" style="display:inline">{% trans "Criterion D" %}</dt>
-                                <dd style="display:inline">
-                                    <div class="form-group">
-                                        <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_D_SCORE.E60", "value")'>
-                                            <option>0</option><option>1</option><option>2</option><option>3</option>
-                                        </select>
-                                    </div>
-                                </dd>
-                            </div>
-                            <div class="col-xs-12 margin-top-5">
-                                <dt class="form-section-subheader" style="display:inline">{% trans "National Significance" %}</dt>
-                                <dd style="display:inline">
-                                    <div class="form-group">
-                                        <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("NATIONAL_SIGNIFICANCE_SCORE.E60", "value")'>
-                                            <option>0</option><option>1</option><option>2</option><option>3</option>
-                                        </select>
-                                    </div>
-                                </dd>
-                            </div>
-                            <div class="col-xs-12 margin-top-5">
-                                <dt class="form-section-subheader" style="display:inline">{% trans "Integrity" %}</dt>
-                                <dd style="display:inline">
-                                    <div class="form-group">
-                                        <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("INTEGRITY_SCORE.E60", "value")'>
-                                            <option>0</option><option>1</option><option>2</option><option>3</option>
-                                        </select>
-                                    </div>
-                                </dd>
-                            </div>
-                        </dl>
-                    </div>
-                </div>
-                <div class="hidden-xs col-md-2 add-button-column">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
-                <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
-            </div>
-        </form>
-        <div class="row margin-top-5">
+        <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="col-xs-12 col-md-8">
-                    <div class="col-xs-12">
+                <div class="col-xs-12 col-md-7 form-section-input">
+                    <dl class="score-table" style="display:inline">
+                        <div class="col-xs-12 form-section-input">
+                            <dt class="form-section-subheader" style="display:inline">{% trans "Criterion A" %}</dt>
+                            <dd style="display:inline">
+                                <div class="form-group">
+                                    <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_A_SCORE.E60", "value")'>
+                                        <option>0</option><option>1</option><option>2</option><option>3</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </div>
+                        <div class="col-xs-12 form-section-input margin-top-5">
+                            <dt class="form-section-subheader" style="display:inline">{% trans "Criterion B" %}</dt>
+                            <dd style="display:inline">
+                                <div class="form-group">
+                                    <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_B_SCORE.E60", "value")'>
+                                        <option>0</option><option>1</option><option>2</option><option>3</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </div>
+                        <div class="col-xs-12 form-section-input margin-top-5">
+                            <dt class="form-section-subheader" style="display:inline">{% trans "Criterion C" %}</dt>
+                            <dd style="display:inline">
+                                <div class="form-group">
+                                    <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_C_SCORE.E60", "value")'>
+                                        <option>0</option><option>1</option><option>2</option><option>3</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </div>
+                        <div class="col-xs-12 form-section-input margin-top-5">
+                            <dt class="form-section-subheader" style="display:inline">{% trans "Criterion D" %}</dt>
+                            <dd style="display:inline">
+                                <div class="form-group">
+                                    <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_D_SCORE.E60", "value")'>
+                                        <option>0</option><option>1</option><option>2</option><option>3</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </div>
+                        <div class="col-xs-12 form-section-input margin-top-5">
+                            <dt class="form-section-subheader" style="display:inline">{% trans "National Significance" %}</dt>
+                            <dd style="display:inline">
+                                <div class="form-group">
+                                    <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("NATIONAL_SIGNIFICANCE_SCORE.E60", "value")'>
+                                        <option>0</option><option>1</option><option>2</option><option>3</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </div>
+                        <div class="col-xs-12 form-section-input margin-top-5">
+                            <dt class="form-section-subheader" style="display:inline">{% trans "Integrity" %}</dt>
+                            <dd style="display:inline">
+                                <div class="form-group">
+                                    <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("INTEGRITY_SCORE.E60", "value")'>
+                                        <option>0</option><option>1</option><option>2</option><option>3</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+                <div class="col-xs-12 col-md-7 form-section-input">
+                    <div class="col-xs-12 form-section-input margin-top-5">
                         <div class="form-section-subheader" style="float:left; margin-right:10px; padding-bottom:0px;"><strong>{% trans "Total Score:" %}</strong></div>
                         <input class="form-control arches-form-input" id="comp" style="width:35px; float:right;" data-bind='value: getEditedNode("COMPOSITE_SCORE.E60", "value")' readonly></input>
                     </div>
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
         </div>
-        
         <div class="row" style="padding-left:30px;">
             <div class="col-xs-12">
                 <div class="arches-crud-child-section">
@@ -294,46 +244,26 @@
         </div>
     </div>
     <div id="relative-level-section">
-        <form class="form-inline">
-            <div class="row hidden-xs">
-                <div class="col-sm-10">
-                    <div class="col-sm-8" style="padding-left: 0px; padding-right: 5px;">
-                        <div class="form-group" style="width: 100%;">
-                            <input class="select2 arches-select2-crud-form" style="width:100%; padding-right: 0px;" data-bind="select2: {value: getEditedNode('RELATIVE_LEVEL_OF_SIGNIFICANCE.E55', 'value'), placeholder: '{% trans 'significance' %}', dataKey: 'RELATIVE_LEVEL_OF_SIGNIFICANCE.E55'}"></input>
-                        </div>
-                    </div>
-                    <div class="col-sm-4" style="padding-left: 0px; padding-right: 0px;">
-                        <div class="form-group" style="width: 100%;">
-                            <div class="input-group datetimepicker" style ="width:100%;" >
-                                <input style="height:32px;" type="text" id="date" placeholder="{% trans 'date (yyyy-mm-dd)' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('RELATIVE_LEVEL_OF_SIGNIFICANCE_DATE.E50', 'value')} ">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            </div>
-                        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 col-sm-8 form-section-input add-padding-right">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('RELATIVE_LEVEL_OF_SIGNIFICANCE.E55', 'value'), placeholder: '{% trans 'significance' %}', dataKey: 'RELATIVE_LEVEL_OF_SIGNIFICANCE.E55'}"></input>
                     </div>
                 </div>
-                <div class="col-sm-2 add-button-column">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
-            </div>
-            <div class="row hidden-sm hidden-md hidden-lg">
-                <div class="col-xs-12">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="select2 arches-select2-crud-form" style="width:100%; padding-right: 0px;" data-bind="select2: {value: getEditedNode('RELATIVE_LEVEL_OF_SIGNIFICANCE.E55', 'value'), placeholder: '{% trans 'significance' %}', dataKey: 'RELATIVE_LEVEL_OF_SIGNIFICANCE.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div class="form-group" style="width: 100%;">
+                <div class="col-xs-12 col-sm-4 form-section-input add-margin-top">
+                    <div class="form-group">
                         <div class="input-group datetimepicker" style ="width:100%;" >
                             <input style="height:32px;" type="text" id="date" placeholder="{% trans 'date (yyyy-mm-dd)' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('RELATIVE_LEVEL_OF_SIGNIFICANCE_DATE.E50', 'value')} ">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
             </div>
-        </form>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must populate both fields." %}</div>
@@ -369,56 +299,31 @@
         </div>
     </div>
     <div id="afrh-other-section">
-        <form class="form-inline">
-            <div class="row hidden-xs">
-                <div class="col-sm-10">
-                    <div class="col-sm-12" style="padding-left: 0px; padding-right: 0px;">
-                        <div class="form-group" style="width: 100%;">
-                            <input class="select2 arches-select2-crud-form" style="width:100%;" data-bind="select2: {value: getEditedNode('OTHER_AFRH_W_DESIGNATION_TYPE.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'OTHER_AFRH_W_DESIGNATION_TYPE.E55'}"></input>
-                        </div>
-                    </div>
-                    <div class="col-sm-8 margin-top-5" style="padding-left: 0px; padding-right: 5px;">
-                        <div class="form-group" style="width: 100%;">
-                            <input class="select2 arches-select2-crud-form" style="width:100%;" data-bind="select2: {value: getEditedNode('OTHER_AFRH_W_DESIGNATION_STATUS.E55', 'value'), placeholder: '{% trans 'status' %}', dataKey: 'OTHER_AFRH_W_DESIGNATION_STATUS.E55'}"></input>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 margin-top-5" style="padding-left: 0px; padding-right: 0px;">
-                        <div class="form-group" style="width:100%;">
-                            <div class="input-group datetimepicker" style ="width:100%;" >
-                                <input style="height:32px;" type="text" id="date" placeholder="{% trans 'yyyy-mm-dd' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('OTHER_AFRH_W_DESIGNATION_DATE.E50', 'value')} ">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            </div>
-                        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('OTHER_AFRH_W_DESIGNATION_TYPE.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'OTHER_AFRH_W_DESIGNATION_TYPE.E55'}"></input>
                     </div>
                 </div>
-                <div class="col-sm-2 add-button-column">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
-            </div>
-            <div class="row hidden-sm hidden-md hidden-lg">
-                <div class="col-xs-12">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="select2 arches-select2-crud-form" style="width:100%;" data-bind="select2: {value: getEditedNode('OTHER_AFRH_W_DESIGNATION_TYPE.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'OTHER_AFRH_W_DESIGNATION_TYPE.E55'}"></input>
+                <div class="col-xs-12 col-sm-8 form-section-input add-padding-right margin-top-5">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('OTHER_AFRH_W_DESIGNATION_STATUS.E55', 'value'), placeholder: '{% trans 'status' %}', dataKey: 'OTHER_AFRH_W_DESIGNATION_STATUS.E55'}"></input>
                     </div>
                 </div>
-                <div class="col-xs-12 margin-top-5">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="select2 arches-select2-crud-form" style="width:100%;" data-bind="select2: {value: getEditedNode('OTHER_AFRH_W_DESIGNATION_STATUS.E55', 'value'), placeholder: '{% trans 'status' %}', dataKey: 'OTHER_AFRH_W_DESIGNATION_STATUS.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-xs-12 margin-top-5">
-                    <div class="form-group" style="width:100%;">
+                <div class="col-xs-12 col-sm-4 form-section-input margin-top-5">
+                    <div class="form-group">
                         <div class="input-group datetimepicker" style ="width:100%;" >
                             <input style="height:32px;" type="text" id="date" placeholder="{% trans 'yyyy-mm-dd' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('OTHER_AFRH_W_DESIGNATION_DATE.E50', 'value')} ">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
             </div>
-        </form>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must populate all fields." %}</div>
@@ -454,76 +359,41 @@
         </div>
     </div>
     <div id="other-designation-section">
-        <form class="form-inline">
-            <div class="row hidden-xs">
-                <div class="col-sm-10">
-                    <div class="col-sm-12" style="padding-left: 0px; padding-right: 0px;">
-                        <div class="form-group" style="width: 100%;">
-                            <input class="select2 arches-select2-crud-form" style="width:100%;" data-bind="select2: {value: getEditedNode('OTHER_DESIGNATION_TYPE.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'OTHER_DESIGNATION_TYPE.E55'}"></input>
-                        </div>
-                    </div>
-                    <div class="col-sm-8 margin-top-5" style="padding-left: 0px; padding-right: 5px;">
-                        <div class="form-group" style="width: 100%;">
-                            <input class="select2 arches-select2-crud-form" style="width:100%;" data-bind="select2: {value: getEditedNode('OTHER_DESIGNATION_STATUS.E55', 'value'), placeholder: '{% trans 'status' %}', dataKey: 'OTHER_DESIGNATION_STATUS.E55'}"></input>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 margin-top-5" style="padding-left: 0px; padding-right: 0px;">
-                        <div class="form-group" style="width:100%;">
-                            <div class="input-group datetimepicker" style ="width:100%;" >
-                                <input style="height:32px;" type="text" id="date" placeholder="{% trans 'yyyy-mm-dd' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('OTHER_DESIGNATION_DATE.E50', 'value')} ">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 margin-top-5" style="padding-left: 0px; padding-right: 5px;">
-                        <div class="form-group" style="width: 100%;">
-                            <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "resource name" %}' data-bind="value: getEditedNode('OTHER_DESIGNATION_NAME.E41', 'value')">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 margin-top-5" style="padding-left: 0px; padding-right: 0px;">
-                        <div class="form-group" style="width: 100%;">
-                            <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "database ID" %}' data-bind="value: getEditedNode('OTHER_DESIGNATION_REFRENCE_NUMBER.E42', 'value')">
-                        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('OTHER_DESIGNATION_TYPE.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'OTHER_DESIGNATION_TYPE.E55'}"></input>
                     </div>
                 </div>
-                <div class="col-sm-2 add-button-column">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
-            </div>
-            <div class="row hidden-sm hidden-md hidden-lg">
-                <div class="col-xs-12">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="select2 arches-select2-crud-form" style="width:100%;" data-bind="select2: {value: getEditedNode('OTHER_DESIGNATION_TYPE.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'OTHER_DESIGNATION_TYPE.E55'}"></input>
+                <div class="col-xs-12 col-sm-8 form-section-input add-padding-right margin-top-5">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('OTHER_DESIGNATION_STATUS.E55', 'value'), placeholder: '{% trans 'status' %}', dataKey: 'OTHER_DESIGNATION_STATUS.E55'}"></input>
                     </div>
                 </div>
-                <div class="col-xs-12 margin-top-5">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="select2 arches-select2-crud-form" style="width:100%;" data-bind="select2: {value: getEditedNode('OTHER_DESIGNATION_STATUS.E55', 'value'), placeholder: '{% trans 'status' %}', dataKey: 'OTHER_DESIGNATION_STATUS.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-xs-12 margin-top-5">
-                    <div class="form-group" style="width:100%;">
-                        <div class="input-group datetimepicker" style ="width:100%;" >
+                <div class="col-xs-12 col-sm-4 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <div class="input-group datetimepicker" style ="width:100%;">
                             <input style="height:32px;" type="text" id="date" placeholder="{% trans 'yyyy-mm-dd' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('OTHER_DESIGNATION_DATE.E50', 'value')} ">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 margin-top-5">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "resource name" %}' data-bind="value: getEditedNode('OTHER_DESIGNATION_NAME.E41', 'value')">
+                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
+                    <div class="form-group">
+                        <input class="form-control arches-form-input" placeholder='{% trans "resource name" %}' data-bind="value: getEditedNode('OTHER_DESIGNATION_NAME.E41', 'value')">
                     </div>
                 </div>
-                <div class="col-xs-12 margin-top-5">
-                    <div class="form-group" style="width: 100%;">
-                        <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "database ID" %}' data-bind="value: getEditedNode('OTHER_DESIGNATION_REFRENCE_NUMBER.E42', 'value')">
+                <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <input class="form-control arches-form-input" placeholder='{% trans "database ID" %}' data-bind="value: getEditedNode('OTHER_DESIGNATION_REFRENCE_NUMBER.E42', 'value')">
                     </div>
-                </div>
-                <div class="col-xs-12">
-                    {% include 'views/components/add-item-button.htm' %}
                 </div>
             </div>
-        </form>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a designation, status, and properly formatted date." %}</div>
@@ -564,30 +434,20 @@
         </div>
     </div>
     <div id="hpmp-section">
-        <form class="form-inline">
-            <div class="row hidden-xs">
-                <div class="col-sm-10">
-                    <div class="form-group" style="width: 100%;">
-                        <input style="width:100%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('HPMP_STATUS.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'HPMP_STATUS.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-sm-2 add-button-column">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
-            </div>
-            <div class="row hidden-sm hidden-md hidden-lg">
-                <div class="col-xs-12">
-                    <div class="form-group" style="width: 100%;">
-                        <input style="width:100%;" class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('HPMP_STATUS.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'HPMP_STATUS.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    {% include 'views/components/add-item-button.htm' %}
-                </div>
-            </div>
-        </form>
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('HPMP_STATUS.E55', 'value'), placeholder: '{% trans 'type' %}', dataKey: 'HPMP_STATUS.E55'}"></input>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
                 <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose an HPMP evaluation." %}</div>
             </div>
         </div>

@@ -307,64 +307,48 @@
                                         <dd class="arches-RDM-labels" data-bind="if: relationBranchList.getEditedBranch() && relationBranchList.getEditedBranch() === relationBranch" style="margin-top:15px;">
 
                                             <div class="row" data-bind="visible: true" style="display:none;">
-
-                                                <div class="col-xs-12">
-
-                                                    <!-- Form for screens > xs -->
-                                                    <form class="form-inline hidden-xs" role="form">
-                                                        <div class="form-group" style="width: 100%">
-                                                            <input style="width:80%; display: inline-block;" class="select2 arches-select2-crud-form name-type hidden-xs" id="resource-measurement-unit" data-bind="relationshipTypeSelect: true, select2: {value: relationBranchList.getEditedBranch().relationship.relationshiptype, placeholder: 'Type', dataKey: 'RELATIONSHIP_TYPES.E32'}"></input>
-
-                                                            <!-- Spacer (for xs screens) -->
-                                                            <div class="margin-top-5 hidden-sm hidden-md hidden-lg"></div>                                    
-
-                                                            <div class="btn-group" style="margin-left: 5px;">
-                                                                <button type="button" class="add-button btn btn-primary" style="height: 32px;" data-bind="click: addClick">{% trans "Add" %}</button>
-                                                                <button type="button" class="btn btn-primary dropdown-toggle" style="height: 32px;" data-toggle="dropdown">
-                                                                    <i class="fa fa-chevron-down"></i>
-                                                                    <span class="sr-only">{% trans "Toggle Dropdown" %}</span>                            
-                                                                </button>
-                                                                <ul class="dropdown-menu" role="menu">
-                                                                    <li><a href="#" name="discard-edit-link" data-bind="click: discardClick">{% trans "Discard edits" %}</a></li>
-                                                                </ul>
-                                                            </div>
-
-                                                            <div class="row" style="margin-top: 10px;margin-bottom: 10px;padding-right: 162px;">
-                                                                <!-- Classification and dates -->
-                                                                <div style="">
-                                                                
-                                                                    <div id="from-date-section" class="col-xs-12 col-sm-6">
-                                                                        <div class="input-group datetimepicker" style ="width:100%;" >
-                                                                            <input type="text" id="date" style="height: 32px;" placeholder="{% trans 'from (yyyy-mm-dd)' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: relationBranchList.getEditedBranch().relationship.datestarted, datePicker: true} ">
-                                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                        </div>
-
-                                                                        <div class="hidden-sm hidden-md hidden-lg" style="margin-bottom: 5px;">
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                    
-
-                                                                    <div id="to-date-section" class="col-xs-12 col-sm-6">
-                                                                        <div class="input-group datetimepicker" style ="width:100%;" >
-                                                                            <input type="text" id="date" style="height: 32px;" placeholder="{% trans 'to (yyyy-mm-dd)' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: relationBranchList.getEditedBranch().relationship.dateended, datePicker: true} ">
-                                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-
-                                                            </div>
-
-                                                            <!-- Simple HTML Editor -->
-                                                            <div class="arches-html-editor margin-top-5" style="width: 80%;">
-                                                                <div class="summernote" data-bind="summernote: {value: relationBranchList.getEditedBranch().relationship.notes, options:{}}"></div>
-                                                            </div>
-
+                                                <div class="col-xs-12 col-sm-10">
+                                                    <div class="col-xs-12 form-section-input">
+                                                        <div class="form-group">
+                                                            <input class="select2 arches-select2-crud-form" data-bind="relationshipTypeSelect: true, select2: {value: relationBranchList.getEditedBranch().relationship.relationshiptype, placeholder: 'Type', dataKey: 'RELATIONSHIP_TYPES.E32'}"></input>
                                                         </div>
-                                                    </form>
-                                                    <!-- Form for screens > xs -->
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
+                                                        <div class="form-group">
+                                                            <div class="input-group datetimepicker" style ="width:100%;" >
+                                                                <input type="text" id="date" style="height: 32px;" placeholder="{% trans 'from (yyyy-mm-dd)' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: relationBranchList.getEditedBranch().relationship.datestarted, datePicker: true} ">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
+                                                        <div class="form-group">
+                                                            <div class="input-group datetimepicker" style ="width:100%;" >
+                                                                <input type="text" id="date" style="height: 32px;" placeholder="{% trans 'to (yyyy-mm-dd)' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: relationBranchList.getEditedBranch().relationship.dateended, datePicker: true} ">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 form-section-input margin-top-5">
+                                                        <div class="form-group">
+                                                            <div class="summernote" data-bind="summernote: {value: relationBranchList.getEditedBranch().relationship.notes, options:{}}"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                                                    <div class="btn-group" style="margin-left: 5px;">
+                                                        <button type="button" class="add-button btn btn-primary" style="height: 32px;" data-bind="click: addClick">
+                                                            <i class="fa fa-plus"></i>
+                                                            <span class="sr-only">{% trans "Add" %}</span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-primary dropdown-toggle" style="height: 32px;" data-toggle="dropdown">
+                                                            <i class="fa fa-chevron-down"></i>
+                                                            <span class="sr-only">{% trans "Toggle Dropdown" %}</span>                            
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li><a href="#" name="discard-edit-link" data-bind="click: discardClick">{% trans "Discard edits" %}</a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </dd>

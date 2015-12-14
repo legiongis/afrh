@@ -72,6 +72,14 @@
                         </a>
                     </li>
                     <!-- End Map-->
+                    
+                    <!-- Map-->
+                    <li class="{% if active_page = 'newmap' %}active{% endif %}">
+                        <a href="{% url 'newmap' %}">
+                            {% trans "Map2" %}
+                        </a>
+                    </li>
+                    <!-- End Map-->
 
                     {% if user_can_edit %}
                     <!-- Resource Editor-->
@@ -96,26 +104,6 @@
                     <!-- End RDM-->
                     {% endif %}
 
-                    <!-- Search Block -->
-                    <li>
-                        <i class="search fa fa-search search-btn"></i>
-                        <div class="search-open arches-search">
-
-                            <div class="input-group animated fadeInDown">
-                                <!-- Project Dropdown -->
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="input-group" id="simple-search">
-                                            <span class="input-group-addon"><i class="fa fa-search text-muted"></i></span>
-                                            {% include "views/simple-search.htm" %}
-                                        </div>
-                                    </div>
-                                </div>  
-                                <!-- End Project Dropdown -->
-                            </div>
-                        </div>    
-                    </li>
-                    <!-- End Search Block -->
                 </ul>
             </div><!--/navbar-collapse-->
         </div>    
