@@ -5,12 +5,13 @@
             "all": {
                 id: "all",
                 icon: "mega-octicon octicon-location arches-layer-icon",
-                name: "{% trans 'All CRHIM Resources' %}",
-                description: "{% trans 'All Arches resources...' %}",
+                name: "{% trans 'All AFRH Resources' %}",
+                description: "{% trans 'All resources...' %}",
                 categories: [
                     "{% trans 'resource' %}"
                 ],
                 onMap: true,
+                active: true,
                 vectorColor: "{{ map_info.resource_marker_color }}",
                 iconColor: "{{ map_info.resource_marker_color }}",
                 infoContent: "<div style=\"width:200px;\">{% trans 'visible zoom range: all' %}</div>"
@@ -32,6 +33,7 @@
                 {% else %}
                 onMap: false,
                 {% endif %}
+                active: false,
                 vectorColor: "{{type_data.marker_color}}",
                 iconColor: "{{type_data.marker_color}}",
                 infoContent: "<div style=\"width:200px;\">{% trans 'visible zoom range: all' %}</div>"

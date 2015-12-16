@@ -12,8 +12,9 @@ define([
         icon: 'fa fa-bookmark-o',
         infoContent: "Showing the 11 archaeological zones at the AFRH",
         onMap: true,
-        active: true,
+        active: false,
         layer: new ol.layer.Tile({
+            visible: false,
             is_arches_layer: "nobutclose",
             source: new ol.source.TileWMS({
                 url: 'http://afrh.adamcfcox.com/geoserver/zonemaps/wms/',
@@ -30,10 +31,11 @@ define([
         name: 'Character Areas',
         categories: ["Reference"],
         icon: 'fa fa-bookmark-o',
-        infoContent: "Showing the character areas at the AFRH",
+        infoContent: "Showing the character areas at the AFRH.<br><b>The following Character Areas are <em>not</em> shown here:</b> Circulation System, Recurring Resources, and Spatial Patterns.",
         onMap: true,
-        active: true,
+        active: false,
         layer: new ol.layer.Tile({
+            visible: false,
             is_arches_layer: "nobutclose",
             source: new ol.source.TileWMS({
                 url: 'http://afrh.adamcfcox.com/geoserver/zonemaps/wms/',
@@ -52,8 +54,9 @@ define([
         icon: 'fa fa-bookmark-o',
         infoContent: "Showing the master plan zones at the AFRH",
         onMap: true,
-        active: true,
+        active: false,
         layer: new ol.layer.Tile({
+            visible: false,
             is_arches_layer: "nobutclose",
             source: new ol.source.TileWMS({
                 url: 'http://afrh.adamcfcox.com/geoserver/zonemaps/wms/',
@@ -72,6 +75,7 @@ define([
         icon: 'fa fa-bookmark-o',
         infoContent: "Use this for quick reference when trying to determine the Township/Range designation of a resource or location",
         layer: new ol.layer.Tile({
+            visible: false,
             is_arches_layer: "nobutclose",
             source: new ol.source.TileWMS({
                 url: 'http://crhim.canerivernha.org/geoserver/vect/wms/',
@@ -193,9 +197,9 @@ define([
     
     
     layers.push(
-        arch_zones,
         char_areas,
         mp_zones,
+        arch_zones,
         plss_ref,
         amcem_bulbs,
         amcem_grass,

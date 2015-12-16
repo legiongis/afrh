@@ -62,7 +62,7 @@ require([
                         map.map.removeLayer(layer.layer);
                     }
                 });
-                layer.active = ko.observable(true);
+                layer.active = ko.observable(layer.active);
                 layers[index].active.subscribe(function(show) {
                     layer.layer.setVisible(show);
                 });
