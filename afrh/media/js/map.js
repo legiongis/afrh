@@ -31,7 +31,6 @@ require([
             var elevateArchesResourceLayers = function () {
                 map.map.getLayers().forEach(function(layer, index) {
                     if (layer.get('is_arches_layer') == "nobutclose") {
-                        console.log("elevate " + layer.get('name'));
                         map.map.removeLayer(layer);
                         map.map.addLayer(layer);
                     }
@@ -401,15 +400,13 @@ require([
                 //Update state of remaining buttons
                 $("#inventory-basemaps").removeClass("arches-map-tools-pressed");
                 $("#inventory-basemaps").addClass("arches-map-tools");
-                $("#inventory-basemaps").css("border-bottom-left-radius", "1px");
 
                 $("#inventory-overlays").removeClass("arches-map-tools-pressed");
                 $("#inventory-overlays").addClass("arches-map-tools");
-                $("#inventory-overlays").css("border-bottom-right-radius", "1px");
                 
                 $("#inventory-historicmaps").removeClass("arches-map-tools-pressed");
                 $("#inventory-historicmaps").addClass("arches-map-tools");
-                //$("#inventory-historicmaps").css("border-bottom-right-radius", "1px");
+
             };
 
             ko.applyBindings(self.viewModel, $('body')[0]);
@@ -512,15 +509,14 @@ require([
                     //Update state of remaining buttons
                     $("#inventory-overlays").removeClass("arches-map-tools-pressed");
                     $("#inventory-overlays").addClass("arches-map-tools");
-                    //$("#inventory-overlays").css("border-bottom-right-radius", "3px");
-                    
+                  
                     $("#inventory-historicmaps").removeClass("arches-map-tools-pressed");
                     $("#inventory-historicmaps").addClass("arches-map-tools");
 
                     //Update state of current button and adjust position
                     $("#inventory-basemaps").addClass("arches-map-tools-pressed");
                     $("#inventory-basemaps").removeClass("arches-map-tools");
-                    //$("#inventory-basemaps").css("border-bottom-left-radius", "3px");
+
                 }
             });
             
@@ -536,16 +532,15 @@ require([
                     //Update state of remaining buttons
                     $("#inventory-overlays").removeClass("arches-map-tools-pressed");
                     $("#inventory-overlays").addClass("arches-map-tools");
-                    //$("#inventory-overlays").css("border-bottom-right-radius", "3px");
+
                     
                     $("#inventory-basemaps").removeClass("arches-map-tools-pressed");
                     $("#inventory-basemaps").addClass("arches-map-tools");
-                    //$("#inventory-basemaps").css("border-bottom-right-radius", "3px");
 
                     //Update state of current button and adjust position
                     $("#inventory-historicmaps").addClass("arches-map-tools-pressed");
                     $("#inventory-historicmaps").removeClass("arches-map-tools");
-                    //$("#inventory-historicmaps").css("border-bottom-left-radius", "3px");
+
                 }
             });
 

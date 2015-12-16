@@ -101,7 +101,7 @@ ul.select2-choices {
 .arches-map-tools {
     width: 165px;
     height: 46px;
-    background: #F5F7FB;
+    background: red;
     color: #3A67A6;
     font-size: 15px;
     font-weight: 400;
@@ -109,7 +109,7 @@ ul.select2-choices {
 }
 
 .tools-panel {
-    margin-top: -540px;
+    margin-top: -541px;
     height: 487px; 
     width: 448px;     
     margin-left: -1px;
@@ -118,6 +118,8 @@ ul.select2-choices {
     opacity: 1.0; 
     border-top-left-radius: 3px; 
     border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     font-family: 'Open Sans', sans-serif;
 }

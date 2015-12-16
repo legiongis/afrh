@@ -101,7 +101,7 @@ class Resource(ArchesResource):
                 forms.InformationResourceSummaryForm.get_info(), 
                 forms.PublicationForm.get_info(),
                 forms.LocationForm.get_info(),
-                forms.DescriptionForm.get_info(),
+                forms.InventoryDescriptionForm.get_info(),
                 forms.FileUploadForm.get_info()
             ]
 

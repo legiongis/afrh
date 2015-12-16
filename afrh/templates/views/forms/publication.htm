@@ -1,0 +1,172 @@
+{% extends "views/forms/base.htm" %}
+{% load i18n %}
+
+{% block form_content %}
+<div class="form-full-content">
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Creation" %}</span></div>
+        </div>
+    </div>
+    <div id="creation-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('INFORMATION_RESOURCE_TYPE.E55', 'value'), placeholder: '{% trans 'Type' %}', multiple: false, dataKey: 'INFORMATION_RESOURCE_TYPE.E55'}"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input add-margin-top">
+                    <div class="form-group">
+                        <div class="input-group datetimepicker" style="width:100%;">
+                            <input style="height:32px;" type="text" id="date" placeholder="{% trans 'creation date (yyyy-mm-dd)' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('DATE_OF_CREATION.E50', 'value')} ">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
+                    <div class="form-group">
+                        <input class="form-control arches-form-input" placeholder="{% trans 'creator' %}" data-bind="value: getEditedNode('CREATOR_APPELLATION.E82', 'value')">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <input class="form-control arches-form-input" placeholder="{% trans 'contributor' %}" data-bind="value: getEditedNode('CONTRIBUTOR_APPELLATION.E82', 'value')">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "The resource type value must be populated." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no roles added" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                        <span data-bind='text: nodes.get("INFORMATION_RESOURCE_TYPE.E55", "label")' style="padding-right:2px;"></span>
+                                        <span class="text-muted arches-crud-type-identifier"> ({% trans "type" %})&nbsp; </span>
+                                        <span data-bind='text: nodes.get("DATE_OF_CREATION.E50", "value")' style="padding-right:2px;"></span>
+                                        <span class="text-muted arches-crud-type-identifier"> ({% trans "creation date" %})&nbsp; </span>
+                                        <span data-bind='text: nodes.get("CREATOR_APPELLATION.E82", "value")' style="padding-right:2px;"></span>
+                                        <span class="text-muted arches-crud-type-identifier"> ({% trans "creator" %})&nbsp; </span>
+                                        <span data-bind='text: nodes.get("CONTRIBUTOR_APPELLATION.E82", "value")' style="padding-right:2px;"></span>
+                                        <span class="text-muted arches-crud-type-identifier"> ({% trans "contributor" %})</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Publishers" %}</span></div>
+        </div>
+    </div>
+    <div id="publishers-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 col-sm-8 form-section-input add-padding-right">
+                    <div class="form-group">
+                        <input class="form-control arches-form-input" placeholder='{% trans "enter publisher" %}' data-bind="value: getEditedNode('PUBLISHER_APPELLATION.E82', 'value')"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 form-section-input add-margin-top">
+                    <div class="form-group">
+                        <div class="input-group datetimepicker" style="width:100%;">
+                            <input style="height:32px;" type="text" id="date" placeholder="{% trans 'publication date (yyyy-mm-dd)' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('DATE_OF_PUBLICATION.E50', 'value')} ">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a publisher." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no roles added" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                        <span data-bind='text: nodes.get("PUBLISHER_APPELLATION.E82", "value") + ", " + nodes.get("DATE_OF_PUBLICATION.E50", "value")' style="padding-right:2px;"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Rights" %}</span></div>
+        </div>
+    </div>
+    <div id="rights-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('RIGHT_TYPE.E55', 'value'), placeholder: '{% trans 'select right' %}', multiple: false, dataKey: 'RIGHT_TYPE.E55'}"></input>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a publisher." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no roles added" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                        <span data-bind='text: nodes.get("RIGHT_TYPE.E55", "label")' style="padding-right:2px;"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}

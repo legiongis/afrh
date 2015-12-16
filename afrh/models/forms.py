@@ -759,7 +759,7 @@ class InformationResourceSummaryForm(ResourceForm):
         return {
             'id': 'information-resource-summary',
             'icon': 'fa-tag',
-            'name': _('Resource Summary'),
+            'name': _('Summary'),
             'class': InformationResourceSummaryForm
         }   
 
@@ -1350,7 +1350,7 @@ class FileUploadForm(ResourceForm):
 
 def is_image(resource):
     for format_type in resource.find_entities_by_type_id('INFORMATION_CARRIER_FORMAT_TYPE.E55'):
-        concept = Concept().get(id=format_type['conceptid'], include=['undefined'])
+        concept = Concept().get(id=format_type.value, include=['undefined'])
         for value in concept.values:
             if value.value == 'Y' and value.type == 'ViewableInBrowser':
                 return True
@@ -1417,7 +1417,7 @@ class ActorSummaryForm(ResourceForm):
         return {
             'id': 'actor-summary',
             'icon': 'fa-tag',
-            'name': _('Actor Summary'),
+            'name': _('Summary'),
             'class': ActorSummaryForm
         }
 

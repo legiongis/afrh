@@ -6,17 +6,59 @@ define([
 ], function(ol, resourceLayers, LayerModel, layerI18n) {
     var layers = resourceLayers.layers;
 
-    var priv_prop = new LayerModel({
-        name: 'Private Land in Kisatchie NF',
+    var arch_zones = new LayerModel({
+        name: 'Archaeological Zones',
         categories: ["Reference"],
         icon: 'fa fa-bookmark-o',
-        infoContent: "This layer is provided to encourage responsible exploration in Kisatchie National Forest.  The dataset was downloaded from the <a href='http://www.fs.usda.gov/main/kisatchie/landmanagement/gis'>USFS</a> on 5-4-15.  All boundaries marked on the ground take precedence over those displayed on this map.",
+        infoContent: "Showing the 11 archaeological zones at the AFRH",
+        onMap: true,
+        active: true,
         layer: new ol.layer.Tile({
             is_arches_layer: "nobutclose",
             source: new ol.source.TileWMS({
-                url: 'http://crhim.canerivernha.org/geoserver/vect/wms/',
+                url: 'http://afrh.adamcfcox.com/geoserver/zonemaps/wms/',
                 params: {
-                    'LAYERS': 'vect:kisatchie_private_land',
+                    'LAYERS': 'zonemaps:arch_zones_map',
+                    'TILED': true,
+                },
+                serverType: 'geoserver'
+            })
+        })
+    });
+    
+    var char_areas = new LayerModel({
+        name: 'Character Areas',
+        categories: ["Reference"],
+        icon: 'fa fa-bookmark-o',
+        infoContent: "Showing the character areas at the AFRH",
+        onMap: true,
+        active: true,
+        layer: new ol.layer.Tile({
+            is_arches_layer: "nobutclose",
+            source: new ol.source.TileWMS({
+                url: 'http://afrh.adamcfcox.com/geoserver/zonemaps/wms/',
+                params: {
+                    'LAYERS': 'zonemaps:char_areas_map',
+                    'TILED': true,
+                },
+                serverType: 'geoserver'
+            })
+        })
+    });
+    
+    var mp_zones = new LayerModel({
+        name: 'Master Plan Zones',
+        categories: ["Reference"],
+        icon: 'fa fa-bookmark-o',
+        infoContent: "Showing the master plan zones at the AFRH",
+        onMap: true,
+        active: true,
+        layer: new ol.layer.Tile({
+            is_arches_layer: "nobutclose",
+            source: new ol.source.TileWMS({
+                url: 'http://afrh.adamcfcox.com/geoserver/zonemaps/wms/',
+                params: {
+                    'LAYERS': 'zonemaps:mp_zones_map',
                     'TILED': true,
                 },
                 serverType: 'geoserver'
@@ -151,7 +193,9 @@ define([
     
     
     layers.push(
-        priv_prop,
+        arch_zones,
+        char_areas,
+        mp_zones,
         plss_ref,
         amcem_bulbs,
         amcem_grass,
