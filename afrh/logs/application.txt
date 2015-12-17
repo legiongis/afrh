@@ -502,3 +502,6 @@ Exception detail: search() got an unexpected keyword argument 'id'
 2015-12-16 19:54:53.524000: WARNING: search failed for query: None 
 Exception detail: search() got an unexpected keyword argument 'id'
 
+2015-12-16 19:59:10.489000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
