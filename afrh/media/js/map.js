@@ -157,6 +157,8 @@ require([
             });
 
             map.on('layerDropped', function (layer, name) {
+                console.log("layer dropped:");
+                console.log(name);
                 var layerModel = new LayerModel({
                       name: name,
                       description: '',
