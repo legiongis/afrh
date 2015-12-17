@@ -44,6 +44,10 @@ ul.select2-choices {
     font-family: 'Open Sans', sans-serif;
 }
 
+.arches-report-section-header {
+    font-family: 'Open Sans', sans-serif;
+}
+
 /* display result that are by default not displayed... */
 .select2-results li:first-child{
     /*display:block !important;*/

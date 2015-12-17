@@ -1,0 +1,57 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-xs-12">
+        <dl>
+            <dt>
+                <h5 id="" class="arches-report-subsection-title">{% trans "Classification" %}</h5>
+            </dt>
+
+            {% if 'NHRP_RESOURCE_TYPE_E55' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    {% trans "(no NRHP type)" %}
+                </dd>
+            {% else %}
+                {% for NHRP_RESOURCE_TYPE_E55 in report_info.source.graph.NHRP_RESOURCE_TYPE_E55 %}
+                    <dd class="arches-report-subsection-item">
+                        {{ NHRP_RESOURCE_TYPE_E55.NHRP_RESOURCE_TYPE_E55__value }}<span class="arches-report-subsection-item-type"> (NHRP Resource Type)</span>
+                    </dd> 
+                {% endfor %} 
+            {% endif %}
+            {% if 'NHRP_RESOURCE_CATEGORY_E55' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    {% trans "(no NRHP category)" %}
+                </dd>
+            {% else %}
+                {% for NHRP_RESOURCE_CATEGORY_E55 in report_info.source.graph.NHRP_RESOURCE_CATEGORY_E55 %}
+                    <dd class="arches-report-subsection-item">
+                        {{ NHRP_RESOURCE_CATEGORY_E55.NHRP_RESOURCE_CATEGORY_E55__value }}<span class="arches-report-subsection-item-type"> (NHRP Category)</span>
+                    </dd> 
+                {% endfor %} 
+            {% endif %} 
+            {% if 'NHRP_RESOURCE_TYPE_E55' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    {% trans "(no NHRP subcategories)" %}
+                </dd>
+            {% else %}
+                {% for NHRP_RESOURCE_SUBCATEGORY_E55 in report_info.source.graph.NHRP_RESOURCE_SUBCATEGORY_E55 %}
+                    <dd class="arches-report-subsection-item">
+                        {{ NHRP_RESOURCE_SUBCATEGORY_E55.NHRP_RESOURCE_SUBCATEGORY_E55__value }}<span class="arches-report-subsection-item-type"> (NHRP Subcategory)</span>
+                    </dd> 
+                {% endfor %} 
+            {% endif %} 
+            {% if 'WUZIT_E55' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    {% trans "(no wuzits)" %}
+                </dd>
+            {% else %}
+                {% for WUZIT_E55 in report_info.source.graph.WUZIT_E55 %}
+                    <dd class="arches-report-subsection-item">
+                        {{ WUZIT_E55.WUZIT_E55__value }}<span class="arches-report-subsection-item-type"> (Wuzit)</span>
+                    </dd> 
+                {% endfor %}  
+            {% endif %} 
+            
+
+        </dl>
+    </div>
+</div>

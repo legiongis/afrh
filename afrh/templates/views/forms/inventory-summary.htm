@@ -11,7 +11,7 @@
     <div id="nhrp-type-section" class="form-section">
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="col-xs-12 form-section-input add-padding-right">
+                <div class="col-xs-12 form-section-input">
                     <div class="form-group">
                         <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NHRP_RESOURCE_TYPE.E55', 'value'), placeholder: '{% trans 'NHRP resource type' %}', dataKey: 'NHRP_RESOURCE_TYPE.E55'}"></input>
                     </div>
@@ -200,8 +200,8 @@
                             <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no names defined" %}</div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
-                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans "Delete this name" %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit this name' %}">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
                                         <span data-bind="text: nodes.get('NAME.E41', 'value')" style="padding-right:2px;"></span>
                                         <span class="text-muted arches-crud-type-identifier">
                                             (<span data-bind="text: nodes.get('NAME_TYPE.E55', 'label')"></span>)
