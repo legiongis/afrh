@@ -393,20 +393,22 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
                             <h4 class="modal-title">
                                 <a href="javascript:void(0);" class="text-primary" target="_blank" data-bind="attr:{ href: selectedResource() ? selectedResource().reportLink : 'javascript:void(0);'}">
-                                    <i class="fa fa-trophy text-primary" data-bind="attr: { class: selectedResource() ? selectedResource().typeIcon + ' text-primary': '' }"></i> 
+                                     
                                     <span data-bind="text:selectedResource() ? selectedResource().primaryname : ''"></span>
-
-                                    <!-- Resource Type for larger screens -->
-                                    <span class="hidden-xs">
-                                        <small class="text-primary" data-bind="text: selectedResource() ? selectedResource().typeName: ''"></small>
-                                    </span>
-
-                                    <!-- Resource Type for small screens -->
-                                    <span class="hidden-sm hidden-md hidden-lg">
-                                        </br><small class="text-primary margin-left-30 margin-top-minus-10"  data-bind="text: selectedResource() ? selectedResource().typeName: ''"></small>
-                                    </span>
-
                                 </a>
+                                <br>
+                                <i class="fa fa-trophy text-muted" data-bind="attr: { class: selectedResource() ? selectedResource().typeIcon + ' text-muted': '' }"></i>
+                                <!-- Resource Type for larger screens -->
+                                <span class="hidden-xs">
+                                    <small class="text-muted" data-bind="text: selectedResource() ? selectedResource().typeName: ''"></small>
+                                </span>
+
+                                <!-- Resource Type for small screens -->
+                                <span class="hidden-sm hidden-md hidden-lg">
+                                    <small class="text-muted margin-top-minus-10"  data-bind="text: selectedResource() ? selectedResource().typeName: ''"></small>
+                                </span>
+
+                                
                             </h4>
 
                         </div>

@@ -18,7 +18,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% load staticfiles %}
 {% load i18n %}   
 <dl class="">
-    <div data-bind="if: selectedResource()['entitytypeid'] === 'HERITAGE_RESOURCE.E18'">
+    <div data-bind="if: selectedResource()['entitytypeid'] === 'INVENTORY_RESOURCE.E18'">
         <dt class="txt-color-blue">{% trans 'Resource Type' %}</dt>
         <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().resource_type : ''"></dd>
         
