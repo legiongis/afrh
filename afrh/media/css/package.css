@@ -482,3 +482,18 @@ dl.score-table dd{
 }
 
 
+/* report specific styles */
+.report-section-header {
+    width: 100%;
+    text-align:left;
+    border-bottom: 1px solid #eee; 
+    line-height: 0.1em;
+    margin: 20px 0px 15px; 
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.report-section-header span {
+    background: #F9F9F9;
+    padding-right: 10px;
+}
