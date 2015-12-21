@@ -16,10 +16,6 @@ TEMPLATE_DIRS = (os.path.join(PACKAGE_ROOT, 'templates'),os.path.join(PACKAGE_RO
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT =  os.path.join(PACKAGE_ROOT, 'uploadedfiles')
 
-
-RESOURCE_MODEL = {'default': '{}.models.resource.Resource'.format(PACKAGE_NAME)}
-
-
 DEFAULT_MAP_X = -8572820
 DEFAULT_MAP_Y = 4712543
 DEFAULT_MAP_ZOOM = 15
@@ -27,6 +23,7 @@ DEFAULT_MAP_ZOOM = 15
 # MAP_MAX_ZOOM = 19
 # MAP_EXTENT = '-13228037.69691764,3981296.0184014924,-13123624.71628009,4080358.407059081'
 
+RESOURCE_MODEL = {'default': '{}.models.resource.Resource'.format(PACKAGE_NAME)}
 
 def RESOURCE_TYPE_CONFIGS():
     return { 
