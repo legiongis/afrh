@@ -523,3 +523,12 @@ Exception detail: search() got an unexpected keyword argument 'id'
 2015-12-21 15:52:02.159000: WARNING: search failed for query: None 
 Exception detail: search() got an unexpected keyword argument 'id'
 
+2015-12-22 09:42:34.334000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: ConnectionError(<urllib3.connection.HTTPConnection object at 0x0000000002647D68>: Failed to establish a new connection: [Errno 10061] No connection could be made because the target machine actively refused it) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x0000000002647D68>: Failed to establish a new connection: [Errno 10061] No connection could be made because the target machine actively refused it)
+
+2015-12-22 10:00:47.713000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: ConnectionError(<urllib3.connection.HTTPConnection object at 0x00000000041D0B70>: Failed to establish a new connection: [Errno 10061] No connection could be made because the target machine actively refused it) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x00000000041D0B70>: Failed to establish a new connection: [Errno 10061] No connection could be made because the target machine actively refused it)
+
+2015-12-22 10:01:26.065000: WARNING: search failed for query: {'query': {'match_all': {}}, 'from': 0, 'size': 100000} 
+Exception detail: ConnectionError(<urllib3.connection.HTTPConnection object at 0x0000000002655D30>: Failed to establish a new connection: [Errno 10061] No connection could be made because the target machine actively refused it) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x0000000002655D30>: Failed to establish a new connection: [Errno 10061] No connection could be made because the target machine actively refused it)
+

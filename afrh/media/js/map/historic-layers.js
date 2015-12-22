@@ -9,7 +9,7 @@ define([
     var hm1850 = {
         id: 'hm1850',
         name: '1865 George W. Riggs Farm Map',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1850_George_Riggs_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
@@ -30,7 +30,7 @@ define([
     var hm1865 = {
         id: 'hm1865',
         name: '1865 Barnard Map',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1865_Barnard_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
@@ -53,7 +53,7 @@ define([
     var hm1866 = {
         id: 'hm1866',
         name: '1866-67 Michler Memory Map',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1866-67_Michler_Memory_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
@@ -74,7 +74,7 @@ define([
     var hm1873 = {
         id: 'hm1873',
         name: '1873 Bootes Map',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1873_Bootes_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
@@ -95,7 +95,7 @@ define([
     var hm1877 = {
         id: 'hm1877',
         name: '1877 JC Entwhistle Map',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1877_JC_Entwhistle_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
@@ -116,7 +116,7 @@ define([
     var hm1892 = {
         id: 'hm1892',
         name: '1892 Beautiful USGS Map',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1892_USGS_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
@@ -137,7 +137,7 @@ define([
     var hm1903 = {
         id: 'hm1903',
         name: '1903 Army Corps of Engineers Map',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1903_Army_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
@@ -158,7 +158,7 @@ define([
     var hm1914 = {
         id: 'hm1914',
         name: '1914 Topographical Map',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1914_Topographic_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
@@ -179,7 +179,7 @@ define([
     var hm1944 = {
         id: 'hm1944',
         name: '1944 Topographical Map',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1944_Topo_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
@@ -200,7 +200,7 @@ define([
     var hm1953 = {
         id: 'hm1953',
         name: '1953 Master Plan Map',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1953_Master_Plan_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
@@ -221,7 +221,7 @@ define([
     var hm1967 = {
         id: 'hm1967',
         name: '1967 Topographic Map',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1967_Topographic_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
@@ -241,7 +241,7 @@ define([
     var hm1975 = {
         id: 'hm1975',
         name: '1975 Schedule of Structures',
-        icon: arches.urls.media + 'img/map/bing_satellite.png',
+        icon: arches.urls.media + 'img/map/1975_Shedule_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',

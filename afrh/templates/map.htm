@@ -118,7 +118,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
             <div class="row">
                 <div class="col-xs-6" style="min-height:0px !important;">
 
-                    <div id="basemaps-panel" class="tools-panel hidden" style="border-top-left-radius: 3px; border-top-right-radius: 3px;">
+                    <div id="basemaps-panel" class="tools-panel hidden">
                         <div class="modal-header  arches-modal-header" style="padding: 15px 15px 0px 15px !important;">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                 ×
@@ -132,11 +132,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                         </div>
 
                         <!-- Body Content -->
-                        <div class="modal-body padding-top-0 padding-bottom-0" data-bind='foreach: baseLayers'>
+                        <div class="modal-body modal-layer-list" data-bind='foreach: baseLayers'>
 
                             <!-- ko ifnot: icon==false -->
                             <div class="row">
-                                <hr class="arches-layer-divider" style="border-top: 0px; margin-top: 5px;">
 
                                 <div class="arches-basemap-entry" style="" data-bind="attr: { id: id}">
                             
@@ -174,7 +173,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
             <div class="row">
                 <div class="col-xs-6" style="min-height:0px !important;">
 
-                    <div id="historicmaps-panel" class="tools-panel hidden" style="border-top-left-radius: 3px; border-top-right-radius: 3px;">
+                    <div id="historicmaps-panel" class="tools-panel hidden">
                         <div class="modal-header arches-modal-header" style="padding: 15px 15px 0px 15px !important;">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                                 ×
@@ -188,34 +187,40 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                         </div>
 
                         <!-- Body Content -->
-                        <div class= "modal-body padding-top-0 padding-bottom-0" style="overflow-y: scroll; height: 300px" data-bind='foreach: historicLayers'>
+                        <div class= "modal-body modal-layer-list" style="overflow-y: scroll; height: 280px" data-bind='foreach: historicLayers'>
 
                             <div class="row">
-                                <hr class="arches-layer-divider" style="border-top: 0px; margin-top: 5px;">
 
                                 <div class="arches-basemap-entry" style="" data-bind="attr: { id: id}">
                             
                                     <div class="">
                                         
                                     <!--class="historicmap info-click" -->
-                                        <a data-bind="attr: { id: id, title: name }" data-rel="" href="javascript:void(0);">
-                                            <span class="">  
-                                                <img data-bind="attr: {src: icon }" class="arches-basemap-thumbnail" alt="" />
-                                                <span class="zoom-icon"></span>                   
-                                            </span>                                              
-                                        </a>                    
-                                        <span class="arches-basemap-caption">
-                                            <a data-bind="attr: { id: id }, text: name" class="caption-text hover-effect historicmap info-click" href="javascript:void(0);"> </a>
-                                        </span>
+                                        <ul>
+                                            <li>
+                                                <a data-bind="attr: { id: id, title: name }" data-rel="" href="javascript:void(0);">
+                                                    <span class="">  
+                                                        <img data-bind="attr: {src: icon }" class="arches-basemap-thumbnail" alt="" />
+                                                    </span>                                              
+                                                </a>                    
+                                            </li>
                                         
-                                        
-                                        <div class="knobs-demo" style="margin-left: 15px; display: block;">
-                                            <input class="knob2" style="font-weight: normal;" data-width="32" data-height="60" data-fgColor="#65a5da" data-angleOffset=-145 data-angleArc=290 value="100" data-thickness=.3 data-bind="attr: {'data-layerid': id}">
-                                            
-                                            <div style="margin-top: -63px; margin-left: 47px;">
-                                                <a href="javascript:void(0);" data-toggle="popover" data-container="body" data-placement="right" data-bind="if: showInfo, attr: {'data-content': showInfo}" data-html="true" title="Layer info" ><i class="fa fa-2x fa-info-circle" style="color: #65a5da;"></i></a>
-                                            </div>
-
+                                            <li>
+                                                <span class="arches-basemap-caption">
+                                                    <a data-bind="attr: { id: id }, text: name" class="caption-text hover-effect historicmap info-click" href="javascript:void(0);"> </a>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <div class="knobs-demo">
+                                                    <input class="knob2" style="font-weight: normal;" data-width="32" data-height="32" data-fgColor="#65a5da" data-angleOffset=-145 data-angleArc=290 value="100" data-thickness=.3 data-bind="attr: {'data-layerid': id}">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <a href="javascript:void(0);" data-toggle="popover" data-container="body" data-placement="right" data-bind="if: showInfo, attr: {'data-content': showInfo}" data-html="true" title="Layer info" ><i class="fa fa-2x fa-info-circle" style="color: #65a5da;"></i></a>
+                                                </div>
+                                            </li>
+                                        </ul>
                                         
                                         
                                         
@@ -242,7 +247,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
                                             
                                             
-                                        </div>
+                                        
                                         <!--
                                         <div style="float:right; padding-top:10px; padding-right:5px;">
                                         <input class="knob" style="font-weight: normal;" data-width="32" data-height="60" data-fgColor="#65a5da" data-angleOffset=-145 data-angleArc=290 value="100" data-thickness=.3 data-bind="attr: {'data-layerid': id}">
@@ -270,8 +275,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
             <div class="row">
                 <div class="col-xs-6" style="min-height:0px !important;">
 
-                    <div id="overlay-panel" class="tools-panel hidden" style="border-top-left-radius: 3px; border-top-right-radius: 3px;">
-                        <div class="modal-header arches-modal-header">
+                    <div id="overlay-panel" class="tools-panel hidden">
+                        <div class="modal-header arches-modal-header" style="padding: 15px 15px 0px 15px !important;">
 
                             <button type="button" class="close pull-right" data-dismiss="modal" aria-hidden="true">
                                 ×
@@ -293,13 +298,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                         </div>
             
                         <!-- Body Content -->
-                        <div class="modal-body padding-top-0 padding-bottom-0" style="overflow-y: scroll; height: 300px;">
+                        <div class="modal-body modal-layer-list" style="overflow-y: scroll; height: 300px;" data-bind="foreach: layers">
                             
                             <!-- List overlays -->
                             <div class="row">
-                                <div class="col-xs-12" data-bind="foreach: layers">
                                     <!-- Layer Entry -->
-                                    <hr class="arches-layer-divider" style="border-top: 0px; margin-top: 5px;">
 
                                     <div class="" data-bind="css: {hidden: !onMap()}">
                                         <div data-bind="css: { 'arches-ll-selected': active() }" class="row arches-overlay-item" style="background-color: #fafafa; border-radius: 3px;">
@@ -345,7 +348,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                                         <!-- End Layer Entry -->
 
                                     </div>
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- End Body Content -->
@@ -358,12 +361,12 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
             
 
             <!-- Map Tools  -->
-            <div class="row hidden-xs">
+            <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: -100px;margin-left: -1px;">
 
                     <div class="btn-group">
 
-                        <button id="inventory-basemaps" type="button" class="btn btn-primary arches-map-tools inventory-basemaps" style="border-bottom-left-radius:3px;"><i class="fa fa-globe"></i> {% trans 'Basemaps' %}
+                        <button id="inventory-basemaps" type="button" class="btn btn-primary arches-map-tools inventory-basemaps" style="border-bottom-left-radius:3px;"><i class="fa fa-globe"></i><span class="hidden-xs"> {% trans 'Basemaps' %}</span>
                         </button>
                         
                         <button id="inventory-historicmaps" type="button" class="btn btn-primary arches-map-tools" style="" ><i class="fa fa-newspaper-o"></i> {% trans 'Historic Maps' %}
