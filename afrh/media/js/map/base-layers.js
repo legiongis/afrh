@@ -54,8 +54,8 @@ define([
     //streets arches layer
     var street = {
         id: 'street',
-        name: 'Open Street Map',
-        icon: arches.urls.media + 'img/map/google_streets.jpg',
+        name: 'Streets',
+        icon: arches.urls.media + 'img/map/osm.png',
         layer: streetLyr,
         altlayer: false,
         alttext: 'Open Street Map',
@@ -77,8 +77,8 @@ define([
     //arches ortho layer
     var imagery = {
         id: "imagery",
-        name: "AERIAL IMAGERY NAME!!",
-        icon: arches.urls.media + 'img/map/google_streets.jpg',
+        name: "Imagery",
+        icon: arches.urls.media + 'img/map/aerial.png',
         alttext: "",
         showInfo: false,
         layer: orthoLyr,
@@ -108,8 +108,8 @@ define([
     //hybrid arches layer
     var hybrid = {
         id: "hybrid",
-        name: "HYBRID LAYER NAME!!",
-        icon: arches.urls.media + 'img/map/google_streets.jpg',
+        name: "Streets & Imagery",
+        icon: arches.urls.media + 'img/map/hybrid.png',
         alttext: "",
         showInfo: false,
         layer: hybridLyr,
