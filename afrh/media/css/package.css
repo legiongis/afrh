@@ -530,3 +530,19 @@ dl.score-table dd{
     font-size: 18px;
     margin-left: 5px;
 }
+
+/* index rules */
+.index-purchase {
+    background: #5F6265;
+    padding: 0px !important;
+}
+
+.footer {
+    color: #dadada;
+    background: #5F6265;
+    padding: 20px 0 30px;
+}
+
+.ls-bottom-slidebuttons {
+    margin-top: -50px !important;
+}
