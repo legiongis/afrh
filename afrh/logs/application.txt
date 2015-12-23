@@ -562,3 +562,9 @@ Exception detail: TransportError(503, u'SearchPhaseExecutionException[Failed to 
 2015-12-22 13:59:49.137000: WARNING: search failed for query: None 
 Exception detail: search() got an unexpected keyword argument 'id'
 
+2015-12-22 22:33:43.508000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2015-12-22 22:34:08.848000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+

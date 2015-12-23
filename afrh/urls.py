@@ -24,4 +24,6 @@ uuid_regex = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-
 urlpatterns = patterns('',
     url(r'', include(arches_hip_urls)),
     url(r'^newmap', 'afrh.views.newmap.get_page', name="newmap"),
+    url(r'^resources/markers/(?P<entitytypeid>.*)$', 'arches.app.views.resources.map_layers', name="map_markers"),
+    #url(r'^resources/markers/(?P<entitytypeid>.*)$', 'arches.app.views.resources.map_layers', {'get_centroids':True}, name="map_markers"),
 )

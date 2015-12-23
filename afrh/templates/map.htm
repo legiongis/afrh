@@ -196,31 +196,31 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                                     <div class="">
                                         
                                     <!--class="historicmap info-click" -->
-                                        <ul>
-                                            <li>
+                                        <!--<ul>-->
+                                            <div style="display:inline; float: left;">
                                                 <a data-bind="attr: { id: id, title: name }" data-rel="" href="javascript:void(0);">
                                                     <span class="">  
                                                         <img data-bind="attr: {src: icon }" class="arches-basemap-thumbnail" alt="" />
                                                     </span>                                              
                                                 </a>                    
-                                            </li>
+                                            </div>
                                         
-                                            <li>
-                                                <span class="arches-basemap-caption">
+                                            <div style="display:inline; height: 48px; vertical-align: middle;">
+                                                <div style="height: 48px;">
+                                                <span class="arches-basemap-caption" style="vertical-align: middle;">
                                                     <a data-bind="attr: { id: id }, text: name" class="caption-text hover-effect historicmap info-click" href="javascript:void(0);"> </a>
                                                 </span>
-                                            </li>
-                                            <li>
-                                                <div class="knobs-demo">
+                                                </div>
+                                            </div>
+                                            <div style="float: right; height: 48px; positio: absolute; margin-top:-48px; padding-right:5px; padding-top: 5px;">
+                                                <div class="knobs-demo" style="display: inline; vertical-align: middle; margin-bottom: -5px;">
                                                     <input class="knob2" style="font-weight: normal;" data-width="32" data-height="32" data-fgColor="#65a5da" data-angleOffset=-145 data-angleArc=290 value="100" data-thickness=.3 data-bind="attr: {'data-layerid': id}">
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <a href="javascript:void(0);" data-toggle="popover" data-container="body" data-placement="right" data-bind="if: showInfo, attr: {'data-content': showInfo}" data-html="true" title="Layer info" ><i class="fa fa-2x fa-info-circle" style="color: #65a5da;"></i></a>
+                                                <div style="display: inline;">
+                                                    <a href="javascript:void(0);" data-toggle="popover" data-container="body" data-placement="right" data-bind="if: showInfo, attr: {'data-content': showInfo}" data-html="true" title="Layer info" ><i class="fa fa-2x fa-info-circle" style="color: #65a5da; font-size: 2.5em;"></i></a>
                                                 </div>
-                                            </li>
-                                        </ul>
+                                            </div>
+                                        <!--</ul>-->
                                         
                                         
                                         
@@ -575,4 +575,4 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
             return '{{resource_id}}';
         });
     </script>
-{% endblock pre_require_js %}
+{% endblock pre_require_js %}

@@ -546,3 +546,7 @@ dl.score-table dd{
 .ls-bottom-slidebuttons {
     margin-top: -50px !important;
 }
+
+img.ls-s1 {
+    left: 0px !important;
+}
