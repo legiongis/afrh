@@ -109,7 +109,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                 <!-- Section Header -->
                 
                         <div class="report-section-header">
-                            <span>{% trans "Resource Description" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                            <span>{% trans "Description" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
                         </div>
 
 
@@ -151,9 +151,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                                         <!-- Important Dates -->
                                         {% include 'views/reports/sections/important_dates.htm' %}
 
-                                        <!-- Keywords -->
-                                        {% include 'views/reports/sections/KEYWORD.E55.htm' %}
-
                                     </div>
                                 </div>
                                 <!-- End Section Content-->
@@ -188,46 +185,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                                         <!-- Location Description -->
                                         {% include 'views/reports/sections/DESCRIPTION_OF_LOCATION.E62.htm' %}
 
-                                        <!-- Settings -->
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <dl class="report-item-list">
-                                                    <dt>
-                                                        <h5 id="" class="arches-report-subsection-title">{% trans "Settings" %}</h5>
-                                                    </dt>
-
-                                                    <dd class="arches-report-subsection-item empty-message" style="display:none;">
-                                                        {% trans "No settings recorded" %}
-                                                    </dd>
-
-                                                    {% if 'PLACE_E53' in report_info.source.graph %}
-                                                        {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
-                                                            {% if 'PLACE_SITE_LOCATION_E53' in PLACE_E53 %}
-                                                                {% for PLACE_SITE_LOCATION_E53 in PLACE_E53.PLACE_SITE_LOCATION_E53 %}
-                                                                    {% if 'SETTING_TYPE_E55' in PLACE_SITE_LOCATION_E53 %}
-                                                                         {% for SETTING_TYPE_E55 in PLACE_SITE_LOCATION_E53.SETTING_TYPE_E55 %}
-                                                                            {% if SETTING_TYPE_E55.SETTING_TYPE_E55__value != '' %}
-                                                                                <dd class="arches-report-subsection-item report-list-item">
-                                                                                    {{SETTING_TYPE_E55.SETTING_TYPE_E55__value}}
-                                                                                </dd>
-                                                                            {% endif %}
-                                                                        {% endfor %}   
-                                                                    {% endif %}
-                                                                {% endfor %}                      
-                                                            {% endif %}
-                                                        {% endfor %}              
-                                                    {% endif %}
-
-                                                </dl>
-                                            </div>
-                                        </div>
-
-                                        <!-- Admin Ares -->
-                                        {% include 'views/reports/sections/ADMINISTRATIVE_SUBDIVISION.E48.htm' %}
-
-                                        <!-- Parcels -->
-                                        {% include 'views/reports/sections/PLACE_APPELLATION_CADASTRAL_REFERENCE.E44.htm' %}
-
+                                        <!-- Management Areas -->
+                                        {% include 'views/reports/sections/management_areas.htm' %}
                                         
                                     </div>
                                 </div>
@@ -235,17 +194,15 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
                             </div>
                             <!-- End Location Section -->
-
-
+                            
                             <hr class="devider margin-top-10" style="margin-bottom: 5px;"></hr>
 
-
-                            <!-- Classification -->
+                            <!-- Functoin and Use -->
                             <div class="row">
 
                                 <!-- Section sub-header -->
                                 <div class="col-sm-4">
-                                    <h3 class="arches-report-subsection">{% trans "Classification/Components" %}</h3>
+                                    <h3 class="arches-report-subsection">{% trans "Function and Use" %}</h3>
                                 </div>
                                 <!-- End Section sub-header -->
 
@@ -257,39 +214,42 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
                                     <div class="arches-report-subsection-content">
 
-                                        <!-- Classification -->
-                                        {% include "views/reports/sections/heritage_resource_phase_type_assignment.htm" %}
+                                        {% include "views/reports/sections/function_and_use.htm" %}
+                                        
+                                        {% include "views/reports/sections/heritage_asset_information.htm" %}
+                                        
+                                    </div>
+                                </div>
+                                <!-- End Section Content-->
+
+                            </div>
+                            <!-- End Classification Section -->
+
+
+                            <hr class="devider margin-top-10" style="margin-bottom: 5px;"></hr>
+
+
+                            <!-- Classification -->
+                            <div class="row">
+
+                                <!-- Section sub-header -->
+                                <div class="col-sm-4">
+                                    <h3 class="arches-report-subsection">{% trans "Components and Modifications" %}</h3>
+                                </div>
+                                <!-- End Section sub-header -->
+
+                                 <!-- Section Content -->
+                                <div class="col-sm-8">
+
+                                    <!-- Spacer -->
+                                    <div class="arches-report-spacer hidden-xs"></div>
+
+                                    <div class="arches-report-subsection-content">
 
                                         <!-- Components -->
-                                        {% include "views/reports/sections/COMPONENT.E18.htm" %}
-
-                                        <!-- Modifications -->
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <dl>
-                                                    <dt>
-                                                        <h5 id="" class="arches-report-subsection-title">{% trans "Modifications" %}</h5>
-                                                    </dt>
-
-                                                    {% if 'MODIFICATION_EVENT_E11' not in report_info.source.graph %}
-                                                        <dd class="arches-report-subsection-item">
-                                                            {% trans "No modifications recorded" %}
-                                                        </dd>
-                                                    {% else %}
-                                                        {% for MODIFICATION_EVENT_E11 in report_info.source.graph.MODIFICATION_EVENT_E11 %}
-                                                            <dd class="arches-report-subsection-item arches-report-spacer">
-                                                                <span class="arches-report-subsection-item-type">{{ MODIFICATION_EVENT_E11.MODIFICATION_TYPE_E55.0.MODIFICATION_TYPE_E55__value }}:</span>
-                                                                {{ MODIFICATION_EVENT_E11.MODIFICATION_DESCRIPTION_E62.0.MODIFICATION_DESCRIPTION_E62__value }}
-                                                            </dd>
-                                                        {% endfor %}            
-                                                    {% endif %}
-
-                                                </dl>
-
-                                            </div>
-                                        </div>
-
-
+                                        {% include "views/reports/sections/components.htm" %}
+                                        
+                                        {% include "views/reports/sections/modifications.htm" %}
                                     </div>
                                 </div>
                                 <!-- End Section Content-->

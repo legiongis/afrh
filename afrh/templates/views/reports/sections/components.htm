@@ -1,0 +1,101 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-xs-12">
+        <dl>
+            <dt>
+                <h5 id="" class="arches-report-subsection-title">{% trans "Components" %}</h5>
+            </dt>
+
+            {% if 'PRODUCTION_E12' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    {% trans "no components recorded" %}
+                </dd>
+            {% else %}
+
+                {% for PRODUCTION_E12 in report_info.source.graph.PRODUCTION_E12 %}
+                    {% if 'COMPONENT_E18' not in PRODUCTION_E12 %}
+                        <dd class="arches-report-subsection-item">
+                            {% trans "no components recorded" %}
+                        </dd>
+                    {% else %}
+
+                        {% for COMPONENT_E18 in PRODUCTION_E12.COMPONENT_E18 %}
+                            <dd class="arches-report-subsection-item">
+
+                                {% if 'COMPONENT_TYPE_E55' in COMPONENT_E18 %}
+                                    {% for COMPONENT_TYPE_E55 in COMPONENT_E18.COMPONENT_TYPE_E55 %}
+                                        {{COMPONENT_TYPE_E55.COMPONENT_TYPE_E55__value}}
+                                    {% endfor %} 
+                                {% else %}
+                                    {% trans "none defined" %}
+                                {% endif %}
+                                <br>
+
+                                {% if 'COMPONENT_PRODUCTION_E12' in COMPONENT_E18 %}
+                                    {% for COMPONENT_PRODUCTION_E12 in COMPONENT_E18.COMPONENT_PRODUCTION_E12 %}
+                                        {% if 'DESIGN_OR_PROCEDURE_E29' in COMPONENT_PRODUCTION_E12 %}
+                                            {% for DESIGN_OR_PROCEDURE_E29 in COMPONENT_PRODUCTION_E12.DESIGN_OR_PROCEDURE_E29 %}
+                                                {% if 'CONSTRUCTION_TECHNIQUE_E55' in DESIGN_OR_PROCEDURE_E29 %}
+                                                    {% for CONSTRUCTION_TECHNIQUE_E55 in DESIGN_OR_PROCEDURE_E29.CONSTRUCTION_TECHNIQUE_E55 %}
+                                                        {{CONSTRUCTION_TECHNIQUE_E55.CONSTRUCTION_TECHNIQUE_E55__value}}
+                                                        <span class="arches-report-subsection-item-type">(Technique)</span>
+                                                    {% endfor %} 
+                                                {% endif %}
+                                            {% endfor %} 
+                                        {% endif %}
+                                    {% endfor %} 
+                                {% endif %}
+
+                                {% if 'MATERIAL_E57' in COMPONENT_E18 %}
+                                    {% for MATERIAL_E57 in COMPONENT_E18.MATERIAL_E57 %}
+                                        {{MATERIAL_E57.MATERIAL_E57__value}}
+                                        <span class="arches-report-subsection-item-type">(Material)</span>
+                                    {% endfor %}  
+                                {% endif %}
+                                <br>
+                                <span class="arches-report-subsection-item-type">
+                                    {% trans "Classification" %}:
+                                </span>
+                                {% if 'COMPONENT_CLASSIFICATION_E55' in COMPONENT_E18 %}
+                                    {% for COMPONENT_CLASSIFICATION_E55 in COMPONENT_E18.COMPONENT_CLASSIFICATION_E55 %}
+                                        {{COMPONENT_CLASSIFICATION_E55.COMPONENT_CLASSIFICATION_E55__value}}
+                                    {% endfor %}
+                                {% else %}
+                                    <span class="arches-report-subsection-item-type">
+                                        {% trans "(not recorded)" %}
+                                    </span>
+                                {% endif %}
+                                <br>
+                                <span class="arches-report-subsection-item-type">
+                                    {% trans "Significance" %}:
+                                </span>
+                                {% if 'COMPONENT_SIGNIFICANCE_E55' in COMPONENT_E18 %}
+                                    {% for COMPONENT_SIGNIFICANCE_E55 in COMPONENT_E18.COMPONENT_SIGNIFICANCE_E55 %}
+                                        {{COMPONENT_SIGNIFICANCE_E55.COMPONENT_SIGNIFICANCE_E55__value}}
+                                    {% endfor %}
+                                {% else %}
+                                    <span class="arches-report-subsection-item-type">
+                                        {% trans "(not recorded)" %}:
+                                    </span>
+                                {% endif %}
+                            
+                            </dd>
+                            <dd style="margin-left:10px;">
+                                {% if 'COMPONENT_DESCRIPTION_E62' in COMPONENT_E18 %}
+                                    {% for COMPONENT_DESCRIPTION_E62 in COMPONENT_E18.COMPONENT_DESCRIPTION_E62 %}
+                                        {{COMPONENT_DESCRIPTION_E62.COMPONENT_DESCRIPTION_E62__value|safe}}
+                                    {% endfor %}  
+                                {% endif %}
+
+                            </dd>
+                        {% endfor %}
+
+                    {% endif %}   
+
+                {% endfor %} 
+
+            {% endif %}
+            
+        </dl>
+    </div>
+</div>

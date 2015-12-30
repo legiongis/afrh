@@ -1,0 +1,71 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-xs-12">
+        <dl>
+            <dt>
+                <h5 id="" class="arches-report-subsection-title">{% trans "Heritage Asset Information" %}</h5>
+            </dt>
+
+            {% if 'HERITAGE_ASSET_REPORT_E3' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    {% trans "no information" %}
+                </dd>
+            {% else %}
+
+                {% for HERITAGE_ASSET_REPORT_E3 in report_info.source.graph.HERITAGE_ASSET_REPORT_E3 %}
+                    <dd class="arches-report-subsection-item arches-report-spacer">
+                    {% if 'HERITAGE_ASSET_REPORT_DATE_E49' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for HERITAGE_ASSET_REPORT_DATE_E49 in HERITAGE_ASSET_REPORT_E3.HERITAGE_ASSET_REPORT_DATE_E49 %}
+                            as of {{HERITAGE_ASSET_REPORT_DATE_E49.HERITAGE_ASSET_REPORT_DATE_E49__value|slice:":10"}}
+                        {% endfor %}
+                    {% endif %}
+                    <br>
+                    {% if 'CURRENT_OPERATIONAL_STATE_E3' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for CURRENT_OPERATIONAL_STATE_E3 in HERITAGE_ASSET_REPORT_E3.CURRENT_OPERATIONAL_STATE_E3 %}
+                            {% if 'CURRENT_OPERATIONAL_STATUS_E55' in CURRENT_OPERATIONAL_STATE_E3 %}
+                                {% for CURRENT_OPERATIONAL_STATUS_E55 in CURRENT_OPERATIONAL_STATE_E3.CURRENT_OPERATIONAL_STATUS_E55 %}
+                                    status: {{CURRENT_OPERATIONAL_STATUS_E55.CURRENT_OPERATIONAL_STATUS_E55__value}}
+                                {% endfor %}
+                            {% endif %}
+                            {% if 'CURRENT_OPERATIONAL_STATUS_NOTES_E62' in CURRENT_OPERATIONAL_STATE_E3 %}
+                                {% for CURRENT_OPERATIONAL_STATUS_NOTES_E62 in CURRENT_OPERATIONAL_STATE_E3.CURRENT_OPERATIONAL_STATUS_NOTES_E62 %}
+                                    <span class="arches-report-subsection-item-type">
+                                    ({{CURRENT_OPERATIONAL_STATUS_NOTES_E62.CURRENT_OPERATIONAL_STATUS_NOTES_E62__value}})
+                                    </span>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <br>
+                    {% if 'CURRENT_USER_E55' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for CURRENT_USER_E55 in HERITAGE_ASSET_REPORT_E3.CURRENT_USER_E55 %}
+                            user: {{ CURRENT_USER_E55.CURRENT_USER_E55__value}}
+                        {% endfor %}
+                    {% endif %}
+                    <br>
+                    {% if 'HERITAGE_ASSET_CONDITION_E3' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for HERITAGE_ASSET_CONDITION_E3 in HERITAGE_ASSET_REPORT_E3.HERITAGE_ASSET_CONDITION_E3 %}
+                            condition: {{ HERITAGE_ASSET_CONDITION_E3.HERITAGE_ASSET_CONDITION_E3__value}}
+                        {% endfor %}
+                    {% endif %}
+                    <br>
+                    {% if 'HERITAGE_ASSET_CLASSIFICATION_E55' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for HERITAGE_ASSET_CLASSIFICATION_E55 in HERITAGE_ASSET_REPORT_E3.HERITAGE_ASSET_CLASSIFICATION_E55 %}
+                            classification: {{ HERITAGE_ASSET_CLASSIFICATION_E55.HERITAGE_ASSET_CLASSIFICATION_E55__value}}
+                        {% endfor %}
+                    {% endif %}
+                    <br>
+                    {% if 'HERITAGE_ASSET_PURPOSE_E55' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for HERITAGE_ASSET_PURPOSE_E55 in HERITAGE_ASSET_REPORT_E3.HERITAGE_ASSET_PURPOSE_E55 %}
+                            purpose: {{ HERITAGE_ASSET_PURPOSE_E55.HERITAGE_ASSET_PURPOSE_E55__value}}
+                        {% endfor %}
+                    {% endif %}
+                    </dd>
+
+                {% endfor %} 
+
+            {% endif %}   
+
+        </dl>
+    </div>
+</div>

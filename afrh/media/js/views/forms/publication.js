@@ -1,10 +1,12 @@
 define(['jquery', 
     'underscore', 
     'knockout-mapping', 
-    'views/forms/base', 
+    'views/forms/base',
+    'views/forms/sections/validation',
     'views/forms/sections/branch-list',
     'bootstrap-datetimepicker',], 
-    function ($, _, koMapping, BaseForm, BranchList) {
+    function ($, _, koMapping, BaseForm, ValidationTools, BranchList) {
+        var vt = new ValidationTools;
         return BaseForm.extend({
             initialize: function() {
                 BaseForm.prototype.initialize.apply(this);                
@@ -17,23 +19,33 @@ define(['jquery',
 
 
                 this.addBranchList(new BranchList({
-                    el: this.$el.find('#creation-section')[0],
+                    el: this.$el.find('#creation-date-section')[0],
                     data: this.data,
-                    dataKey: 'RESOURCE_CREATION_EVENT.E65',
+                    dataKey: 'TIME-SPAN_RESOURCE_CREATION_EVENT.E52',
                     validateBranch: function (nodes) {
-                        var valid = true;
-                        var primaryname_count = 0;
-                        var primaryname_conceptid = this.viewModel.primaryname_conceptid;
-                        _.each(nodes, function (node) {
-                            if (node.entitytypeid === 'INFORMATION_RESOURCE_TYPE.E55') {
-                                if (node.value === ''){
-                                    valid = false;
-                                }
-                            }
-                        }, this);
-                        return valid;
+                        // var valid = true;
+                        // var primaryname_count = 0;
+                        // var primaryname_conceptid = this.viewModel.primaryname_conceptid;
+                        // _.each(nodes, function (node) {
+                            // if (node.entitytypeid === 'INFORMATION_RESOURCE_TYPE.E55') {
+                                // if (node.value === ''){
+                                    // valid = false;
+                                // }
+                            // }
+                        // }, this);
+                        return this.validateHasValues(nodes);
                     }
                 }));
+                
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#creator-section')[0],
+                    data: this.data,
+                    dataKey: 'CREATOR.E39',
+                    validateBranch: function (nodes) {
+                        return vt.nodesHaveValues(nodes, ['CREATOR_APPELLATION.E82','CREATOR_TYPE.E55']);
+                    }
+                }));
+                
 
                 this.addBranchList(new BranchList({
                     el: this.$el.find('#publishers-section')[0],

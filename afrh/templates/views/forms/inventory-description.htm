@@ -163,8 +163,8 @@
                             <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no descriptions" %}</div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
-                                    <a href="javascript:void(0)" title="Remove this description"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" title="{% trans 'Edit this description' %}" data-bind='click: $parent.editItem.bind($parent)'>
+                                    <a href="javascript:void(0)" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" title="{% trans 'edit' %}" data-bind='click: $parent.editItem.bind($parent)'>
                                         <span data-bind="text: nodes.get('DESCRIPTION_TYPE.E55', 'label')"></span>
                                     </a>
                                     <div class="note-editable custom-scroll arches-evaluation-content" contenteditable="false" data-bind='{html: nodes.get("DESCRIPTION.E62", "value")}'></div>

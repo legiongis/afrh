@@ -374,7 +374,7 @@
                 <div class="col-xs-12 col-sm-4 form-section-input margin-top-5">
                     <div class="form-group">
                         <div class="input-group datetimepicker" style ="width:100%;">
-                            <input style="height:32px;" type="text" id="date" placeholder="{% trans 'yyyy-mm-dd' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('OTHER_DESIGNATION_DATE.E50', 'value')} ">
+                            <input style="height:32px;" type="text" id="date" placeholder="{% trans 'yyyy-mm-dd' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('OTHER_DESIGNATION_DATE.E49', 'value')} ">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
@@ -386,7 +386,12 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
                     <div class="form-group">
-                        <input class="form-control arches-form-input" placeholder='{% trans "database ID" %}' data-bind="value: getEditedNode('OTHER_DESIGNATION_REFRENCE_NUMBER.E42', 'value')">
+                        <input class="form-control arches-form-input" placeholder='{% trans "database ID" %}' data-bind="value: getEditedNode('OTHER_DESIGNATION_REFERENCE_NUMBER.E42', 'value')">
+                    </div>
+                </div>
+                <div class="col-xs-12 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <input class="form-control arches-form-input" placeholder='{% trans "notes" %}' data-bind="value: getEditedNode('OTHER_DESIGNATION_NOTES.E62', 'value')">
                     </div>
                 </div>
             </div>
@@ -411,12 +416,12 @@
                                     <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
                                         <span data-bind="text: nodes.get('OTHER_DESIGNATION_TYPE.E55', 'label')+', '+nodes.get('OTHER_DESIGNATION_STATUS.E55', 'label')" style="padding-right:2px;"></span>
                                         <span class="text-muted arches-crud-type-identifier">
-                                            (<span data-bind="text: nodes.get('OTHER_DESIGNATION_DATE.E50', 'value').slice(0,10)"></span>)
+                                            (<span data-bind="text: nodes.get('OTHER_DESIGNATION_DATE.E49', 'value').slice(0,10)"></span>)
                                         </span><br>
                                         name: <span data-bind="text: nodes.get('OTHER_DESIGNATION_NAME.E41', 'value')"></span><br>
                                         ID: <span data-bind="text: nodes.get('OTHER_DESIGNATION_REFERENCE_NUMBER.E42', 'value')"></span><br>
                                         <span class="text-muted arches-crud-type-identifier">
-                                            notes: <span data-bind="text: nodes.get('OTHER_DESIGNATION_NOTES.E62', 'value').slice(0,10)"></span>
+                                            notes: <span data-bind="text: nodes.get('OTHER_DESIGNATION_NOTES.E62', 'value')"></span>
                                         </span>
                                     </a>
                                 </div>

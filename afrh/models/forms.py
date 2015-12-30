@@ -30,6 +30,7 @@ from django.utils.translation import ugettext as _
 from django.forms.models import model_to_dict
 from datetime import datetime
 from django.conf import settings
+import json, os
 
 def datetime_nodes_to_dates(branch_list):
     for branch in branch_list:
@@ -470,6 +471,8 @@ class ComponentForm(ResourceForm):
                     'CONSTRUCTION_TECHNIQUE.E55': Concept().get_e55_domain('CONSTRUCTION_TECHNIQUE.E55'),
                     'MATERIAL.E57' : Concept().get_e55_domain('MATERIAL.E57'),
                     'COMPONENT_TYPE.E55' : Concept().get_e55_domain('COMPONENT_TYPE.E55'),
+                    'COMPONENT_CLASSIFICATION.E55' : Concept().get_e55_domain('COMPONENT_CLASSIFICATION.E55'),
+                    'COMPONENT_SIGNIFICANCE.E55' : Concept().get_e55_domain('COMPONENT_SIGNIFICANCE.E55'),
                 }
             }
 
@@ -764,10 +767,11 @@ class InformationResourceSummaryForm(ResourceForm):
         }   
 
     def update(self, data, files):
+        print data
         self.update_nodes('TITLE.E41', data)
-        self.update_nodes('IDENTIFIER.E42', data)
+        self.update_nodes('INFORMATION_RESOURCE_TYPE_ASSIGNMENT.E17', data)
+        self.update_nodes('EXTERNAL_RESOURCE.E1', data)
         self.update_nodes('KEYWORD.E55', data)
-        self.update_nodes('INFORMATION_CARRIER.E84', data)
         self.update_nodes('LANGUAGE.E55', data)
 
     def load(self, lang):
@@ -777,18 +781,18 @@ class InformationResourceSummaryForm(ResourceForm):
                 'branch_lists': self.get_nodes('TITLE.E41'),
                 'domains': {'TITLE_TYPE.E55' : Concept().get_e55_domain('TITLE_TYPE.E55')}
             }
-
-            self.data['IDENTIFIER.E42'] = {
-                'branch_lists': self.get_nodes('IDENTIFIER.E42'),
+            
+            self.data['INFORMATION_RESOURCE_TYPE_ASSIGNMENT.E17'] = {
+                'branch_lists': self.get_nodes('INFORMATION_RESOURCE_TYPE_ASSIGNMENT.E17'),
                 'domains': {
-                    'IDENTIFIER_TYPE.E55' : Concept().get_e55_domain('IDENTIFIER_TYPE.E55')
+                    'INFORMATION_RESOURCE_TYPE.E55' : Concept().get_e55_domain('INFORMATION_RESOURCE_TYPE.E55')
                 }
             }
 
-            self.data['INFORMATION_CARRIER.E84'] = {
-                'branch_lists': self.get_nodes('INFORMATION_CARRIER.E84'),
+            self.data['EXTERNAL_RESOURCE.E1'] = {
+                'branch_lists': self.get_nodes('EXTERNAL_RESOURCE.E1'),
                 'domains': {
-                    'INFORMATION_CARRIER_FORMAT_TYPE.E55' : Concept().get_e55_domain('INFORMATION_CARRIER_FORMAT_TYPE.E55')
+                    'EXTERNAL_XREF_TYPE.E55' : Concept().get_e55_domain('EXTERNAL_XREF_TYPE.E55')
                 }
             }
 
@@ -1108,15 +1112,19 @@ class LocationForm(ResourceForm):
 
     def update(self, data, files):
         
-        self.update_nodes('PLACE_ADDRESS.E45', data)
+        
         self.update_nodes('DESCRIPTION_OF_LOCATION.E62', data)
-        if self.resource.entitytypeid in ['INVENTORY_RESOURCE.E18','ACTIVITY.E7','INFORMATION_RESOURCE.E73']:
+        if self.resource.entitytypeid in ['INVENTORY_RESOURCE.E18','ACTIVITY.E7']:
             self.update_nodes('SPATIAL_COORDINATES_GEOMETRY.E47', data)
             self.update_nodes('CHARACTER_AREA.E44', data)
             self.update_nodes('MASTER_PLAN_ZONE.E44', data)
             self.update_nodes('ARCHAEOLOGICAL_ZONE.E44', data)
         if self.resource.entitytypeid  == 'INFORMATION_RESOURCE.E73':
-            self.update_nodes('TEMPORAL_COVERAGE_TIME-SPAN.E52', data)
+            self.update_nodes('SPATIAL_COORDINATES_GEOMETRY.E47', data)
+            self.update_nodes('COLLECTION.E78', data)
+            #self.update_nodes('TEMPORAL_COVERAGE_TIME-SPAN.E52', data)
+        if self.resource.entitytypeid  != 'INFORMATION_RESOURCE.E73':
+            self.update_nodes('PLACE_ADDRESS.E45', data)
         
 ##        if self.resource.entitytypeid not in ['ACTOR.E39']:
 ##            self.update_nodes('SPATIAL_COORDINATES_GEOMETRY.E47', data)
@@ -1173,6 +1181,13 @@ class LocationForm(ResourceForm):
         self.data['TEMPORAL_COVERAGE_TIME-SPAN.E52'] = {
             'branch_lists': self.get_nodes('TEMPORAL_COVERAGE_TIME-SPAN.E52'),
             'domains': {}
+        }
+        
+        self.data['COLLECTION.E78'] = {
+            'branch_lists': self.get_nodes('COLLECTION.E78'),
+            'domains': {
+                'COLLECTION_TYPE.E55': Concept().get_e55_domain('COLLECTION_TYPE.E55')
+            }
         }
         
         return
@@ -1333,6 +1348,11 @@ class FileUploadForm(ResourceForm):
         if files:
             for key, value in files.items():
                 self.resource.set_entity_value('FILE_PATH.E62', value)
+                
+                ## trying to set the file path extension node automatically here
+                ext = os.path.splitext(value.name)[1]
+                #self.resource.set_entity_value('FILE_PATH_EXTENSION.E62', ext)
+                
                 thumbnail = generate_thumbnail(value)
                 if thumbnail != None:
                     self.resource.set_entity_value('THUMBNAIL.E62', thumbnail)
@@ -1340,6 +1360,9 @@ class FileUploadForm(ResourceForm):
 
 
     def load(self, lang):
+    
+        image_formats = ['jpg','png','tif']
+        
         if self.resource:
             self.data['INFORMATION_RESOURCE.E73'] = {
                 'branch_lists': self.get_nodes('INFORMATION_RESOURCE.E73'),
@@ -1850,17 +1873,25 @@ class PublicationForm(ResourceForm):
         }
 
     def update(self, data, files):
-        self.update_nodes('RESOURCE_CREATION_EVENT.E65', data)
+        self.update_nodes('CREATOR.E39', data)
+        self.update_nodes('TIME-SPAN_RESOURCE_CREATION_EVENT.E52', data)
         self.update_nodes('PUBLICATION_EVENT.E12', data)
         self.update_nodes('RIGHT_TYPE.E55', data)
         return
 
     def load(self, lang):
         if self.resource:
-            self.data['RESOURCE_CREATION_EVENT.E65'] = {
-                'branch_lists': datetime_nodes_to_dates(self.get_nodes('RESOURCE_CREATION_EVENT.E65')),
+            self.data['TIME-SPAN_RESOURCE_CREATION_EVENT.E52'] = {
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('TIME-SPAN_RESOURCE_CREATION_EVENT.E52')),
                 'domains': {
-                    'INFORMATION_RESOURCE_TYPE.E55' : Concept().get_e55_domain('INFORMATION_RESOURCE_TYPE.E55')
+                    'CREATION_FORMAT.E55' : Concept().get_e55_domain('CREATION_FORMAT.E55')
+                }
+            }
+            
+            self.data['CREATOR.E39'] = {
+                'branch_lists': self.get_nodes('CREATOR.E39'),
+                'domains': {
+                    'CREATOR_TYPE.E55' : Concept().get_e55_domain('CREATOR_TYPE.E55')
                 }
             }
 

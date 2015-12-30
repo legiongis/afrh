@@ -35,7 +35,7 @@ class Resource(ArchesResource):
             'name': _('Resource Description'),
             'forms': [
                 forms.RelatedResourcesForm.get_info(),
-                forms.ExternalReferenceForm.get_info()
+                
             ]   
         }
 
@@ -52,6 +52,7 @@ class Resource(ArchesResource):
                 forms.ConditionForm.get_info(),
                 forms.RelatedFilesForm.get_info(),
                 forms.InventoryEvaluationForm.get_info(),
+                forms.ExternalReferenceForm.get_info()
             ]
 
         elif self.entitytypeid == 'HERITAGE_RESOURCE_GROUP.E27':
@@ -66,6 +67,7 @@ class Resource(ArchesResource):
                 forms.ConditionForm.get_info(),
                 forms.EvaluationForm.get_info(),
                 forms.DesignationForm.get_info(),
+                forms.ExternalReferenceForm.get_info()
             ]
 
 
@@ -75,6 +77,7 @@ class Resource(ArchesResource):
                 forms.InventoryDescriptionForm.get_info(),
                 forms.LocationForm.get_info(),
                 #forms.ActivityActionsForm.get_info(),
+                forms.ExternalReferenceForm.get_info()
             ]
      
 
@@ -84,6 +87,7 @@ class Resource(ArchesResource):
                 forms.InventoryDescriptionForm.get_info(),
                 forms.LocationForm.get_info(),
                 #forms.RoleForm.get_info(),
+                forms.ExternalReferenceForm.get_info()
             ]
 
 
@@ -93,6 +97,7 @@ class Resource(ArchesResource):
                 forms.DescriptionForm.get_info(),
                 forms.LocationForm.get_info(), 
                 forms.PhaseForm.get_info(),
+                forms.ExternalReferenceForm.get_info()
             ]
 
 
@@ -177,7 +182,7 @@ class Resource(ArchesResource):
                     if get_label:
                         entity_data.append(node.label)
                     else:
-                        entity_data.append(node.value)
+                        entity_data.append(str(node.value))
                 entity_data = ', '.join(entity_data)
             return entity_data
 
@@ -209,7 +214,6 @@ class Resource(ArchesResource):
             document_data['creation_date'] = get_entity_data('DATE_OF_CREATION.E50')
             document_data['publication_date'] = get_entity_data('DATE_OF_PUBLICATION.E50')
             document_data['file_path'] = get_entity_data('FILE_PATH.E62', get_label=True)
-            print get_entity_data('FILE_PATH.E62')
             
         if self.entitytypeid == 'HISTORICAL_EVENT.E5' or self.entitytypeid == 'ACTIVITY.E7' or self.entitytypeid == 'ACTOR.E39':
             document_data['start_date'] = get_entity_data('BEGINNING_OF_EXISTENCE.E63')

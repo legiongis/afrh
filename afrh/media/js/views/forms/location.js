@@ -15,7 +15,7 @@ define([
             var resourcetypeid = $('#resourcetypeid').val();
             
             var includeMap = (resourcetypeid !== 'ACTOR.E39');
-            var includeAreas = (resourcetypeid !== 'ACTOR.E39');
+            var includeAreas = (resourcetypeid !== 'ACTOR.E39' && resourcetypeid !== 'INFORMATION_RESOURCE.E73');
 
             var adminAreaTypeLookup = {};
 
@@ -95,15 +95,26 @@ define([
                 });
                 this.addBranchList(locationBranchList);
             }
-
-            this.addBranchList(new BranchList({
-                el: this.$el.find('#address-section')[0],
-                data: this.data,
-                dataKey: 'PLACE_ADDRESS.E45',
-                validateBranch: function(nodes) {
-                    return this.validateHasValues(nodes);
-                }
-            }));
+            
+            if (resourcetypeid == 'INFORMATION_RESOURCE.E73') {
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#collection-section')[0],
+                    data: this.data,
+                    dataKey: 'COLLECTION.E78',
+                    validateBranch: function(nodes) {
+                        return this.validateHasValues(nodes);
+                    }
+                }));
+            } else {
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#address-section')[0],
+                    data: this.data,
+                    dataKey: 'PLACE_ADDRESS.E45',
+                    validateBranch: function(nodes) {
+                        return this.validateHasValues(nodes);
+                    }
+                }));
+            }
 
             this.addBranchList(new BranchList({
                 el: this.$el.find('#description-section')[0],
