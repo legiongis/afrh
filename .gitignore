@@ -2,6 +2,7 @@ afrh/logs/resource_graph_errors.txt
 afrh/logs/application.txt
 afrh/logs/authority_file_errors.txt
 afrh/elasticsearch
+afrh/uploadedfiles
 settings_local.py
 *.pyc
 *.egg*
