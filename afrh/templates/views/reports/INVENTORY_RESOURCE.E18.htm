@@ -279,7 +279,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                                     <div class="arches-report-subsection-content">
 
                                         <!-- Descriptions -->
-                                        {% include 'views/reports/sections/DESCRIPTION.E62.htm' %}
+                                        {% include 'views/reports/sections/descriptions.htm' %}
 
                                     </div>
                                 </div>
@@ -297,7 +297,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
                                 <!-- Section sub-header -->
                                 <div class="col-sm-4">
-                                    <h3 class="arches-report-subsection">{% trans "Measurements" %}</h3>
+                                    <h3 class="arches-report-subsection">{% trans "Dimensions" %}</h3>
                                 </div>
                                 <!-- End Section sub-header -->
 
@@ -310,7 +310,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                                     <div class="arches-report-subsection-content">
 
                                         <!-- Measurements -->
-                                        {% include 'views/reports/sections/MEASUREMENT_TYPE.E55.htm' %}
+                                        {% include 'views/reports/sections/dimensions.htm' %}
 
                                     </div>
                                 </div>
@@ -341,7 +341,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                                     <div class="arches-report-subsection-content">
 
                                         <!-- Moficiations -->
-                                        {% include 'views/reports/sections/EXTERNAL_XREF.E42.htm' %}
+                                        {% include 'views/reports/sections/external_references.htm' %}
 
                                     </div>
                                 </div>
@@ -360,8 +360,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
     </div>
     <!-- End Resource Description Section -->
 
-
     {% if 'CONDITION_ASSESSMENT_E14' in report_info.source.graph %}
+        {% include 'views/reports/sections/condition_assessment_section.htm' %}
+    {% endif %}
+    
+    {% if 'CONDITION_STATE_E3' in report_info.source.graph %}
         {% include 'views/reports/sections/condition_assessment_section.htm' %}
     {% endif %}
 

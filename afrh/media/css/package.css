@@ -485,7 +485,7 @@ dl.score-table dd{
 /* report specific styles */
 .report-section-header {
     width: 100%;
-    text-align:left;
+    text-align:center;
     line-height: 0.1em;
     margin: 20px 0px 15px; 
     font-size: 24px;

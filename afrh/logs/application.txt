@@ -724,3 +724,47 @@ Exception detail: search() got an unexpected keyword argument 'id'
 2015-12-30 12:34:33.207000: WARNING: search failed for query: None 
 Exception detail: search() got an unexpected keyword argument 'id'
 
+2016-01-07 11:00:36.344000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:19:18.468000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:19:47.349000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:20:12.267000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:25:06.161000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:27:48.371000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:35:00.946000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:36:30.630000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:37:51.392000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:40:21.774000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:41:32.008000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:42:03.512000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:44:32.161000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 11:45:32.673000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 12:17:14.180000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:17:28.221000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
