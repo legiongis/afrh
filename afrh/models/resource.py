@@ -86,6 +86,7 @@ class Resource(ArchesResource):
                 forms.ActorSummaryForm.get_info(), 
                 forms.InventoryDescriptionForm.get_info(),
                 forms.LocationForm.get_info(),
+                forms.RelatedFilesForm.get_info(),
                 #forms.RoleForm.get_info(),
                 forms.ExternalReferenceForm.get_info()
             ]

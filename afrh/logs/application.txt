@@ -768,3 +768,36 @@ Exception detail: search() got an unexpected keyword argument 'id'
 
 2016-01-07 12:17:14.180000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
 2016-01-07 12:17:28.221000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:19:52.596000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:20:09.091000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:20:11.664000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:20:24.734000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:30:05.688000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:30:13.707000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:30:18.616000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:30:21.515000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:30:24.987000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:30:30.244000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:30:39.200000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:30:41.745000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:30:57.682000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:37:21.662000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:37:43.199000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:37:55.489000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:39:09.236000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:45:39.940000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:46:28.261000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 12:48:21.699000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 14:21:47.590000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 14:21:52.738000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 14:22:11.597000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 14:22:26.304000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 14:22:39.899000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 14:22:41.953000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 14:23:19.685000 - DeprecationWarning: Call to deprecated function user_can_edit. K:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-07 14:25:38.418000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+
+2016-01-07 14:26:08.305000: WARNING: search failed for query: None 
+Exception detail: search() got an unexpected keyword argument 'id'
+

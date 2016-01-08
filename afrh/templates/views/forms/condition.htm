@@ -126,10 +126,10 @@
                         <dl>   
                             <dt class="arches-evaluation-header">{% trans "Recommendations" %}</dt>
 
-                            <dd data-bind="foreach: $data['RECOMMENDATION_TYPE.E55'].branch_lists" class="arches-evaluation-content">
+                            <dd data-bind="foreach: $data['MANAGEMENT_RECOMMENDATION.E89'].branch_lists" class="arches-evaluation-content">
                                 <span data-bind="text: nodes[0].label"></span><br>
                             </dd>
-                            <dd class="arches-evaluation-content" data-bind="ifnot: $data['RECOMMENDATION_TYPE.E55'].branch_lists.length > 0">
+                            <dd class="arches-evaluation-content" data-bind="ifnot: $data['MANAGEMENT_RECOMMENDATION.E89'].branch_lists.length > 0">
                                 <span data-bind="html: 'no entries'"></span>
                             </dd>
                         </dl>
