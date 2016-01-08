@@ -84,7 +84,7 @@ define(['jquery',
             this.addBranchList(new BranchList({
                 el: this.$el.find('#recommendations-section')[0],
                 data: currentEditedAssessment,
-                dataKey: 'MANAGEMENT_RECOMMENDATION.E89',
+                dataKey: 'RECOMMENDATION_TYPE.E55',
                 validateBranch: function (nodes) {
                     return this.validateHasValues(nodes);
                 }
@@ -218,7 +218,7 @@ define(['jquery',
                 'THREAT_TYPE.E55': {
                     'branch_lists': []
                 },
-                'MANAGEMENT_RECOMMENDATION.E89': {
+                'RECOMMENDATION_TYPE.E55': {
                     'branch_lists': []
                 },
                 'DATE_CONDITION_ASSESSED.E49': {

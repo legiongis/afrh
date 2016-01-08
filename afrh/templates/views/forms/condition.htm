@@ -47,7 +47,7 @@
                                 <span data-bind="html: $data['CONDITION_DESCRIPTION.E62'].branch_lists[0].nodes[0].value"></span>
                             </dd>
                             <dd class="arches-evaluation-content" data-bind="ifnot: $data['CONDITION_DESCRIPTION.E62'].branch_lists.length > 0">
-                                <span data-bind="html: 'no entries'"></span>
+                                <span class="text-muted" data-bind="html: '(none)'"></span>
                             </dd>
                         </dl>
                         <dl>
@@ -100,7 +100,7 @@
                                     </span>
                                 </div>
                                 <div class="arches-evaluation-content" style="margin-left:0;" data-bind="ifnot: $data['CONDITION_IMAGE.E73'].branch_lists.length > 0">
-                                    <span data-bind="html: 'no entries'"></span>
+                                    <span class="text-muted" data-bind="html: '(none)'"></span>
                                 </div>
                             </div>
                         </dl>
@@ -110,7 +110,7 @@
                                 <span data-bind="text: nodes[0].label"></span><br>
                             </dd>
                             <dd class="arches-evaluation-content" data-bind="ifnot: $data['DISTURBANCE_TYPE.E55'].branch_lists.length > 0">
-                                <span data-bind="html: 'no entries'"></span>
+                                <span class="text-muted" data-bind="html: '(none)'"></span>
                             </dd>
                         </dl>
                         <dl>   
@@ -119,18 +119,18 @@
                                     <span data-bind="text: nodes[0].label"></span><br>
                                 </dd>
                             <dd class="arches-evaluation-content" data-bind="ifnot: $data['THREAT_TYPE.E55'].branch_lists.length > 0">
-                                <span data-bind="html: 'no entries'"></span>
+                                <span class="text-muted" data-bind="html: '(none)'"></span>
                             </dd>
                         </dl>
 
                         <dl>   
                             <dt class="arches-evaluation-header">{% trans "Recommendations" %}</dt>
 
-                            <dd data-bind="foreach: $data['MANAGEMENT_RECOMMENDATION.E89'].branch_lists" class="arches-evaluation-content">
+                            <dd data-bind="foreach: $data['RECOMMENDATION_TYPE.E55'].branch_lists" class="arches-evaluation-content">
                                 <span data-bind="text: nodes[0].label"></span><br>
                             </dd>
-                            <dd class="arches-evaluation-content" data-bind="ifnot: $data['MANAGEMENT_RECOMMENDATION.E89'].branch_lists.length > 0">
-                                <span data-bind="html: 'no entries'"></span>
+                            <dd class="arches-evaluation-content" data-bind="ifnot: $data['RECOMMENDATION_TYPE.E55'].branch_lists.length > 0">
+                                <span class="text-muted" data-bind="html: '(none)'"></span>
                             </dd>
                         </dl>
 
@@ -307,7 +307,7 @@
                                                             <div class="arches-crud-child-section">
                                                                 <dl>
                                                                     <dd class="margin-left-15 margin-top-5" style="display: none;" data-bind="visible: true">
-                                                                        <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no disturbances" %}</div>   
+                                                                        <div data-bind="visible: getBranchLists().length == 0" class="text-muted filler-text-inline">{% trans "no disturbances" %}</div>   
                                                                         <div data-bind="foreach: getBranchLists()">
                                                                             <div class="arches-crud-record" style="display:inline">
                                                                                 <a href="javascript:void(0)" class="arches-CRUD-child" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -350,7 +350,7 @@
                                                             <div class="arches-crud-child-section">
                                                                 <dl>
                                                                     <dd class="margin-left-15 margin-top-5" style="display: none;" data-bind="visible: true">
-                                                                        <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no threats" %}</div>   
+                                                                        <div data-bind="visible: getBranchLists().length == 0" class="text-muted filler-text-inline">{% trans "no threats" %}</div>   
                                                                         <div data-bind="foreach: getBranchLists()">
                                                                             <div class="arches-crud-record" style="display:inline">
                                                                                 <a href="javascript:void(0)" class="arches-CRUD-child" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -403,7 +403,7 @@
                                                             <div class="arches-crud-child-section">
                                                                 <dl>
                                                                     <dd class="margin-left-15 margin-top-5" style="display: none;" data-bind="visible: true">
-                                                                        <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no recommendations" %}</div>   
+                                                                        <div data-bind="visible: getBranchLists().length == 0" class="text-muted filler-text-inline">{% trans "no recommendations" %}</div>   
                                                                         <div data-bind="foreach: getBranchLists()">
                                                                             <div class="arches-crud-record" style="display:inline">
                                                                                 <a href="javascript:void(0)" class="arches-CRUD-child" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>

@@ -1049,8 +1049,7 @@ class ConditionForm(ResourceForm):
 
         self.update_nodes('CONDITION_TYPE.E55', data)
         self.update_nodes('THREAT_TYPE.E55', data)
-        #self.update_nodes('RECOMMENDATION_TYPE.E55', data)
-        self.update_nodes('MANAGEMENT_RECOMMENDATION.E89', data)
+        self.update_nodes('RECOMMENDATION_TYPE.E55', data)
         self.update_nodes('DATE_CONDITION_ASSESSED.E49', data)
         self.update_nodes('CONDITION_DESCRIPTION.E62', data)
         self.update_nodes('DISTURBANCE_TYPE.E55', data)
@@ -1083,11 +1082,8 @@ class ConditionForm(ResourceForm):
                 'THREAT_TYPE.E55': {
                     'branch_lists': self.get_nodes(entity, 'THREAT_TYPE.E55')
                 },
-                # 'RECOMMENDATION_TYPE.E55': {
-                    # 'branch_lists': self.get_nodes(entity, 'RECOMMENDATION_TYPE.E55')
-                # },
-                'MANAGEMENT_RECOMMENDATION.E89': {
-                    'branch_lists': self.get_nodes(entity, 'MANAGEMENT_RECOMMENDATION.E89')
+                'RECOMMENDATION_TYPE.E55': {
+                    'branch_lists': self.get_nodes(entity, 'RECOMMENDATION_TYPE.E55')
                 },
                 'DATE_CONDITION_ASSESSED.E49': {
                     'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'DATE_CONDITION_ASSESSED.E49'))
