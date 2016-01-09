@@ -7,7 +7,7 @@
                     <h5 id="" class="arches-report-subsection-title">{% trans "Addresses" %}</h5>
                 </dt>
                 <dd class="arches-report-subsection-item empty-message" style="display:none;">
-                    {% trans "No addresses recorded" %}
+                    <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
                 </dd>
                 {% if 'PLACE_E53' in report_info.source.graph %}
                     {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}

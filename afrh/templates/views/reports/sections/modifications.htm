@@ -8,7 +8,7 @@
 
             {% if 'MODIFICATION_EVENT_E11' not in report_info.source.graph %}
                 <dd class="arches-report-subsection-item">
-                    {% trans "no modifications recorded" %}
+                    <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
                 </dd>
             {% else %}
                 <dd class="arches-report-subsection-item">

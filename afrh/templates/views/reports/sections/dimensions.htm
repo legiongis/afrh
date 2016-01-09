@@ -3,12 +3,12 @@
     <div class="col-xs-12">
         <dl>
             <dt>
-                <h5 id="" class="arches-report-subsection-title hidden">{% trans "Dimensions" %}</h5>
+                <h5 id="" class="arches-report-subsection-title">{% trans "Dimensions" %}</h5>
             </dt>
 
             {% if 'MEASUREMENT_TYPE_E55' not in report_info.source.graph %}
                 <dd class="arches-report-subsection-item">
-                    {% trans "no dimensions recorded" %}
+                    <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
                 </dd>
             {% else %}
                 {% for MEASUREMENT_TYPE_E55 in report_info.source.graph.MEASUREMENT_TYPE_E55 %}

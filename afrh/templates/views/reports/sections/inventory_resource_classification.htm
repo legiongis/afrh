@@ -8,7 +8,7 @@
 
             {% if 'NHRP_RESOURCE_TYPE_E55' not in report_info.source.graph %}
                 <dd class="arches-report-subsection-item">
-                    {% trans "(no NRHP type)" %}
+                    <span class="arches-report-subsection-item-type">{% trans "(no NRHP type)" %}</span>
                 </dd>
             {% else %}
                 {% for NHRP_RESOURCE_TYPE_E55 in report_info.source.graph.NHRP_RESOURCE_TYPE_E55 %}
@@ -19,7 +19,7 @@
             {% endif %}
             {% if 'NHRP_RESOURCE_CATEGORY_E55' not in report_info.source.graph %}
                 <dd class="arches-report-subsection-item">
-                    {% trans "(no NRHP category)" %}
+                    <span class="arches-report-subsection-item-type">{% trans "(no NRHP category)" %}</span>
                 </dd>
             {% else %}
                 {% for NHRP_RESOURCE_CATEGORY_E55 in report_info.source.graph.NHRP_RESOURCE_CATEGORY_E55 %}
@@ -30,7 +30,7 @@
             {% endif %} 
             {% if 'NHRP_RESOURCE_TYPE_E55' not in report_info.source.graph %}
                 <dd class="arches-report-subsection-item">
-                    {% trans "(no NHRP subcategories)" %}
+                    <span class="arches-report-subsection-item-type">{% trans "(no NHRP subcategories)" %}</span>
                 </dd>
             {% else %}
                 {% for NHRP_RESOURCE_SUBCATEGORY_E55 in report_info.source.graph.NHRP_RESOURCE_SUBCATEGORY_E55 %}
@@ -41,7 +41,7 @@
             {% endif %} 
             {% if 'WUZIT_E55' not in report_info.source.graph %}
                 <dd class="arches-report-subsection-item">
-                    {% trans "(no wuzits)" %}
+                    <span class="arches-report-subsection-item-type">{% trans "(no Wuzits)" %}</span>
                 </dd>
             {% else %}
                 {% for WUZIT_E55 in report_info.source.graph.WUZIT_E55 %}
