@@ -1429,3 +1429,5 @@ Exception detail: search() got an unexpected keyword argument 'id'
 2016-01-08 20:07:35.650000 - DeprecationWarning: Call to deprecated function user_can_edit. k:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
 2016-01-08 20:09:45.971000 - DeprecationWarning: Call to deprecated function user_can_edit. k:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
 2016-01-08 20:10:28.921000 - DeprecationWarning: Call to deprecated function user_can_edit. k:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-10 20:10:00.671000 - DeprecationWarning: Call to deprecated function user_can_edit. k:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
+2016-01-10 20:11:05.336000 - DeprecationWarning: Call to deprecated function user_can_edit. k:\arches\afrh\app\arches_env312103\lib\site-packages\arches\app\utils\context_processors.py:57
