@@ -157,8 +157,6 @@ require([
             });
 
             map.on('layerDropped', function (layer, name) {
-                console.log("layer dropped:");
-                console.log(name);
                 var layerModel = new LayerModel({
                       name: name,
                       description: '',
@@ -248,8 +246,14 @@ require([
                             $.ajax({
                                 url: arches.urls.map_markers + 'all?entityid=' + feature.getId(),
                                 success: function(response) {
+                                    
                                     fullFeature = geoJSON.readFeature(response.features[0]);
+                                    console.log("FULL FEATURE");
+                                    console.log(fullFeature);
+                                    
                                     var geom = fullFeature.getGeometry();
+                                    console.log("GEOM:");
+                                    console.log(geom);
                                     geom.transform(ol.proj.get('EPSG:4326'), ol.proj.get('EPSG:3857'));
 
                                     fullFeature.set('select_feature', true);
@@ -327,6 +331,8 @@ require([
             };
 
             map.on('mapClicked', function(e, clickFeature) {
+                console.log('clickFeature');
+                console.log(clickFeature);
                 selectFeatureOverlay.getFeatures().clear();
                 $('#resource-info').hide();
                 if (clickFeature) {

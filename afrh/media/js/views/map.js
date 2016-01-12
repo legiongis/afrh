@@ -72,10 +72,10 @@ define([
             this.map = new ol.Map({
                 layers: layers,
                 interactions: ol.interaction.defaults({
-                    altShiftDragRotate: false,
+                    altShiftDragRotate: true,
                     dragPan: false,
                     rotate: false,
-                    mouseWheelZoom:false
+                    mouseWheelZoom:true
                 }).extend([new ol.interaction.DragPan({kinetic: null})]).extend([dragAndDropInteraction]),
                 target: this.el,
                 view: new ol.View({
@@ -143,7 +143,11 @@ define([
             });
 
             this.map.on('click', function(e) {
-                var clickFeature = self.map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
+                var pixels = [e.originalEvent.layerX,e.originalEvent.layerY];
+                var clickFeature = self.map.forEachFeatureAtPixel(pixels, function (feature, layer) {
+                //var clickFeature = self.map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
+                    
+                    //console.log(clickFeature);
                     return feature;
                 });
                 self.trigger('mapClicked', e, clickFeature);
@@ -155,12 +159,16 @@ define([
             // see http://stackoverflow.com/questions/12704686/html5-with-jquery-e-offsetx-is-undefined-in-firefox
             if(e.offsetX==undefined) {
                 // this works in Firefox
-                xpos = e.pageX-$('#map').offset().left;
-                ypos = e.pageY-$('#map').offset().top;
+                //xpos = e.pageX-$('#map').offset().left;
+                //ypos = e.pageY-$('#map').offset().top;
+                xpos = e.originalEvent.layerX;
+                ypos = e.originalEvent.layerY;
             } else { 
                 // works in Chrome, IE and Safari
-                xpos = e.offsetX;
-                ypos = e.offsetY;
+                //xpos = e.offsetX;
+                //ypos = e.offsetY;
+                xpos = e.originalEvent.layerX;
+                ypos = e.originalEvent.layerY;
             }
             var pixels = [xpos, ypos];
             var coords = this.map.getCoordinateFromPixel(pixels);
@@ -169,6 +177,8 @@ define([
             var overFeature = this.map.forEachFeatureAtPixel(pixels, function (feature, layer) {
                 return feature;
             });
+            //console.log("overfeature?");
+            //console.log(overFeature);
             coords = point.transform("EPSG:3857", "EPSG:4326").getCoordinates();
             // swap order of coords so that they read "lat, long" not "long, lat"
             var coords_latlong = [Number(coords[1]), Number(coords[0])];
