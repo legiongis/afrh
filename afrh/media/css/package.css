@@ -310,6 +310,11 @@ cf https://github.com/summernote/summernote/issues/187
   font-family: 'Open Sans', sans-serif;
 }
 
+.afrh-logo {
+  width: 75px;
+  height: 75px;
+}
+
 /* DEALING WITH THE BORDER UNDER THE NAVBAR AND BUTTONS */
 
 .map {

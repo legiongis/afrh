@@ -9,12 +9,19 @@
             <!-- Topbar Message -->
             <div class="arches-loginbar pull-left">
                 
-                <a href="http://www.archesproject.org" class="">{% trans "Arches" %} </a> 
-                <span class="hidden-xs">{% trans "Cultural Heritage Inventory" %}</span>
+                <!--<a href="http://www.archesproject.org" class="">{% trans "Arches" %} </a> 
+                <span class="hidden-xs">{% trans "Cultural Heritage Inventory" %}</span>-->
+                <a href="https://www.afrh.gov">
+                    <!--<img id="logo-header" class="arches-logo" src="{{ STATIC_URL }}img/icons/AFRH Logo 2015.jpg" alt="Logo">-->
+                    <img id="logo-header" class="afrh-logo" src="{{ STATIC_URL }}img/icons/AFRH Logo 2015.jpg" alt="Logo">
+                </a>
 
             </div>
+            
+             
 
             <!-- Topbar Navigation -->
+
             <ul class="loginbar pull-right">
                 <li>
                     <a href="javascript:void(0);" id="help-button">SHOW HELP</a>
@@ -25,6 +32,7 @@
                 </li>
                 
             </ul>
+
             <!-- End Topbar Navigation -->
         </div>
     </div>
@@ -40,9 +48,7 @@
                     <span class="sr-only">{% trans "Toggle navigation" %}</span>
                     <span class="fa fa-bars"></span>
                 </button>
-                <a class="navbar-brand" href="{% url 'home' %}">
-                    <img id="logo-header" class="arches-logo" src="{{ STATIC_URL }}img/arches_logo.png" alt="Logo">
-                </a>
+                
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
