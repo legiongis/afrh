@@ -165,10 +165,13 @@ def report(request, resourceid):
         if entitytypeidkey == 'INFORMATION_RESOURCE':
             entitytypeidkey = '%s_%s' % (entitytypeidkey, information_resource_type)
         related_resource_dict[entitytypeidkey].append(related_resource)
-        
-    with open(r"K:\arches\afrh\catchall\related_resource_dict","wb") as log:
-        print >> log, json.dumps(related_resource_dict, sort_keys=True,indent=4, separators=(',', ': '))
-
+    
+    try:
+        with open(r"K:\arches\afrh\catchall\related_resource_dict","wb") as log:
+            print >> log, json.dumps(related_resource_dict, sort_keys=True,indent=4, separators=(',', ': '))
+    except:
+        pass
+            
     return render_to_response('resource-report.htm', {
             'geometry': JSONSerializer().serialize(report_info['source']['geometry']),
             'resourceid': resourceid,
