@@ -114,8 +114,11 @@ def report(request, resourceid):
     }
 
     related_resource_info = get_related_resources(resourceid, lang)
-    with open(r"K:\arches\afrh\catchall\related_resources","wb") as log:
-        print >> log, json.dumps(related_resource_info, sort_keys=True,indent=4, separators=(',', ': '))
+    try:
+        with open(r"K:\arches\afrh\catchall\related_resources","wb") as log:
+            print >> log, json.dumps(related_resource_info, sort_keys=True,indent=4, separators=(',', ': '))
+    except:
+        pass
 
     # parse the related entities into a dictionary by resource type
     for related_resource in related_resource_info['related_resources']:
