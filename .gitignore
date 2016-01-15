@@ -1,6 +1,6 @@
+*.pyc
+*.egg*
 afrh/logs
 afrh/elasticsearch
 afrh/uploadedfiles
 settings_local.py
-*.pyc
-*.egg*
