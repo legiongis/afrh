@@ -3,7 +3,7 @@ import sys
 import csv
 import time
 
-auth_dir = r'source_data\authority_files'
+auth_dir = r'concepts\authority_files'
 
 def parse_auth_doc(auth_doc_reader):
     '''basic checking and parsing of file'''
