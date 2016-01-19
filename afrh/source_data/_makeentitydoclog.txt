@@ -4,5 +4,4 @@ ERROR REPORT
   missing authority documents:
     none
   unused authority documents:
-    ADDRESS_TYPE_AUTHORITY_DOCUMENT.csv
     DIMENSION_TYPE_AUTHORITY_DOCUMENT.csv
