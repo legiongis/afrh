@@ -2,18 +2,35 @@ import os
 import csv
 import sys
 
-graph_dir = r'source_data\resource_graphs'
-auth_dir = r'source_data\authority_files'
+graph_dir = r'resource_graphs'
+auth_dir = r'concepts\authority_files'
 out_file = os.path.join(auth_dir,"ENTITY_TYPE_X_ADOC.csv")
 
 def check_for_authdocs(final_dict,auth_dir):
-    '''make sure that all of the necessary auth docs exist'''
+    '''make sure that all of the necessary auth docs exist, and find any
+unnecessary ones.'''
     missing = []
     for v in final_dict.values():
         target = os.path.join(auth_dir,v)
         if not os.path.isfile(target):
             missing.append(target)
-    return missing
+
+    extra = []
+    for f in os.listdir(auth_dir):
+        if f == "ENTITY_TYPE_X_ADOC.csv":
+            continue
+        if not f.endswith(".csv"):
+            continue
+        ## not 100% confident on the .values testing right now.
+        if f.endswith(".values.csv"):
+            f_auth = os.path.join(auth_dir,f.replace(".values",""))
+            if not os.path.isfile(f_auth):
+                extra.append(f)
+            continue
+        if not f in final_dict.values():
+            extra.append(f)
+    
+    return missing, extra
 
 def get_node_ids(nodesfile):
     '''make dict of all node ids and names'''
@@ -74,7 +91,7 @@ def print_entity_x_adoc_file(authdoc_dir,input_dict):
 
     return out_file                           
 
-def print_to_log(list_errors,dict_errors):
+def print_to_log(dict_errors,missing=[],extra=[]):
     '''print the two error outputs to a log'''
 
     current_dir = os.path.dirname(sys.argv[0])
@@ -93,8 +110,15 @@ def print_to_log(list_errors,dict_errors):
             print >> log, "    none"
 
         print >> log, "  missing authority documents:"
-        if len(list_errors) > 0:
-            for d in list_errors:
+        if len(missing) > 0:
+            for d in missing:
+                print >> log, "   ", d 
+        else:
+            print >> log, "    none"
+
+        print >> log, "  unused authority documents:"
+        if len(extra) > 0:
+            for d in extra:
                 print >> log, "   ", d 
         else:
             print >> log, "    none"
@@ -119,10 +143,10 @@ for f in os.listdir(graph_dir):
 
     final_dict, errors = make_entity_to_adoc_dict(node_ids,edges,final_dict,resourcetype)
     
-    missing_docs = check_for_authdocs(final_dict,auth_dir)
+    missing_docs,extra_docs = check_for_authdocs(final_dict,auth_dir)
 
     print_entity_x_adoc_file(auth_dir,final_dict)
 
-logpath = print_to_log(missing_docs, errors)
+logpath = print_to_log(errors,missing_docs,extra_docs)
 os.startfile(logpath)
 
