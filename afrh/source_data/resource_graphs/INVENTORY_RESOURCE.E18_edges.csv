@@ -134,13 +134,13 @@ Source,Target,Type,Id,Label,Weight
 268,269,Directed,269,P2,1.0
 268,273,Directed,273,P4,1.0
 268,435,Directed,434,P3,1.0
-268,453,Directed,454,P3,1.0
+268,453,Directed,454,P2,1.0
 269,270,Directed,270,-P71,1.0
 273,274,Directed,274,P78,1.0
 278,279,Directed,279,P2,1.0
 278,283,Directed,283,P4,1.0
 278,439,Directed,433,P3,1.0
-278,452,Directed,453,P3,1.0
+278,452,Directed,453,P2,1.0
 279,280,Directed,280,-P71,1.0
 283,284,Directed,284,P78,1.0
 440,441,Directed,436,P2,1.0
