@@ -25,6 +25,9 @@ DEFAULT_MAP_ZOOM = 15
 
 RESOURCE_MODEL = {'default': '{}.models.resource.Resource'.format(PACKAGE_NAME)}
 
+## make this blank so that non-Arches-HIP resources can load
+PACKAGE_VALIDATOR = "arches.app.utils.mock_package_validator"
+
 def RESOURCE_TYPE_CONFIGS():
     return { 
         'INVENTORY_RESOURCE.E18': {
