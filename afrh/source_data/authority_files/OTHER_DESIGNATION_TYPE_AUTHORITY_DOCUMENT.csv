@@ -1,0 +1,14 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider 
+OTHER_DESIG:1,NRHP,,OTHER_DESIGNATION_TYPE_AUTHORITY_DOCUMENT.csv,Collector,preserveSCAPES
+OTHER_DESIG:2,Historic District,,OTHER_DESIG:1,Index,preserveSCAPES
+OTHER_DESIG:3,Landmark,,OTHER_DESIG:1,Index,preserveSCAPES
+OTHER_DESIG:4,Other,,OTHER_DESIG:1,Index,preserveSCAPES
+OTHER_DESIG:5,Local,,OTHER_DESIGNATION_TYPE_AUTHORITY_DOCUMENT.csv,Collector,preserveSCAPES
+OTHER_DESIG:6,Historic District,,OTHER_DESIG:5,Index,preserveSCAPES
+OTHER_DESIG:7,Landmark,,OTHER_DESIG:5,Index,preserveSCAPES
+OTHER_DESIG:8,Other,,OTHER_DESIG:5,Index,preserveSCAPES
+OTHER_DESIG:9,Other,,OTHER_DESIGNATION_TYPE_AUTHORITY_DOCUMENT.csv,Collector,preserveSCAPES
+OTHER_DESIG:10,National Historic Landmark,,OTHER_DESIG:9,Index,preserveSCAPES
+OTHER_DESIG:11,National Monument,,OTHER_DESIG:9,Index,preserveSCAPES
+OTHER_DESIG:12,National Historic Site,,OTHER_DESIG:9,Index,preserveSCAPES
+OTHER_DESIG:13,Other,,OTHER_DESIG:9,Index,preserveSCAPES

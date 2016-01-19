@@ -1,0 +1,5 @@
+conceptid,Preflabel,altlabels,ParentConceptid,ConceptType,Provider
+LANGUAGE:1,English,en,LANGUAGE_AUTHORITY_DOCUMENT.csv,Index,CRNHA
+LANGUAGE:2,French,fr,LANGUAGE_AUTHORITY_DOCUMENT.csv,Index,CRNHA
+LANGUAGE:3,Spanish,es,LANGUAGE_AUTHORITY_DOCUMENT.csv,Index,CRNHA
+LANGUAGE:4,Hebrew,he,LANGUAGE_AUTHORITY_DOCUMENT.csv,Index,CRNHA
