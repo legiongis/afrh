@@ -278,7 +278,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-4 form-section-input add-padding-right">
                     <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('BEGINNING_OF_EXISTENCE_QUALIFIER.E55,END_OF_EXISTENCE_QUALIFIER.E55', 'value'), placeholder: '{% trans 'qualifier' %}', dataKey: 'important_dates'}"></input>
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('BEGINNING_OF_EXISTENCE_QUALIFIER.E55,END_OF_EXISTENCE_QUALIFIER.E55', 'value'), placeholder: '{% trans 'qualifier' %}', dataKey: 'date_qualifiers'}"></input>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4 form-section-input add-margin-top">
@@ -314,10 +314,10 @@
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
                                     <a href="javascript:void(0)" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
-                                        <span class="arches-CRUD-child arches-CRUD-edit" data-bind="text: nodes.get('BEGINNING_OF_EXISTENCE_TYPE.E55,END_OF_EXISTENCE_TYPE.E55', 'label') + ': ' + nodes.get('START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49', 'value').slice(0,10)" style="padding-right:2px;"></span>
+                                        <span class="arches-CRUD-child arches-CRUD-edit" data-bind="text: nodes.get('BEGINNING_OF_EXISTENCE_TYPE.E55,END_OF_EXISTENCE_TYPE.E55', 'label') + ': ' + nodes.get('BEGINNING_OF_EXISTENCE_QUALIFIER.E55,END_OF_EXISTENCE_QUALIFIER.E55', 'label') +' '+nodes.get('START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49', 'value').slice(0,10)" style="padding-right:2px;"></span>
                                         <br>
                                         <span class="text-muted arches-crud-type-identifier">
-                                            note: <span data-bind="text: nodes.get('BEGINNING_OF_EXISTENCE_NOTE.E62,END_OF_EXISTENCE_NOTE.E62', 'value')"></span>
+                                            <em><span data-bind="text: nodes.get('BEGINNING_OF_EXISTENCE_NOTE.E62,END_OF_EXISTENCE_NOTE.E62', 'value')"></span></em>
                                         </span>
                                     </a>
                                 </div>

@@ -152,7 +152,7 @@ RESOURCE_GRAPH_LOCATIONS = (
 #     # Put strings here, like "/home/data/resource_graphs" or "C:/data/resource_graphs".
 #     # Always use forward slashes, even on Windows.
 #     # Don't forget to use absolute paths, not relative paths.
-     os.path.join(PACKAGE_ROOT, 'source_data', 'concepts','resource_graphs'),
+     os.path.join(PACKAGE_ROOT, 'source_data', 'resource_graphs'),
 )
 
 CONCEPT_SCHEME_LOCATIONS = (

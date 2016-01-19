@@ -95,7 +95,10 @@ class InventorySummaryForm(ResourceForm):
     def load(self, lang):
         self.data['important_dates'] = {
             'branch_lists': datetime_nodes_to_dates(self.get_nodes('BEGINNING_OF_EXISTENCE.E63') + self.get_nodes('END_OF_EXISTENCE.E64')),
-            'domains': {'important_dates' : Concept().get_e55_domain('BEGINNING_OF_EXISTENCE_TYPE.E55') + Concept().get_e55_domain('END_OF_EXISTENCE_TYPE.E55')}
+            'domains': {
+                'important_dates' : Concept().get_e55_domain('BEGINNING_OF_EXISTENCE_TYPE.E55') + Concept().get_e55_domain('END_OF_EXISTENCE_TYPE.E55'),
+                'date_qualifiers': Concept().get_e55_domain('BEGINNING_OF_EXISTENCE_QUALIFIER.E55')
+            }
         }
 
         if self.resource:
