@@ -311,8 +311,8 @@ cf https://github.com/summernote/summernote/issues/187
 }
 
 .afrh-logo {
-  width: 75px;
-  height: 75px;
+  width: 65px;
+  height: 65px;
 }
 
 /* DEALING WITH THE BORDER UNDER THE NAVBAR AND BUTTONS */
@@ -557,4 +557,10 @@ img.ls-s1 {
 
 .photo-text-box {
     left:0px !important;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-float-right {
+        float: right;
+    }
 }

@@ -10,12 +10,11 @@
             <div class="arches-loginbar pull-left">
                 
                 <!--<a href="http://www.archesproject.org" class="">{% trans "Arches" %} </a> 
-                <span class="hidden-xs">{% trans "Cultural Heritage Inventory" %}</span>-->
+                <span class="hidden-xs">{% trans "Cultural Heritage Inventory" %}</span>
                 <a href="https://www.afrh.gov">
-                    <!--<img id="logo-header" class="arches-logo" src="{{ STATIC_URL }}img/icons/AFRH Logo 2015.jpg" alt="Logo">-->
                     <img id="logo-header" class="afrh-logo" src="{{ STATIC_URL }}img/icons/AFRH Logo 2015.jpg" alt="Logo">
                 </a>
-
+-->
             </div>
             
              
@@ -28,7 +27,7 @@
                 </li>
                 <li class="topbar-devider"></li>   
                 <li>
-                    <a id="auth-link" href="{% url 'auth' %}?next={{ request.get_full_path }}{% if user.is_anonymous %}">{% trans "Login" %}{% else %}&logout=true">Welcome {{ user.username }} - {% trans "Logout" %}{% endif %}</a>
+                    <a id="auth-link" href="{% url 'auth' %}?next={{ request.get_full_path }}{% if user.username == 'anonymous' %}">{% trans "Login" %}{% else %}&logout=true">{{ user.username }} - {% trans "Logout" %}{% endif %}</a>
                 </li>
                 
             </ul>
@@ -41,18 +40,22 @@
     <!-- Navbar -->
     <div class="navbar navbar-default" role="navigation">
         <div class="container">
+            <div style="position:absolute;top:-30px">
+            <a href="{% url 'home' %}">
+                    <img id="logo-header" class="afrh-logo" src="{{ STATIC_URL }}img/icons/AFRH Logo 2015 trim.png" alt="Logo">
+                </a>
+                </div>
             
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <button type="button" class="navbar-toggle" style="height: 35px;" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                     <span class="sr-only">{% trans "Toggle navigation" %}</span>
                     <span class="fa fa-bars"></span>
                 </button>
-                
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-responsive-collapse">
+            <div class="collapse navbar-collapse navbar-responsive-collapse nav-float-right">
                 <ul class="nav navbar-nav">
                     
                     <!-- Home -->
@@ -116,7 +119,7 @@
     </div>            
     <!-- End Navbar -->
     
-        <!-- Start Help Menus -->
+    <!-- Start Help Menus -->
     {% if active_page != 'Login' %}
     <div id="help-section" style="display: none">
         <div class="purchase" style="padding: 0px; border-bottom: #ccc solid 3px;">
