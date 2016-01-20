@@ -52,7 +52,8 @@ class Resource(ArchesResource):
                 forms.ConditionForm.get_info(),
                 forms.RelatedFilesForm.get_info(),
                 forms.InventoryEvaluationForm.get_info(),
-                forms.ExternalReferenceForm.get_info()
+                forms.ExternalReferenceForm.get_info(),
+                forms.NewDatesForm.get_info()
             ]
 
         elif self.entitytypeid == 'HERITAGE_RESOURCE_GROUP.E27':

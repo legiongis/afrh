@@ -409,6 +409,21 @@ class ActivitySummaryForm(ResourceForm):
             except IndexError:
                 pass
 
+class NewDatesForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'new-dates',
+            'icon': 'fa-tag',
+            'name': _('Dates Mockup'),
+            'class': NewDatesForm
+        }
+
+    def update(self, data, files):
+        pass
+
+    def load(self, lang):
+        pass
 
 class ComponentForm(ResourceForm):
     baseentity = None

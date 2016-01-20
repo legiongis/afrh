@@ -1,0 +1,176 @@
+{% extends "views/forms/base.htm" %}
+{% load i18n %}
+{% block form_content %}
+
+<div class="form-full-content">
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Dates" %}</span></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-subheader"><span>{% trans "Enter Date" %}</span></div>
+        </div>
+    </div>
+    <div id="nhrp-type-section" class="form-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                
+                <div class="col-xs-12 col-sm-4 form-section-input add-padding-right add-margin-top">
+                    <div class="form-group">
+                        <input class="form-control arches-form-input" placeholder='{% trans "year" %}'>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 form-section-input add-padding-right add-margin-top">
+                    <div class="form-group">
+                        <select class="form-control arches-form-input totalscore" placeholder="prefix">
+                            <option value="" disabled selected>month</option>
+                            <option>Jan</option>
+                            <option>Feb</option>
+                            <option>Mar</option>
+                            <option>etc.</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 form-section-input add-margin-top">
+                    <div class="form-group">
+                        <select class="form-control arches-form-input totalscore" placeholder="prefix">
+                            <option value="" disabled selected>day</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>etc.</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
+                    <div class="form-group">
+                        <select class="form-control arches-form-input totalscore" placeholder="prefix">
+                            <option value="" disabled selected>prefix</option>
+                            <option>ca.</option>
+                            <option>pre</option>
+                            <option>post</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <select class="form-control arches-form-input totalscore" placeholder="prefix">
+                            <option value="" disabled selected>suffix</option>
+                            <option>AD</option>
+                            <option>BC</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a resource type." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no types defined" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record" style="display:inline;">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-subheader"><span>{% trans "Add Second Date to Create Range" %}</span></div>
+        </div>
+    </div>
+    <div id="nhrp-type-section" class="form-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                
+                <div class="col-xs-12 col-sm-4 form-section-input add-padding-right add-margin-top">
+                    <div class="form-group">
+                        <input class="form-control arches-form-input" placeholder='{% trans "year" %}'>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 form-section-input add-padding-right add-margin-top">
+                    <div class="form-group">
+                        <select class="form-control arches-form-input totalscore" placeholder="prefix">
+                            <option value="" disabled selected>month</option>
+                            <option>Jan</option>
+                            <option>Feb</option>
+                            <option>Mar</option>
+                            <option>etc.</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 form-section-input add-margin-top">
+                    <div class="form-group">
+                        <select class="form-control arches-form-input totalscore" placeholder="prefix">
+                            <option value="" disabled selected>day</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>etc.</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
+                    <div class="form-group">
+                        <select class="form-control arches-form-input totalscore" placeholder="prefix">
+                            <option value="" disabled selected>prefix</option>
+                            <option>ca.</option>
+                            <option>pre</option>
+                            <option>post</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <select class="form-control arches-form-input totalscore" placeholder="prefix">
+                            <option value="" disabled selected>suffix</option>
+                            <option>AD</option>
+                            <option>BC</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a resource type." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no types defined" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record" style="display:inline;">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock form_content %}
