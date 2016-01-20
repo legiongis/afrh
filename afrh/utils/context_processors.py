@@ -16,6 +16,8 @@ You should have received a copy of the GNU Affero General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 '''
 
+import arches
+import arches_hip
 from django.conf import settings
 from arches.app.models.resource import Resource
 
@@ -63,6 +65,13 @@ def app_settings(request):
 ##    return {
 ##        'user_can_edit': can_rdm
 ##    }
+
+def get_versions(request):
+    '''returns the currently used arches and arches-HIP versions'''
+    return {
+        'arches_version': arches.get_version(),
+        'hip_version': arches_hip.get_version(),
+    }
 
 def user_permissions(request):
     '''defines all user permissions'''

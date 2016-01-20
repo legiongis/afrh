@@ -44,6 +44,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     #'{}.utils.context_processors.user_can_edit'.format(PACKAGE_NAME),
     '{}.utils.context_processors.user_permissions'.format(PACKAGE_NAME),
     '{}.utils.context_processors.user_groups'.format(PACKAGE_NAME),
+    '{}.utils.context_processors.get_versions'.format(PACKAGE_NAME),
 )
 
 def RESOURCE_TYPE_CONFIGS():
