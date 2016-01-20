@@ -52,17 +52,17 @@ def app_settings(request):
         'GOOGLE_ANALYTICS_TRACKING_ID': settings.GOOGLE_ANALYTICS_TRACKING_ID
     }
 
-def user_can_edit(request):
-    # check for RDM privileges
-    group_names = [i.name for i in request.user.groups.all()]
-    
-    can_rdm = False
-    if "RDM ACCESS" in group_names or request.user.is_superuser:
-        can_rdm = True
-        
-    return {
-        'user_can_edit': can_rdm
-    }
+##def user_can_edit(request):
+##    # check for RDM privileges
+##    group_names = [i.name for i in request.user.groups.all()]
+##    
+##    can_rdm = False
+##    if "RDM ACCESS" in group_names or request.user.is_superuser:
+##        can_rdm = True
+##        
+##    return {
+##        'user_can_edit': can_rdm
+##    }
 
 def user_permissions(request):
     '''defines all user permissions'''
