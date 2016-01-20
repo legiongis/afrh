@@ -28,6 +28,25 @@ RESOURCE_MODEL = {'default': '{}.models.resource.Resource'.format(PACKAGE_NAME)}
 ## make this blank so that non-Arches-HIP resources can load
 PACKAGE_VALIDATOR = "arches.app.utils.mock_package_validator"
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+    '{}.utils.context_processors.livereload'.format(PACKAGE_NAME),
+    '{}.utils.context_processors.resource_types'.format(PACKAGE_NAME),
+    '{}.utils.context_processors.map_info'.format(PACKAGE_NAME),
+    '{}.utils.context_processors.app_settings'.format(PACKAGE_NAME),
+    '{}.utils.context_processors.user_can_edit'.format(PACKAGE_NAME),
+    '{}.utils.context_processors.user_can_rdm'.format(PACKAGE_NAME),
+    '{}.utils.context_processors.user_permissions'.format(PACKAGE_NAME),
+    '{}.utils.context_processors.user_groups'.format(PACKAGE_NAME),
+)
+
 def RESOURCE_TYPE_CONFIGS():
     return { 
         'INVENTORY_RESOURCE.E18': {
