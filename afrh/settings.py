@@ -41,8 +41,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     '{}.utils.context_processors.resource_types'.format(PACKAGE_NAME),
     '{}.utils.context_processors.map_info'.format(PACKAGE_NAME),
     '{}.utils.context_processors.app_settings'.format(PACKAGE_NAME),
-    '{}.utils.context_processors.user_can_edit'.format(PACKAGE_NAME),
-    '{}.utils.context_processors.user_can_rdm'.format(PACKAGE_NAME),
+    #'{}.utils.context_processors.user_can_edit'.format(PACKAGE_NAME),
     '{}.utils.context_processors.user_permissions'.format(PACKAGE_NAME),
     '{}.utils.context_processors.user_groups'.format(PACKAGE_NAME),
 )
