@@ -117,6 +117,16 @@ define(['jquery',
                     return this.validateHasValues(nodes);
                 }
             }));
+            
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#assessment-type-section')[0],
+                data: currentEditedAssessment,
+                dataKey: 'CONDITION_ASSESSMENT_TYPE.E55',
+                singleEdit: true,
+                validateBranch: function (nodes) {
+                    return this.validateHasValues(nodes);
+                }
+            }));
 
 
             this.addBranchList(new BranchList({
@@ -213,6 +223,9 @@ define(['jquery',
                     'branch_lists': []
                 },
                 'CONDITION_TYPE.E55': {
+                    'branch_lists': []
+                },
+                'CONDITION_ASSESSMENT_TYPE.E55': {
                     'branch_lists': []
                 },
                 'THREAT_TYPE.E55': {

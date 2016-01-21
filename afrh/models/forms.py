@@ -1066,6 +1066,7 @@ class ConditionForm(ResourceForm):
                     self.resource.filter(lambda entity: entity.entityid != node['entityid'])
 
         self.update_nodes('CONDITION_TYPE.E55', data)
+        self.update_nodes('CONDITION_ASSESSMENT_TYPE.E55', data)
         self.update_nodes('THREAT_TYPE.E55', data)
         self.update_nodes('RECOMMENDATION_TYPE.E55', data)
         self.update_nodes('DATE_CONDITION_ASSESSED.E49', data)
@@ -1082,6 +1083,7 @@ class ConditionForm(ResourceForm):
             'domains': {
                 'DISTURBANCE_TYPE.E55': Concept().get_e55_domain('DISTURBANCE_TYPE.E55'),
                 'CONDITION_TYPE.E55' : Concept().get_e55_domain('CONDITION_TYPE.E55'),
+                'CONDITION_ASSESSMENT_TYPE.E55' : Concept().get_e55_domain('CONDITION_ASSESSMENT_TYPE.E55'),
                 'THREAT_TYPE.E55' : Concept().get_e55_domain('THREAT_TYPE.E55'),
                 'RECOMMENDATION_TYPE.E55' : Concept().get_e55_domain('RECOMMENDATION_TYPE.E55')
             }
@@ -1096,6 +1098,9 @@ class ConditionForm(ResourceForm):
                 },
                 'CONDITION_TYPE.E55': {
                     'branch_lists': self.get_nodes(entity, 'CONDITION_TYPE.E55')
+                },
+                'CONDITION_ASSESSMENT_TYPE.E55': {
+                    'branch_lists': self.get_nodes(entity, 'CONDITION_ASSESSMENT_TYPE.E55')
                 },
                 'THREAT_TYPE.E55': {
                     'branch_lists': self.get_nodes(entity, 'THREAT_TYPE.E55')

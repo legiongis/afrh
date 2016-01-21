@@ -38,6 +38,8 @@
                                             <span data-bind="text: $data['DATE_CONDITION_ASSESSED.E49'].branch_lists[0].nodes[0].label + ': ' + $data['CONDITION_TYPE.E55'].branch_lists[0].nodes[0].label"></span>
                                         </span>
                                     </a>
+                                    <br>
+                                    <em><span class="text-muted" data-bind="html: $data['CONDITION_ASSESSMENT_TYPE.E55'].branch_lists[0].nodes[0].label"></span></em>
                                 </div>
                             </dd>
                         </dl>
@@ -184,54 +186,38 @@
                                             <div class="tab-pane active" id="tab1" style="min-height: 330px;">
                                                 <br>
                                                 <h3 class="margin-bottom-5"><strong>{% trans "Part 1" %}</strong> {% trans "Assessment Summary" %}</h3>
-
                                                 <div class="alert alert-info fade in">
                                                     <i class="fa-fw fa fa-info"></i>
                                                     {% trans "Start your condition assessment by describing the overall condition of the resource and the date you observed the resource." %}
                                                 </div>
 
+                                                
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-6 form-section-input add-padding-right" id="condition-type-section">
+                                                            <div class="form-group">
+                                                                <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CONDITION_TYPE.E55', 'value'), placeholder: '{% trans 'condition' %}', dataKey: 'CONDITION_TYPE.E55'}"></input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 form-section-input add-margin-top" id="date-section">
+                                                            <div class="input-group datetimepicker" style="float: left" >
+                                                                <input type="text" placeholder='{% trans "date assessed (yyyy-mm-dd)" %}' class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('DATE_CONDITION_ASSESSED.E49', 'value')} ">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12 form-section-input margin-top-5" id="assessment-type-section">
+                                                            <div class="form-group">
+                                                                <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CONDITION_ASSESSMENT_TYPE.E55', 'value'), placeholder: '{% trans 'assessment type' %}', dataKey: 'CONDITION_ASSESSMENT_TYPE.E55'}"></input>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <!-- Overall Condition, Date Observed -->
                                                 <div>
-                                                    <dl class="">   
-
-                                                        <dd class="">
-                                                            <div class="row">
-
-                                                                <!-- Condition and dates -->
-                                                                <div id="condition-type-section" class="col-xs-12 col-sm-6">
-                                                                               
-                                                                    <div style="padding-left: 0px;">
-                                                                        <input style="width:100%" class="select2 arches-select2-crud-form" placeholder='{% trans "condition" %}' data-bind="select2: {value: getEditedNode('CONDITION_TYPE.E55', 'value'), dataKey: 'CONDITION_TYPE.E55'}">
-                                                                        </input>
-                                                                    </div>
-
-                                                                    <!-- Spacer for xs screens -->
-                                                                <div class="margin-top-5 hidden-lg hidden-md hidden-sm"></div>
-
-                                                                </div>
-
-
-                                                                <!-- Date -->
-                                                                <div id="date-section" class="col-xs-12 col-sm-6">
-
-                                                                    <div class="input-group datetimepicker" style="float: left" >
-                                                                        <input type="text" placeholder='{% trans "date assessed (yyyy-mm-dd)" %}' class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('DATE_CONDITION_ASSESSED.E49', 'value')} ">
-                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                    </div>
-
-                                                                </div>
-
-                                                            </div>
-                                                        </dd>
-
-                                                    </dl>
-
                                                     <!-- Description -->
                                                     <dl id="description-section">   
                                                         <dt>
-                                                            <h5 id="" class="section-headline" style="margin-top: 30px;">{% trans "Description" %}</h5>
                                                         </dt>
-
                                                         <!-- HTML Editor -->
                                                         <dd class="">
                                                             <div class="row">
@@ -254,6 +240,7 @@
                                                     </dl> 
                                                 </div>  
                                             </div>
+                                           
 
                                             <!-- Tab 2: Upload Files -->
                                             <div class="tab-pane" id="tab2" style="min-height: 330px;">
