@@ -169,11 +169,9 @@
             }
             
         });
-        console.log("base loaded all js libraries");
         
         // application wide require calls
         require(["jquery"], function($) {
-            console.log("base loading application wide variables...");
             var jQuery = $;
 
             // put values here that should be accessible application wide
@@ -230,7 +228,6 @@
                         icon: "{% static 'img/map/bing_hybrid.png' %}"
                     }]
                 };
-                console.log("  done");
             });
             
 
@@ -255,7 +252,6 @@
                     },
                     {% endfor %}
                 };
-                console.log("   done");
                 return resourceTypes;
             });
             
@@ -315,7 +311,6 @@
             $(document).ready(function() {
                 toggleHelp()
                 toggleTopic()
-                console.log("base is fully loaded");
             });
             
         });
