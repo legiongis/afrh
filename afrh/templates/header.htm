@@ -40,12 +40,11 @@
     <!-- Navbar -->
     <div class="navbar navbar-default" role="navigation">
         <div class="container">
-            <div style="position:absolute;top:-30px">
-            <a href="{% url 'home' %}">
+            <div style="position:absolute;top:-30px;height:65px;width:65px;z-index:13;">
+                <a href="{% url 'home' %}">
                     <img id="logo-header" class="afrh-logo" src="{{ STATIC_URL }}img/icons/AFRH Logo 2015 trim.png" alt="Logo">
                 </a>
-                </div>
-            
+            </div>
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" style="height: 35px;" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -120,7 +119,6 @@
     <!-- End Navbar -->
     
     <!-- Start Help Menus -->
-    {% if active_page != 'Login' %}
     <div id="help-section" style="display: none">
         <div class="purchase" style="padding: 0px; border-bottom: #ccc solid 3px;">
             <div class="container">
@@ -144,11 +142,14 @@
                     {% if active_page = 'RDM' %}
                         {% include 'help/rdm.htm' %}
                     {% endif %}
+                    
+                    {% if main_script = 'login' %}
+                        {% include 'help/login.htm' %}
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
-    {% endif %}
     <!-- End Help Menus -->
 
 </div>
