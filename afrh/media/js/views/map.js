@@ -75,7 +75,7 @@ define([
                     altShiftDragRotate: true,
                     dragPan: false,
                     rotate: false,
-                    mouseWheelZoom:true
+                    mouseWheelZoom:false,
                 }).extend([new ol.interaction.DragPan({kinetic: null})]).extend([dragAndDropInteraction]),
                 target: this.el,
                 view: new ol.View({
