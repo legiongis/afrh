@@ -76,7 +76,7 @@ define(['jquery',
                         if (entity.entitytypeid === descriptionNode){
                             description = entity.value;
                             if (description.length > 150) {
-                                description = description.split(/\s+/).slice(1,25).join(" ")+"...";
+                                description = description.split(/\s+/).slice(0,25).join(" ")+"...";
                             };
                         }
                     })
