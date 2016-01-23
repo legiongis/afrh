@@ -331,8 +331,7 @@ require([
             };
 
             map.on('mapClicked', function(e, clickFeature) {
-                console.log('clickFeature');
-                console.log(clickFeature);
+                hideAllPanels();
                 selectFeatureOverlay.getFeatures().clear();
                 $('#resource-info').hide();
                 if (clickFeature) {
