@@ -5,6 +5,7 @@ import sys
 graph_dir = r'resource_graphs'
 auth_dir = r'concepts\authority_files'
 out_file = os.path.join(auth_dir,"ENTITY_TYPE_X_ADOC.csv")
+concept_scheme_name = "PRESERVEscapes"
 
 def check_for_authdocs(final_dict,auth_dir):
     '''make sure that all of the necessary auth docs exist, and find any
@@ -75,7 +76,7 @@ def make_entity_to_adoc_dict(nodes, edges, in_dict, resourceid):
 
     return in_dict, errors
 
-def print_entity_x_adoc_file(authdoc_dir,input_dict):
+def print_entity_x_adoc_file(authdoc_dir,input_dict,scheme_name):
     '''create the new entity type x adoc file'''
     sortout = input_dict.keys()
     sortout.sort()
@@ -86,7 +87,7 @@ def print_entity_x_adoc_file(authdoc_dir,input_dict):
         writer.writerow(["entitytype","authoritydoc","authoritydocconceptscheme"])
         
         for s in sortout:
-            row = [s,input_dict[s],"PRESERVEscapes"]
+            row = [s,input_dict[s],scheme_name]
             writer.writerow(row)
 
     return out_file                           
@@ -145,7 +146,7 @@ for f in os.listdir(graph_dir):
     
     missing_docs,extra_docs = check_for_authdocs(final_dict,auth_dir)
 
-    print_entity_x_adoc_file(auth_dir,final_dict)
+    print_entity_x_adoc_file(auth_dir,final_dict,concept_scheme_name)
 
 logpath = print_to_log(errors,missing_docs,extra_docs)
 os.startfile(logpath)
