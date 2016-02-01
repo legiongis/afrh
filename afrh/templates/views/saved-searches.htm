@@ -1,10 +1,6 @@
 {% load staticfiles %}
 {% load i18n %}
 
-
-
-
-
 <!--
 {% for node, entries in browse_info.items %}
 {{ node }}: {
@@ -21,7 +17,7 @@
         </div>
         {% for entry, contents in browse_info.NHRP_RESOURCE_TYPE.items %}
         <a href="http://{{local_domain}}/search?page=1&termFilter={{contents.term_filter}}">
-            <div class="col-xs-12 servive-block servive-block-default" style="background-color:blue;">
+            <div class="col-xs-12 servive-block servive-block-default" style="background-color:#3276b1;color:black;">
                 <h4>{{ contents.name }}</h4>
             </div>
         </a>
