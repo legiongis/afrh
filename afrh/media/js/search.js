@@ -8,6 +8,7 @@ require(['jquery',
     'views/search/map-filter',
     'views/search/time-filter',
     'views/search/search-results',
+    'views/saved-searches',
     'knockout',
     'plugins/bootstrap-slider/bootstrap-slider.min',
     'views/forms/sections/branch-list',
@@ -15,7 +16,7 @@ require(['jquery',
     'openlayers',
     'bootstrap-datetimepicker',
     'plugins/knockout-select2'], 
-    function($, _, Backbone, bootstrap, arches, select2, TermFilter, MapFilter, TimeFilter, SearchResults, ko, Slider, BranchList, resourceTypes, ol) {
+    function($, _, Backbone, bootstrap, arches, select2, TermFilter, MapFilter, TimeFilter, SearchResults, SavedSearches, ko, Slider, BranchList, resourceTypes, ol) {
     $(document).ready(function() {
         var wkt = new ol.format.WKT();
 
@@ -166,6 +167,7 @@ require(['jquery',
             doQuery: function () {
                 var self = this;
                 var queryString = this.searchQuery.queryString();
+                console.log(queryString);
                 if (this.updateRequest) {
                     this.updateRequest.abort();
                 }

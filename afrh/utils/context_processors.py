@@ -20,6 +20,13 @@ import arches
 import arches_hip
 from django.conf import settings
 from arches.app.models.resource import Resource
+from afrh.models import browse
+import json
+
+def local_domain(request):
+    return {
+        'local_domain': settings.LOCAL_DOMAIN
+    }
 
 def livereload(request):
     return {
@@ -44,6 +51,7 @@ def map_info(request):
 
 def resource_types(request):
     sorted_resource_types = sorted(settings.RESOURCE_TYPE_CONFIGS().items(), key=lambda v: v[1]['sort_order'])
+    print type(sorted_resource_types)
     return {
         'resource_types': sorted_resource_types
     }
@@ -117,4 +125,11 @@ def user_groups(request):
     # for now allowing all logged in users to be 'editors'
     return {
         'user_groups': request.user.groups.all()
+    }
+
+def browse_info(request):
+    info = browse.get_browse_info()
+        
+    return {
+        'browse_info': info
     }

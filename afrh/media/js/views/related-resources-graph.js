@@ -9,6 +9,7 @@ define(['jquery', 'backbone', 'underscore', 'arches', 'resource-types', 'd3', 'p
         },
 
         initialize: function(options) {
+            console.log("loaded");
             var self = this,
                 width = this.$el.parent().width(),
                 height = 400;

@@ -25,8 +25,10 @@ DEFAULT_MAP_ZOOM = 15
 
 RESOURCE_MODEL = {'default': '{}.models.resource.Resource'.format(PACKAGE_NAME)}
 
-## make this blank so that non-Arches-HIP resources can load
+## use the default arches validator so non-Arches-HIP resources can load
 PACKAGE_VALIDATOR = "arches.app.utils.mock_package_validator"
+
+LOCAL_DOMAIN = "afrh.adamcfcox.com"
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -41,11 +43,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     '{}.utils.context_processors.resource_types'.format(PACKAGE_NAME),
     '{}.utils.context_processors.map_info'.format(PACKAGE_NAME),
     '{}.utils.context_processors.app_settings'.format(PACKAGE_NAME),
-    #'{}.utils.context_processors.user_can_edit'.format(PACKAGE_NAME),
     '{}.utils.context_processors.user_permissions'.format(PACKAGE_NAME),
     '{}.utils.context_processors.user_groups'.format(PACKAGE_NAME),
     '{}.utils.context_processors.get_versions'.format(PACKAGE_NAME),
+    '{}.utils.context_processors.browse_info'.format(PACKAGE_NAME),
+    '{}.utils.context_processors.local_domain'.format(PACKAGE_NAME),
 )
+
 
 def RESOURCE_TYPE_CONFIGS():
     return { 

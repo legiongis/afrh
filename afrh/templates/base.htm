@@ -230,9 +230,31 @@
                 };
             });
             
+            define('browse-info', [], function () {
+                var browseInfo = {
+                    {% for node, entries in browse_info.items %}
+                    "{{ node }}": {
+                        {% for entry, contents in entries.items %}
+                        "{{ entry }}": {
+                            inverted: false,
+                            type: "concept",
+                            context: "{{ contents.context }}",
+                            context_label: "",
+                            id: "{{ contents.id }}",
+                            text: "{{ contents.text }}",
+                            value: "{{ contents.value }}",
+                        },
+                        {% endfor %}
+                    },
+                    {% endfor %}
+                }
+                return browseInfo;
+            });
+            
 
             define('resource-types', [], function () {
-                console.log("base defining resource types...");
+                //console.log("base defining resource types...");
+                //console.log("{{resource_types}}");
                 var resourceTypes = {
                     {% for type, type_data in resource_types %}
                     "{{type}}": {
@@ -252,6 +274,7 @@
                     },
                     {% endfor %}
                 };
+                console.log(resourceTypes);
                 return resourceTypes;
             });
             
