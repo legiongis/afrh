@@ -3,8 +3,6 @@ Source,Target,Type,Id,Label,Weight
 1,14,Directed,14,P42,1.0
 1,15,Directed,445,P2,1.0
 1,19,Directed,448,P42,1.0
-1,23,Directed,458,P2,1.0
-1,27,Directed,457,P2,1.0
 1,41,Directed,451,P90,1.0
 1,68,Directed,68,P42,1.0
 1,94,Directed,94,P1,1.0
@@ -30,6 +28,8 @@ Source,Target,Type,Id,Label,Weight
 2,11,Directed,11,P78,1.0
 3,4,Directed,4,-P71,1.0
 7,8,Directed,8,-P71,1.0
+14,23,Directed,23,P2,1.0
+14,27,Directed,27,P2,1.0
 14,31,Directed,31,P2,1.0
 15,16,Directed,16,-P71,1.0
 19,20,Directed,20,-P71,1.0
