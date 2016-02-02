@@ -51,7 +51,6 @@ def map_info(request):
 
 def resource_types(request):
     sorted_resource_types = sorted(settings.RESOURCE_TYPE_CONFIGS().items(), key=lambda v: v[1]['sort_order'])
-    print type(sorted_resource_types)
     return {
         'resource_types': sorted_resource_types
     }
@@ -129,7 +128,7 @@ def user_groups(request):
 
 def browse_info(request):
     info = browse.get_browse_info()
-        
+
     return {
         'browse_info': info
     }

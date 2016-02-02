@@ -32,6 +32,7 @@ from datetime import datetime
 from django.conf import settings
 import json, os, urllib
 import urllib2
+from collections import OrderedDict
 
 def get_browse_info():
     domain_nodes = [
@@ -47,7 +48,6 @@ def get_browse_info():
     ]
     
     browse_dict = {}
-    new_dict = {}
     
     for node in domain_nodes:
         context_node = Concept().get(legacyoid=node)
@@ -59,10 +59,10 @@ def get_browse_info():
             
             entry_id = entry['sortorder']
             concept_name = entry['text']
-
             browse_dict[node_name][entry_id] = {}
             
             e_concept = Concept().get(id=entry['conceptid'])
+            
             string = '[{{"inverted":false,"type":"concept","context":"{0}",'\
             '"context_label":"","id":"{1}{0}","text":"{1}",'\
             '"value":"{2}"}}]'.format(context_node.id,entry['text'],e_concept.id)
