@@ -35,9 +35,15 @@ import urllib2
 
 def get_browse_info():
     domain_nodes = [
+        'CHARACTER_AREA.E44',
+        'MASTER_PLAN_ZONE.E44',
+        'OTHER_DESIGNATION_TYPE.E55',
         'NRHP_RESOURCE_TYPE.E55',
+        'RELATIVE_LEVEL_OF_SIGNIFICANCE.E55',
         'PERIOD_OF_SIGNIFICANCE.E55',
-        'AREA_OF_SIGNIFICANCE.E55'
+        'AREA_OF_SIGNIFICANCE.E55',
+        'STYLE.E55',
+        'CURRENT_OPERATIONAL_STATUS.E55',
     ]
     
     browse_dict = {}
