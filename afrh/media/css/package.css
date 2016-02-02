@@ -594,3 +594,38 @@ img.ls-s1 {
         float: right;
     }
 }
+
+/* browse boxes, modeled after original "servive" classes */
+
+.slervive-block {
+  padding: 30px 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  min-height: 200px;
+}
+
+.slervive-block p,
+.slervive-block h2 {
+  color: #fff;
+}
+
+.slervive-block h2 a:hover{
+  text-decoration: none;
+}
+
+.slervive-block-light,
+.slervive-block-default {
+  background: #fafafa;
+  border: solid 1px #eee; 
+}
+
+.slervive-block-default:hover {
+  box-shadow: 0 0 8px #eee;
+}
+
+.slervive-block-light p,
+.slervive-block-light h2,
+.slervive-block-default p,
+.slervive-block-default h2 {
+  color: #555;
+}

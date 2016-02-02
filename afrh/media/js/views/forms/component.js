@@ -11,13 +11,20 @@ define(['jquery',
     return BaseForm.extend({
         initialize: function() {
             BaseForm.prototype.initialize.apply(this);
+            
+            var date_picker = $('.datetimepicker').datetimepicker({pickTime: false});
+                date_picker.on('dp.change', function(evt){
+                    $(this).find('input').trigger('change'); 
+                });
 
             this.addBranchList(new BranchList({
                 el: this.$el.find('#component-section')[0],
                 data: this.data,
                 dataKey: 'COMPONENT.E18',
                 validateBranch: function (nodes) {
-                    return vt.nodesHaveValues(nodes,['COMPONENT_TYPE.E55'])
+                    var ck1 = vt.isValidDate(nodes, 'COMPONENT_TIME-SPAN_DATE.E50');
+                    var ck2 = vt.nodesHaveValues(nodes,['COMPONENT_TYPE.E55']);
+                    return ck1 == true && ck2 == true;
                 }
             }));
             
@@ -26,7 +33,9 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'MODIFICATION_EVENT.E11',
                 validateBranch: function (nodes) {
-                    return vt.nodesHaveValues(nodes,['MODIFICATION_TYPE.E55']);
+                    var ck1 = vt.isValidDate(nodes, 'MODIFICATION_EVENT_TIME-SPAN_DATE.E50');
+                    var ck2 = vt.nodesHaveValues(nodes,['MODIFICATION_TYPE.E55']);
+                    return ck1 == true && ck2 == true;
                 }
             }));
         },

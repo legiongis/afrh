@@ -22,9 +22,9 @@ define(['jquery',
                 });
 
                 this.addBranchList(new BranchList({
-                    el: this.$el.find('#nhrp-type-section')[0],
+                    el: this.$el.find('#nrhp-type-section')[0],
                     data: this.data,
-                    dataKey: 'NHRP_RESOURCE_TYPE.E55',
+                    dataKey: 'NRHP_RESOURCE_TYPE.E55',
                     validateBranch: function (nodes) {
                         return this.validateHasValues(nodes);
                     }//,
@@ -49,9 +49,9 @@ define(['jquery',
                 }));
                 
                 this.addBranchList(new BranchList({
-                    el: this.$el.find('#nhrp-category-section')[0],
+                    el: this.$el.find('#nrhp-category-section')[0],
                     data: this.data,
-                    dataKey: 'NHRP_RESOURCE_CATEGORY.E55',
+                    dataKey: 'NRHP_RESOURCE_CATEGORY.E55',
                     validateBranch: function (nodes) {
                         return this.validateHasValues(nodes);
                     }
@@ -60,7 +60,7 @@ define(['jquery',
                 this.addBranchList(new BranchList({
                     el: this.$el.find('#resource-subcategory-section')[0],
                     data: this.data,
-                    dataKey: 'NHRP_RESOURCE_SUBCATEGORY.E55',
+                    dataKey: 'NRHP_RESOURCE_SUBCATEGORY.E55',
                     validateBranch: function (nodes) {
                         return this.validateHasValues(nodes);
                     }

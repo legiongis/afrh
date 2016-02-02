@@ -27,14 +27,22 @@
                         <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('MATERIAL.E57', 'value'), placeholder: '{% trans 'material' %}', multiple: false, dataKey: 'MATERIAL.E57'}"></input>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
+                <div class="col-xs-12 col-sm-4 form-section-input add-padding-right margin-top-5">
                     <div class="form-group">
                         <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('COMPONENT_CLASSIFICATION.E55', 'value'), placeholder: '{% trans 'classification' %}', multiple: false, dataKey: 'COMPONENT_CLASSIFICATION.E55'}"></input>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
+                <div class="col-xs-12 col-sm-4 form-section-input margin-top-5 add-padding-right">
                     <div class="form-group">
                         <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('COMPONENT_SIGNIFICANCE.E55', 'value'), placeholder: '{% trans 'significance' %}', multiple: false, dataKey: 'COMPONENT_SIGNIFICANCE.E55'}"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <div class="input-group datetimepicker">
+                            <input style="font-size: 13px; height:32px;" type="text" id="date" placeholder="{% trans 'yyyy-mm-dd' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('COMPONENT_TIME-SPAN_DATE.E50', 'value')} ">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 form-section-input margin-top-5">
@@ -49,7 +57,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a component." %}</div>
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a component and have a properly formatted date." %}</div>
             </div>
         </div>
         <div class="row">
@@ -64,10 +72,15 @@
                                     <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind='click: $parent.editItem.bind($parent)' title="Edit this record">
                                         <span data-bind="text: nodes.get('COMPONENT_TYPE.E55', 'label')"></span>
                                         <span data-bind="text: nodes.get('CONSTRUCTION_TECHNIQUE.E55', 'label')"></span>
-                                        <span data-bind="text: nodes.get('MATERIAL.E57', 'label')"></span><br>
-                                        <span data-bind="text: nodes.get('COMPONENT_CLASSIFICATION.E55', 'label')"></span><span class="text-muted arches-crud-type-identifier"> (classification)</span>
-                                        <span data-bind="text: nodes.get('COMPONENT_SIGNIFICANCE.E55', 'label')"></span><span class="text-muted arches-crud-type-identifier"> (significance)</span><br>
-                                    </a>    
+                                        <span data-bind="text: nodes.get('MATERIAL.E57', 'label')"></span>
+                                    </a>
+                                    <br>
+                                    <span class="text-muted arches-crud-type-identifier">classification:  </span><span data-bind="text: nodes.get('COMPONENT_CLASSIFICATION.E55', 'label')"></span>
+                                    <br>
+                                    <span class="text-muted arches-crud-type-identifier">significance:  </span><span data-bind="text: nodes.get('COMPONENT_SIGNIFICANCE.E55', 'label')"></span>
+                                    <br>
+                                    <span class="text-muted arches-crud-type-identifier">date:  </span><span data-bind="text: nodes.get('COMPONENT_TIME-SPAN_DATE.E50', 'value').slice(0,10)"></span>
+                                    <br>                                    
                                     <span class="text-muted arches-crud-type-identifier">{% trans "comments:" %}</span>
                                     <div class="note-editable custom-scroll arches-evaluation-content" contenteditable="false" data-bind='{html: nodes.get("COMPONENT_DESCRIPTION.E62", "value")}'></div>
                                 </div>
@@ -87,9 +100,17 @@
     <div id="modification-section">
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="col-xs-12 form-section-input">
+                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right">
                     <div class="form-group">
                         <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('MODIFICATION_TYPE.E55', 'value'), placeholder: '{% trans 'select modification' %}', multiple: false, dataKey: 'MODIFICATION_TYPE.E55'}"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input add-margin-top">
+                    <div class="form-group">
+                        <div class="input-group datetimepicker">
+                            <input style="font-size: 13px; height:32px;" type="text" id="date" placeholder="{% trans 'yyyy-mm-dd' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('MODIFICATION_EVENT_TIME-SPAN_DATE.E50', 'value')} ">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 form-section-input margin-top-5">
@@ -104,7 +125,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must select a modification." %}</div>
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must select a modification and have a properly formatted date." %}</div>
             </div>
         </div>
         <div class="row">
@@ -118,7 +139,9 @@
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="remove this component"><i data-bind='click: $parent.deleteItem.bind($parent)' class="arches-CRUD-delete fa fa-times-circle"></i></a>
                                     <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind='click: $parent.editItem.bind($parent)' title="Edit this record">
                                         <span data-bind="text: nodes.get('MODIFICATION_TYPE.E55', 'label')"></span>
-                                    </a><br>
+                                     </a>
+                                     <span class="arches-CRUD-child arches-CRUD-edit text-muted" data-bind="text: '('+nodes.get('MODIFICATION_EVENT_TIME-SPAN_DATE.E50', 'value').slice(0,10)+')'"></span>
+                                    <br>
                                     <span class="text-muted arches-crud-type-identifier">{% trans "comments:" %}</span>
                                     <div class="note-editable custom-scroll arches-evaluation-content" contenteditable="false" data-bind='{html: nodes.get("MODIFICATION_DESCRIPTION.E62", "value")}'></div>
                                 </div>

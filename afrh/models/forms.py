@@ -54,13 +54,13 @@ class InventorySummaryForm(ResourceForm):
 
     def update(self, data, files):
         self.update_nodes('NAME.E41', data)
-        self.update_nodes('NHRP_RESOURCE_TYPE.E55', data)
-        self.update_nodes('NHRP_RESOURCE_CATEGORY.E55', data)
-        self.update_nodes('NHRP_RESOURCE_SUBCATEGORY.E55', data)
+        self.update_nodes('NRHP_RESOURCE_TYPE.E55', data)
+        self.update_nodes('NRHP_RESOURCE_CATEGORY.E55', data)
+        self.update_nodes('NRHP_RESOURCE_SUBCATEGORY.E55', data)
         self.update_nodes('WUZIT.E55', data)
         self.update_nodes('BUILDING_NUMBER.E42', data)
         #if self.resource.entitytypeid in ('INVENTORY_RESOURCE.E18', 'HERITAGE_RESOURCE_GROUP.E27'):   
-        #    self.update_nodes('NHRP_RESOURCE_TYPE.E55', data)
+        #    self.update_nodes('NRHP_RESOURCE_TYPE.E55', data)
 
         beginning_of_existence_nodes = []
         end_of_existence_nodes = []
@@ -103,24 +103,24 @@ class InventorySummaryForm(ResourceForm):
 
         if self.resource:
             #if self.resource.entitytypeid in ('INVENTORY_RESOURCE.E18', 'HERITAGE_RESOURCE_GROUP.E27'):            
-            #    self.data['NHRP_RESOURCE_TYPE.E55'] = {
-            #        'branch_lists': self.get_nodes('NHRP_RESOURCE_TYPE.E55'),
-            #        'domains': {'NHRP_RESOURCE_TYPE.E55' : Concept().get_e55_domain('NHRP_RESOURCE_TYPE.E55')}
+            #    self.data['NRHP_RESOURCE_TYPE.E55'] = {
+            #        'branch_lists': self.get_nodes('NRHP_RESOURCE_TYPE.E55'),
+            #        'domains': {'NRHP_RESOURCE_TYPE.E55' : Concept().get_e55_domain('NRHP_RESOURCE_TYPE.E55')}
             #    }
             
-            self.data['NHRP_RESOURCE_TYPE.E55'] = {
-                'branch_lists': self.get_nodes('NHRP_RESOURCE_TYPE.E55'),
-                'domains': {'NHRP_RESOURCE_TYPE.E55' : Concept().get_e55_domain('NHRP_RESOURCE_TYPE.E55')}
+            self.data['NRHP_RESOURCE_TYPE.E55'] = {
+                'branch_lists': self.get_nodes('NRHP_RESOURCE_TYPE.E55'),
+                'domains': {'NRHP_RESOURCE_TYPE.E55' : Concept().get_e55_domain('NRHP_RESOURCE_TYPE.E55')}
                 }
                 
-            self.data['NHRP_RESOURCE_CATEGORY.E55'] = {
-                'branch_lists': self.get_nodes('NHRP_RESOURCE_CATEGORY.E55'),
-                'domains': {'NHRP_RESOURCE_CATEGORY.E55' : Concept().get_e55_domain('NHRP_RESOURCE_CATEGORY.E55')}
+            self.data['NRHP_RESOURCE_CATEGORY.E55'] = {
+                'branch_lists': self.get_nodes('NRHP_RESOURCE_CATEGORY.E55'),
+                'domains': {'NRHP_RESOURCE_CATEGORY.E55' : Concept().get_e55_domain('NRHP_RESOURCE_CATEGORY.E55')}
                 }
                 
-            self.data['NHRP_RESOURCE_SUBCATEGORY.E55'] = {
-                'branch_lists': self.get_nodes('NHRP_RESOURCE_SUBCATEGORY.E55'),
-                'domains': {'NHRP_RESOURCE_SUBCATEGORY.E55' : Concept().get_e55_domain('NHRP_RESOURCE_SUBCATEGORY.E55')}
+            self.data['NRHP_RESOURCE_SUBCATEGORY.E55'] = {
+                'branch_lists': self.get_nodes('NRHP_RESOURCE_SUBCATEGORY.E55'),
+                'domains': {'NRHP_RESOURCE_SUBCATEGORY.E55' : Concept().get_e55_domain('NRHP_RESOURCE_SUBCATEGORY.E55')}
                 }
                 
             self.data['WUZIT.E55'] = {

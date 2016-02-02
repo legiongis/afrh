@@ -35,7 +35,7 @@ import urllib2
 
 def get_browse_info():
     domain_nodes = [
-        'NHRP_RESOURCE_TYPE.E55',
+        'NRHP_RESOURCE_TYPE.E55',
         'PERIOD_OF_SIGNIFICANCE.E55',
         'AREA_OF_SIGNIFICANCE.E55'
     ]
