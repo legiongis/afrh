@@ -20,7 +20,7 @@ DEFAULT_MAP_X = -8572820
 DEFAULT_MAP_Y = 4712543
 DEFAULT_MAP_ZOOM = 15
 # MAP_MIN_ZOOM = 9
-# MAP_MAX_ZOOM = 19
+MAP_MAX_ZOOM = 20
 # MAP_EXTENT = '-13228037.69691764,3981296.0184014924,-13123624.71628009,4080358.407059081'
 
 RESOURCE_MODEL = {'default': '{}.models.resource.Resource'.format(PACKAGE_NAME)}
@@ -68,7 +68,7 @@ def RESOURCE_TYPE_CONFIGS():
             'fill_color': '#ffc29e',
             'primary_name_lookup': {
                 'entity_type': 'NAME.E41',
-                'lookup_value': 'Primary'
+                'lookup_value': 'Current'
             },
             'sort_order': 1
         },

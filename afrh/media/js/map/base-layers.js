@@ -62,7 +62,7 @@ define([
         showInfo: false,
     };
     street.layer.matchid = street.id;
-    street.maxzoom = 19;
+    street.maxzoom = 20;
     
     //ol3 ortho layer from DC GIS
     orthoLyr = new ol.layer.Tile({
@@ -85,7 +85,7 @@ define([
         altlayer: false,
     };
     imagery.layer.id = imagery.id;
-    imagery.maxzoom = 19;
+    imagery.maxzoom = 20;
     
     //hybrid ol layer (which is actually an ol layer group)
     var hybridLyr = new ol.layer.Group({
@@ -116,7 +116,7 @@ define([
         altlayer: false
     };
     hybrid.layer.id = hybrid.id
-    hybrid.maxzoom = 19;
+    hybrid.maxzoom = 20;
 /*     
     // ------------------------------------ NOT CURRENTLY USED ---------------------------------------
     
