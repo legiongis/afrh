@@ -253,8 +253,6 @@
             
 
             define('resource-types', [], function () {
-                //console.log("base defining resource types...");
-                //console.log("{{resource_types}}");
                 var resourceTypes = {
                     {% for type, type_data in resource_types %}
                     "{{type}}": {
@@ -331,12 +329,22 @@
                 });
             };
             
+            
+            var c1 = "public.affairs";
+            var c2 = "@";
+            var c3 = "afrh.gov";
+            var email = c1+c2+c3
+            
             $(document).ready(function() {
-                toggleHelp()
-                toggleTopic()
+                toggleHelp();
+                toggleTopic();
+                document.getElementById('contact').textContent = email;
+                document.getElementById('contact').href = "mailto:"+email;
             });
             
         });
+        
+        
         
     </script>
 
