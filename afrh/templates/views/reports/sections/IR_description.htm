@@ -1,0 +1,68 @@
+{% load i18n %}
+<div class="row">
+
+    <div class="col-sm-4">
+        <h3 class="arches-report-subsection">{% trans "Architectural Style" %}</h3>
+    </div>
+    <!-- End Section sub-header -->
+
+    <!-- Section Content -->
+    <div class="col-sm-8">
+        <div class="row">
+            
+            <div class="col-xs-12">
+                <dl>
+                    <dt>
+                        <h5 id="" class="arches-report-subsection-title"></h5>
+                    </dt>
+
+                    {% if 'STYLE_E55' not in report_info.source.graph %}
+                        <dd class="arches-report-subsection-item">
+                            <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                        </dd>
+                    {% else %}
+                        {% for STYLE_E55 in report_info.source.graph.STYLE_E55 %}
+                            <dd class="arches-report-subsection-item">
+                                {{ STYLE_E55.STYLE_E55__value }}
+                            </dd>
+                        {% endfor %}              
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-4">
+        <h3 class="arches-report-subsection">{% trans "Description" %}</h3>
+    </div>
+    <!-- End Section sub-header -->
+
+    <!-- Section Content -->
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col-xs-12">
+                <dl>
+                    <dt>
+                        <h5 id="" class="arches-report-subsection-title"></h5>
+                    </dt>
+                    {% if 'DESCRIPTION_E62' not in report_info.source.graph %}
+                        <dd class="arches-report-subsection-item">
+                            <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                        </dd>
+                    {% else %}
+                        {% for DESCRIPTION_E62 in report_info.source.graph.DESCRIPTION_E62 %}
+                        <dt>
+                            <h5 id="" class="arches-report-subsection-title">{{ DESCRIPTION_E62.DESCRIPTION_TYPE_E55__value }}</h5>
+                        </dt>
+                        <dd class="arches-report-subsection-item margin-top-5">
+                            {{ DESCRIPTION_E62.DESCRIPTION_E62__value | safe }}
+                        </dd>
+                        {% endfor %}
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+

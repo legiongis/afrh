@@ -1,0 +1,175 @@
+{% load i18n %}
+<div class="row">
+
+    <div class="col-sm-4">
+        <h3 class="arches-report-subsection">{% trans "Form Type" %}</h3>
+    </div>
+    <!-- End Section sub-header -->
+
+    <!-- Section Content -->
+    <div class="col-sm-8">
+        <div class="row">
+            
+            
+            <div class="col-xs-12">
+                <dl>
+                    <dt>
+                        <h5 id="" class="arches-report-subsection-title"></h5>
+                    </dt>
+
+                    {% if 'FORM_TYPE_E55' not in report_info.source.graph %}
+                        <dd class="arches-report-subsection-item">
+                            <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                        </dd>
+                    {% else %}
+                        {% for FORM_TYPE_E55 in report_info.source.graph.FORM_TYPE_E55 %}
+                            <dd class="arches-report-subsection-item">
+                                {{ FORM_TYPE_E55.FORM_TYPE_E55__value }}
+                            </dd>
+                        {% endfor %}            
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-4">
+        <h3 class="arches-report-subsection">{% trans "Measurements" %}</h3>
+    </div>
+    
+    <div class="col-sm-8">
+        <div class="row">
+            
+            
+            <div class="col-xs-12">
+                <dl>
+                    <dt>
+                        <h5 id="" class="arches-report-subsection-title"></h5>
+                    </dt>
+
+                    {% if 'MEASUREMENT_TYPE_E55' not in report_info.source.graph %}
+                        <dd class="arches-report-subsection-item">
+                            <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                        </dd>
+                    {% else %}
+                        {% for MEASUREMENT_TYPE_E55 in report_info.source.graph.MEASUREMENT_TYPE_E55 %}
+                            <dd class="arches-report-subsection-item">
+                            {{ MEASUREMENT_TYPE_E55.MEASUREMENT_TYPE_E55__value }}: 
+                            {{ MEASUREMENT_TYPE_E55.VALUE_OF_MEASUREMENT_E60__value }} {{ MEASUREMENT_TYPE_E55.UNIT_OF_MEASUREMENT_E55__value }}
+                        </dd>
+                        {% endfor %}            
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-4">
+        <h3 class="arches-report-subsection">{% trans "Components" %}</h3>
+    </div>
+    
+    <div class="col-sm-8">
+        <div class="row">
+            
+            
+            <div class="col-xs-12">
+                <dl>
+                    <dt>
+                        <h5 id="" class="arches-report-subsection-title"></h5>
+                    </dt>
+
+                    {% if 'PRODUCTION_E12' not in report_info.source.graph %}
+                        <dd class="arches-report-subsection-item">
+                            <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                        </dd>
+                    {% else %}
+
+                        {% for PRODUCTION_E12 in report_info.source.graph.PRODUCTION_E12 %}
+                            {% if 'COMPONENT_E18' in PRODUCTION_E12 %}
+
+                                {% for COMPONENT_E18 in PRODUCTION_E12.COMPONENT_E18 %}
+                                    <dd class="arches-report-subsection-item">
+
+                                        {% if 'COMPONENT_TYPE_E55' in COMPONENT_E18 %}
+                                            {% for COMPONENT_TYPE_E55 in COMPONENT_E18.COMPONENT_TYPE_E55 %}
+                                                Component: {{COMPONENT_TYPE_E55.COMPONENT_TYPE_E55__value}}
+                                            {% endfor %} 
+                                        {% else %}
+                                            {% trans "none defined" %}
+                                        {% endif %}
+                                        <br>
+
+                                        {% if 'COMPONENT_PRODUCTION_E12' in COMPONENT_E18 %}
+                                            {% for COMPONENT_PRODUCTION_E12 in COMPONENT_E18.COMPONENT_PRODUCTION_E12 %}
+                                                {% if 'DESIGN_OR_PROCEDURE_E29' in COMPONENT_PRODUCTION_E12 %}
+                                                    {% for DESIGN_OR_PROCEDURE_E29 in COMPONENT_PRODUCTION_E12.DESIGN_OR_PROCEDURE_E29 %}
+                                                        {% if 'CONSTRUCTION_TECHNIQUE_E55' in DESIGN_OR_PROCEDURE_E29 %}
+                                                            {% for CONSTRUCTION_TECHNIQUE_E55 in DESIGN_OR_PROCEDURE_E29.CONSTRUCTION_TECHNIQUE_E55 %}
+                                                                Technique: {{CONSTRUCTION_TECHNIQUE_E55.CONSTRUCTION_TECHNIQUE_E55__value}}
+                                                                
+                                                            {% endfor %} 
+                                                        {% endif %}
+                                                    {% endfor %} 
+                                                {% endif %}
+                                            {% endfor %} 
+                                        {% endif %}
+                                        <br>
+                                        {% if 'MATERIAL_E57' in COMPONENT_E18 %}
+                                            {% for MATERIAL_E57 in COMPONENT_E18.MATERIAL_E57 %}
+                                                Material: {{MATERIAL_E57.MATERIAL_E57__value}}
+                                                
+                                            {% endfor %}  
+                                        {% endif %}
+                                        <br>
+                                        <span class="arches-report-subsection-item-type">
+                                            {% trans "Classification" %}:
+                                        </span>
+                                        {% if 'COMPONENT_CLASSIFICATION_E55' in COMPONENT_E18 %}
+                                            {% for COMPONENT_CLASSIFICATION_E55 in COMPONENT_E18.COMPONENT_CLASSIFICATION_E55 %}
+                                                {{COMPONENT_CLASSIFICATION_E55.COMPONENT_CLASSIFICATION_E55__value}}
+                                            {% endfor %}
+                                        {% else %}
+                                            <span class="arches-report-subsection-item-type">
+                                                {% trans "none recorded" %}
+                                            </span>
+                                        {% endif %}
+                                        <br>
+                                        <span class="arches-report-subsection-item-type">
+                                            {% trans "Significance" %}:
+                                        </span>
+                                        {% if 'COMPONENT_SIGNIFICANCE_E55' in COMPONENT_E18 %}
+                                            {% for COMPONENT_SIGNIFICANCE_E55 in COMPONENT_E18.COMPONENT_SIGNIFICANCE_E55 %}
+                                                {{COMPONENT_SIGNIFICANCE_E55.COMPONENT_SIGNIFICANCE_E55__value}}
+                                            {% endfor %}
+                                        {% else %}
+                                            <span class="arches-report-subsection-item-type">
+                                                {% trans "none recorded" %}:
+                                            </span>
+                                        {% endif %}
+                                    
+                                    </dd>
+                                    <dd style="margin-left:10px;">
+                                        <span class="arches-report-subsection-item-type">
+                                            {% trans "Description" %}:
+                                        </span>
+                                        {% if 'COMPONENT_DESCRIPTION_E62' in COMPONENT_E18 %}
+                                            {% for COMPONENT_DESCRIPTION_E62 in COMPONENT_E18.COMPONENT_DESCRIPTION_E62 %}
+                                                {{COMPONENT_DESCRIPTION_E62.COMPONENT_DESCRIPTION_E62__value|safe}}
+                                            {% endfor %}  
+                                        {% endif %}
+
+                                    </dd>
+                                {% endfor %}
+
+                            {% endif %}   
+
+                        {% endfor %} 
+
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+

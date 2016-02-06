@@ -1,0 +1,227 @@
+{% load i18n %}
+<div class="row">
+
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">{% trans "AFRH-W Historic District" %}</h3>
+    </div>
+    <!-- End Section sub-header -->
+
+    <!-- Section Content -->
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <dl>
+                    <dt>
+                        <h5 id="" class="arches-report-subsection-title">{% trans "Status" %}</h5>
+                    </dt>
+
+                    {% if 'AFRH_W_HISTORIC_DISTRICT_EVALUATION_E3' not in report_info.source.graph %}
+                        <dd class="arches-report-subsection-item">
+                            <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                        </dd>
+                    {% else %}
+                        {% for AFRH_W_HISTORIC_DISTRICT_EVALUATION_E3 in report_info.source.graph.AFRH_W_HISTORIC_DISTRICT_EVALUATION_E3 %}
+                            {% for AFRH_W_HISTORIC_DISTRICT_STATE_E3 in AFRH_W_HISTORIC_DISTRICT_EVALUATION_E3.AFRH_W_HISTORIC_DISTRICT_STATE_E3 %}
+                                <dd class="arches-report-subsection-item">
+                                {% for AFRH_W_HISTORIC_DISTRICT_STATUS_E55 in AFRH_W_HISTORIC_DISTRICT_STATE_E3.AFRH_W_HISTORIC_DISTRICT_STATUS_E55 %}
+                                    {{ AFRH_W_HISTORIC_DISTRICT_STATUS_E55.AFRH_W_HISTORIC_DISTRICT_STATUS_E55__value }}
+                                {% endfor %}
+                                {% for AFRH_W_HISTORIC_DISTRICT_STATUS_DATE_E50 in AFRH_W_HISTORIC_DISTRICT_STATE_E3.AFRH_W_HISTORIC_DISTRICT_STATUS_DATE_E50 %}
+                                    <span class="arches-report-subsection-item-type">({{ AFRH_W_HISTORIC_DISTRICT_STATUS_DATE_E50.AFRH_W_HISTORIC_DISTRICT_STATUS_DATE_E50__value|slice:":10" }})</span>
+                                {% endfor %}
+                                </dd>
+                            {% endfor %}
+                        {% endfor %}            
+                    {% endif %}
+                </dl>
+            </div>
+
+            <div class="col-xs-12">
+                <dl>
+                    <dt>
+                        <h5 id="" class="arches-report-subsection-title">{% trans "Period(s) of Significance" %}</h5>
+                    </dt>
+                    {% if 'PERIOD_OF_SIGNIFICANCE_E55' not in report_info.source.graph %}
+                        <dd class="arches-report-subsection-item">
+                            <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                        </dd>
+                    {% else %}
+                        {% for PERIOD_OF_SIGNIFICANCE_E55 in report_info.source.graph.PERIOD_OF_SIGNIFICANCE_E55 %}
+                            <dd class="arches-report-subsection-item">
+                                {{ PERIOD_OF_SIGNIFICANCE_E55.PERIOD_OF_SIGNIFICANCE_E55__value }}
+                            </dd>
+                        {% endfor %}            
+                    {% endif %}
+                </dl>
+            </div>
+            <div class="col-xs-12">
+                <dl>
+                    <dt>
+                        <h5 id="" class="arches-report-subsection-title">{% trans "Area(s) of Significance" %}</h5>
+                    </dt>
+                    {% if 'AREA_OF_SIGNIFICANCE_E55' not in report_info.source.graph %}
+                        <dd class="arches-report-subsection-item">
+                            <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                        </dd>
+                    {% else %}
+                        {% for AREA_OF_SIGNIFICANCE_E55 in report_info.source.graph.AREA_OF_SIGNIFICANCE_E55 %}
+                            <dd class="arches-report-subsection-item">
+                                {{ AREA_OF_SIGNIFICANCE_E55.AREA_OF_SIGNIFICANCE_E55__value }}
+                            </dd>
+                        {% endfor %}            
+                    {% endif %}
+                </dl>
+            </div>
+            <div class="col-xs-12">
+                <dl>
+                    <dt>
+                        <h5 id="" class="arches-report-subsection-title">{% trans "Relative Level of Significance" %}</h5>
+                    </dt>
+                    {% if 'RELATIVE_LEVEL_OF_SIGNIFICANCE_E55' not in report_info.source.graph %}
+                        <dd class="arches-report-subsection-item">
+                            <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                        </dd>
+                    {% else %}
+                        {% for RELATIVE_LEVEL_OF_SIGNIFICANCE_E55 in report_info.source.graph.RELATIVE_LEVEL_OF_SIGNIFICANCE_E55 %}
+                            <dd class="arches-report-subsection-item">
+                                {{ RELATIVE_LEVEL_OF_SIGNIFICANCE_E55.RELATIVE_LEVEL_OF_SIGNIFICANCE_E55__value }}
+                                <span class="arches-report-subsection-item-type">({{RELATIVE_LEVEL_OF_SIGNIFICANCE_E55.RELATIVE_LEVEL_OF_SIGNIFICANCE_DATE_E50__value|slice:":10"}})</span>
+                            </dd>
+                        {% endfor %}            
+                    {% endif %}
+                </dl>
+            </div>
+            <div class="col-xs-12">
+                <dl>
+                    <dt>
+                        <h5 id="" class="arches-report-subsection-title">{% trans "Quantitative Evaluation" %}</h5>
+                    </dt>
+                    {% if 'COMPOSITE_SCORE_E60' not in report_info.source.graph %}
+                        <dd class="arches-report-subsection-item">
+                            <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                        </dd>
+                    {% else %}
+                        {% for COMPOSITE_SCORE_E60 in report_info.source.graph.COMPOSITE_SCORE_E60 %}
+                            <dd class="arches-report-subsection-item">
+                                <table style="width:175px">
+                                    
+                                    <tr>
+                                        <td><span class="arches-report-subsection-item-type">Criterion A:</span></td>
+                                        <td><span class="arches-report-subsection-item-type">{{ COMPOSITE_SCORE_E60.CRITERION_A_SCORE_E60__value }}</span></td> 
+                                    </tr>
+                                    <tr>
+                                        <td><span class="arches-report-subsection-item-type">Criterion B:</span></td>
+                                        <td><span class="arches-report-subsection-item-type">{{ COMPOSITE_SCORE_E60.CRITERION_B_SCORE_E60__value }}</span></td> 
+                                    </tr>
+                                    <tr>
+                                        <td><span class="arches-report-subsection-item-type">Criterion C:</span></td>
+                                        <td><span class="arches-report-subsection-item-type">{{ COMPOSITE_SCORE_E60.CRITERION_C_SCORE_E60__value }}</span></td> 
+                                    </tr>
+                                    <tr>
+                                        <td><span class="arches-report-subsection-item-type">Criterion D:</span></td>
+                                        <td><span class="arches-report-subsection-item-type">{{ COMPOSITE_SCORE_E60.CRITERION_D_SCORE_E60__value }}</span></td> 
+                                    </tr>
+                                    <tr>
+                                        <td><span class="arches-report-subsection-item-type">National Significance:</span></td>
+                                        <td><span class="arches-report-subsection-item-type">{{ COMPOSITE_SCORE_E60.NATIONAL_SIGNIFICANCE_SCORE_E60__value }}</span></td> 
+                                    </tr>
+                                    <tr>
+                                        <td><span class="arches-report-subsection-item-type">Integrity:</span></td>
+                                        <td><span class="arches-report-subsection-item-type">{{ COMPOSITE_SCORE_E60.INTEGRITY_SCORE_E60__value }}</span></td> 
+                                    </tr>
+                                    <tr>
+                                        <td>Total Score: </td>
+                                        <td>{{ COMPOSITE_SCORE_E60.COMPOSITE_SCORE_E60__value }}</td> 
+                                    </tr>
+                                </table>
+                            </dd>
+                        {% endfor %}            
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="devider devider-subsection"></hr>
+<div class="row">
+    
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">{% trans "Other AFRH-W Designations" %}</h3>
+    </div>
+    <!-- End Section sub-header -->
+    
+    <!-- Section Content -->
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                    {% if 'OTHER_AFRH_W_DESIGNATION_E3' not in report_info.source.graph %}
+                        <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                    {% else %}
+                        {% for OTHER_AFRH_W_DESIGNATION_E3 in report_info.source.graph.OTHER_AFRH_W_DESIGNATION_E3 %}
+                            {% for OTHER_AFRH_W_DESIGNATION_TYPE_E55 in OTHER_AFRH_W_DESIGNATION_E3.OTHER_AFRH_W_DESIGNATION_TYPE_E55 %}
+                                <p class="arches-report-subsection-item">
+                                    {{ OTHER_AFRH_W_DESIGNATION_TYPE_E55.OTHER_AFRH_W_DESIGNATION_TYPE_E55__value }}
+                                </p>
+                            {% endfor %}
+                            {% for OTHER_AFRH_W_DESIGNATION_STATUS_E55 in OTHER_AFRH_W_DESIGNATION_E3.OTHER_AFRH_W_DESIGNATION_STATUS_E55 %}
+                                <p class="arches-report-subsection-item">
+                                    <span class="arches-report-subsection-item-type">
+                                    {{ OTHER_AFRH_W_DESIGNATION_STATUS_E55.OTHER_AFRH_W_DESIGNATION_STATUS_E55__value }}
+                            {% endfor %}
+                            {% for OTHER_AFRH_W_DESIGNATION_DATE_E50 in OTHER_AFRH_W_DESIGNATION_E3.OTHER_AFRH_W_DESIGNATION_DATE_E50 %}
+                                    {{ OTHER_AFRH_W_DESIGNATION_DATE_E50.OTHER_AFRH_W_DESIGNATION_DATE_E50__value|slice:":10" }}
+                                    </span>
+                                </p>
+                            {% endfor %}
+                        {% endfor %}            
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="devider devider-subsection"></hr>
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">{% trans "Other Designations" %}</h3>
+    </div>
+    <!-- End Section sub-header -->
+    
+    <!-- Section Content -->
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if 'OTHER_DESIGNATION_E3' not in report_info.source.graph %}
+                    <span class="arches-report-subsection-item-none text-muted">{% trans "none recorded" %}</span>
+                {% else %}
+                    {% for OTHER_DESIGNATION_E3 in report_info.source.graph.OTHER_DESIGNATION_E3 %}
+                        <p class="arches-report-subsection-item">
+                        {% for OTHER_DESIGNATION_TYPE_E55 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_TYPE_E55 %}
+                            {{ OTHER_DESIGNATION_TYPE_E55.OTHER_DESIGNATION_TYPE_E55__value }},
+                        {% endfor %}
+                        {% for OTHER_DESIGNATION_STATUS_E55 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_STATUS_E55 %}
+                            {{ OTHER_DESIGNATION_STATUS_E55.OTHER_DESIGNATION_STATUS_E55__value }},
+                        {% endfor %}
+                        {% for OTHER_DESIGNATION_DATE_E49 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_DATE_E49 %}
+                            {{ OTHER_DESIGNATION_DATE_E49.OTHER_DESIGNATION_DATE_E49__value|slice:":10" }}
+                        {% endfor %}
+                        </p>
+                        <p class="arches-report-subsection-item"><span class="arches-report-subsection-item-type">
+                        {% for OTHER_DESIGNATION_NAME_E41 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_NAME_E41 %}
+                            {{ OTHER_DESIGNATION_NAME_E41.OTHER_DESIGNATION_NAME_E41__value }} (name)
+                        {% endfor %}
+                        {% for OTHER_DESIGNATION_REFERENCE_NUMBER_E42 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_REFERENCE_NUMBER_E42 %}
+                            <br>{{ OTHER_DESIGNATION_REFERENCE_NUMBER_E42.OTHER_DESIGNATION_REFERENCE_NUMBER_E42__value }} (reference number)
+                        {% endfor %}
+                        {% for OTHER_DESIGNATION_NOTES_E62 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_NOTES_E62 %}
+                            <br><em>{{ OTHER_DESIGNATION_NOTES_E62.OTHER_DESIGNATION_NOTES_E62__value }}</em>
+                        {% endfor %}
+                        </span></p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+

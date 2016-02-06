@@ -659,3 +659,28 @@ img.ls-s1 {
 .dropdown.slervive-block > a:after {
     content: "";
 }
+
+/* report styles */
+
+.arches-report-subsection-item {
+    font-size: 16px;
+    font-weight: 200;
+    color: #4765a0;
+    margin-left: 10px;
+    line-height: 1.175;
+    margin-bottom: 5px;
+}
+
+.arches-report-subsection-content {
+    padding-top: 5px;
+}
+
+.devider-subsection {
+    margin: 10px 0px !important;
+}
+
+.arches-report-subsection-item-none {
+    font-size: 14px;
+    font-weight: 200;
+    color: #888;
+    margin-left: 10px;
