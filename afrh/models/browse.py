@@ -38,7 +38,7 @@ def get_browse_info():
     domain_nodes = [
         'CHARACTER_AREA.E44',
         'MASTER_PLAN_ZONE.E44',
-        'OTHER_DESIGNATION_TYPE.E55',
+        'OTHER_AFRH_W_DESIGNATION_TYPE.E55',
         'NRHP_RESOURCE_TYPE.E55',
         'RELATIVE_LEVEL_OF_SIGNIFICANCE.E55',
         'PERIOD_OF_SIGNIFICANCE.E55',
