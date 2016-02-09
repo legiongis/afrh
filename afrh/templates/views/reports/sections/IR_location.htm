@@ -1,185 +1,150 @@
 {% load i18n %}
 <div class="row">
 
-    <div class="col-sm-4">
+    <div class="col-sm-3 col-md-4">
         <h3 class="arches-report-subsection">{% trans "Address" %}</h3>
     </div>
     <!-- End Section sub-header -->
 
     <!-- Section Content -->
-    <div class="col-sm-8">
+    <div class="col-sm-9 col-md-8">
         <div class="row">
             
-            <div class="col-xs-12">
-                <dl>
-                    <dt>
-                        <h5 id="" class="arches-report-subsection-title"></h5>
-                    </dt>
-
-                    {% if 'PLACE_E53' not in report_info.source.graph %}
-                        <dd class="arches-report-subsection-item">
-                            <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
-                        </dd>
-                    {% else %}
-                        {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
-                            {% if 'PLACE_ADDRESS_E45' in PLACE_E53 %}
-                                {% for PLACE_ADDRESS_E45 in PLACE_E53.PLACE_ADDRESS_E45 %}
-                                    <dd class="arches-report-subsection-item">
-                                        <!--<span class="arches-report-subsection-item-type">-->
-                                        Address Type: {{PLACE_ADDRESS_E45.ADDRESS_TYPE_E55__value}}<br>
-                                        <!--</span>-->
-                                    Address: {{PLACE_ADDRESS_E45.PLACE_ADDRESS_E45__value | safe}}
-                                    </dd>
-                                {% endfor %}                      
-                            {% endif %}
-                        {% endfor %}              
-                    {% endif %}
-                </dl>
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if 'PLACE_E53' not in report_info.source.graph %}
+                    <dd class="arches-report-subsection-item">
+                        <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                    </dd>
+                {% else %}
+                    {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                        {% if 'PLACE_ADDRESS_E45' in PLACE_E53 %}
+                            {% for PLACE_ADDRESS_E45 in PLACE_E53.PLACE_ADDRESS_E45 %}
+                                <p class="arches-report-subsection-item"><span class="arches-report-subsection-item-type">
+                                    {{PLACE_ADDRESS_E45.ADDRESS_TYPE_E55__value}} Address</span><br>
+                                {{PLACE_ADDRESS_E45.PLACE_ADDRESS_E45__value | safe}}</p>
+                            {% endfor %}                      
+                        {% endif %}
+                    {% endfor %}              
+                {% endif %}
             </div>
         </div>
     </div>
-    
-    <div class="col-sm-4">
+</div>
+<hr class="devider devider-subsection"></hr>
+<div class="row">
+    <div class="col-sm-3 col-md-4">
         <h3 class="arches-report-subsection">{% trans "Location Description" %}</h3>
     </div>
     <!-- End Section sub-header -->
 
     <!-- Section Content -->
-    <div class="col-sm-8">
+    <div class="col-sm-9 col-md-8">
         <div class="row">
-            
-            <div class="col-xs-12">
-                <dl>
-                    <dt>
-                        <h5 id="" class="arches-report-subsection-title"></h5>
-                    </dt>
-
-                    {% if 'PLACE_E53' not in report_info.source.graph %}
-                        <dd class="arches-report-subsection-item">
-                            <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
-                        </dd>
-                    {% else %}
-                        {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
-                        
-                            {% if 'PLACE_SITE_LOCATION_E53' in PLACE_E53 %}
-                                {% for PLACE_SITE_LOCATION_E53 in PLACE_E53.PLACE_SITE_LOCATION_E53 %}
-                                    {% if 'DESCRIPTION_OF_LOCATION_E62' in PLACE_SITE_LOCATION_E53 %}
-                                        <dd class="arches-report-subsection-item">
-                                        {% for DESCRIPTION_OF_LOCATION_E62 in PLACE_SITE_LOCATION_E53.DESCRIPTION_OF_LOCATION_E62 %}
-                                            {{DESCRIPTION_OF_LOCATION_E62.DESCRIPTION_OF_LOCATION_E62__value | safe}}
-                                        {% endfor %}
-                                        </dd>
-                                    {% endif %}
-                                {% endfor %}
-                            {% endif %}
-                        {% endfor %}              
-                    {% endif %}
-                </dl>
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if 'PLACE_E53' not in report_info.source.graph %}
+                    <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                {% else %}
+                    {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                    
+                        {% if 'PLACE_SITE_LOCATION_E53' in PLACE_E53 %}
+                            {% for PLACE_SITE_LOCATION_E53 in PLACE_E53.PLACE_SITE_LOCATION_E53 %}
+                                {% if 'DESCRIPTION_OF_LOCATION_E62' in PLACE_SITE_LOCATION_E53 %}
+                                    <p class="arches-report-subsection-item">
+                                    {% for DESCRIPTION_OF_LOCATION_E62 in PLACE_SITE_LOCATION_E53.DESCRIPTION_OF_LOCATION_E62 %}
+                                        {{DESCRIPTION_OF_LOCATION_E62.DESCRIPTION_OF_LOCATION_E62__value | safe}}
+                                    {% endfor %}
+                                    </p>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}              
+                {% endif %}
             </div>
         </div>
     </div>
-    
-    <div class="col-sm-4">
+</div>
+<hr class="devider devider-subsection"></hr>
+<div class="row">
+    <div class="col-sm-3 col-md-4">
         <h3 class="arches-report-subsection">{% trans "Character Area" %}</h3>
     </div>
     <!-- End Section sub-header -->
 
     <!-- Section Content -->
-    <div class="col-sm-8">
+    <div class="col-sm-9 col-md-8">
         <div class="row">
             
-            <div class="col-xs-12">
-                <dl>
-                    <dt>
-                        <h5 id="" class="arches-report-subsection-title"></h5>
-                    </dt>
-
-                    {% if 'PLACE_E53' not in report_info.source.graph %}
-                        <dd class="arches-report-subsection-item">
-                            <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
-                        </dd>
-                    {% else %}
-                        {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
-                            {% if 'CHARACTER_AREA_E44' in PLACE_E53 %}
-                                {% for CHARACTER_AREA_E44 in PLACE_E53.CHARACTER_AREA_E44 %}
-                                    <dd class="arches-report-subsection-item">
-                                    {{CHARACTER_AREA_E44.CHARACTER_AREA_E44__value}}<br>
-                                    </dd>
-                                {% endfor %}                      
-                            {% endif %}
-                        {% endfor %}              
-                    {% endif %}
-                </dl>
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if 'PLACE_E53' not in report_info.source.graph %}
+                    <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                {% else %}
+                    {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                        {% if 'CHARACTER_AREA_E44' in PLACE_E53 %}
+                            {% for CHARACTER_AREA_E44 in PLACE_E53.CHARACTER_AREA_E44 %}
+                                <p class="arches-report-subsection-item">
+                                {{CHARACTER_AREA_E44.CHARACTER_AREA_E44__value}}
+                                </p>
+                            {% endfor %}                      
+                        {% endif %}
+                    {% endfor %}              
+                {% endif %}
             </div>
         </div>
     </div>
-    
-    <div class="col-sm-4">
+</div>
+<hr class="devider devider-subsection"></hr>
+<div class="row">
+    <div class="col-sm-3 col-md-4">
         <h3 class="arches-report-subsection">{% trans "AFRH-W Master Plan Zone" %}</h3>
     </div>
     <!-- End Section sub-header -->
 
     <!-- Section Content -->
-    <div class="col-sm-8">
+    <div class="col-sm-9 col-md-8">
         <div class="row">
             
-            <div class="col-xs-12">
-                <dl>
-                    <dt>
-                        <h5 id="" class="arches-report-subsection-title"></h5>
-                    </dt>
-
-                    {% if 'PLACE_E53' not in report_info.source.graph %}
-                        <dd class="arches-report-subsection-item">
-                            <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
-                        </dd>
-                    {% else %}
-                        {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
-                            {% if 'MASTER_PLAN_ZONE_E44' in PLACE_E53 %}
-                                {% for MASTER_PLAN_ZONE_E44 in PLACE_E53.MASTER_PLAN_ZONE_E44 %}
-                                    <dd class="arches-report-subsection-item">
-                                    {{ MASTER_PLAN_ZONE_E44.MASTER_PLAN_ZONE_E44__value }}
-                                    </dd>
-                                {% endfor %}                      
-                            {% endif %}
-                        {% endfor %}              
-                    {% endif %}
-                </dl>
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if 'PLACE_E53' not in report_info.source.graph %}
+                    <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                {% else %}
+                    {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                        {% if 'MASTER_PLAN_ZONE_E44' in PLACE_E53 %}
+                            {% for MASTER_PLAN_ZONE_E44 in PLACE_E53.MASTER_PLAN_ZONE_E44 %}
+                                <p class="arches-report-subsection-item">
+                                {{ MASTER_PLAN_ZONE_E44.MASTER_PLAN_ZONE_E44__value }}
+                                </p>
+                            {% endfor %}                      
+                        {% endif %}
+                    {% endfor %}              
+                {% endif %}
             </div>
         </div>
     </div>
-    
-    <div class="col-sm-4">
+</div>
+<hr class="devider devider-subsection"></hr>
+<div class="row">
+    <div class="col-sm-3 col-md-4">
         <h3 class="arches-report-subsection">{% trans "Phase 1A Archaeological Zone" %}</h3>
     </div>
     <!-- End Section sub-header -->
 
     <!-- Section Content -->
-    <div class="col-sm-8">
+    <div class="col-sm-9 col-md-8">
         <div class="row">
-            
-            <div class="col-xs-12">
-                <dl>
-                    <dt>
-                        <h5 id="" class="arches-report-subsection-title"></h5>
-                    </dt>
-
-                    {% if 'PLACE_E53' not in report_info.source.graph %}
-                        <dd class="arches-report-subsection-item">
-                            <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
-                        </dd>
-                    {% else %}
-                        {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
-                            {% if 'ARCHAEOLOGICAL_ZONE_E44' in PLACE_E53 %}
-                                {% for ARCHAEOLOGICAL_ZONE_E44 in PLACE_E53.ARCHAEOLOGICAL_ZONE_E44 %}
-                                    <dd class="arches-report-subsection-item">
-                                    {{ ARCHAEOLOGICAL_ZONE_E44.ARCHAEOLOGICAL_ZONE_E44__value }}
-                                    </dd>
-                                {% endfor %}                      
-                            {% endif %}
-                        {% endfor %}              
-                    {% endif %}
-                </dl>
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if 'PLACE_E53' not in report_info.source.graph %}
+                    <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                {% else %}
+                    {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                        {% if 'ARCHAEOLOGICAL_ZONE_E44' in PLACE_E53 %}
+                            {% for ARCHAEOLOGICAL_ZONE_E44 in PLACE_E53.ARCHAEOLOGICAL_ZONE_E44 %}
+                                <p class="arches-report-subsection-item">
+                                {{ ARCHAEOLOGICAL_ZONE_E44.ARCHAEOLOGICAL_ZONE_E44__value }}
+                                </p>
+                            {% endfor %}                      
+                        {% endif %}
+                    {% endfor %}              
+                {% endif %}
             </div>
         </div>
     </div>

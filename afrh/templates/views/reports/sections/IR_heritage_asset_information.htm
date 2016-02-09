@@ -1,0 +1,79 @@
+{% load i18n %}
+<div class="row">
+    {% if 'HERITAGE_ASSET_REPORT_E3' not in report_info.source.graph %}
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection"></h3>
+    </div>
+    
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}   
+    
+    {% for HERITAGE_ASSET_REPORT_E3 in report_info.source.graph.HERITAGE_ASSET_REPORT_E3 %}
+        {% for HERITAGE_ASSET_REPORT_DATE_E49 in HERITAGE_ASSET_REPORT_E3.HERITAGE_ASSET_REPORT_DATE_E49 %}
+            <div class="col-sm-3 col-md-4">
+                <h3 class="arches-report-subsection">{{HERITAGE_ASSET_REPORT_DATE_E49.HERITAGE_ASSET_REPORT_DATE_E49__value|slice:":10"}}</h3>
+            </div>
+        {% endfor %}
+            <div class="col-sm-9 col-md-8">
+                <div class="row">
+                    <div class="col-xs-12 arches-report-subsection-content">
+                    {% if 'CURRENT_USER_E55' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for CURRENT_USER_E55 in HERITAGE_ASSET_REPORT_E3.CURRENT_USER_E55 %}
+                            <p class="arches-report-subsection-item">
+                            Current User: {{CURRENT_USER_E55.CURRENT_USER_E55__value}}
+                            </p>
+                        {% endfor %}
+                    {% endif %}
+                    {% if 'CURRENT_OPERATIONAL_STATE_E3' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for CURRENT_OPERATIONAL_STATE_E3 in HERITAGE_ASSET_REPORT_E3.CURRENT_OPERATIONAL_STATE_E3 %}
+                            {% for CURRENT_OPERATIONAL_STATUS_E55 in CURRENT_OPERATIONAL_STATE_E3.CURRENT_OPERATIONAL_STATUS_E55 %}
+                                <p class="arches-report-subsection-item">
+                                Current Operator: {{CURRENT_OPERATIONAL_STATUS_E55.CURRENT_OPERATIONAL_STATUS_E55__value}}
+                                </p>
+                            {% endfor %}
+                        {% endfor %}  
+                    {% endif %}
+                    {% if 'HERITAGE_ASSET_CONDITION_E3' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for HERITAGE_ASSET_CONDITION_E3 in HERITAGE_ASSET_REPORT_E3.HERITAGE_ASSET_CONDITION_E3 %}
+                            <p class="arches-report-subsection-item">
+                            Condition: {{HERITAGE_ASSET_CONDITION_E3.HERITAGE_ASSET_CONDITION_E3__value}}
+                            </p>
+                        {% endfor %}
+                    {% endif %}
+                    {% if 'HERITAGE_ASSET_CLASSIFICATION_E55' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for HERITAGE_ASSET_CLASSIFICATION_E55 in HERITAGE_ASSET_REPORT_E3.HERITAGE_ASSET_CLASSIFICATION_E55 %}
+                            <p class="arches-report-subsection-item">
+                            Classification: {{HERITAGE_ASSET_CLASSIFICATION_E55.HERITAGE_ASSET_CLASSIFICATION_E55__value}}
+                            </p>
+                        {% endfor %}
+                    {% endif %}
+                    {% if 'HERITAGE_ASSET_PURPOSE_E55' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for HERITAGE_ASSET_PURPOSE_E55 in HERITAGE_ASSET_REPORT_E3.HERITAGE_ASSET_PURPOSE_E55 %}
+                            <p class="arches-report-subsection-item">
+                            Purpose: {{HERITAGE_ASSET_PURPOSE_E55.HERITAGE_ASSET_PURPOSE_E55__value}}
+                            </p>
+                        {% endfor %}
+                    {% endif %}
+                    {% if 'CURRENT_OPERATIONAL_STATE_E3' in HERITAGE_ASSET_REPORT_E3 %}
+                        {% for CURRENT_OPERATIONAL_STATE_E3 in HERITAGE_ASSET_REPORT_E3.CURRENT_OPERATIONAL_STATE_E3 %}
+                            {% for CURRENT_OPERATIONAL_STATUS_NOTES_E62 in CURRENT_OPERATIONAL_STATE_E3.CURRENT_OPERATIONAL_STATUS_NOTES_E62 %}
+                                <p class="arches-report-subsection-item">
+                                Note: {{CURRENT_OPERATIONAL_STATUS_NOTES_E62.CURRENT_OPERATIONAL_STATUS_NOTES_E62__value}}
+                                </p>
+                            {% endfor %}
+                        {% endfor %}  
+                    {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+    </div>
+</div>
+
+

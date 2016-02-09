@@ -243,8 +243,40 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                     <div class="col-xs-12">
                         <div class="right-inner arches-box-grey-border">
                             {% include 'views/reports/sections/IR_detailed_description.htm' %}
-                            {% include 'views/reports/sections/hpmp_evaluation.htm' %}
-                            {% include "views/reports/sections/modifications.htm" %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section-header">
+                    <span>{% trans "Heritage Asset Data" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_heritage_asset_information.htm' %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section-header">
+                    <span>{% trans "Maintenance Data" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_maintenance_data.htm' %}
                         </div>
                     </div>
                 </div>
