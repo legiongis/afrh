@@ -60,67 +60,71 @@
                 <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
             {% else %}
                 {% for PRODUCTION_E12 in report_info.source.graph.PRODUCTION_E12 %}
-                    <dl>
-                    {% for COMPONENT_E18 in PRODUCTION_E12.COMPONENT_E18 %}
-                        {% for COMPONENT_TYPE_E55 in COMPONENT_E18.COMPONENT_TYPE_E55 %}
-                            <dt>
-                                <h5 id="" class="arches-report-subsection-title">{{COMPONENT_TYPE_E55.COMPONENT_TYPE_E55__value}}</h5>
-                            </dt>
-                        {% endfor %}
-                        {% if 'COMPONENT_PRODUCTION_E12' in COMPONENT_E18 %}
-                            {% for COMPONENT_PRODUCTION_E12 in COMPONENT_E18.COMPONENT_PRODUCTION_E12 %}
-                                {% if 'DESIGN_OR_PROCEDURE_E29' in COMPONENT_PRODUCTION_E12 %}
-                                    {% for DESIGN_OR_PROCEDURE_E29 in COMPONENT_PRODUCTION_E12.DESIGN_OR_PROCEDURE_E29 %}
-                                        {% if 'CONSTRUCTION_TECHNIQUE_E55' in DESIGN_OR_PROCEDURE_E29 %}
-                                            {% for CONSTRUCTION_TECHNIQUE_E55 in DESIGN_OR_PROCEDURE_E29.CONSTRUCTION_TECHNIQUE_E55 %}
-                                                <dd class="arches-report-subsection-item">
-                                                Technique: {{CONSTRUCTION_TECHNIQUE_E55.CONSTRUCTION_TECHNIQUE_E55__value}}
-                                                </dd>
-                                            {% endfor %} 
-                                        {% endif %}
-                                    {% endfor %} 
-                                {% endif %}
-                            {% endfor %} 
-                        {% endif %}
-                        {% if 'MATERIAL_E57' in COMPONENT_E18 %}
-                            {% for MATERIAL_E57 in COMPONENT_E18.MATERIAL_E57 %}
-                                <dd class="arches-report-subsection-item">
-                                Material: {{MATERIAL_E57.MATERIAL_E57__value}}
-                                </dd>
-                            {% endfor %}  
-                        {% endif %}
-                        {% if 'COMPONENT_CLASSIFICATION_E55' in COMPONENT_E18 %}
-                            {% for COMPONENT_CLASSIFICATION_E55 in COMPONENT_E18.COMPONENT_CLASSIFICATION_E55 %}
-                                <dd class="arches-report-subsection-item">
-                                Classification: {{COMPONENT_CLASSIFICATION_E55.COMPONENT_CLASSIFICATION_E55__value}}
-                                </dd>
+                    {% if 'COMPONENT_E18' not in PRODUCTION_E12 %}
+                        <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                    {% else %}
+                        <dl>
+                        {% for COMPONENT_E18 in PRODUCTION_E12.COMPONENT_E18 %}
+                            {% for COMPONENT_TYPE_E55 in COMPONENT_E18.COMPONENT_TYPE_E55 %}
+                                <dt>
+                                    <h5 id="" class="arches-report-subsection-title">{{COMPONENT_TYPE_E55.COMPONENT_TYPE_E55__value}}</h5>
+                                </dt>
                             {% endfor %}
-                        {% endif %}
-                        {% if 'COMPONENT_SIGNIFICANCE_E55' in COMPONENT_E18 %}
-                            {% for COMPONENT_SIGNIFICANCE_E55 in COMPONENT_E18.COMPONENT_SIGNIFICANCE_E55 %}
-                                <dd class="arches-report-subsection-item">
-                                Significance: {{COMPONENT_SIGNIFICANCE_E55.COMPONENT_SIGNIFICANCE_E55__value}}
-                                </dd>
-                            {% endfor %}
-                        {% endif %}
-                        {% if 'COMPONENT_TIME___SPAN_E52' in COMPONENT_E18 %}
-                            {% for COMPONENT_TIME___SPAN_E52 in COMPONENT_E18.COMPONENT_TIME___SPAN_E52 %}
-                                {% for COMPONENT_TIME___SPAN_DATE_E50 in COMPONENT_TIME___SPAN_E52.COMPONENT_TIME___SPAN_DATE_E50 %}
+                            {% if 'COMPONENT_PRODUCTION_E12' in COMPONENT_E18 %}
+                                {% for COMPONENT_PRODUCTION_E12 in COMPONENT_E18.COMPONENT_PRODUCTION_E12 %}
+                                    {% if 'DESIGN_OR_PROCEDURE_E29' in COMPONENT_PRODUCTION_E12 %}
+                                        {% for DESIGN_OR_PROCEDURE_E29 in COMPONENT_PRODUCTION_E12.DESIGN_OR_PROCEDURE_E29 %}
+                                            {% if 'CONSTRUCTION_TECHNIQUE_E55' in DESIGN_OR_PROCEDURE_E29 %}
+                                                {% for CONSTRUCTION_TECHNIQUE_E55 in DESIGN_OR_PROCEDURE_E29.CONSTRUCTION_TECHNIQUE_E55 %}
+                                                    <dd class="arches-report-subsection-item">
+                                                    Technique: {{CONSTRUCTION_TECHNIQUE_E55.CONSTRUCTION_TECHNIQUE_E55__value}}
+                                                    </dd>
+                                                {% endfor %} 
+                                            {% endif %}
+                                        {% endfor %} 
+                                    {% endif %}
+                                {% endfor %} 
+                            {% endif %}
+                            {% if 'MATERIAL_E57' in COMPONENT_E18 %}
+                                {% for MATERIAL_E57 in COMPONENT_E18.MATERIAL_E57 %}
                                     <dd class="arches-report-subsection-item">
-                                    Date: {{COMPONENT_TIME___SPAN_DATE_E50.COMPONENT_TIME___SPAN_DATE_E50__value|slice:":10"}}
+                                    Material: {{MATERIAL_E57.MATERIAL_E57__value}}
+                                    </dd>
+                                {% endfor %}  
+                            {% endif %}
+                            {% if 'COMPONENT_CLASSIFICATION_E55' in COMPONENT_E18 %}
+                                {% for COMPONENT_CLASSIFICATION_E55 in COMPONENT_E18.COMPONENT_CLASSIFICATION_E55 %}
+                                    <dd class="arches-report-subsection-item">
+                                    Classification: {{COMPONENT_CLASSIFICATION_E55.COMPONENT_CLASSIFICATION_E55__value}}
                                     </dd>
                                 {% endfor %}
-                            {% endfor %}  
-                        {% endif %}
-                        {% if 'COMPONENT_DESCRIPTION_E62' in COMPONENT_E18 %}
-                            {% for COMPONENT_DESCRIPTION_E62 in COMPONENT_E18.COMPONENT_DESCRIPTION_E62 %}
-                                <dd class="arches-report-subsection-item">
-                                Description: {{COMPONENT_DESCRIPTION_E62.COMPONENT_DESCRIPTION_E62__value|safe}}
-                                </dd>
-                            {% endfor %}  
-                        {% endif %}
-                    {% endfor %}
-                    </dl>
+                            {% endif %}
+                            {% if 'COMPONENT_SIGNIFICANCE_E55' in COMPONENT_E18 %}
+                                {% for COMPONENT_SIGNIFICANCE_E55 in COMPONENT_E18.COMPONENT_SIGNIFICANCE_E55 %}
+                                    <dd class="arches-report-subsection-item">
+                                    Significance: {{COMPONENT_SIGNIFICANCE_E55.COMPONENT_SIGNIFICANCE_E55__value}}
+                                    </dd>
+                                {% endfor %}
+                            {% endif %}
+                            {% if 'COMPONENT_TIME___SPAN_E52' in COMPONENT_E18 %}
+                                {% for COMPONENT_TIME___SPAN_E52 in COMPONENT_E18.COMPONENT_TIME___SPAN_E52 %}
+                                    {% for COMPONENT_TIME___SPAN_DATE_E50 in COMPONENT_TIME___SPAN_E52.COMPONENT_TIME___SPAN_DATE_E50 %}
+                                        <dd class="arches-report-subsection-item">
+                                        Date: {{COMPONENT_TIME___SPAN_DATE_E50.COMPONENT_TIME___SPAN_DATE_E50__value|slice:":10"}}
+                                        </dd>
+                                    {% endfor %}
+                                {% endfor %}  
+                            {% endif %}
+                            {% if 'COMPONENT_DESCRIPTION_E62' in COMPONENT_E18 %}
+                                {% for COMPONENT_DESCRIPTION_E62 in COMPONENT_E18.COMPONENT_DESCRIPTION_E62 %}
+                                    <dd class="arches-report-subsection-item">
+                                    Description: {{COMPONENT_DESCRIPTION_E62.COMPONENT_DESCRIPTION_E62__value|safe}}
+                                    </dd>
+                                {% endfor %}  
+                            {% endif %}
+                        {% endfor %}
+                        </dl>
+                    {% endif %}
                 {% endfor %}
             {% endif %}
             </div>

@@ -12,12 +12,12 @@
             
             <div class="col-xs-12 arches-report-subsection-content">
                 {% if 'PLACE_E53' not in report_info.source.graph %}
-                    <dd class="arches-report-subsection-item">
-                        <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
-                    </dd>
+                    <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
                 {% else %}
                     {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
-                        {% if 'PLACE_ADDRESS_E45' in PLACE_E53 %}
+                        {% if 'PLACE_ADDRESS_E45' not in PLACE_E53 %}
+                            <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                        {% else %}
                             {% for PLACE_ADDRESS_E45 in PLACE_E53.PLACE_ADDRESS_E45 %}
                                 <p class="arches-report-subsection-item"><span class="arches-report-subsection-item-type">
                                     {{PLACE_ADDRESS_E45.ADDRESS_TYPE_E55__value}} Address</span><br>
@@ -46,7 +46,9 @@
                 {% else %}
                     {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
                     
-                        {% if 'PLACE_SITE_LOCATION_E53' in PLACE_E53 %}
+                        {% if 'PLACE_SITE_LOCATION_E53' not in PLACE_E53 %}
+                            <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                        {% else %}
                             {% for PLACE_SITE_LOCATION_E53 in PLACE_E53.PLACE_SITE_LOCATION_E53 %}
                                 {% if 'DESCRIPTION_OF_LOCATION_E62' in PLACE_SITE_LOCATION_E53 %}
                                     <p class="arches-report-subsection-item">
@@ -79,7 +81,9 @@
                     <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
                 {% else %}
                     {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
-                        {% if 'CHARACTER_AREA_E44' in PLACE_E53 %}
+                        {% if 'CHARACTER_AREA_E44' not in PLACE_E53 %}
+                            <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                        {% else %}
                             {% for CHARACTER_AREA_E44 in PLACE_E53.CHARACTER_AREA_E44 %}
                                 <p class="arches-report-subsection-item">
                                 {{CHARACTER_AREA_E44.CHARACTER_AREA_E44__value}}
@@ -108,7 +112,9 @@
                     <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
                 {% else %}
                     {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
-                        {% if 'MASTER_PLAN_ZONE_E44' in PLACE_E53 %}
+                        {% if 'MASTER_PLAN_ZONE_E44' not in PLACE_E53 %}
+                            <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                        {% else %}
                             {% for MASTER_PLAN_ZONE_E44 in PLACE_E53.MASTER_PLAN_ZONE_E44 %}
                                 <p class="arches-report-subsection-item">
                                 {{ MASTER_PLAN_ZONE_E44.MASTER_PLAN_ZONE_E44__value }}
@@ -136,7 +142,9 @@
                     <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
                 {% else %}
                     {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
-                        {% if 'ARCHAEOLOGICAL_ZONE_E44' in PLACE_E53 %}
+                        {% if 'ARCHAEOLOGICAL_ZONE_E44' not in PLACE_E53 %}
+                            <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                        {% else %}
                             {% for ARCHAEOLOGICAL_ZONE_E44 in PLACE_E53.ARCHAEOLOGICAL_ZONE_E44 %}
                                 <p class="arches-report-subsection-item">
                                 {{ ARCHAEOLOGICAL_ZONE_E44.ARCHAEOLOGICAL_ZONE_E44__value }}
