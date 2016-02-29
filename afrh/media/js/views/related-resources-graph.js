@@ -9,7 +9,10 @@ define(['jquery', 'backbone', 'underscore', 'arches', 'resource-types', 'd3', 'p
         },
 
         initialize: function(options) {
-            console.log("loaded");
+            console.log("initializing related resources graph");
+            
+            console.log(this.resourceId);
+            
             var self = this,
                 width = this.$el.parent().width(),
                 height = 400;
@@ -89,6 +92,7 @@ define(['jquery', 'backbone', 'underscore', 'arches', 'resource-types', 'd3', 'p
                     self.data.nodes[0].y = height/2;
                     self.update();
                 }, true);
+                console.log("should be loaded");
             }
             
             $(window).on("resize", function() {
@@ -96,6 +100,8 @@ define(['jquery', 'backbone', 'underscore', 'arches', 'resource-types', 'd3', 'p
             }).trigger("resize");
 
             self.$el.addClass('view-created');
+            console.log(self.$el);
+            console.log("view-created");
         },
 
         update: function () {
@@ -305,7 +311,6 @@ define(['jquery', 'backbone', 'underscore', 'arches', 'resource-types', 'd3', 'p
                             nodes = [];
 
                         if (isRoot){
-                            console.log(response);
                             rootNode = {
                                 id: self.newNodeId,
                                 entityid: resourceId,
