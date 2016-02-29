@@ -35,7 +35,9 @@ import json
 def report(request, resourceid):
     lang = request.GET.get('lang', settings.LANGUAGE_CODE)
     se = SearchEngineFactory().create()
+    
     report_info = se.search(index='resource', id=resourceid)
+    print json.dumps(report_info,indent=2)
     report_info['source'] = report_info['_source']
     report_info['type'] = report_info['_type']
     report_info['source']['graph'] = report_info['source']['graph']
@@ -165,6 +167,11 @@ def report(request, resourceid):
         if entitytypeidkey == 'INFORMATION_RESOURCE':
             entitytypeidkey = '%s_%s' % (entitytypeidkey, information_resource_type)
         related_resource_dict[entitytypeidkey].append(related_resource)
+
+    related_resource_flag = False
+    for k,v in related_resource_dict.iteritems():
+        if len(v) > 0:
+            related_resource_flag = True
     
     try:
         with open(r"K:\arches\afrh\catchall\related_resource_dict","wb") as log:
@@ -178,6 +185,7 @@ def report(request, resourceid):
             'report_template': 'views/reports/' + report_info['type'] + '.htm',
             'report_info': report_info,
             'related_resource_dict': related_resource_dict,
+            'related_resource_flag': related_resource_flag,
             'main_script': 'resource-report',
             'active_page': 'ResourceReport'
         },
