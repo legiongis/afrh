@@ -16,6 +16,42 @@ TEMPLATE_DIRS = (os.path.join(PACKAGE_ROOT, 'templates'),os.path.join(PACKAGE_RO
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT =  os.path.join(PACKAGE_ROOT, 'uploadedfiles')
 
+# Set up default users
+DATABASE_USERS = {
+    "octavian":{
+        "first_name":"Gaius",
+        "last_name":"Julius",
+        "password":"octavian",
+        "email":'octavian@legiongis.com',
+        "groups":[],
+        "permissions":[],
+        "staff":True,
+        "superuser":True,
+    },
+    "caracalla":{
+        "first_name":"Marcus",
+        "last_name":"Augustus",
+        "password":"caracalla",
+        "email":'caracalla@legiongis.com',
+        "groups":["group1","group2"],
+        "permissions":[],
+        "staff":True,
+        "superuser":False,
+    },
+    "trajan":{
+        "first_name":"Gaius",
+        "last_name":"",
+        "password":"trajan",
+        "email":'trajan@legiongis.com',
+        "groups":[],
+        "permissions":[],
+        "staff":False,
+        "superuser":False,
+    }
+}
+
+
+# Map settings
 DEFAULT_MAP_X = -8572820
 DEFAULT_MAP_Y = 4712543
 DEFAULT_MAP_ZOOM = 15
@@ -110,25 +146,6 @@ def RESOURCE_TYPE_CONFIGS():
             },
             'sort_order': 3
         },
-##        'HISTORICAL_EVENT.E5':{
-##            'resourcetypeid': 'HISTORICAL_EVENT.E5',
-##            'name': _('Historic Event'),
-##            'icon_class': 'fa fa-calendar',
-##            'default_page': 'historical-event-summary',
-##            'default_description': 'No description available',
-##            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
-##            'categories': [_('Resource')],
-##            'has_layer': True,
-##            'on_map': False,
-##            'marker_color': '#4EBF41',
-##            'stroke_color': '#61a659',
-##            'fill_color': '#c2d8bf',
-##            'primary_name_lookup': {
-##                'entity_type': 'NAME.E41',
-##                'lookup_value': 'Primary'
-##            },
-##            'sort_order': 4
-##        },
         'ACTOR.E39': {
             'resourcetypeid': 'ACTOR.E39',
             'name': _('Person/Organization'),
