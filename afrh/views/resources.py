@@ -37,7 +37,6 @@ def report(request, resourceid):
     se = SearchEngineFactory().create()
     
     report_info = se.search(index='resource', id=resourceid)
-    print json.dumps(report_info,indent=2)
     report_info['source'] = report_info['_source']
     report_info['type'] = report_info['_type']
     report_info['source']['graph'] = report_info['source']['graph']
@@ -190,3 +189,44 @@ def report(request, resourceid):
             'active_page': 'ResourceReport'
         },
         context_instance=RequestContext(request))        
+
+def map_layers(request, entitytypeid='all', get_centroids=False):
+    data = []
+
+    geom_param = request.GET.get('geom', None)
+
+    bbox = request.GET.get('bbox', '')
+    limit = request.GET.get('limit', settings.MAP_LAYER_FEATURE_LIMIT)
+    entityids = request.GET.get('entityid', '')
+    geojson_collection = {
+      "type": "FeatureCollection",
+      "features": []
+    }
+    
+    se = SearchEngineFactory().create()
+    query = Query(se, limit=limit)
+
+    args = { 'index': 'maplayers' }
+    if entitytypeid != 'all':
+        args['doc_type'] = entitytypeid
+    if entityids != '':
+        for entityid in entityids.split(','):
+            geojson_collection['features'].append(se.search(index='maplayers', id=entityid)['_source'])
+        return JSONResponse(geojson_collection)
+
+    data = query.search(**args)
+
+    for item in data['hits']['hits']:
+        if get_centroids:
+            item['_source']['geometry'] = item['_source']['properties']['centroid']
+            item['_source'].pop('properties', None)
+        elif geom_param != None:
+            item['_source']['geometry'] = item['_source']['properties'][geom_param]
+            item['_source']['properties'].pop('extent', None)
+            item['_source']['properties'].pop(geom_param, None)
+        else:
+            item['_source']['properties'].pop('extent', None)
+            item['_source']['properties'].pop('centroid', None)
+        geojson_collection['features'].append(item['_source'])
+
+    return JSONResponse(geojson_collection)
