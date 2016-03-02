@@ -25,7 +25,6 @@ urlpatterns = patterns('',
     url(r'^reports/(?P<resourceid>%s)$' % uuid_regex , 'afrh.views.resources.report', name='report'),
     url(r'', include(arches_hip_urls)),
     url(r'^newmap', 'afrh.views.newmap.get_page', name="newmap"),
-    url(r'^resources/markers/(?P<entitytypeid>.*)$', 'arches.app.views.resources.map_layers', name="map_markers"),
-    #url(r'^resources/markers/(?P<entitytypeid>.*)$', 'arches.app.views.resources.map_layers', {'get_centroids':True}, name="map_markers"),
-    
+    url(r'^resources/layers/(?P<entitytypeid>.*)$', resources.map_layers, name="map_layers"),
+    url(r'^resources/markers/(?P<entitytypeid>.*)$', resources.map_layers, name="map_markers"),
 )
