@@ -5,25 +5,20 @@ from django.conf import settings
 
 def install(path_to_source_data_dir=None):
     setup.truncate_db()
-    
     setup.delete_index(index='concept_labels')
     setup.delete_index(index='term') 
     Resource().prepare_term_index(create=True)
-
     setup.load_resource_graphs()
     setup.load_authority_files(path_to_source_data_dir)
     setup.load_map_layers()
-    
     create_database_users()
-
     setup.resource_remover.truncate_resources()
     setup.delete_index(index='resource')
     setup.delete_index(index='entity')
     setup.delete_index(index='maplayers')
     setup.delete_index(index='resource_relations') 
     create_indexes()
-
-    #setup.load_resources()
+    setup.load_resources()
 
 def load_resource_graphs():
     setup.resource_graphs.load_graphs(break_on_error=True)
@@ -32,7 +27,6 @@ def load_authority_files(path_to_files=None):
     setup.authority_files.load_authority_files(path_to_files, break_on_error=True)
 
 def load_resources(external_file=None):
-    print settings.DATABASE_USERS
     setup.load_resources(external_file)
 
 def create_indexes():
@@ -49,6 +43,9 @@ def create_database_users():
     print "\nCREATING DATABASE USERS\n-----------------------"
     for user, pro in settings.DATABASE_USERS.iteritems():
         print user+",",
+        
+        if not 'email' in pro.keys():
+            
 
         newuser = User.objects.create_superuser(user,pro['email'],pro['password'])
         
