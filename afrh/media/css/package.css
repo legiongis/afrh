@@ -112,6 +112,29 @@ ul.select2-choices {
     border: 1px solid rgba(206,217,233,.95);
 }
 
+.ol-attribution {
+    z-index:200;
+    margin-bottom: 45px !important;
+    height: 35px;
+}
+
+.ol-attribution button, .ol-attribution ul {
+    display: inline-block;
+    height: 29px;
+}
+
+.ol-attribution button{
+        background-color: rgba(66,139,202,.8) !important;
+}
+
+.ol-attribution li {
+    display: inline;
+    list-style: none;
+    line-height: inherit;
+    font-size: 14px;
+    
+}
+
 .ol-zoom {
     width: 45px !important;
     left: 30px !important;
@@ -216,7 +239,7 @@ ul.select2-choices {
 }
 
 .arches-map-inventory-footer {
-    margin-top: 549px;
+    margin-top: -46px;
     height: 46px; 
     opacity: .75;
     background: #eaeaea;
