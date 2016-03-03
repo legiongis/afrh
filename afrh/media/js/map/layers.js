@@ -11,7 +11,7 @@ define([
         categories: ["Reference"],
         icon: 'fa fa-bookmark-o',
         infoContent: "Showing the 11 archaeological zones at the AFRH",
-        onMap: true,
+        onMap: false,
         active: false,
         layer: new ol.layer.Tile({
             visible: false,
@@ -62,7 +62,7 @@ define([
         categories: ["Reference"],
         icon: 'fa fa-bookmark-o',
         infoContent: "Showing the character areas at the AFRH.<br><b>The following Character Areas are <em>not</em> shown here:</b> Circulation System, Recurring Resources, and Spatial Patterns.",
-        onMap: true,
+        onMap: false,
         active: false,
         layer: char_area_lyr_group,
     });
@@ -72,7 +72,7 @@ define([
         categories: ["Reference"],
         icon: 'fa fa-bookmark-o',
         infoContent: "Showing the master plan zones at the AFRH",
-        onMap: true,
+        onMap: false,
         active: false,
         layer: new ol.layer.Tile({
             visible: false,
@@ -93,7 +93,7 @@ define([
         categories: ["Reference"],
         icon: 'fa fa-bookmark-o',
         infoContent: "Showing the master plan zones at the AFRH",
-        onMap: true,
+        onMap: false,
         active: false,
         layer: new ol.layer.Tile({
             visible: false,
