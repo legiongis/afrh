@@ -64,12 +64,17 @@ define([
     street.layer.matchid = street.id;
     street.maxzoom = 20;
     
+    var dc_attr = new ol.Attribution({
+        html: '<a href="https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer" target="_blank">Ortho 2013 Map Service</a> &copy; <a href="http://octo.dc.gov/service/dc-gis-services" target="_blank">DC GIS</a>.'
+    })
+    
     //ol3 ortho layer from DC GIS
     orthoLyr = new ol.layer.Tile({
         name: 'dcgis_imagery',
         preload: Infinity,
         source: new ol.source.XYZ({
-            url: 'http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer/tile/{z}/{y}/{x}'
+            url: 'http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer/tile/{z}/{y}/{x}',
+            attributions: [dc_attr],
         }),
         visible: false,
     });
@@ -95,7 +100,8 @@ define([
                 name: 'imagery',
                 preload: Infinity,
                 source: new ol.source.XYZ({
-                    url: 'http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer/tile/{z}/{y}/{x}'
+                    url: 'http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer/tile/{z}/{y}/{x}',
+                    attributions: [dc_attr],
                 }),
             }),
             new ol.layer.Tile({
