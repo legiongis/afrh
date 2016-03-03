@@ -35,6 +35,23 @@ import json
 def report(request, resourceid):
     lang = request.GET.get('lang', settings.LANGUAGE_CODE)
     se = SearchEngineFactory().create()
+
+    #print json.dumps(report_info,indent=2)
+
+
+    actors = se.search(index='resource', type="ACTOR.E39")
+    print actors
+    all_resources = se.search(index='resource')
+
+    hit_list = all_resources['hits']['hits']
+    print "hitlist count:"
+    print len(hit_list)
+    actors2 = [i for i in hit_list if i['_type'] == "ACTOR.E39"]
+
+    
+
+    
+    
     
     report_info = se.search(index='resource', id=resourceid)
     report_info['source'] = report_info['_source']
@@ -191,6 +208,8 @@ def report(request, resourceid):
         context_instance=RequestContext(request))        
 
 def map_layers(request, entitytypeid='all', get_centroids=False):
+    print "map_layers arguments:"
+    print entitytypeid, get_centroids
     data = []
 
     geom_param = request.GET.get('geom', None)
@@ -230,3 +249,71 @@ def map_layers(request, entitytypeid='all', get_centroids=False):
         geojson_collection['features'].append(item['_source'])
 
     return JSONResponse(geojson_collection)
+    
+def polygon_layers(request, entitytypeid='all'):
+    print "map_layers arguments:"
+    print entitytypeid
+    data = []
+
+    geom_param = request.GET.get('geom', None)
+
+    bbox = request.GET.get('bbox', '')
+    limit = request.GET.get('limit', settings.MAP_LAYER_FEATURE_LIMIT)
+    entityids = request.GET.get('entityid', '')
+    geojson_collection = {
+      "type": "FeatureCollection",
+      "features": []
+    }
+    geojson_collection2 = {
+      "type": "FeatureCollection",
+      "features": []
+    }
+    
+    se = SearchEngineFactory().create()
+    query = Query(se, limit=limit)
+
+    args = { 'index': 'maplayers' }
+    if entitytypeid != 'all':
+        args['doc_type'] = entitytypeid
+    print "good"
+    
+    data = query.search(**args)
+    data2 = query.search(**args)
+    get_centroids = True
+
+    for item in data['hits']['hits']:
+        if get_centroids:
+            item['_source']['geometry'] = item['_source']['properties']['centroid']
+            item['_source'].pop('properties', None)
+        elif geom_param != None:
+            #item['_source']['geometry'] = item['_source']['properties'][geom_param]
+            item['_source']['properties'].pop('extent', None)
+            item['_source']['properties'].pop(geom_param, None)
+        else:
+            item['_source']['properties'].pop('extent', None)
+            item['_source']['properties'].pop('centroid', None)
+        geojson_collection['features'].append(item['_source'])
+        
+    for item in data2['hits']['hits']:
+        #item['_source']['properties'].pop('extent', None)
+        #item['_source']['properties'].pop('centroid', None)
+        if len(item['_source']['geometry']['geometries']) != 1:
+            print "there's more than one geometry here..."
+        item['_source']['geometry'] = item['_source']['geometry']['geometries'][0]
+        del item['_source']['properties']
+        geojson_collection2['features'].append(item['_source'])
+
+    for i in geojson_collection['features']:
+        print json.dumps(i,indent=2)
+        break
+        
+    print "try 2:"
+    
+    for i in geojson_collection2['features']:
+        print json.dumps(i,indent=2)
+        break
+        
+       
+    print "dddd"
+    return JSONResponse(geojson_collection2)
+    

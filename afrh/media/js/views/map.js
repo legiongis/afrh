@@ -152,6 +152,7 @@ define([
                 });
                 self.trigger('mapClicked', e, clickFeature);
             });
+            console.log("map.js view fully initialized.");
         },
 
         handleMouseMove: function(e) {

@@ -12,7 +12,7 @@ define([
                 onMap: false,
                 iconColor: "#FFFFFF",
                 infoContent: null,
-                isArchesLayer: false
+                isArchesLayer: false,
             };
         _.extend(layerModel, config);
         return layerModel;

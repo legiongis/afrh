@@ -27,5 +27,6 @@ urlpatterns = patterns('',
     url(r'', include(arches_hip_urls)),
     url(r'^newmap', 'afrh.views.newmap.get_page', name="newmap"),
     url(r'^resources/layers/(?P<entitytypeid>.*)$', resources.map_layers, name="map_layers"),
-    url(r'^resources/markers/(?P<entitytypeid>.*)$', resources.map_layers, name="map_markers"),
+    url(r'^resources/polygon_layers/(?P<entitytypeid>.*)$', resources.polygon_layers, name="polygon_layers"),
+    url(r'^resources/markersHEY/(?P<entitytypeid>.*)$', resources.map_layers, {'get_centroids':True}, name="map_markers"),
 )

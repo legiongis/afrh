@@ -98,15 +98,17 @@ def RESOURCE_TYPE_CONFIGS():
             'description_node': _('DESCRIPTION.E62'),
             'categories': [_('Resource')],
             'has_layer': True,
-            'on_map': False,
+            'on_map': True,
             'marker_color': '#fa6003',
             'stroke_color': '#fb8c49',
             'fill_color': '#ffc29e',
+            'show_polygons': False,
             'primary_name_lookup': {
                 'entity_type': 'NAME.E41',
                 'lookup_value': 'Current'
             },
-            'sort_order': 1
+            'sort_order': 1,
+            'show_polygons':True
         },
         'HERITAGE_RESOURCE_GROUP.E27': {
             'resourcetypeid': 'HERITAGE_RESOURCE_GROUP.E27',
@@ -125,7 +127,8 @@ def RESOURCE_TYPE_CONFIGS():
                 'entity_type': 'NAME.E41',
                 'lookup_value': 'Primary'
             },
-            'sort_order': 2
+            'sort_order': 2,
+            'show_polygons':True
         },
         'ACTIVITY.E7': {
             'resourcetypeid': 'ACTIVITY.E7',
@@ -144,7 +147,8 @@ def RESOURCE_TYPE_CONFIGS():
                 'entity_type': 'NAME.E41',
                 'lookup_value': 'Primary'
             },
-            'sort_order': 3
+            'sort_order': 3,
+            'show_polygons':True
         },
         'ACTOR.E39': {
             'resourcetypeid': 'ACTOR.E39',
@@ -163,7 +167,8 @@ def RESOURCE_TYPE_CONFIGS():
                 'entity_type': 'ACTOR_APPELLATION.E82',
                 'lookup_value': 'Primary'
             },
-            'sort_order': 5
+            'sort_order': 5,
+            'show_polygons':False
         },
         'INFORMATION_RESOURCE.E73': {
             'resourcetypeid': 'INFORMATION_RESOURCE.E73',
@@ -182,7 +187,8 @@ def RESOURCE_TYPE_CONFIGS():
                 'entity_type': 'TITLE.E41',
                 'lookup_value': 'Primary'
             },
-            'sort_order': 6
+            'sort_order': 6,
+            'show_polygons':False
         }
     }
 
