@@ -82,7 +82,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                         </div>
                     </div>
                 </div>
-
         </div>
         <!-- End Map Header -->
 
@@ -374,11 +373,21 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                             
                             <button id="inventory-overlays" type="button" class="btn btn-primary arches-map-tools map-tools-reduce-width" style="border-bottom-right-radius:3px;"><i class="fa fa-align-justify"></i><span class="hidden-xs"> {% trans 'Overlays' %}</span>
                             </button>
-
+                            
                         </div>
+                       
+                        
 
                     </div>
                 </div>
+                
+                 <div class="map-loading" style="">
+                                    
+                    <img src="{{ STATIC_URL }}img/spinner.gif" height="28" width="28" style="margin-top: 2px;"></img>
+                    <p class="map-loading-text">{% trans 'Loading resources...' %}</p>
+                   
+                </div>
+                
                 <!-- End Map Tools -->
                 <!-- Info Panel -->
             <div id="resource-info" class="row" style="display:none;">

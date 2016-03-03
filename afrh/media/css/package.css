@@ -233,6 +233,29 @@ ul.select2-choices {
     font-family: 'Open Sans', sans-serif;
 }
 
+.map-loading {
+    height: 36px;
+    margin-top: -41px;
+    margin-left: 425px;
+    background-color: #5cb85c;
+    opacity: 0.9;
+    border: 1px solid #4cae4c;
+    border-radius: 3px;
+    padding-top: 1px;
+    padding-left: 5px;
+    display: block;
+    width: 200px;
+}
+
+.map-loading-text {
+    font-size: 15px;
+    font-weight: 400;
+    color: #fdfdfd;
+    margin-left: 40px;
+    margin-top: -25px;
+}
+}
+
 /*Footer
 ------------------------------------*/
 .footer a,
