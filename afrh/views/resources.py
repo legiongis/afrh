@@ -264,10 +264,6 @@ def polygon_layers(request, entitytypeid='all'):
       "type": "FeatureCollection",
       "features": []
     }
-    geojson_collection2 = {
-      "type": "FeatureCollection",
-      "features": []
-    }
     
     se = SearchEngineFactory().create()
     query = Query(se, limit=limit)
@@ -275,45 +271,17 @@ def polygon_layers(request, entitytypeid='all'):
     args = { 'index': 'maplayers' }
     if entitytypeid != 'all':
         args['doc_type'] = entitytypeid
-    print "good"
     
     data = query.search(**args)
-    data2 = query.search(**args)
-    get_centroids = True
 
     for item in data['hits']['hits']:
-        if get_centroids:
-            item['_source']['geometry'] = item['_source']['properties']['centroid']
-            item['_source'].pop('properties', None)
-        elif geom_param != None:
-            #item['_source']['geometry'] = item['_source']['properties'][geom_param]
-            item['_source']['properties'].pop('extent', None)
-            item['_source']['properties'].pop(geom_param, None)
-        else:
-            item['_source']['properties'].pop('extent', None)
-            item['_source']['properties'].pop('centroid', None)
-        geojson_collection['features'].append(item['_source'])
-        
-    for item in data2['hits']['hits']:
-        #item['_source']['properties'].pop('extent', None)
-        #item['_source']['properties'].pop('centroid', None)
-        if len(item['_source']['geometry']['geometries']) != 1:
-            print "there's more than one geometry here..."
-        item['_source']['geometry'] = item['_source']['geometry']['geometries'][0]
-        del item['_source']['properties']
-        geojson_collection2['features'].append(item['_source'])
+        for shape in item['_source']['geometry']['geometries']:
+            feat = {
+                "geometry":shape,
+                "type":"Feature",
+                "id":item['_source']['id']
+            }
+            geojson_collection['features'].append(feat)
 
-    for i in geojson_collection['features']:
-        print json.dumps(i,indent=2)
-        break
-        
-    print "try 2:"
-    
-    for i in geojson_collection2['features']:
-        print json.dumps(i,indent=2)
-        break
-        
-       
-    print "dddd"
-    return JSONResponse(geojson_collection2)
+    return JSONResponse(geojson_collection)
     
