@@ -25,7 +25,7 @@ DATABASE_USERS = {
         "email":'octavian@legiongis.com',
         "groups":[],
         "permissions":[],
-        "staff":True,
+        "is_staff":True,
         "superuser":True,
     },
     "caracalla":{
@@ -35,7 +35,7 @@ DATABASE_USERS = {
         "email":'caracalla@legiongis.com',
         "groups":["group1","group2"],
         "permissions":[],
-        "staff":True,
+        "is_staff":True,
         "superuser":False,
     },
     "trajan":{
@@ -45,7 +45,7 @@ DATABASE_USERS = {
         "email":'trajan@legiongis.com',
         "groups":[],
         "permissions":[],
-        "staff":False,
+        "is_staff":False,
         "superuser":False,
     }
 }
