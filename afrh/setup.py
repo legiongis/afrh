@@ -48,22 +48,21 @@ def create_database_users():
             print "  user missing email or password, check settings.py"
             continue
         
-        newuser = User.objects.create_superuser(user,pro['email'],pro['password'])
+        newuser = User.objects.create_user(user,pro['email'],pro['password'])
         
         if pro['superuser']:
             newuser.is_staff = True
             newuser.is_superuser = True
 
-        for extra in ['is_staff','first_name','last_name']:
-            if extra in pro.keys():
-                newuser.extra = pro[extra]
+        if 'is_staff' in pro.keys():
+            newuser.is_staff = pro['is_staff']
             
-##        if 'first_name' in pro.keys():
-##            newuser.first_name = pro['first_name']
-##            
-##        if 'last_name' in pro.keys():
-##            newuser.last_name = pro['last_name']
-##        
+        if 'first_name' in pro.keys():
+            newuser.first_name = pro['first_name']
+            
+        if 'last_name' in pro.keys():
+            newuser.last_name = pro['last_name']
+
         newuser.save()
 
     print " ...done.\n"
