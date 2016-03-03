@@ -109,28 +109,10 @@ define([
         })
     });
     
-    var buildings = new LayerModel({
-        name: 'Buildings',
-        categories: ["Reference"],
-        icon: 'fa fa-bookmark-o',
-        infoContent: "Showing the master plan zones at the AFRH",
-        onMap: true,
-        active: false,
-        layer: new ol.layer.Vector({
-            visible: false,
-            name: 'buildings',
-            source: new ol.source.GeoJSON({
-                projection: 'EPSG:3857',
-                url: 'http://localhost:8000/resources/polygon_layers/all',
-            }),
-        })
-    });
-    
     layers.push(
         char_areas,
         mp_zones,
         arch_zones,
-        buildings
     );
 
     return layers;
