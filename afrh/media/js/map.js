@@ -237,7 +237,10 @@ require([
                 if (feature && (feature.get('arches_marker') || feature.get('arches_cluster'))) {
                     cursorStyle = "pointer";
                     if (feature.get('arches_marker') || feature.get('features').length === 1) {
-                        feature = feature.get('features')[0];
+                        //slight modification to accommodate the polygon layers
+                        if (typeof feature.get('features') != 'undefined'){
+                            feature = feature.get('features')[0];
+                        }
                         var fullFeature = archesFeaturesCache[feature.getId()];
                         if (fullFeature && fullFeature != 'loading') {
                             showMouseoverFeatureTooltip(fullFeature);
@@ -248,12 +251,7 @@ require([
                                 success: function(response) {
                                     
                                     fullFeature = geoJSON.readFeature(response.features[0]);
-                                    console.log("FULL FEATURE");
-                                    console.log(fullFeature);
-                                    
                                     var geom = fullFeature.getGeometry();
-                                    console.log("GEOM:");
-                                    console.log(geom);
                                     geom.transform(ol.proj.get('EPSG:4326'), ol.proj.get('EPSG:3857'));
 
                                     fullFeature.set('select_feature', true);
@@ -594,17 +592,6 @@ require([
                 hideAllPanels();
             });
 
-            //Show and hide Layer Library.  
-            $("#add-layer").click(function(){
-                $( ".map-space" ).slideToggle(600);
-                $( "#layer-library" ).slideToggle(600);
-            });
-
-            $("#back-to-map").click(function(){
-                $( ".map-space" ).slideToggle(600);
-                $( "#layer-library" ).slideToggle(600);
-            });
-
             $('.knob').knob({
                 change: function (value) {
                     var layerId = this.$.data().layerid;
@@ -652,74 +639,6 @@ require([
             $(".ol-attribution").css("margin-bottom", "35px");
 
             //Select2 Simple Search initialize
-            $('.layerfilter').select2({
-                data: function() {
-                    var terms = [];
-                    _.each(layers, function (layer) {
-                        terms = _.union(terms, layer.categories, [layer.name]);
-                    });
-
-                    return {
-                        results: _.map(terms, function(term) {
-                            return {
-                                id: _.uniqueId('term'),
-                                text: term
-                            };
-                        })
-                    };
-                },
-                placeholder: "find layers",
-                multiple: true,
-                maximumSelectionSize: 5
-            });
-
-            //filter layer library
-            $(".layerfilter").on("select2-selecting", function(e) {
-                self.viewModel.filterTerms.push(e.object);
-            });
-
-            $(".layerfilter").on("select2-removed", function(e) {
-                var term = ko.utils.arrayFirst(self.viewModel.filterTerms(), function(term) {
-                    return term.id === e.val;
-                });
-
-                self.viewModel.filterTerms.remove(term);
-            });
-
-            //Select2 Simple Search initialize
-            $('.geocodewidget').select2({
-                ajax: {
-                    url: "geocoder",
-                    dataType: 'json',
-                    quietMillis: 250,
-                    data: function (term, page) {
-                        return {
-                            q: term
-                        };
-                    },
-                    results: function (data, page) {
-                        return { results: data.results };
-                    },
-                    cache: true
-                },
-                minimumInputLength: 4,
-                multiple: true,
-                maximumSelectionSize: 1
-            });
-
-            $('.geocodewidget').on("select2-selecting", function(e) {
-                var geom = geoJSON.readGeometry(e.object.geometry);
-                geom.transform(ol.proj.get('EPSG:4326'), ol.proj.get('EPSG:3857'));
-                self.map.map.getView().fitExtent(geom.getExtent(), self.map.map.getSize());
-                self.viewModel.selectedAddress(e.object.text);
-                overlay.setPosition(ol.extent.getCenter(geom.getExtent()));
-                overlay.setPositioning('center-center');
-                $('#popup').show();
-            });
-
-            $('.geocodewidget').on('select2-removing', function () {
-                $('#popup').hide();
-            });
 
             var overlay = new ol.Overlay({
               element: $('#popup')[0]
