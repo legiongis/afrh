@@ -61,7 +61,7 @@ MAP_MAX_ZOOM = 20
 
 RESOURCE_MODEL = {'default': '{}.models.resource.Resource'.format(PACKAGE_NAME)}
 
-## use the default arches validator so non-Arches-HIP resources can load
+## change to the default arches validator so non-Arches-HIP resources can load
 PACKAGE_VALIDATOR = "arches.app.utils.mock_package_validator"
 
 LOCAL_DOMAIN = "afrh.adamcfcox.com"
