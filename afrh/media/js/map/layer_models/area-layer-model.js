@@ -35,7 +35,7 @@ define([
                 var styles = [new ol.style.Style({
                     stroke: new ol.style.Stroke({
                         color: 'rgba(' + strokergb.r + ',' + strokergb.g + ',' + strokergb.b + ',0.25)',
-                        width: 10
+                        width: 8
                     }),
                     //fill: new ol.style.Fill({
                     //    color: 'rgba(' + fillrgb.r + ',' + fillrgb.g + ',' + fillrgb.b + ',0.45)'
@@ -44,7 +44,7 @@ define([
                 }),new ol.style.Style({
                     stroke: new ol.style.Stroke({
                         color: 'rgba(' + strokergb.r + ',' + strokergb.g + ',' + strokergb.b + ',0.9)',
-                        width: 4
+                        width: 2
                     }),
                     //fill: new ol.style.Fill({
                     //    color: 'rgba(' + fillrgb.r + ',' + fillrgb.g + ',' + fillrgb.b + ',0.45)'

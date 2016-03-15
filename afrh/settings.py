@@ -120,7 +120,7 @@ def RESOURCE_TYPE_CONFIGS():
             'categories': [_('Resource')],
             'has_layer': True,
             'on_map': True,
-            'marker_color': '#8D45F8',
+            'marker_color': '#FF2D9D',
             'stroke_color': '#FF2D9D',
             'fill_color': '#FF2D9D',
             'primary_name_lookup': {
