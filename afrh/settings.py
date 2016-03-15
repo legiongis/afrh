@@ -230,7 +230,7 @@ def RESOURCE_TYPE_CONFIGS():
             'sort_order': 7,
             'layer_model': 'marker'
         },
-        'ACTIVITY_A.Exx': {
+        'ACTIVITY_A.E7': {
             'resourcetypeid': 'ACTIVITY_A.E7',
             'name': _('Management Activity (A)'),
             'icon_class': 'fa fa-clipboard',
@@ -251,7 +251,7 @@ def RESOURCE_TYPE_CONFIGS():
             'layer_model': 'marker',
             'restricted': True
         },
-        'ACTIVITY_B.Exx': {
+        'ACTIVITY_B.E7': {
             'resourcetypeid': 'ACTIVITY_B.E7',
             'name': _('Management Activity (B)'),
             'icon_class': 'fa fa-clipboard',
