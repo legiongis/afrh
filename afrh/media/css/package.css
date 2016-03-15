@@ -256,7 +256,7 @@ ul.select2-choices {
     font-family: 'Open Sans', sans-serif;
 }
 
-.map-loading {
+.new-map-loading {
     height: 36px;
     margin-top: -41px;
     margin-left: 425px;
@@ -270,7 +270,7 @@ ul.select2-choices {
     width: 200px;
 }
 
-.map-loading-text {
+.new-map-loading-text {
     font-size: 15px;
     font-weight: 400;
     color: #fdfdfd;
