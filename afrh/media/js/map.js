@@ -285,7 +285,8 @@ require([
                     id: feature.getId(),
                     reportLink: arches.urls.reports + feature.getId()
                 };
-                var typeInfo = layerInfo[feature.get('entitytypeid')];
+                var typeInfo = resourceTypes[feature.get('entitytypeid')];
+
                 $('#cluster-info').hide();
                 if (typeInfo) {
                     resourceData.typeName = resourceTypes[feature.get('entitytypeid')].name;
@@ -361,7 +362,7 @@ require([
                                 if (archesFeaturesCache[clickFeature.getId()] && archesFeaturesCache[clickFeature.getId()] !== 'loading'){
                                     showFeaturePopup(archesFeaturesCache[clickFeature.getId()]);
                                 } else {
-                                    $('.map-loading').show();
+                                    $('.new-map-loading').show();
                                     archesFeaturesCache[clickFeature.getId()] = 'loading';
                                     $.ajax({
                                         url: arches.urls.map_markers + 'all?entityid=' + clickFeature.getId(),
@@ -374,7 +375,8 @@ require([
                                             feature.set('entityid', feature.getId());
 
                                             archesFeaturesCache[clickFeature.getId()] = feature;
-                                            $('.map-loading').hide();
+
+                                            $('.new-map-loading').hide();
                                             showFeaturePopup(feature);
                                         }
                                     });
@@ -461,9 +463,7 @@ require([
                 maplayers = map.map.getLayers();
                 setat = maplayers.getArray().length;
                 maplayers.forEach(function(lyr,index){
-                    console.log("lyr.matchid = " + lyr.matchid);
                     if (layer.id == lyr.matchid) {
-                        console.log(index);
                         setat = index;
                     }
                 });
