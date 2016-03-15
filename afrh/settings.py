@@ -94,92 +94,92 @@ def RESOURCE_TYPE_CONFIGS():
             'name': _('Inventory Resource'),
             'icon_class': 'fa fa-university',
             'default_page': 'inventory-summary',
-            'default_description': 'No description available',
+            'default_description': 'no description available',
             'description_node': _('DESCRIPTION.E62'),
             'categories': [_('Resource')],
             'has_layer': True,
             'on_map': True,
-            'marker_color': '#fa6003',
-            'stroke_color': '#fb8c49',
-            'fill_color': '#ffc29e',
-            'show_polygons': False,
+            'marker_color': '#C4171D',
+            'stroke_color': '#C4171D',
+            'fill_color': '#C4171D',
             'primary_name_lookup': {
                 'entity_type': 'NAME.E41',
                 'lookup_value': 'Current'
             },
             'sort_order': 1,
-            'show_polygons':True
+            'show_polygons':True,
+            'layer_model': 'marker'
         },
-        'HERITAGE_RESOURCE_GROUP.E27': {
-            'resourcetypeid': 'HERITAGE_RESOURCE_GROUP.E27',
-            'name': _('Historic Area'),
+        'CHARACTER_AREA.E53': {
+            'resourcetypeid': 'CHARACTER_AREA.E53',
+            'name': _('Character Area'),
             'icon_class': 'fa fa-th',
-            'default_page': 'area-summary',
-            'default_description': 'No description available',
-            'description_node': _('REASONS.E62'),
+            'default_page': 'information-resource-summary',
+            'default_description': 'no description available',
+            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
             'categories': [_('Resource')],
             'has_layer': True,
-            'on_map': False,
-            'marker_color': '#FFC53D',
-            'stroke_color': '#d9b562',
-            'fill_color': '#eedbad',
+            'on_map': True,
+            'marker_color': '#8D45F8',
+            'stroke_color': '#FF2D9D',
+            'fill_color': '#FF2D9D',
             'primary_name_lookup': {
-                'entity_type': 'NAME.E41',
+                'entity_type': 'NAME.E48',
                 'lookup_value': 'Primary'
             },
             'sort_order': 2,
-            'show_polygons':True
+            'layer_model': 'area'
         },
-        'ACTIVITY.E7': {
-            'resourcetypeid': 'ACTIVITY.E7',
-            'name': _('Activity'),
-            'icon_class': 'fa fa-tasks',
-            'default_page': 'activity-summary',
-            'default_description': 'No description available',
+        'MASTER_PLAN_ZONE.E53': {
+            'resourcetypeid': 'MASTER_PLAN_ZONE.E53',
+            'name': _('Master Plan Zone'),
+            'icon_class': 'fa fa-th-large',
+            'default_page': 'information-resource-summary',
+            'default_description': 'no description available',
             'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
             'categories': [_('Resource')],
             'has_layer': True,
-            'on_map': False,
-            'marker_color': '#6DC3FC',
-            'stroke_color': '#88bde0',
-            'fill_color': '#afcce1',
+            'on_map': True,
+            'marker_color': '#009DFF',
+            'stroke_color': '#009DFF',
+            'fill_color': '#009DFF',
             'primary_name_lookup': {
-                'entity_type': 'NAME.E41',
+                'entity_type': 'NAME.E48',
                 'lookup_value': 'Primary'
             },
             'sort_order': 3,
-            'show_polygons':True
+            'layer_model': 'area'
         },
-        'ACTOR.E39': {
-            'resourcetypeid': 'ACTOR.E39',
-            'name': _('Person/Organization'),
-            'icon_class': 'fa fa-group',
-            'default_page': 'actor-summary',
-            'default_description': 'No description available',
+        'ARCHAEOLOGICAL_ZONE.E53': {
+            'resourcetypeid': 'ARCHAEOLOGICAL_ZONE.E53',
+            'name': _('Archaeological Zone'),
+            'icon_class': 'fa fa-list',
+            'default_page': 'information-resource-summary',
+            'default_description': 'no description available',
             'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
             'categories': [_('Resource')],
             'has_layer': True,
-            'on_map': False,
-            'marker_color': '#a44b0f',
-            'stroke_color': '#a7673d',
-            'fill_color': '#c8b2a3',
+            'on_map': True,
+            'marker_color': '#FF1000',
+            'stroke_color': '#FF1000',
+            'fill_color': '#FF1000',
             'primary_name_lookup': {
-                'entity_type': 'ACTOR_APPELLATION.E82',
+                'entity_type': 'ARCHAEOLOGICAL_ZONE_NAME.E48',
                 'lookup_value': 'Primary'
             },
-            'sort_order': 5,
-            'show_polygons':False
+            'sort_order': 4,
+            'layer_model': 'area'
         },
-        'INFORMATION_RESOURCE.E73': {
-            'resourcetypeid': 'INFORMATION_RESOURCE.E73',
-            'name': _('Information Resource'),
-            'icon_class': 'fa fa-file-text-o',
+        'HISTORIC_AREA.E53': {
+            'resourcetypeid': 'HISTORIC_AREA.E53',
+            'name': _('Historic Area'),
+            'icon_class': 'fa fa-flag',
             'default_page': 'information-resource-summary',
-            'default_description': 'No description available',
+            'default_description': 'no description available',
             'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
             'categories': [_('Resource')],
             'has_layer': True,
-            'on_map': False,
+            'on_map': True,
             'marker_color': '#8D45F8',
             'stroke_color': '#9367d5',
             'fill_color': '#c3b5d8',
@@ -187,8 +187,90 @@ def RESOURCE_TYPE_CONFIGS():
                 'entity_type': 'TITLE.E41',
                 'lookup_value': 'Primary'
             },
+            'sort_order': 5,
+            'layer_model': 'area'
+        },
+        'ACTOR.E39': {
+            'resourcetypeid': 'ACTOR.E39',
+            'name': _('Person/Organization'),
+            'icon_class': 'fa fa-group',
+            'default_page': 'actor-summary',
+            'default_description': 'no description available',
+            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
+            'categories': [_('Resource')],
+            'has_layer': False,
+            'on_map': True,
+            'marker_color': '#a44b0f',
+            'stroke_color': '#a7673d',
+            'fill_color': '#c8b2a3',
+            'primary_name_lookup': {
+                'entity_type': 'ACTOR_APPELLATION.E82',
+                'lookup_value': 'Primary'
+            },
             'sort_order': 6,
-            'show_polygons':False
+            
+        },
+        'INFORMATION_RESOURCE.E73': {
+            'resourcetypeid': 'INFORMATION_RESOURCE.E73',
+            'name': _('Information Resource'),
+            'icon_class': 'fa fa-file-text-o',
+            'default_page': 'information-resource-summary',
+            'default_description': 'no description available',
+            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
+            'categories': [_('Resource')],
+            'has_layer': True,
+            'on_map': True,
+            'marker_color': '#8D45F8',
+            'stroke_color': '#9367d5',
+            'fill_color': '#c3b5d8',
+            'primary_name_lookup': {
+                'entity_type': 'TITLE.E41',
+                'lookup_value': 'Primary'
+            },
+            'sort_order': 7,
+            'layer_model': 'marker'
+        },
+        'ACTIVITY_A.Exx': {
+            'resourcetypeid': 'ACTIVITY_A.E7',
+            'name': _('Management Activity (A)'),
+            'icon_class': 'fa fa-clipboard',
+            'default_page': 'activity-a-summary',
+            'default_description': 'no description available',
+            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
+            'categories': [_('Resource')],
+            'has_layer': True,
+            'on_map': True,
+            'marker_color': '#a44b0f',
+            'stroke_color': '#a7673d',
+            'fill_color': '#c8b2a3',
+            'primary_name_lookup': {
+                'entity_type': 'ACTOR_APPELLATION.E82',
+                'lookup_value': 'Primary'
+            },
+            'sort_order': 8,
+            'layer_model': 'marker',
+            'restricted': True
+        },
+        'ACTIVITY_B.Exx': {
+            'resourcetypeid': 'ACTIVITY_B.E7',
+            'name': _('Management Activity (B)'),
+            'icon_class': 'fa fa-clipboard',
+            'default_page': 'activity-b-summary',
+            'default_description': 'no description available',
+            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
+            'categories': [_('Resource')],
+            'has_layer': True,
+            'on_map': True,
+            'marker_color': '#a44b0f',
+            'stroke_color': '#a7673d',
+            'fill_color': '#c8b2a3',
+            'primary_name_lookup': {
+                'entity_type': 'ACTOR_APPELLATION.E82',
+                'lookup_value': 'Primary'
+            },
+            'sort_order': 9,
+            'layer_model': 'marker',
+            'restricted': True
         }
     }
 

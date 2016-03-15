@@ -259,7 +259,9 @@
                     "{{type}}": {
                         id: "{{type_data.resourcetypeid}}",
                         icon: "{{type_data.icon_class}}",
+                        iconColor: "{{type_data.marker_color}}",
                         name: "{{type_data.name}}",
+                        description: "{{type_data.description}}",
                         defaultDescription: "{{type_data.default_description}}",
                         descriptionNode: "{{type_data.description_node}}",
                         categories: [
@@ -267,13 +269,34 @@
                             "{{category}}"
                             {% endfor %}
                         ],
+                        {% if type_data.has_layer %}
+                        makeLayer: true,
+                        {% else %}
+                        makeLayer: false,
+                        {% endif %}
+                        {% if type_data.restricted %}
+                        restricted: true,
+                        {% else %}
+                        restricted: false,
+                        {% endif %}
+                        layerModel: "{{type_data.layer_model}}",
                         color: "{{type_data.marker_color}}",
-                        strokeColor: "{{type_data.stroke_color}}",
-                        fillColor: "{{type_data.fill_color}}"
+                        vectorColor: "{{type_data.marker_color}}",
+                        fillColor: "{{ type_data.fill_color }}",
+                        strokeColor: "{{ type_data.stroke_color }}",
+                        infoContent: "{{ type_data.map_info }}"
                     },
                     {% endfor %}
                 };
                 return resourceTypes;
+            });
+            
+            define('user-info', [], function () {
+                var userinfo = {
+                    'name': '{{user.username}}',
+                    'viewActivites': false
+                };
+                return userinfo;
             });
             
 
