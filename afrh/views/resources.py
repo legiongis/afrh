@@ -36,9 +36,6 @@ def report(request, resourceid):
     lang = request.GET.get('lang', settings.LANGUAGE_CODE)
     se = SearchEngineFactory().create()
 
-    #print json.dumps(report_info,indent=2)
-
-
     actors = se.search(index='resource', type="ACTOR.E39")
     print actors
     all_resources = se.search(index='resource')
@@ -48,11 +45,6 @@ def report(request, resourceid):
     print len(hit_list)
     actors2 = [i for i in hit_list if i['_type'] == "ACTOR.E39"]
 
-    
-
-    
-    
-    
     report_info = se.search(index='resource', id=resourceid)
     report_info['source'] = report_info['_source']
     report_info['type'] = report_info['_type']
@@ -123,12 +115,14 @@ def report(request, resourceid):
 
     related_resource_dict = {
         'INVENTORY_RESOURCE': [],
-        'HERITAGE_RESOURCE_GROUP': [],
-        'ACTIVITY': [],
+        'CHARACTER_AREA': [],
+        'MASTER_PLAN_ZONE': [],
+        'ARCHAEOLOGICAL_ZONE': [],
+        'HISTORIC_AREA': [],
         'ACTOR': [],
-        'HISTORICAL_EVENT': [],
-        'INFORMATION_RESOURCE_IMAGE': [],
-        'INFORMATION_RESOURCE_DOCUMENT': []
+        'INFORMATION_RESOURCE': [],
+        'ACTIVITY_A': [],
+        'ACTIVITY_B': []  
     }
 
     related_resource_info = get_related_resources(resourceid, lang)
@@ -146,22 +140,35 @@ def report(request, resourceid):
             for entity in related_resource['domains']:
                 if entity['entitytypeid'] == 'RESOURCE_TYPE_CLASSIFICATION.E55':
                     related_resource['relationship'].append(get_preflabel_from_valueid(entity['value'], lang)['value'])
-        elif related_resource['entitytypeid'] == 'HERITAGE_RESOURCE_GROUP.E27':
+        elif related_resource['entitytypeid'] == 'CHARACTER_AREA.E53':
             for entity in related_resource['domains']:
                 if entity['entitytypeid'] == 'RESOURCE_TYPE_CLASSIFICATION.E55':
                     related_resource['relationship'].append(get_preflabel_from_valueid(entity['value'], lang)['value'])
-        elif related_resource['entitytypeid'] == 'ACTIVITY.E7':
+        elif related_resource['entitytypeid'] == 'MASTER_PLAN_ZONE.E53':
             for entity in related_resource['domains']:
                 if entity['entitytypeid'] == 'ACTIVITY_TYPE.E55':
                     related_resource['relationship'].append(get_preflabel_from_valueid(entity['value'], lang)['value'])
+        elif related_resource['entitytypeid'] == 'ARCHAEOLOGICAL_ZONE.E53':
+            for entity in related_resource['domains']:
+                if entity['entitytypeid'] == 'ACTOR_TYPE.E55':
+                    related_resource['relationship'].append(get_preflabel_from_conceptid(entity['conceptid'], lang)['value'])
+                    related_resource['actor_relationshiptype'] = ''
+        elif related_resource['entitytypeid'] == 'HISTORIC_AREA.E53':
+            for entity in related_resource['domains']:
+                if entity['entitytypeid'] == 'HISTORICAL_EVENT_TYPE.E55':
+                    related_resource['relationship'].append(get_preflabel_from_conceptid(entity['conceptid'], lang)['value'])
         elif related_resource['entitytypeid'] == 'ACTOR.E39':
             for entity in related_resource['domains']:
                 if entity['entitytypeid'] == 'ACTOR_TYPE.E55':
                     related_resource['relationship'].append(get_preflabel_from_conceptid(entity['conceptid'], lang)['value'])
                     related_resource['actor_relationshiptype'] = ''
-        elif related_resource['entitytypeid'] == 'HISTORICAL_EVENT.E5':
+        elif related_resource['entitytypeid'] == 'ACTIVITY_A.E7':
             for entity in related_resource['domains']:
                 if entity['entitytypeid'] == 'HISTORICAL_EVENT_TYPE.E55':
+                    related_resource['relationship'].append(get_preflabel_from_conceptid(entity['conceptid'], lang)['value'])
+        elif related_resource['entitytypeid'] == 'ACTIVITY_B.E7':
+            for entity in related_resource['domains']:
+                if entity['entitytypeid'] == 'ACTIVITY_B.E7':
                     related_resource['relationship'].append(get_preflabel_from_conceptid(entity['conceptid'], lang)['value'])
         elif related_resource['entitytypeid'] == 'INFORMATION_RESOURCE.E73':
             for entity in related_resource['domains']:
