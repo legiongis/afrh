@@ -2,8 +2,7 @@ define([
     'openlayers',
     'map/resource-layers',
     'map/layer-model',
-    'layers-i18n'
-], function(ol, resourceLayers, LayerModel, layerI18n) {
+], function(ol, resourceLayers, LayerModel) {
     var layers = resourceLayers.layers;
 
     var arch_zones = new LayerModel({
