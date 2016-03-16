@@ -190,7 +190,7 @@ def report(request, resourceid):
             related_resource_flag = True
     
     try:
-        with open(r"K:\arches\afrh\catchall\related_resource_dict","wb") as log:
+        with open(r"C:\arches\afrh\catchall\related_resource_dict","wb") as log:
             print >> log, json.dumps(related_resource_dict, sort_keys=True,indent=4, separators=(',', ': '))
     except:
         pass
@@ -264,6 +264,7 @@ def polygon_layers(request, entitytypeid='all'):
       "type": "FeatureCollection",
       "features": []
     }
+    circ_features = []
     
     se = SearchEngineFactory().create()
     query = Query(se, limit=limit)
@@ -281,7 +282,13 @@ def polygon_layers(request, entitytypeid='all'):
                 "type":"Feature",
                 "id":item['_source']['id']
             }
+            if item['_source']['properties']['primaryname'] == "Circulation":
+                circ_features.append(feat)
+                continue                
             geojson_collection['features'].append(feat)
+
+    for circ_feat in circ_features:
+        geojson_collection['features'].append(circ_feat)
 
     return JSONResponse(geojson_collection)
     
