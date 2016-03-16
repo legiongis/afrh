@@ -31,12 +31,9 @@ def load_resources(external_file=None):
 
 def create_indexes():
     Resource().prepare_resource_relations_index(create=True)
-    Resource().prepare_search_index('HERITAGE_RESOURCE_GROUP.E27', create=True)
-    Resource().prepare_search_index('INVENTORY_RESOURCE.E18', create=True)
-    Resource().prepare_search_index('INFORMATION_RESOURCE.E73', create=True)
-    Resource().prepare_search_index('ACTIVITY.E7', create=True)
-    Resource().prepare_search_index('ACTOR.E39', create=True)
-    #Resource().prepare_search_index('HISTORICAL_EVENT.E5', create=True)
+    
+    for res_config in settings.RESOURCE_TYPE_CONFIGS().values():
+        Resource().prepare_search_index(res_config['resourcetypeid'], create=True)
     
 def create_database_users():
 
