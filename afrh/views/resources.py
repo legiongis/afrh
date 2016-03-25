@@ -120,7 +120,8 @@ def report(request, resourceid):
         'ARCHAEOLOGICAL_ZONE': [],
         'HISTORIC_AREA': [],
         'ACTOR': [],
-        'INFORMATION_RESOURCE': [],
+        'INFORMATION_RESOURCE_DOCUMENT': [],
+        'INFORMATION_RESOURCE_IMAGE': [],
         'ACTIVITY_A': [],
         'ACTIVITY_B': []  
     }
