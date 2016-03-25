@@ -1,7 +1,7 @@
 Source,Target,Type,Id,Label,Weight
 1,2,Directed,2,P3,1.0
 1,4,Directed,4,P1,1.0
-1,6,Directed,6,P7,1.0
+1,6,Directed,6,P89,1.0
 6,7,Directed,7,P87,1.0
 6,9,Directed,9,P3,1.0
 6,11,Directed,11,P87,1.0
@@ -11,7 +11,7 @@ Source,Target,Type,Id,Label,Weight
 6,19,Directed,19,P3,1.0
 6,21,Directed,21,P3,1.0
 6,23,Directed,23,P3,1.0
-1,26,Directed,26,P10,1.0
+1,26,Directed,26,-P53,1.0
 26,27,Directed,27,P1,1.0
 26,29,Directed,29,P1,1.0
 26,31,Directed,31,P3,1.0
@@ -22,7 +22,7 @@ Source,Target,Type,Id,Label,Weight
 39,40,Directed,40,P4,1.0
 40,41,Directed,41,P78,1.0
 1,46,Directed,46,-P8,1.0
-46,47,Directed,47,P45,1.0
+46,47,Directed,47,P9,1.0
 47,48,Directed,48,P9,1.0
 48,49,Directed,49,P3,1.0
 48,51,Directed,51,P78,1.0
