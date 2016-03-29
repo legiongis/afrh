@@ -16,7 +16,7 @@ unnecessary ones.'''
         if not os.path.isfile(target):
             missing.append(target)
 
-    extra = []
+    unused = []
     for f in os.listdir(auth_dir):
         if f == "ENTITY_TYPE_X_ADOC.csv":
             continue
@@ -26,12 +26,15 @@ unnecessary ones.'''
         if f.endswith(".values.csv"):
             f_auth = os.path.join(auth_dir,f.replace(".values",""))
             if not os.path.isfile(f_auth):
-                extra.append(f)
+                unused.append(f)
             continue
         if not f in final_dict.values():
-            extra.append(f)
+            unused.append(f)
+            
+    missing.sort()
+    unused.sort()
     
-    return missing, extra
+    return missing, unused
 
 def get_node_ids(nodesfile):
     '''make dict of all node ids and names'''
@@ -144,10 +147,10 @@ for f in os.listdir(graph_dir):
 
     final_dict, errors = make_entity_to_adoc_dict(node_ids,edges,final_dict,resourcetype)
     
-    missing_docs,extra_docs = check_for_authdocs(final_dict,auth_dir)
+    missing_docs,unused_docs = check_for_authdocs(final_dict,auth_dir)
 
     print_entity_x_adoc_file(auth_dir,final_dict,concept_scheme_name)
 
-logpath = print_to_log(errors,missing_docs,extra_docs)
+logpath = print_to_log(errors,missing_docs,unused_docs)
 os.startfile(logpath)
 
