@@ -1,7 +1,0 @@
-ERROR REPORT
-  entities referencing more than one authdoc:
-    none
-  missing authority documents:
-    none
-  unused authority documents:
-    DIMENSION_TYPE_AUTHORITY_DOCUMENT.csv
