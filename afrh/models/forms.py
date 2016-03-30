@@ -59,8 +59,6 @@ class InventorySummaryForm(ResourceForm):
         self.update_nodes('NRHP_RESOURCE_SUBCATEGORY.E55', data)
         self.update_nodes('WUZIT.E55', data)
         self.update_nodes('BUILDING_NUMBER.E42', data)
-        #if self.resource.entitytypeid in ('INVENTORY_RESOURCE.E18', 'HERITAGE_RESOURCE_GROUP.E27'):   
-        #    self.update_nodes('NRHP_RESOURCE_TYPE.E55', data)
 
         beginning_of_existence_nodes = []
         end_of_existence_nodes = []
@@ -102,11 +100,6 @@ class InventorySummaryForm(ResourceForm):
         }
 
         if self.resource:
-            #if self.resource.entitytypeid in ('INVENTORY_RESOURCE.E18', 'HERITAGE_RESOURCE_GROUP.E27'):            
-            #    self.data['NRHP_RESOURCE_TYPE.E55'] = {
-            #        'branch_lists': self.get_nodes('NRHP_RESOURCE_TYPE.E55'),
-            #        'domains': {'NRHP_RESOURCE_TYPE.E55' : Concept().get_e55_domain('NRHP_RESOURCE_TYPE.E55')}
-            #    }
             
             self.data['NRHP_RESOURCE_TYPE.E55'] = {
                 'branch_lists': self.get_nodes('NRHP_RESOURCE_TYPE.E55'),
@@ -147,74 +140,30 @@ class InventorySummaryForm(ResourceForm):
             except IndexError:
                 pass
                 
-class AreaSummaryForm(ResourceForm):
+class CharAreaSummaryForm(ResourceForm):
     @staticmethod
     def get_info():
         return {
-            'id': 'area-summary',
+            'id': 'char-area-summary',
             'icon': 'fa-tag',
             'name': _('Summary'),
-            'class': AreaSummaryForm
+            'class': CharAreaSummaryForm
         }
 
     def update(self, data, files):
-        self.update_nodes('NAME.E41', data)
-        self.update_nodes('KEYWORD.E55', data)
-        self.update_nodes('HERITAGE_RESOURCE_GROUP_TYPE.E55', data)
-
-        beginning_of_existence_nodes = []
-        end_of_existence_nodes = []
-        for branch_list in data['important_dates']:
-            for node in branch_list['nodes']:
-                if node['entitytypeid'] == 'BEGINNING_OF_EXISTENCE_TYPE.E55':
-                    beginning_of_existence_nodes.append(branch_list)
-                if node['entitytypeid'] == 'END_OF_EXISTENCE_TYPE.E55':
-                    end_of_existence_nodes.append(branch_list)
-
-        for branch_list in beginning_of_existence_nodes:
-            for node in branch_list['nodes']:        
-                if node['entitytypeid'] == 'START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49':
-                    node['entitytypeid'] = 'START_DATE_OF_EXISTENCE.E49'
-
-        for branch_list in end_of_existence_nodes:
-            for node in branch_list['nodes']:        
-                if node['entitytypeid'] == 'START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49':
-                    node['entitytypeid'] = 'END_DATE_OF_EXISTENCE.E49'
-
-        self.update_nodes('BEGINNING_OF_EXISTENCE.E63', {'BEGINNING_OF_EXISTENCE.E63':beginning_of_existence_nodes})
-        self.update_nodes('END_OF_EXISTENCE.E64', {'END_OF_EXISTENCE.E64':end_of_existence_nodes})
+        self.update_nodes('NAME.E48', data)
+        self.update_nodes('RELATIVE_LEVEL_OF_SIGNIFICANCE.E55', data)
 
     def load(self, lang):
-        self.data['important_dates'] = {
-            'branch_lists': datetime_nodes_to_dates(self.get_nodes('BEGINNING_OF_EXISTENCE.E63') + self.get_nodes('END_OF_EXISTENCE.E64')),
-            'domains': {'important_dates' : Concept().get_e55_domain('BEGINNING_OF_EXISTENCE_TYPE.E55') + Concept().get_e55_domain('END_OF_EXISTENCE_TYPE.E55')}
-        }
-
         if self.resource:
-         
-            self.data['HERITAGE_RESOURCE_GROUP_TYPE.E55'] = {
-                'branch_lists': self.get_nodes('HERITAGE_RESOURCE_GROUP_TYPE.E55'),
-                'domains': {'HERITAGE_RESOURCE_GROUP_TYPE.E55' : Concept().get_e55_domain('HERITAGE_RESOURCE_GROUP_TYPE.E55')}
+            self.data['RELATIVE_LEVEL_OF_SIGNIFICANCE.E55'] = {
+                'branch_lists': self.get_nodes('RELATIVE_LEVEL_OF_SIGNIFICANCE.E55'),
+                'domains': {'RELATIVE_LEVEL_OF_SIGNIFICANCE.E55' : Concept().get_e55_domain('RELATIVE_LEVEL_OF_SIGNIFICANCE.E55')}
             }
 
-            self.data['NAME.E41'] = {
-                'branch_lists': self.get_nodes('NAME.E41'),
-                'domains': {'NAME_TYPE.E55' : Concept().get_e55_domain('NAME_TYPE.E55')}
-                # 'defaults': {
-                #     'NAME_TYPE.E55': default_name_type['id'],
-                #     'NAME.E41': ''
-                # }
+            self.data['NAME.E48'] = {
+                'branch_lists': self.get_nodes('NAME.E48'),
             }
-
-            self.data['KEYWORD.E55'] = {
-                'branch_lists': self.get_nodes('KEYWORD.E55'),
-                'domains': {'KEYWORD.E55' : Concept().get_e55_domain('KEYWORD.E55')}
-            }
-
-            try:
-                self.data['primaryname_conceptid'] = self.data['NAME.E41']['domains']['NAME_TYPE.E55'][3]['id']
-            except IndexError:
-                pass
 
 class HeritageGroupSummaryForm(ResourceForm):
     @staticmethod
@@ -339,12 +288,53 @@ class ExternalReferenceForm(ResourceForm):
         return
 
     def load(self, lang):
+
+        self.data['EXTERNAL_RESOURCE.E1'] = {
+            'branch_lists': self.get_nodes('EXTERNAL_RESOURCE.E1'),
+            'domains': {
+                'EXTERNAL_XREF_TYPE.E55': Concept().get_e55_domain('EXTERNAL_XREF_TYPE.E55'),
+            }
+        }
+
+class CharAreaDescriptionForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'char-area-description',
+            'icon': 'fa-flash',
+            'name': _('Description'),
+            'class': CharAreaDescriptionForm
+        }
+
+    def update(self, data, files):
+        self.update_nodes('DESCRIPTION.E62', data)
+        return
+
+    def load(self, lang):
+
+        self.data['DESCRIPTION.E62'] = {
+            'branch_lists': self.get_nodes('DESCRIPTION.E62'),
+        }
+
+class CharAreaGuidelinesForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'char-area-guidelines',
+            'icon': 'fa-flash',
+            'name': _('Guidelines'),
+            'class': CharAreaGuidelinesForm
+        }
+
+    def update(self, data, files):
+        self.update_nodes('GUIDELINES.E62', data)
+        return
+
+    def load(self, lang):
+
         if self.resource:
-            self.data['EXTERNAL_RESOURCE.E1'] = {
-                'branch_lists': self.get_nodes('EXTERNAL_RESOURCE.E1'),
-                'domains': {
-                    'EXTERNAL_XREF_TYPE.E55': Concept().get_e55_domain('EXTERNAL_XREF_TYPE.E55'),
-                }
+            self.data['GUIDELINES.E62'] = {
+                'branch_lists': self.get_nodes('GUIDELINES.E62'),
             }
 
 class ActivityActionsForm(ResourceForm):

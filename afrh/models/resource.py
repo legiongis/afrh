@@ -56,31 +56,12 @@ class Resource(ArchesResource):
                 forms.NewDatesForm.get_info()
             ]
 
-        elif self.entitytypeid == 'HERITAGE_RESOURCE_GROUP.E27':
+        elif self.entitytypeid == 'CHARACTER_AREA.E53':
             description_group['forms'][:0] = [
-                forms.AreaSummaryForm.get_info(),
-                #forms.SummaryForm.get_info(),
-                #forms.HeritageGroupSummaryForm.get_info(),
+                forms.CharAreaSummaryForm.get_info(),
                 forms.DescriptionForm.get_info(),
-                #forms.DistrictClassificationForm.get_info(),
-                forms.MeasurementForm.get_info(),
-                forms.LocationForm.get_info(),
-                forms.ConditionForm.get_info(),
-                forms.EvaluationForm.get_info(),
-                forms.DesignationForm.get_info(),
-                forms.ExternalReferenceForm.get_info()
+                forms.CharAreaGuidelinesForm.get_info()
             ]
-
-
-        elif self.entitytypeid == 'ACTIVITY.E7':
-            description_group['forms'][:0] = [
-                forms.ActivitySummaryForm.get_info(),
-                forms.InventoryDescriptionForm.get_info(),
-                forms.LocationForm.get_info(),
-                #forms.ActivityActionsForm.get_info(),
-                forms.ExternalReferenceForm.get_info()
-            ]
-     
 
         elif self.entitytypeid == 'ACTOR.E39':
             description_group['forms'][:0] = [
@@ -89,16 +70,6 @@ class Resource(ArchesResource):
                 forms.LocationForm.get_info(),
                 forms.RelatedFilesForm.get_info(),
                 #forms.RoleForm.get_info(),
-                forms.ExternalReferenceForm.get_info()
-            ]
-
-
-        elif self.entitytypeid == 'HISTORICAL_EVENT.E5':
-            description_group['forms'][:0] = [
-                forms.HistoricalEventSummaryForm.get_info(),
-                forms.DescriptionForm.get_info(),
-                forms.LocationForm.get_info(), 
-                forms.PhaseForm.get_info(),
                 forms.ExternalReferenceForm.get_info()
             ]
 
