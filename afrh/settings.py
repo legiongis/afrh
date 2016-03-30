@@ -114,7 +114,7 @@ def RESOURCE_TYPE_CONFIGS():
             'resourcetypeid': 'CHARACTER_AREA.E53',
             'name': _('Character Area'),
             'icon_class': 'fa fa-th',
-            'default_page': 'information-resource-summary',
+            'default_page': 'char-area-summary',
             'default_description': 'no description available',
             'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
             'categories': [_('Resource')],
