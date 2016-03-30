@@ -99,7 +99,7 @@ def print_to_log(dict_errors,missing=[],extra=[]):
     '''print the two error outputs to a log'''
 
     current_dir = os.path.dirname(sys.argv[0])
-    logfile = os.path.join(current_dir,"_makeentitydoclog.txt")
+    logfile = os.path.join(current_dir,"_makeentitydoc.log")
     with open(logfile, "w") as log:
         print >> log, "ERROR REPORT"
         found = False

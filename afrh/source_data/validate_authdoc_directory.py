@@ -85,7 +85,7 @@ def process_auth_docs(auth_doc_dir):
     '''validate all auth docs in input directory'''
 
     current_dir = os.path.dirname(sys.argv[0])
-    logfile = os.path.join(current_dir,"_validationlog.txt")
+    logfile = os.path.join(current_dir,"_validation.log")
     msg_dict = {}
     with open(logfile, "w") as log:
 
