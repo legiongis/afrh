@@ -1,0 +1,36 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-xs-12">
+        <dl>
+            <dt>
+                <h5 id="" class="arches-report-subsection-title">{% trans "Modifications" %}</h5>
+            </dt>
+
+            {% if 'MODIFICATION_EVENT_E11' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                </dd>
+            {% else %}
+                <dd class="arches-report-subsection-item">
+                {% for MODIFICATION_EVENT_E11 in report_info.source.graph.MODIFICATION_EVENT_E11 %}
+                    {% if 'MODIFICATION_TYPE_E55' in MODIFICATION_EVENT_E11 %}
+                        {% for MODIFICATION_TYPE_E55 in MODIFICATION_EVENT_E11.MODIFICATION_TYPE_E55 %}
+                            {{MODIFICATION_TYPE_E55.MODIFICATION_TYPE_E55__value}}
+                        {% endfor %}
+                    {% endif %}
+                </dd>
+                <dd style="margin-left:10px;">
+                    
+                    {% if 'MODIFICATION_DESCRIPTION_E62' in MODIFICATION_EVENT_E11 %}
+                        {% for MODIFICATION_DESCRIPTION_E62 in MODIFICATION_EVENT_E11.MODIFICATION_DESCRIPTION_E62 %}
+                            {{MODIFICATION_DESCRIPTION_E62.MODIFICATION_DESCRIPTION_E62__value|safe}}
+                        {% endfor %}
+                    {% endif %}
+                </dd>
+                {% endfor %} 
+
+            {% endif %}
+
+        </dl>
+    </div>
+</div>

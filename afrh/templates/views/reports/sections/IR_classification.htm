@@ -1,0 +1,93 @@
+{% load i18n %}
+<div class="row">
+
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">{% trans "NRHP Resource Type" %}</h3>
+    </div>
+    <!-- End Section sub-header -->
+
+    <!-- Section Content -->
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if 'NRHP_RESOURCE_TYPE_E55' not in report_info.source.graph %}
+                    <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                {% else %}
+                    {% for NRHP_RESOURCE_TYPE_E55 in report_info.source.graph.NRHP_RESOURCE_TYPE_E55 %}
+                        <p class="arches-report-subsection-item">
+                        {{ NRHP_RESOURCE_TYPE_E55.NRHP_RESOURCE_TYPE_E55__value }}
+                        </p>
+                    {% endfor %}            
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="devider devider-subsection"></hr>
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">{% trans "NRHP Resource Category" %}</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                    {% if 'NRHP_RESOURCE_CATEGORY_E55' not in report_info.source.graph %}
+                        <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                    {% else %}
+                        {% for NRHP_RESOURCE_CATEGORY_E55 in report_info.source.graph.NRHP_RESOURCE_CATEGORY_E55 %}
+                            <p class="arches-report-subsection-item">
+                                {{ NRHP_RESOURCE_CATEGORY_E55.NRHP_RESOURCE_CATEGORY_E55__value }}
+</p>
+                        {% endfor %}            
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="devider devider-subsection"></hr>
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">{% trans "NRHP Resource Subcategory" %}</h3>
+    </div>
+    
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                    {% if 'NRHP_RESOURCE_SUBCATEGORY_E55' not in report_info.source.graph %}
+                        <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                    {% else %}
+                        {% for NRHP_RESOURCE_SUBCATEGORY_E55 in report_info.source.graph.NRHP_RESOURCE_SUBCATEGORY_E55 %}
+                            <p class="arches-report-subsection-item">
+                                {{ NRHP_RESOURCE_SUBCATEGORY_E55.NRHP_RESOURCE_SUBCATEGORY_E55__value }}
+                            </p>
+                        {% endfor %}            
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="devider devider-subsection"></hr>
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">{% trans "Wuzit (original purpose)" %}</h3>
+    </div>
+    
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                    {% if 'WUZIT_E55' not in report_info.source.graph %}
+                            <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                    {% else %}
+                        {% for WUZIT_E55 in report_info.source.graph.WUZIT_E55 %}
+                            <p class="arches-report-subsection-item">
+                                {{ WUZIT_E55.WUZIT_E55__value }}
+                            </p>
+                        {% endfor %}            
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+

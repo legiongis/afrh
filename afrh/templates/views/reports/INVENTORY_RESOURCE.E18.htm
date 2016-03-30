@@ -1,0 +1,324 @@
+
+<!--
+ARCHES - a program developed to inventory and manage immovable cultural heritage.
+Copyright (C) 2013 J. Paul Getty Trust and World Monuments Fund
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+{% load staticfiles %}
+{% load i18n %}
+
+{% include 'views/reports/title.htm' %}
+
+<!-- End Fixed Nav for Report -->
+<div id="report-body" class="report-body">
+    
+     {% if geometry != 'null' %}
+        <!--=== Map Block ===-->
+        <div id="map-container">
+
+            <div id="map" class="map map-report-panel" style="display: block;">
+                <div id="olmap" class="fill"></div>
+                <div style="display:none;" id="map-data">
+                    <input type="hidden" id="resource_geometry" value='{{ geometry }}' />
+                </div>
+            </div>
+
+            <!-- Map: Project Info Panel -->
+            <div class="container">
+
+                <!-- Map Tools Panel -->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6" style="">
+
+                        <div id="basemaps-panel" class="tools-panel hidden" style="overflow-y: scroll; border-top-left-radius: 5px; border-top-right-radius: 5px; margin-top: -408px; height: 332px; width: 290px; margin-left: 0px;">
+                            <div class="modal-header arches-modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    ×
+                                </button>
+                                <h4 class="modal-title">
+                                    {% trans "Basemaps" %}
+                                </h4>
+                            </div>
+
+                            <!-- Body Content -->
+                            <div class="modal-body padding-top-0 padding-bottom-0" data-bind='foreach: baseLayers'>
+
+                                <div class="row">
+                                    <hr class="arches-layer-divider" style="border-top: 0px; margin-top: 5px;">
+
+                                    <div class="arches-basemap-entry" style="margin-right: 7px;">
+
+                                        <div class="" style="">
+                                            <a data-bind="attr: { id: id, title: name }" class="basemap info-click" data-rel="" href="javascript:void(0);">
+                                                <span class="">  
+                                                    <img data-bind="attr: { src: icon }" class="arches-basemap-thumbnail" alt="" />
+                                                    <span class="zoom-icon"></span>                   
+                                                </span>                                              
+                                            </a>                    
+                                            <span class="arches-basemap-caption-search">
+                                                <a data-bind="attr: { id: id }, text: name" class="caption-text-search hover-effect basemap info-click" href="javascript:void(0);"> </a>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- End Body Content -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End Map Tools Panel -->
+
+                <!-- Map Tools -->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-7 col-md-5 col-lg-4" style="margin-top: -77px;">
+                        <div class="btn-group">
+                            <button id="inventory-basemaps" type="button" class="btn btn-primary arches-map-tools" style="width:290px;"><i class="fa fa-globe"></i> {% trans "Basemaps" %}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Map Tools -->
+            </div>
+        </div>
+        <!--=== End Map Block ===-->
+    {% endif %}
+
+    <!--=== Resource Description Section ===-->
+    <div class="block-description" style="padding-top: 30px;" id="report">
+        <div class="container">
+
+            <!-- Resource Report Container -->
+            <div>
+
+                <!-- Section Header -->
+                <div class="report-section-header">
+                    <span>{% trans "Resource Identification" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+
+                <!-- Anchor for in=page navigation from "report options" menu -->
+                <a href="overview" id="overview" style="top: 250px;"></a>
+
+                <!-- Resource Description Content -->
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            
+                            {% include 'views/reports/sections/IR_resource_identification.htm' %}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="report-section-header">
+                    <span>{% trans "Evaluation" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_evaluation.htm' %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section-header">
+                    <span>{% trans "Classification" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_classification.htm' %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section-header">
+                    <span>{% trans "Important Dates" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_important_dates.htm' %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section-header">
+                    <span>{% trans "Location" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_location.htm' %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section-header">
+                    <span>{% trans "Description" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_description.htm' %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section-header">
+                    <span>{% trans "Function and Use" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_function_and_use.htm' %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section-header">
+                    <span>{% trans "Detailed Description" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_detailed_description.htm' %}
+                        </div>
+                    </div>
+                </div>
+                
+                {% if user.username != 'anonymous' %}
+                <div class="report-section-header">
+                    <span>{% trans "Heritage Asset Data" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_heritage_asset_information.htm' %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section-header">
+                    <span>{% trans "Maintenance Data" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_maintenance_data.htm' %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section-header">
+                    <span>{% trans "Condition Assessment" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                </div>
+                <div class="row">
+                    
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include 'views/reports/sections/IR_condition_assessment.htm' %}
+                        </div>
+                    </div>
+                </div>
+                
+                {% endif %}
+                
+                <div class="report-section-header">
+                    <span>{% trans "Related Resources" %}<i class="rounded-x fa fa-exchange" style="padding-left:15px;"></i></span>
+                </div>
+                <div class="row">
+
+                    <!-- Spacer -->
+                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                    <!-- Resource Summary Info -->
+                    <div class="col-xs-12">
+                        <div class="right-inner arches-box-grey-border">
+                            {% include "views/reports/sections/related_resource_section.htm" %}
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    {% include 'footer.htm' %}
+    {% include 'copyright.htm' %}
+</div>

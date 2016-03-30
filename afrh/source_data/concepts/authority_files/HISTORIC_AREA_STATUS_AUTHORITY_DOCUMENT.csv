@@ -1,0 +1,4 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+HA_STAT:1,Historic,,HISTORIC_AREA_STATUS_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+HA_STAT:2,Listed,,HISTORIC_AREA_STATUS_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+HA_STAT:3,Not Eligible,,HISTORIC_AREA_STATUS_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes

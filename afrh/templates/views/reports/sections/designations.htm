@@ -1,0 +1,78 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-xs-12">
+        <dl>
+            <dt>
+                <h5 id="" class="arches-report-subsection-title">{% trans "Other AFRH-W Designations" %}</h5>
+            </dt>
+
+            {% if 'OTHER_AFRH_W_DESIGNATION_E3' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                </dd>
+            {% else %}
+                {% for OTHER_AFRH_W_DESIGNATION_E3 in report_info.source.graph.OTHER_AFRH_W_DESIGNATION_E3 %}
+                    {% for OTHER_AFRH_W_DESIGNATION_TYPE_E55 in OTHER_AFRH_W_DESIGNATION_E3.OTHER_AFRH_W_DESIGNATION_TYPE_E55 %}
+                        <dd class="arches-report-subsection-item">
+                            {{ OTHER_AFRH_W_DESIGNATION_TYPE_E55.OTHER_AFRH_W_DESIGNATION_TYPE_E55__value }}
+                        </dd>
+                    {% endfor %}
+                    {% for OTHER_AFRH_W_DESIGNATION_STATUS_E55 in OTHER_AFRH_W_DESIGNATION_E3.OTHER_AFRH_W_DESIGNATION_STATUS_E55 %}
+                        <dd class="arches-report-subsection-item">
+                            <span class="arches-report-subsection-item-type">
+                            {{ OTHER_AFRH_W_DESIGNATION_STATUS_E55.OTHER_AFRH_W_DESIGNATION_STATUS_E55__value }}
+                    {% endfor %}
+                    {% for OTHER_AFRH_W_DESIGNATION_DATE_E50 in OTHER_AFRH_W_DESIGNATION_E3.OTHER_AFRH_W_DESIGNATION_DATE_E50 %}
+                            {{ OTHER_AFRH_W_DESIGNATION_DATE_E50.OTHER_AFRH_W_DESIGNATION_DATE_E50__value|slice:":10" }}
+                            </span>
+                        </dd>
+                    {% endfor %}
+                {% endfor %}            
+            {% endif %}
+        </dl>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <dl>
+            <dt>
+                <h5 id="" class="arches-report-subsection-title">{% trans "Other Designations" %}</h5>
+            </dt>
+
+            {% if 'OTHER_DESIGNATION_E3' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                </dd>
+            {% else %}
+                <dd class="arches-report-subsection-item">
+                {% for OTHER_DESIGNATION_E3 in report_info.source.graph.OTHER_DESIGNATION_E3 %}
+                    {% for OTHER_DESIGNATION_TYPE_E55 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_TYPE_E55 %}
+                        {{ OTHER_DESIGNATION_TYPE_E55.OTHER_DESIGNATION_TYPE_E55__value }},
+                    {% endfor %}
+                    {% for OTHER_DESIGNATION_STATUS_E55 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_STATUS_E55 %}
+                        {{ OTHER_DESIGNATION_STATUS_E55.OTHER_DESIGNATION_STATUS_E55__value }},
+                    {% endfor %}
+                    {% for OTHER_DESIGNATION_DATE_E49 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_DATE_E49 %}
+                        {{ OTHER_DESIGNATION_DATE_E49.OTHER_DESIGNATION_DATE_E49__value|slice:":10" }}
+                    {% endfor %}
+                    <span class="arches-report-subsection-item-type">
+                    {% for OTHER_DESIGNATION_NAME_E41 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_NAME_E41 %}
+                        <br>{{ OTHER_DESIGNATION_NAME_E41.OTHER_DESIGNATION_NAME_E41__value }} (name)
+                    {% endfor %}
+                    {% for OTHER_DESIGNATION_REFERENCE_NUMBER_E42 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_REFERENCE_NUMBER_E42 %}
+                        <br>{{ OTHER_DESIGNATION_REFERENCE_NUMBER_E42.OTHER_DESIGNATION_REFERENCE_NUMBER_E42__value }} (reference number)
+                    {% endfor %}
+                    {% for OTHER_DESIGNATION_NOTES_E62 in OTHER_DESIGNATION_E3.OTHER_DESIGNATION_NOTES_E62 %}
+                        <br><em>{{ OTHER_DESIGNATION_NOTES_E62.OTHER_DESIGNATION_NOTES_E62__value }}</em>
+                    {% endfor %}
+                    </span>
+                </dd>
+                {% endfor %}
+                
+            {% endif %}
+        </dl>
+
+    </div>
+</div>

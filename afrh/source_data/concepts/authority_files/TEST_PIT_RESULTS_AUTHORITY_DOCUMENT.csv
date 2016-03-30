@@ -1,0 +1,3 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+TP_RES:1,Positive,,TEST_PIT_RESULTS_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+TP_RES:2,Negative,,TEST_PIT_RESULTS_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
