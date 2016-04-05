@@ -9,6 +9,8 @@ define(['jquery',
     
     return BaseForm.extend({
         initialize: function() {
+            
+            BaseForm.prototype.initialize.apply(this);
 
             this.addBranchList(new BranchList({
                 el: this.$el.find('#description-section')[0],

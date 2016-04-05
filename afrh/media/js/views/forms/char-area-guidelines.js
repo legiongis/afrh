@@ -8,6 +8,7 @@ define(['jquery',
     function ($, summernote, _, koMapping, BaseForm, BranchList) {
         return BaseForm.extend({
             initialize: function() {
+                
                 BaseForm.prototype.initialize.apply(this);
                 
                 this.addBranchList(new BranchList({

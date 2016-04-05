@@ -37,6 +37,7 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'DESCRIPTION.E62',
                 validateBranch: function(nodes){
+                    console.log(nodes);
                     return this.validateHasValues(nodes);
                 }
             }));

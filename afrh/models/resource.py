@@ -59,8 +59,15 @@ class Resource(ArchesResource):
         elif self.entitytypeid == 'CHARACTER_AREA.E53':
             description_group['forms'][:0] = [
                 forms.CharAreaSummaryForm.get_info(),
-                forms.DescriptionForm.get_info(),
-                forms.CharAreaGuidelinesForm.get_info()
+                forms.CharAreaDescriptionForm.get_info(),
+                forms.CharAreaGuidelinesForm.get_info(),
+                forms.CharAreaLocationForm.get_info(),
+            ]
+            
+        elif self.entitytypeid == 'MASTER_PLAN_ZONE.E53':
+            description_group['forms'][:0] = [
+                forms.MPZoneSummaryForm.get_info(),
+                forms.InventoryDescriptionForm.get_info(),
             ]
 
         elif self.entitytypeid == 'ACTOR.E39':

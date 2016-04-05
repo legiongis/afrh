@@ -164,6 +164,34 @@ class CharAreaSummaryForm(ResourceForm):
             self.data['NAME.E48'] = {
                 'branch_lists': self.get_nodes('NAME.E48'),
             }
+            
+class CharAreaLocationForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'char-area-location',
+            'icon': 'fa-map-marker',
+            'name': _('Location'),
+            'class': CharAreaLocationForm
+        }
+
+    def update(self, data, files):
+        self.update_nodes('SPATIAL_COORDINATES_GEOMETRY.E47', data)
+        self.update_nodes('PROJECT_AREA_NOTE.E62', data)
+    
+        return
+
+    def load(self, lang):
+        self.data['SPATIAL_COORDINATES_GEOMETRY.E47'] = {
+            'branch_lists': self.get_nodes('SPATIAL_COORDINATES_GEOMETRY.E47'),
+        }
+        
+        self.data['PROJECT_AREA_NOTE.E62'] = {
+            'branch_lists': self.get_nodes('PROJECT_AREA_NOTE.E62'),
+            'domains': {}
+        }
+        
+        return
 
 class HeritageGroupSummaryForm(ResourceForm):
     @staticmethod
@@ -311,7 +339,7 @@ class CharAreaDescriptionForm(ResourceForm):
         return
 
     def load(self, lang):
-
+        #if self.resource:
         self.data['DESCRIPTION.E62'] = {
             'branch_lists': self.get_nodes('DESCRIPTION.E62'),
         }
@@ -331,11 +359,10 @@ class CharAreaGuidelinesForm(ResourceForm):
         return
 
     def load(self, lang):
-
-        if self.resource:
-            self.data['GUIDELINES.E62'] = {
-                'branch_lists': self.get_nodes('GUIDELINES.E62'),
-            }
+        #if self.resource:
+        self.data['GUIDELINES.E62'] = {
+            'branch_lists': self.get_nodes('GUIDELINES.E62'),
+        }
 
 class ActivityActionsForm(ResourceForm):
     @staticmethod
@@ -895,8 +922,12 @@ class InventoryDescriptionForm(ResourceForm):
         }
 
     def update(self, data, files):
-    
+        
+        print data['DESCRIPTION.E62']
+        print "\n\n"
         self.update_nodes('DESCRIPTION.E62', data)
+        print self.data
+        print "\n\n"
         if self.resource.entitytypeid == 'ACTOR.E39':
             self.update_nodes('PHASE_TYPE_ASSIGNMENT.E17', data)
         if self.resource.entitytypeid == 'INVENTORY_RESOURCE.E18':
@@ -918,8 +949,9 @@ class InventoryDescriptionForm(ResourceForm):
             self.data['DESCRIPTION.E62'] = {
                 'branch_lists': self.get_nodes('DESCRIPTION.E62'),
                 'domains': {
-                    'DESCRIPTION_TYPE.E55' : Concept().get_e55_domain('DESCRIPTION_TYPE.E55'), 
-                    },
+                    'DESCRIPTION_TYPE.E55' : Concept().get_e55_domain('DESCRIPTION_TYPE.E55'),
+                    'ZONE_DESCRIPTION_TYPE.E55' : Concept().get_e55_domain('ZONE_DESCRIPTION_TYPE.E55'),
+                },
             }
             
             # used only for inventory resources
@@ -930,6 +962,50 @@ class InventoryDescriptionForm(ResourceForm):
                 }               
             }
         
+class MPZoneSummaryForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'mpz-summary',
+            'icon': 'fa-picture-o',
+            'name': _('Summary'),
+            'class': MPZoneSummaryForm
+        }
+
+    def update(self, data, files):
+        self.update_nodes('MASTER_PLAN_ZONE_ACTIVITY.E7', data)
+        self.update_nodes('PLANNED_USE.E55', data)
+        self.update_nodes('ZONE_TYPE.E55', data)
+        self.update_nodes('NAME.E48', data)
+
+    def load(self, lang):
+        
+        if self.resource:
+        
+            self.data['MASTER_PLAN_ZONE_ACTIVITY.E7'] = {
+                'branch_lists': self.get_nodes('MASTER_PLAN_ZONE_ACTIVITY.E7'),
+                'domains': {
+                    'MASTER_PLAN_ZONE_ACTIVITY_TYPE.E55' : Concept().get_e55_domain('MASTER_PLAN_ZONE_ACTIVITY_TYPE.E55'),
+                }
+            }
+        
+            self.data['PLANNED_USE.E55'] = {
+                'branch_lists': self.get_nodes('PLANNED_USE.E55'),
+                'domains': {
+                    'PLANNED_USE.E55' : Concept().get_e55_domain('PLANNED_USE.E55'),
+                }
+            }
+            
+            self.data['ZONE_TYPE.E55'] = {
+                'branch_lists': self.get_nodes('ZONE_TYPE.E55'),
+                'domains': {
+                    'ZONE_TYPE.E55' : Concept().get_e55_domain('ZONE_TYPE.E55'),
+                }
+            }
+            
+            self.data['NAME.E48'] = {
+                'branch_lists': self.get_nodes('NAME.E48'),
+            }
 
 class MeasurementForm(ResourceForm):
     @staticmethod

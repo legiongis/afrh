@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-xs-12 margin-bottom-10">
-            <div class="form-section-header"><span>{% trans "Guidelines" %}</span></div>
+            <div class="form-section-header"><span>{% trans "GuiEEdelines" %}</span></div>
         </div>
     </div>
     <div id="guidelines-section">
@@ -37,9 +37,9 @@
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
                                     <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" title="{% trans 'edit' %}" data-bind='click: $parent.editItem.bind($parent)'>
-                                        <span data-bind="text: wfwwfw"></span>
+                                        <span>edit</span>
                                     </a>
-                                    <div class="note-editable custom-scroll arches-evaluation-content" contenteditable="false" data-bind='{html: nodes.get("DESCRIPTION.E62", "value")}'></div>
+                                    <div class="note-editable custom-scroll arches-evaluation-content" contenteditable="false" data-bind='{html: nodes.get("GUIDELINES.E62", "value")}'></div>
                                 </div>
                             </div>
                         </dd>
