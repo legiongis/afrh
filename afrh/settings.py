@@ -134,7 +134,7 @@ def RESOURCE_TYPE_CONFIGS():
             'resourcetypeid': 'MASTER_PLAN_ZONE.E53',
             'name': _('Master Plan Zone'),
             'icon_class': 'fa fa-th-large',
-            'default_page': 'information-resource-summary',
+            'default_page': 'mpz-summary',
             'default_description': 'no description available',
             'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
             'categories': [_('Resource')],
