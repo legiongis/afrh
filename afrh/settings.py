@@ -17,36 +17,46 @@ TEMPLATE_DIRS = (os.path.join(PACKAGE_ROOT, 'templates'),os.path.join(PACKAGE_RO
 MEDIA_ROOT =  os.path.join(PACKAGE_ROOT, 'uploadedfiles')
 
 # Set up default users
-DATABASE_USERS = {
-    "octavian":{
-        "first_name":"Gaius",
-        "last_name":"Julius",
-        "password":"octavian",
-        "email":'octavian@legiongis.com',
-        "groups":[],
-        "permissions":[],
-        "is_staff":True,
-        "superuser":True,
+EXAMPLE_USERS = {
+    'admin1_user':{
+        'first_name':'Admin1',
+        'last_name':'Justforfun',
+        'password':'admin1_pw',
+        'email':'admin1@legiongis.com',
+        'groups':['admin1'],
+        'permissions':[],
+        'is_staff':False,
+        'superuser':False,
     },
-    "caracalla":{
-        "first_name":"Marcus",
-        "last_name":"Augustus",
-        "password":"caracalla",
-        "email":'caracalla@legiongis.com',
-        "groups":["group1","group2"],
-        "permissions":[],
-        "is_staff":True,
-        "superuser":False,
+    'admin2_user':{
+        'first_name':'Admin2',
+        'last_name':'Maybeyou',
+        'password':'admin2_pw',
+        'email':'admin2@legiongis.com',
+        'groups':['admin2'],
+        'permissions':[],
+        'is_staff':False,
+        'superuser':False,
     },
-    "trajan":{
-        "first_name":"Gaius",
-        "last_name":"",
-        "password":"trajan",
-        "email":'trajan@legiongis.com',
-        "groups":[],
-        "permissions":[],
-        "is_staff":False,
-        "superuser":False,
+    'afrh_staff_user':{
+        'first_name':'AFRH Staff',
+        'last_name':'Nicegiraffe',
+        'password':'afrh_staff_pw',
+        'email':'afrh_staff@legiongis.com',
+        'groups':['afrh_staff'],
+        'permissions':[],
+        'is_staff':False,
+        'superuser':False,
+    },
+    'development_user':{
+        'first_name':'Development',
+        'last_name':'Trevelopment',
+        'password':'development_pw',
+        'email':'development@legiongis.com',
+        'groups':['development'],
+        'permissions':[],
+        'is_staff':False,
+        'superuser':False,
     }
 }
 
