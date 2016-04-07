@@ -101,9 +101,13 @@
                             {% endfor %}
                         </ul>
                     </li>
+                    {% endif %}
                     <!-- End Resource Editor -->
 
                      <!-- RDM-->
+                    
+                     
+                    {% if perms.AFRH.rdm_access %}
                     <li class="{% if user.is_anonymous %}{% endif %} {% if active_page = 'RDM' %}active{% endif %}">
                         <a href="{% url 'rdm' '' %}">
                             {% trans "RDM" %}
