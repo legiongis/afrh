@@ -24,9 +24,12 @@ uuid_regex = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-
 
 urlpatterns = patterns('',
     url(r'^reports/(?P<resourceid>%s)$' % uuid_regex , 'afrh.views.resources.report', name='report'),
-    url(r'', include(arches_hip_urls)),
+    url(r'^rdm/(?P<conceptid>%s|())$' % uuid_regex , 'afrh.views.concept.rdm', name='rdm'),
+    url(r'^concepts/(?P<conceptid>%s|())$' % uuid_regex , 'afrh.views.concept.concept', name="concept"),
     url(r'^newmap', 'afrh.views.newmap.get_page', name="newmap"),
     url(r'^resources/layers/(?P<entitytypeid>.*)$', resources.map_layers, name="map_layers"),
     url(r'^resources/polygon_layers/(?P<entitytypeid>.*)$', resources.polygon_layers, name="polygon_layers"),
     url(r'^resources/markersHEY/(?P<entitytypeid>.*)$', resources.map_layers, {'get_centroids':True}, name="map_markers"),
+    url(r'', include(arches_hip_urls)),
+    
 )

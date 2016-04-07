@@ -89,7 +89,7 @@
                     </li>
                     <!-- End Map-->
 
-                    {% if 'edit' in user.user_groups %}
+                    {% if perms.CREATE %}
                     <!-- Resource Editor-->
                     <li class="dropdown {% if active_page = 'ResourceManger' %}active{% endif %}">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
@@ -108,7 +108,7 @@
                     
                      
                     {% if perms.AFRH.rdm_access %}
-                    <li class="{% if user.is_anonymous %}{% endif %} {% if active_page = 'RDM' %}active{% endif %}">
+                    <li class="{% if active_page = 'RDM' %}active{% endif %}">
                         <a href="{% url 'rdm' '' %}">
                             {% trans "RDM" %}
                         </a>
