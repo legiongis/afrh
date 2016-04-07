@@ -96,7 +96,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     '{}.utils.context_processors.local_domain'.format(PACKAGE_NAME),
 )
 
-
 def RESOURCE_TYPE_CONFIGS():
     return { 
         'INVENTORY_RESOURCE.E18': {
@@ -118,7 +117,13 @@ def RESOURCE_TYPE_CONFIGS():
             },
             'sort_order': 1,
             'show_polygons':True,
-            'layer_model': 'marker'
+            'layer_model': 'marker',
+            'permissions': {
+                'create':['admin1','admin2'],
+                'edit':['admin1','admin2'],
+                'fullreport':['admin1','admin2','afrh_staff'],
+                'view':'all'
+                }
         },
         'CHARACTER_AREA.E53': {
             'resourcetypeid': 'CHARACTER_AREA.E53',
@@ -138,7 +143,13 @@ def RESOURCE_TYPE_CONFIGS():
                 'lookup_value': 'Primary'
             },
             'sort_order': 2,
-            'layer_model': 'area'
+            'layer_model': 'area',
+            'permissions': {
+                'create':['admin1','admin2'],
+                'edit':['admin1','admin2'],
+                'fullreport':'all',
+                'view':'all'
+                }
         },
         'MASTER_PLAN_ZONE.E53': {
             'resourcetypeid': 'MASTER_PLAN_ZONE.E53',
@@ -158,7 +169,13 @@ def RESOURCE_TYPE_CONFIGS():
                 'lookup_value': 'Primary'
             },
             'sort_order': 3,
-            'layer_model': 'area'
+            'layer_model': 'area',
+            'permissions': {
+                'create':['admin1','admin2'],
+                'edit':['admin1','admin2'],
+                'fullreport':'all',
+                'view':'all'
+                }
         },
         'ARCHAEOLOGICAL_ZONE.E53': {
             'resourcetypeid': 'ARCHAEOLOGICAL_ZONE.E53',
@@ -178,7 +195,13 @@ def RESOURCE_TYPE_CONFIGS():
                 'lookup_value': 'Primary'
             },
             'sort_order': 4,
-            'layer_model': 'area'
+            'layer_model': 'area',
+            'permissions': {
+                'create':['admin1','admin2'],
+                'edit':['admin1','admin2'],
+                'fullreport':['admin1','admin2','afrh_staff'],
+                'view':'all'
+                }
         },
         'HISTORIC_AREA.E53': {
             'resourcetypeid': 'HISTORIC_AREA.E53',
@@ -198,7 +221,13 @@ def RESOURCE_TYPE_CONFIGS():
                 'lookup_value': 'Primary'
             },
             'sort_order': 5,
-            'layer_model': 'area'
+            'layer_model': 'area',
+            'permissions': {
+                'create':['admin1','admin2'],
+                'edit':['admin1','admin2'],
+                'fullreport':'all',
+                'view':'all'
+                }
         },
         'ACTOR.E39': {
             'resourcetypeid': 'ACTOR.E39',
@@ -218,7 +247,12 @@ def RESOURCE_TYPE_CONFIGS():
                 'lookup_value': 'Primary'
             },
             'sort_order': 6,
-            
+            'permissions': {
+                'create':['admin1','admin2'],
+                'edit':['admin1','admin2'],
+                'fullreport':'all',
+                'view':'all'
+                }
         },
         'INFORMATION_RESOURCE.E73': {
             'resourcetypeid': 'INFORMATION_RESOURCE.E73',
@@ -238,7 +272,13 @@ def RESOURCE_TYPE_CONFIGS():
                 'lookup_value': 'Primary'
             },
             'sort_order': 7,
-            'layer_model': 'marker'
+            'layer_model': 'marker',
+            'permissions': {
+                'create':['admin1','admin2'],
+                'edit':['admin1','admin2'],
+                'fullreport':'all',
+                'view':'all'
+                }
         },
         'ACTIVITY_A.E7': {
             'resourcetypeid': 'ACTIVITY_A.E7',
@@ -259,7 +299,13 @@ def RESOURCE_TYPE_CONFIGS():
             },
             'sort_order': 8,
             'layer_model': 'marker',
-            'restricted': True
+            'restricted': True,
+            'permissions': {
+                'create':['admin1','admin2','afrh_staff'],
+                'edit':['admin1','admin2','afrh_staff'],
+                'fullreport':['admin1','admin2','afrh_staff'],
+                'view':['admin1','admin2','afrh_staff']
+                }
         },
         'ACTIVITY_B.E7': {
             'resourcetypeid': 'ACTIVITY_B.E7',
@@ -280,7 +326,13 @@ def RESOURCE_TYPE_CONFIGS():
             },
             'sort_order': 9,
             'layer_model': 'marker',
-            'restricted': True
+            'restricted': True,
+            'permissions': {
+                'create':['admin1','admin2','development'],
+                'edit':['admin1','admin2','development'],
+                'fullreport':['admin1','admin2','afrh_staff','development'],
+                'view':['admin1','admin2','afrh_staff','development']
+                }
         }
     }
 
