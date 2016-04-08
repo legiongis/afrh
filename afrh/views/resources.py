@@ -305,7 +305,7 @@ def polygon_layers(request, entitytypeid='all'):
 
     return JSONResponse(geojson_collection)
 
-@permission_required('nope')
+@permission_required('edit')
 @csrf_exempt
 def resource_manager(request, resourcetypeid='', form_id='default', resourceid=''):
 
