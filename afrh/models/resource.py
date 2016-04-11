@@ -90,6 +90,14 @@ class Resource(ArchesResource):
                 forms.FileUploadForm.get_info()
             ]
 
+        elif self.entitytypeid == 'ACTIVITY_A.E7':
+            description_group['forms'][:0] = [
+            ]
+
+        elif self.entitytypeid == 'ACTIVITY_B.E7':
+            description_group['forms'][:0] = [
+            ]
+
         if self.entityid != '':
             self.form_groups.append({
                 'id': 'manage-resource',
