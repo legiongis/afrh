@@ -19,6 +19,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 import arches
 import arches_hip
 from django.conf import settings
+from django.contrib.auth.models import Permission
 from arches.app.models.resource import Resource
 from afrh.models import browse
 import json
@@ -80,44 +81,37 @@ def get_versions(request):
         'hip_version': arches_hip.get_version(),
     }
 
-def user_permissions(request):
-    '''defines all user permissions'''
-    
-    # get all group names for user
-    group_names = [i.name for i in request.user.groups.all()]
-    resource_types = [v['name'] for v in settings.RESOURCE_TYPE_CONFIGS().values()]
+def user_perms(request):
+    '''create a dictionary of user permissions to pass to templates'''
 
-    # these are the entities that a user is allowed to edit
-    user_can_edit = False
-    entities_allowed = [i for i in group_names if i in resource_types]
-    if len(entities_allowed) > 0:
-        user_can_edit = True
-    
-    # check whether user can create new resources
-    can_create = False
-    if "DATA CREATORS" in group_names:
-        can_create = True
+    permissions = request.user.get_all_permissions()
 
-    # if user is part of the data creators group, they can create new resources
     rdm_access = False
-    if "RDM ACCESS" in group_names:
+    if "AFRH.rdm_access" in permissions:
         rdm_access = True
 
-    # give superuser all access
-    if request.user.is_superuser:
-        rdm_access = True
-        user_can_edit = True
-        can_create = True
-        entities_allowed = resource_types
-
-    return {
-        'user_can_edit': user_can_edit,
-        'user_permissions': {
-            'can_rdm': rdm_access,
-            'can_create': can_create,
-            'entities_allowed': entities_allowed
-        }
+    perm_dict = {
+        'rdm':rdm_access,
+        'create':[],
+        'edit':[],
+        'fullreport':[],
+        'view':[]
     }
+
+    for v in settings.RESOURCE_TYPE_CONFIGS().keys():
+        for p in permissions:
+            t,res = p.split(".")[:2]
+            if v.startswith(res):
+                if t == "CREATE":
+                    perm_dict['create'].append(v)
+                if t == "EDIT":
+                    perm_dict['edit'].append(v)
+                if t == "FULLREPORT":
+                    perm_dict['fullreport'].append(v)
+                if t == "VIEW":
+                    perm_dict['view'].append(v)
+
+    return perm_dict
 
 def user_groups(request):
     # need to implement proper permissions check here...
@@ -128,7 +122,6 @@ def user_groups(request):
 
 def browse_info(request):
     info = browse.get_browse_info()
-
     return {
         'browse_info': info
     }
