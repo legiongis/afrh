@@ -26,6 +26,7 @@ from arches.app.models import models
 from django.db import transaction
 from arches.app.models.concept import Concept
 from arches.app.models.resource import Resource
+from arches.app.models.entity import Entity
 from django.http import HttpResponseNotFound
 from django.contrib.gis.geos import GEOSGeometry
 from django.db.models import Max, Min
@@ -132,7 +133,9 @@ def report(request, resourceid):
         'ACTIVITY_B': []  
     }
 
-    related_resource_info = get_related_resources(resourceid, lang)
+    filtertypes = get_filter_types(request)  
+    related_resource_info = get_related_resources(resourceid, lang, filtertypes=filtertypes)
+
     try:
         with open(r"K:\arches\afrh\catchall\related_resources","wb") as log:
             print >> log, json.dumps(related_resource_info, sort_keys=True,indent=4, separators=(',', ': '))
@@ -202,7 +205,8 @@ def report(request, resourceid):
     for k,v in related_resource_dict.iteritems():
         if len(v) > 0:
             related_resource_flag = True
-    
+            break
+        
     try:
         with open(r"C:\arches\afrh\catchall\related_resource_dict","wb") as log:
             print >> log, json.dumps(related_resource_dict, sort_keys=True,indent=4, separators=(',', ': '))
@@ -222,8 +226,7 @@ def report(request, resourceid):
         context_instance=RequestContext(request))        
 
 def map_layers(request, entitytypeid='all', get_centroids=False):
-    print "map_layers arguments:"
-    print entitytypeid, get_centroids
+
     data = []
 
     geom_param = request.GET.get('geom', None)
@@ -265,10 +268,8 @@ def map_layers(request, entitytypeid='all', get_centroids=False):
     return JSONResponse(geojson_collection)
     
 def polygon_layers(request, entitytypeid='all'):
-    print "map_layers arguments:"
-    print entitytypeid
-    data = []
 
+    data = []
     geom_param = request.GET.get('geom', None)
 
     bbox = request.GET.get('bbox', '')
@@ -323,30 +324,7 @@ def resource_manager(request, resourcetypeid='', form_id='default', resourceid='
         return redirect(settings.LOGIN_URL)
     if not 'EDIT' in res_perms[resourcetypeid]:
         return redirect(settings.LOGIN_URL)
-    
-##    for v in settings.RESOURCE_TYPE_CONFIGS().keys():
-##        for p in permissions:
-##            t,res = p.split(".")[:2]
-##            if v.startswith(res):
-##                if t == "CREATE":
-##                    res_perms['create'].append(v)
-##                if t == "EDIT":
-##                    res_perms['edit'].append(v)
-##                if t == "FULLREPORT":
-##                    res_perms['fullreport'].append(v)
-##                if t == "VIEW":
-##                    res_perms['view'].append(v)
-##
-##    if len(res_perms['create']) == 0 and len(res_perms['create']) == 0:
-##        redirect(settings.LOGIN_URL)
-##    if resourceid != '' and len(res_perms['create']) == 0:
-##        redirect(settings.LOGIN_URL)
-##    if resourceid != '' and len(res_perms['create']) == 0:
-##        redirect(settings.LOGIN_URL)
-##    if :
-##        redirect(settings.LOGIN_URL)
-        
-    
+    ## finish permission testing
 
     if resourceid != '':
         resource = Resource(resourceid)
@@ -359,9 +337,10 @@ def resource_manager(request, resourcetypeid='', form_id='default', resourceid='
     form = resource.get_form(form_id)
 
     if request.method == 'DELETE':
+        filtertypes = get_filter_types(request)
         resource.delete_index()
         se = SearchEngineFactory().create()
-        realtionships = resource.get_related_resources(return_entities=False)
+        realtionships = resource.get_related_resources(return_entities=False,filtertypes)
         for realtionship in realtionships:
             se.delete(index='resource_relations', doc_type='all', id=realtionship.resourcexid)
             realtionship.delete()
@@ -410,10 +389,15 @@ def resource_manager(request, resourcetypeid='', form_id='default', resourceid='
 
 @csrf_exempt
 def related_resources(request, resourceid):
+
+    ## filter out resource types here
+    filtertypes = get_filter_types(request)
+    
     if request.method == 'GET':
         lang = request.GET.get('lang', settings.LANGUAGE_CODE)
         start = request.GET.get('start', 0)
-        return JSONResponse(get_related_resources(resourceid, lang, start=start, limit=15), indent=4)
+        return JSONResponse(get_related_resources(resourceid, lang, start=start, limit=15,
+                                                  filtertypes=filtertypes), indent=4,)
     
     if 'edit' in request.user.user_groups and request.method == 'DELETE':
         se = SearchEngineFactory().create()
@@ -427,7 +411,8 @@ def related_resources(request, resourceid):
         se.delete(index='resource_relations', doc_type='all', id=resourcexid)
         return JSONResponse({ 'success': True })
 
-def get_related_resources(resourceid, lang, limit=1000, start=0):
+def get_related_resources(resourceid, lang, limit=1000, start=0, filtertypes=[]):
+    
     ret = {
         'resource_relationships': [],
         'related_resources': []
@@ -438,27 +423,33 @@ def get_related_resources(resourceid, lang, limit=1000, start=0):
     query.add_filter(Terms(field='entityid1', terms=resourceid).dsl, operator='or')
     query.add_filter(Terms(field='entityid2', terms=resourceid).dsl, operator='or')
     resource_relations = query.search(index='resource_relations', doc_type='all')
-    ret['total'] = resource_relations['hits']['total']
 
     entityids = set()
     for relation in resource_relations['hits']['hits']:
+        if Entity(relation['_source']['entityid1']).entitytypeid in filtertypes:
+             continue
         relation['_source']['preflabel'] = get_preflabel_from_valueid(relation['_source']['relationshiptype'], lang)
         ret['resource_relationships'].append(relation['_source'])
         entityids.add(relation['_source']['entityid1'])
         entityids.add(relation['_source']['entityid2'])
     if len(entityids) > 0:
-        entityids.remove(resourceid)   
+        entityids.remove(resourceid)
+
+    ret['total'] = len(entityids)
 
     related_resources = se.search(index='entity', doc_type='_all', id=list(entityids))
+    filtered_ids = []
     if related_resources:
         for resource in related_resources['docs']:
+            if resource['_type'] in filtertypes:
+                filtered_ids.append(resource['_source']['entityid'])
+                continue
             ret['related_resources'].append(resource['_source'])
 
     return ret
 
 def map_layers(request, entitytypeid='all', get_centroids=False):
     data = []
-
     geom_param = request.GET.get('geom', None)
 
     bbox = request.GET.get('bbox', '')
@@ -525,3 +516,21 @@ def get_admin_areas(request):
     geom = GEOSGeometry(geomString)
     intersection = models.Overlays.objects.filter(geometry__intersects=geom)
     return JSONResponse({'results': intersection}, indent=4)
+
+def get_filter_types(request):
+    ''' references the user permissions in the request and returns a list of resource types to filter'''
+
+    if request.user.username == 'anonymous':
+        return ['ACTIVITY_A.E7','ACTIVITY_B.E7']
+        
+    filtertypes = settings.RESOURCE_TYPE_CONFIGS().keys()
+    permissions = request.user.get_all_permissions()
+    for k in settings.RESOURCE_TYPE_CONFIGS().keys():
+        for p in permissions:
+            t,res = p.split(".")[:2]
+            if not t == "VIEW":
+                continue
+            if k.startswith(res):
+                filtertypes.remove(k)
+
+    return filtertypes  
