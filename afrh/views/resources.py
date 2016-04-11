@@ -41,14 +41,15 @@ def report(request, resourceid):
     lang = request.GET.get('lang', settings.LANGUAGE_CODE)
     se = SearchEngineFactory().create()
 
-    actors = se.search(index='resource', type="ACTOR.E39")
-    print actors
-    all_resources = se.search(index='resource')
-
-    hit_list = all_resources['hits']['hits']
-    print "hitlist count:"
-    print len(hit_list)
-    actors2 = [i for i in hit_list if i['_type'] == "ACTOR.E39"]
+    ## taking a stab at filtering resources with the search engine (unsuccessful here)
+##    actors = se.search(index='resource', type="ACTOR.E39")
+##    print actors
+##    all_resources = se.search(index='resource')
+##
+##    hit_list = all_resources['hits']['hits']
+##    print "hitlist count:"
+##    print len(hit_list)
+##    actors2 = [i for i in hit_list if i['_type'] == "ACTOR.E39"]
 
     report_info = se.search(index='resource', id=resourceid)
     report_info['source'] = report_info['_source']
@@ -305,9 +306,47 @@ def polygon_layers(request, entitytypeid='all'):
 
     return JSONResponse(geojson_collection)
 
-@permission_required('edit')
 @csrf_exempt
 def resource_manager(request, resourcetypeid='', form_id='default', resourceid=''):
+
+    ## get and check all permissions here
+    permissions = request.user.get_all_permissions()
+    res_perms = {k:[] for k in settings.RESOURCE_TYPE_CONFIGS().keys()}
+
+    for k,v in res_perms.iteritems():
+        for p in permissions:
+            t,res = p.split(".")[:2]
+            if k.startswith(res):
+                v.append(t)
+
+    if resourceid == '' and not 'CREATE' in res_perms[resourcetypeid]:
+        return redirect(settings.LOGIN_URL)
+    if not 'EDIT' in res_perms[resourcetypeid]:
+        return redirect(settings.LOGIN_URL)
+    
+##    for v in settings.RESOURCE_TYPE_CONFIGS().keys():
+##        for p in permissions:
+##            t,res = p.split(".")[:2]
+##            if v.startswith(res):
+##                if t == "CREATE":
+##                    res_perms['create'].append(v)
+##                if t == "EDIT":
+##                    res_perms['edit'].append(v)
+##                if t == "FULLREPORT":
+##                    res_perms['fullreport'].append(v)
+##                if t == "VIEW":
+##                    res_perms['view'].append(v)
+##
+##    if len(res_perms['create']) == 0 and len(res_perms['create']) == 0:
+##        redirect(settings.LOGIN_URL)
+##    if resourceid != '' and len(res_perms['create']) == 0:
+##        redirect(settings.LOGIN_URL)
+##    if resourceid != '' and len(res_perms['create']) == 0:
+##        redirect(settings.LOGIN_URL)
+##    if :
+##        redirect(settings.LOGIN_URL)
+        
+    
 
     if resourceid != '':
         resource = Resource(resourceid)

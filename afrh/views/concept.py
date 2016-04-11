@@ -23,7 +23,7 @@ from django.db.models import Q
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseNotAllowed, HttpResponseServerError
 from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.contrib.auth.decorators import permission_required
 from arches.app.models import models
 from arches.app.models.concept import Concept, ConceptValue, CORE_CONCEPTS
@@ -34,7 +34,6 @@ from arches.app.utils.JSONResponse import JSONResponse
 from arches.app.utils.skos import SKOSWriter, SKOSReader
 from django.utils.module_loading import import_by_path
 
-
 sparql_providers = {}
 for provider in settings.SPARQL_ENDPOINT_PROVIDERS:
     Provider = import_by_path(provider)()
@@ -42,6 +41,7 @@ for provider in settings.SPARQL_ENDPOINT_PROVIDERS:
 
 @permission_required('AFRH.rdm_access')
 def rdm(request, conceptid):
+    
     lang = request.GET.get('lang', settings.LANGUAGE_CODE)    
     languages = models.DLanguages.objects.all()
 
@@ -57,8 +57,6 @@ def rdm(request, conceptid):
             'concept_schemes': concept_schemes,
             'CORE_CONCEPTS': CORE_CONCEPTS
         }, context_instance=RequestContext(request))
-
-
 
 @permission_required('AFRH.rdm_access')
 @csrf_exempt
