@@ -55,6 +55,7 @@ def report(request, resourceid):
     report_info = se.search(index='resource', id=resourceid)
     report_info['source'] = report_info['_source']
     report_info['type'] = report_info['_type']
+    report_info['typename'] = settings.RESOURCE_TYPE_CONFIGS()[report_info['type']]['name']
     report_info['source']['graph'] = report_info['source']['graph']
     del report_info['_source']
     del report_info['_type']
@@ -340,7 +341,7 @@ def resource_manager(request, resourcetypeid='', form_id='default', resourceid='
         filtertypes = get_filter_types(request)
         resource.delete_index()
         se = SearchEngineFactory().create()
-        realtionships = resource.get_related_resources(return_entities=False,filtertypes)
+        realtionships = resource.get_related_resources(return_entities=False,filtertypes=filtertypes)
         for realtionship in realtionships:
             se.delete(index='resource_relations', doc_type='all', id=realtionship.resourcexid)
             realtionship.delete()
