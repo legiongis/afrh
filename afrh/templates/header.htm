@@ -88,16 +88,18 @@
                         </a>
                     </li>
                     <!-- End Map-->
-
-                    {% if perms.CREATE %}
+                    
+                    {% if create|length > 0 %}
                     <!-- Resource Editor-->
                     <li class="dropdown {% if active_page = 'ResourceManger' %}active{% endif %}">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                            {% trans "New Resource" %}
+                            {% trans "Create" %}
                         </a>
                         <ul class="dropdown-menu">
                             {% for type, type_data in resource_types %}
-                                <li><a href="{% url 'resource_manager' type type_data.default_page '' %}"><i class="{{type_data.icon_class}}"></i>{{type_data.name}}</a></li>
+                                {% if type in create %}
+                                    <li><a href="{% url 'resource_manager' type type_data.default_page '' %}"><i class="{{type_data.icon_class}}"></i>{{type_data.name}}</a></li>
+                                {% endif %}
                             {% endfor %}
                         </ul>
                     </li>
@@ -107,7 +109,7 @@
                      <!-- RDM-->
                     
                      
-                    {% if perms.AFRH.rdm_access %}
+                    {% if rdm %}
                     <li class="{% if active_page = 'RDM' %}active{% endif %}">
                         <a href="{% url 'rdm' '' %}">
                             {% trans "RDM" %}
