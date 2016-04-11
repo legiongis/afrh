@@ -27,14 +27,21 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
             <div class="col-sm-6 col-sm-offset-3">
 
                 <div class="">
-<!--
+
                     <div class="row">
-                        <div class="col-sm-4 col-sm-offset-4">
+                        <div class="col-xs-12">
                             <div class="">
-                                <h2 style="text-align: center;">Sign In</h2>
+                                <h2 style="text-align: center;">Sign in</h2>
                             </div>
                         </div>
-                    </div>-->
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="margin-top-20">
+                                <p>...if you are already signed in, insufficient permissions have redirected you here. <br>For a summary of your account permissions, click "Show Help" at the top of this page, or at the top of the HOME page.</p>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row" style="margin-top:25px;">
                         <form id="login-form" action="?next={{ next }}" method='POST' {% if auth_failed %} autocomplete="off" {% endif %}>
