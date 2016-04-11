@@ -89,7 +89,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     '{}.utils.context_processors.resource_types'.format(PACKAGE_NAME),
     '{}.utils.context_processors.map_info'.format(PACKAGE_NAME),
     '{}.utils.context_processors.app_settings'.format(PACKAGE_NAME),
-    '{}.utils.context_processors.user_permissions'.format(PACKAGE_NAME),
+    '{}.utils.context_processors.user_perms'.format(PACKAGE_NAME),
     '{}.utils.context_processors.user_groups'.format(PACKAGE_NAME),
     '{}.utils.context_processors.get_versions'.format(PACKAGE_NAME),
     '{}.utils.context_processors.browse_info'.format(PACKAGE_NAME),
