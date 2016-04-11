@@ -11,7 +11,7 @@ def install(path_to_source_data_dir=None):
     setup.load_resource_graphs()
     setup.load_authority_files(path_to_source_data_dir)
     setup.load_map_layers()
-    build_auth_system_2()
+    build_auth_system()
     setup.resource_remover.truncate_resources()
     setup.delete_index(index='resource')
     setup.delete_index(index='entity')
