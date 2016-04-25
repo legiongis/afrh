@@ -23,6 +23,9 @@ from arches.app.search.search_engine_factory import SearchEngineFactory
 from arches.app.utils.betterJSONSerializer import JSONSerializer, JSONDeserializer
 #from arches_hip.models import forms
 import forms
+import forms_summary
+import forms_description
+import forms_location
 from arches.app.models.forms import DeleteResourceForm
 from django.utils.translation import ugettext as _
 
@@ -43,12 +46,12 @@ class Resource(ArchesResource):
 
         if self.entitytypeid == 'INVENTORY_RESOURCE.E18':
             description_group['forms'][:0] = [
-                forms.InventorySummaryForm.get_info(), 
-                forms.InventoryDescriptionForm.get_info(),
+                forms_summary.InventorySummaryForm.get_info(), 
+                forms_description.InventoryDescriptionForm.get_info(),
                 forms.FunctionAndUseForm.get_info(),
                 forms.FormDimensionForm.get_info(),
                 forms.ComponentForm.get_info(),
-                forms.LocationForm.get_info(),
+                forms_location.LocationForm.get_info(),
                 forms.ConditionForm.get_info(),
                 forms.RelatedFilesForm.get_info(),
                 forms.InventoryEvaluationForm.get_info(),
@@ -58,37 +61,55 @@ class Resource(ArchesResource):
 
         elif self.entitytypeid == 'CHARACTER_AREA.E53':
             description_group['forms'][:0] = [
-                forms.CharAreaSummaryForm.get_info(),
-                forms.CharAreaDescriptionForm.get_info(),
+                forms_summary.CharAreaSummaryForm.get_info(),
+                forms_description.CharAreaDescriptionForm.get_info(),
                 forms.CharAreaGuidelinesForm.get_info(),
-                forms.CharAreaLocationForm.get_info(),
+                forms_location.SimpleLocationForm.get_info(),
             ]
             
         elif self.entitytypeid == 'MASTER_PLAN_ZONE.E53':
             description_group['forms'][:0] = [
-                forms.MPZoneSummaryForm.get_info(),
-                forms.InventoryDescriptionForm.get_info(),
+                forms_summary.MPZoneSummaryForm.get_info(),
+                forms_description.InventoryDescriptionForm.get_info(),
+                forms_location.SimpleLocationForm.get_info(),
+                forms.MPZoneGuidelinesForm.get_info(),
+            ]
+            
+        elif self.entitytypeid == 'ARCHAEOLOGICAL_ZONE.E53':
+            description_group['forms'][:0] = [
+                forms_summary.ArchZoneSummaryForm.get_info(),
+                forms_location.SimpleLocationForm.get_info(),
+                forms_location.ProbabilityAreaForm.get_info(),
+            ]
+            
+        elif self.entitytypeid == 'HISTORIC_AREA.E53':
+            description_group['forms'][:0] = [
+                forms_summary.DesSummaryForm.get_info(),
+                forms_location.SimpleLocationForm.get_info(),
+                forms_description.DesDescriptionForm.get_info(),
+                forms.DesEvaluationForm.get_info(),
             ]
 
         elif self.entitytypeid == 'ACTOR.E39':
             description_group['forms'][:0] = [
-                forms.ActorSummaryForm.get_info(), 
-                forms.InventoryDescriptionForm.get_info(),
-                forms.LocationForm.get_info(),
+                forms_summary.ActorSummaryForm.get_info(), 
+                forms_description.InventoryDescriptionForm.get_info(),
+                forms_location.LocationForm.get_info(),
                 forms.RelatedFilesForm.get_info(),
                 #forms.RoleForm.get_info(),
                 forms.ExternalReferenceForm.get_info()
             ]
 
-
         elif self.entitytypeid == 'INFORMATION_RESOURCE.E73':
             description_group['forms'][:0] = [
-                forms.InformationResourceSummaryForm.get_info(), 
+                forms_summary.InformationResourceSummaryForm.get_info(), 
                 forms.PublicationForm.get_info(),
-                forms.LocationForm.get_info(),
-                forms.InventoryDescriptionForm.get_info(),
+                forms_location.LocationForm.get_info(),
+                forms_description.InventoryDescriptionForm.get_info(),
                 forms.FileUploadForm.get_info()
             ]
+            
+        
 
         elif self.entitytypeid == 'ACTIVITY_A.E7':
             description_group['forms'][:0] = [

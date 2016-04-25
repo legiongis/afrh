@@ -17,13 +17,6 @@
                 <div class="margin-bottom-10">
                     <dl>
                         <div id="map" class="map arches-report-map margin-left-0 margin-top-10"></div>
-                        <div id="geometry-type" class="geometry-type" style="margin-top: -490px; margin-bottom: 463px; padding-right: 10px;">
-                            <div class="row">
-                                <div class="col-xs-6 col-xs-offset-6" data-bind="attr: { 'style': getEditedNode('SPATIAL_COORDINATES_GEOMETRY.E47', 'value')() === '' ? 'opacity:0;' : '' }">
-                                    <div class="form-group" style="width:100%;"><input class="geometry-selection"></div>
-                                </div>
-                            </div>
-                        </div>
                     </dl>
                 </div>
                 <!-- basemap panel -->
@@ -115,6 +108,7 @@
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <dl>
+                                            <!-- DISABLE POINT AND POLYGON DRAWING FOR NOW
                                             <dd class="">
                                                 <div class="arches-tool-item">
                                                     
@@ -132,7 +126,7 @@
                                                         {% trans 'Draw new line' %}
                                                     </a>
                                                 </div>
-                                            </dd>
+                                            </dd>-->
                                             <dd class="">
                                                 <div class="arches-tool-item">
                                                     
@@ -185,7 +179,11 @@
                         <dd class="margin-left-5" data-bind='foreach: getBranchLists()'>
                             <div class="arches-crud-record">
                                 <a href="javascript:void(0);" class="arches-CRUD-child" title="remove this geometry"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                {% if resourcetypeid != 'ARCHAEOLOGICAL_ZONE.E53' %}
                                 <a href="javascript:void(0);" class="arches-CRUD-child" data-bind="click: $parent.editItem.bind($parent), text: nodes.get('SPATIAL_COORDINATES_GEOMETRY.E47', 'value').split('(')[0].toLowerCase(), attr: { 'style': editing() ? 'font-weight:bold;' : '' }" title="Edit this geometry"></a>
+                                {% else %}
+                                <a href="javascript:void(0);" class="arches-CRUD-child" data-bind="click: $parent.editItem.bind($parent), text: nodes.get('ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY.E47', 'value').split('(')[0].toLowerCase(), attr: { 'style': editing() ? 'font-weight:bold;' : '' }" title="Edit this geometry"></a>
+                                {% endif %}
                             </div>
                         </dd>
                     </dl>
@@ -193,7 +191,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-xs-12 margin-bottom-10">
             <div class="form-section-header"><span>{% trans "Notes" %}</span></div>
@@ -201,10 +198,21 @@
     </div>
     <div id="description-section">
         <div class="row">
-            <div class="col-xs-12 col-sm-10">
+            <div class="col-xs-12">
                 <div class="form-group">
                     <div class="arches-html-editor">
-                        <div class="summernote" data-bind="summernote: {value: getEditedNode('PROJECT_AREA_NOTE.E62', 'value'), options:{}}"></div>
+                        {% if resourcetypeid == 'CHARACTER_AREA.E53' %}
+                        <div class="summernote" data-bind="summernote: {value: getEditedNode('CHARACTER_AREA_PLACE_NOTE.E62', 'value'), options:{}}"></div>
+                        {% endif %}
+                        {% if resourcetypeid == 'HISTORIC_AREA.E53' %}
+                        <div class="summernote" data-bind="summernote: {value: getEditedNode('HISTORIC_AREA_LOCATION_NOTE.E62', 'value'), options:{}}"></div>
+                        {% endif %}
+                        {% if resourcetypeid == 'MASTER_PLAN_ZONE.E53' %}
+                        <div class="summernote" data-bind="summernote: {value: getEditedNode('PLACE_DESCRIPTION.E62', 'value'), options:{}}"></div>
+                        {% endif %}
+                        {% if resourcetypeid == 'ARCHAEOLOGICAL_ZONE.E53' %}
+                        <div class="summernote" data-bind="summernote: {value: getEditedNode('ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE.E62', 'value'), options:{}}"></div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

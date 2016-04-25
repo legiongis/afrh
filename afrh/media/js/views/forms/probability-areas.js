@@ -14,13 +14,14 @@ define([
 
             var self = this;
             BaseForm.prototype.initialize.apply(this);
-
+            var resourcetypeid = $('#resourcetypeid').val();
             
             var locationBranchList = new LocationBranchList({
                 el: this.$el.find('#geom-list-section')[0],
                 data: this.data,
-                dataKey: 'SPATIAL_COORDINATES_GEOMETRY.E47'
+                dataKey: 'AREA_OF_PROBABILITY_GEOMETRY.E47'
             });
+            
             locationBranchList.on('geometrychange', function(feature, wkt) {
                 $.ajax({
                     url: arches.urls.get_admin_areas + '?geom=' + wkt,
@@ -77,12 +78,6 @@ define([
             
             this.addBranchList(locationBranchList);
 
-            this.addBranchList(new BranchList({
-                el: this.$el.find('#description-section')[0],
-                data: this.data,
-                dataKey: 'PROJECT_AREA_NOTE.E62',
-                singleEdit: true
-            }));
         }
     });
 });
