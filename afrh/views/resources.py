@@ -290,7 +290,6 @@ def polygon_layers(request, entitytypeid='all'):
         args['doc_type'] = entitytypeid
     
     data = query.search(**args)
-
     for item in data['hits']['hits']:
         for shape in item['_source']['geometry']['geometries']:
             feat = {
@@ -305,6 +304,48 @@ def polygon_layers(request, entitytypeid='all'):
 
     for circ_feat in circ_features:
         geojson_collection['features'].append(circ_feat)
+
+    return JSONResponse(geojson_collection)
+    
+def arch_layer(request, boundtype=''):
+
+    data = []
+    geom_param = request.GET.get('geom', None)
+
+    bbox = request.GET.get('bbox', '')
+    limit = request.GET.get('limit', settings.MAP_LAYER_FEATURE_LIMIT)
+    geojson_collection = {
+      "type": "FeatureCollection",
+      "features": []
+    }
+
+    se = SearchEngineFactory().create()
+    query = Query(se, limit=limit)
+
+    args = {
+        'index':'entity',
+        'doc_type':'ARCHAEOLOGICAL_ZONE.E53',
+    }
+
+    data = query.search(**args)
+
+    for item in data['hits']['hits']:
+        for geom in item['_source']['geometries']:
+            if geom['entitytypeid'] == 'ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY.E47':
+                boundtype = 'boundary'
+            if geom['entitytypeid'] == 'AREA_OF_PROBABILITY_GEOMETRY.E47':
+                boundtype = 'probability_areas'
+
+            feat = {
+                'geometry':geom['value'],
+                'type':"Feature",
+                'id':item['_source']['entityid'],
+                'properties':{
+                    'type':boundtype
+                }
+            }
+            
+            geojson_collection['features'].append(feat)
 
     return JSONResponse(geojson_collection)
 

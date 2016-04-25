@@ -195,6 +195,7 @@
                         map_layers: "{% url 'map_layers' '' %}",
                         map_markers: "{% url 'map_markers' '' %}",
                         polygon_layers: "{% url 'polygon_layers' '' %}",
+                        arch_layer: "{% url 'arch_layer' %}",
                         reports: "{% url 'report' 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' %}".replace('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', ''),
                         buffer: "{% url 'buffer'%}",
                         related_resources: "{% url 'related_resources' 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' %}".replace('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '')
@@ -293,8 +294,43 @@
             
             define('user-info', [], function () {
                 var userinfo = {
-                    'name': '{{user.username}}',
-                    'viewActivites': false
+                    'name':'{{user.username}}',
+                    'create':{
+                        {% for type, typedata in resource_types %}
+                            {% if type in create %}
+                            '{{type}}':true,
+                            {% else %}
+                            '{{type}}':false,
+                            {% endif %}
+                        {% endfor %}
+                    },
+                    'view':{
+                        {% for type, typedata in resource_types %}
+                            {% if type in view %}
+                            '{{type}}':true,
+                            {% else %}
+                            '{{type}}':false,
+                            {% endif %}
+                        {% endfor %}
+                    },
+                    'edit':{
+                        {% for type, typedata in resource_types %}
+                            {% if type in edit %}
+                            '{{type}}':true,
+                            {% else %}
+                            '{{type}}':false,
+                            {% endif %}
+                        {% endfor %}
+                    },
+                    'fullreport':{
+                        {% for type, typedata in resource_types %}
+                            {% if type in fullreport %}
+                            '{{type}}':true,
+                            {% else %}
+                            '{{type}}':false,
+                            {% endif %}
+                        {% endfor %}
+                    },
                 };
                 return userinfo;
             });

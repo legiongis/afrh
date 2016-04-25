@@ -9,10 +9,11 @@ define([
         'map/layer_models/full-layer-model',
         'map/layer_models/polygon-layer-model',
         'map/layer_models/area-layer-model',
+        'map/layer_models/arch-layer-model',
         'resource-types',
         'user-info'
 
-], function(ol, _, ko, arches, resourceLayerInfo, ResourceLayerModel, MarkerLayerModel, FullLayerModel, PolygonLayerModel, AreaLayerModel, resourceTypes, userInfo) {
+], function(ol, _, ko, arches, resourceLayerInfo, ResourceLayerModel, MarkerLayerModel, FullLayerModel, PolygonLayerModel, AreaLayerModel, ArchLayerModel, resourceTypes, userInfo) {
         var resourceFeatures = ko.observableArray();
         var layers = [];
         
@@ -20,6 +21,7 @@ define([
             'area':AreaLayerModel,
             'poly':PolygonLayerModel,
             'marker':MarkerLayerModel,
+            'arch':ArchLayerModel
             //'project_areas':ActivityLayerModel
         }
         
@@ -29,11 +31,14 @@ define([
             if (item.makeLayer == false){return true;}
             
             //exclude based on user permissions
-            if (userInfo.name == 'anonymous' && item.restricted){return true;}
-            
+            if (userInfo.name != 'anonymous'){
+                if (userInfo.view[entitytypeid] == false){return true;}
+            } else {
+                if (item.restricted){return true;}
+            }
+
             item.entitytypeid = entitytypeid;
             item.onMap = true;
-            
             item.active = false;
             if (entitytypeid == "INVENTORY_RESOURCE.E18"){
                 item.active = true;
