@@ -114,7 +114,7 @@ require([
                 clusterFeatures: ko.observableArray(),
                 showEdit: ko.observable('')
             };
-            console.log(userInfo);
+
             self.map = map;
             var clusterFeaturesCache = {};
             var archesFeaturesCache = {};
