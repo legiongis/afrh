@@ -181,7 +181,7 @@ def RESOURCE_TYPE_CONFIGS():
             'resourcetypeid': 'ARCHAEOLOGICAL_ZONE.E53',
             'name': _('Archaeological Zone'),
             'icon_class': 'fa fa-list',
-            'default_page': 'information-resource-summary',
+            'default_page': 'arch-summary',
             'default_description': 'no description available',
             'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
             'categories': [_('Resource')],
@@ -195,7 +195,7 @@ def RESOURCE_TYPE_CONFIGS():
                 'lookup_value': 'Primary'
             },
             'sort_order': 4,
-            'layer_model': 'area',
+            'layer_model': 'arch',
             'permissions': {
                 'create':['admin1','admin2'],
                 'edit':['admin1','admin2'],
@@ -207,7 +207,7 @@ def RESOURCE_TYPE_CONFIGS():
             'resourcetypeid': 'HISTORIC_AREA.E53',
             'name': _('Historic Area'),
             'icon_class': 'fa fa-flag',
-            'default_page': 'information-resource-summary',
+            'default_page': 'des-summary',
             'default_description': 'no description available',
             'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
             'categories': [_('Resource')],
