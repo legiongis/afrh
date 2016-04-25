@@ -16,7 +16,7 @@ require([
     'bootstrap',
     'select2',
     'plugins/jquery.knob.min'
-], function($, _, Backbone, ol, ko, arches, layerInfo, MapView, layers, resourceLayers, LayerModel, selectedResourceId, resourceTypes, userInfo) {
+], function($, _, Backbone, ol, ko, arches, layerInfo, MapView, layers, resourceLayers, LayerModel, selectedResourceId, resourceTypes, userPerms) {
     var geoJSON = new ol.format.GeoJSON();
     var PageView = Backbone.View.extend({
         el: $('body'),
@@ -302,7 +302,7 @@ require([
                 selectFeatureOverlay.getFeatures().clear();
                 selectFeatureOverlay.getFeatures().push(feature);
                 self.viewModel.selectedResource(resourceData);
-                self.viewModel.showEdit(userInfo['edit'][feature.get('entitytypeid')]);
+                self.viewModel.showEdit(userPerms['edit'][feature.get('entitytypeid')]);
                 $('#resource-info').show();
             };
 
