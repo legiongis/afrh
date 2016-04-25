@@ -35,6 +35,8 @@ urlpatterns = patterns('',
     url(r'^resources/related/(?P<resourceid>%s|())$' % uuid_regex, 'afrh.views.resources.related_resources', name="related_resources"),
     url(r'^resources/history/(?P<resourceid>%s|())$' % uuid_regex, 'afrh.views.resources.edit_history', name="edit_history"),
     url(r'^resources/markers/(?P<entitytypeid>.*)$', 'afrh.views.resources.map_layers', {'get_centroids':True}, name="map_markers"),
+    url(r'^search$', 'afrh.views.search.home_page', name="search_home"),
+    url(r'^search/resources$', 'afrh.views.search.search_results', name="search_results"),
     url(r'', include(arches_hip_urls)),
     
 )
