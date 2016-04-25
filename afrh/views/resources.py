@@ -582,13 +582,14 @@ def get_filter_types(request):
 def get_allowed_types(request):
     ''' references the user permissions in the request and returns a list of resource types to filter'''
 
-    if request.user.username == 'anonymous':
-        return ['ACTIVITY_A.E7','ACTIVITY_B.E7']
-        
     allowedtypes = []
     permissions = request.user.get_all_permissions()
 
     for k in settings.RESOURCE_TYPE_CONFIGS().keys():
+        if request.user.username == 'anonymous':
+            if not k in ['ACTIVITY_A.E7','ACTIVITY_B.E7']:
+                allowedtypes.append(k)
+                continue
         for p in permissions:
             
             t,res = p.split(".")[:2]
