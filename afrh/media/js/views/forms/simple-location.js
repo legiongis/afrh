@@ -93,7 +93,6 @@ define([
                     dataKey: 'CHARACTER_AREA_PLACE_NOTE.E62',
                     singleEdit: true
                 }));
-                console.log(this);
             }
             
             if (resourcetypeid == "HISTORIC_AREA.E53"){
