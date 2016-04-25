@@ -247,7 +247,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                     </div>
                 </div>
                 
-                {% if user.username != 'anonymous' %}
+                {% if report_info.type in view %}
                 <div class="report-section-header">
                     <span>{% trans "Heritage Asset Data" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
                 </div>
