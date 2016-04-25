@@ -12,10 +12,11 @@ require([
     'map/layer-model',
     'selected-resource-id',
     'resource-types',
+    'user-info',
     'bootstrap',
     'select2',
     'plugins/jquery.knob.min'
-], function($, _, Backbone, ol, ko, arches, layerInfo, MapView, layers, resourceLayers, LayerModel, selectedResourceId, resourceTypes) {
+], function($, _, Backbone, ol, ko, arches, layerInfo, MapView, layers, resourceLayers, LayerModel, selectedResourceId, resourceTypes, userInfo) {
     var geoJSON = new ol.format.GeoJSON();
     var PageView = Backbone.View.extend({
         el: $('body'),
@@ -110,8 +111,10 @@ require([
                 mousePosition: ko.observable(''),
                 selectedResource: ko.observable({}),
                 selectedAddress: ko.observable(''),
-                clusterFeatures: ko.observableArray()
+                clusterFeatures: ko.observableArray(),
+                showEdit: ko.observable('')
             };
+            console.log(userInfo);
             self.map = map;
             var clusterFeaturesCache = {};
             var archesFeaturesCache = {};
@@ -299,6 +302,7 @@ require([
                 selectFeatureOverlay.getFeatures().clear();
                 selectFeatureOverlay.getFeatures().push(feature);
                 self.viewModel.selectedResource(resourceData);
+                self.viewModel.showEdit(userInfo['edit'][feature.get('entitytypeid')]);
                 $('#resource-info').show();
             };
 
