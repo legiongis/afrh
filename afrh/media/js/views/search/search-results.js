@@ -7,9 +7,10 @@ define(['jquery',
     'knockout',
     'views/related-resources-graph',
     'resource-types',
+    'user-info',
     'bootstrap-datetimepicker',
     'plugins/knockout-select2'], 
-    function($, _, Backbone, bootstrap, arches, select2, ko, RelatedResourcesGraph, resourceTypes) {
+    function($, _, Backbone, bootstrap, arches, select2, ko, RelatedResourcesGraph, resourceTypes, userPerms) {
 
         return Backbone.View.extend({
 
@@ -88,7 +89,8 @@ define(['jquery',
                         description: description,
                         geometries: ko.observableArray(this._source.geometries),
                         typeIcon: resourceTypes[this._source.entitytypeid].icon,
-                        typeName: resourceTypes[this._source.entitytypeid].name
+                        typeName: resourceTypes[this._source.entitytypeid].name,
+                        showEdit: userPerms['edit'][this._source.entitytypeid],
                     });
                 });
 
