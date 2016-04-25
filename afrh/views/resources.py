@@ -580,7 +580,7 @@ def get_filter_types(request):
     return filtertypes
     
 def get_allowed_types(request):
-    ''' references the user permissions in the request and returns a list of resource types to filter'''
+    ''' references the user permissions in the request and returns a list of resource types to allow in a search query'''
 
     allowedtypes = []
     permissions = request.user.get_all_permissions()
@@ -591,7 +591,6 @@ def get_allowed_types(request):
                 allowedtypes.append(k)
                 continue
         for p in permissions:
-            
             t,res = p.split(".")[:2]
             if not t == "VIEW":
                 continue
