@@ -191,7 +191,10 @@ class ProbabilityAreaForm(ResourceForm):
         
         
         self.update_nodes('AREA_OF_PROBABILITY_GEOMETRY.E47', data)
-        # self.update_nodes('HISTORIC_RESOURCES_AREA_NOTE.E62', data)
+        self.update_nodes('HISTORIC_RESOURCES_AREA_NOTE.E47', data)
+        self.update_nodes('NATIVE_AMERICAN_RESOURCES_AREA_NOTE.E47', data)
+        self.update_nodes('PALEOSOLS_ZONE_NOTE.E47', data)
+        self.update_nodes('DISTURBED_AREA_NOTE.E47', data)
 
         return
 
@@ -203,9 +206,21 @@ class ProbabilityAreaForm(ResourceForm):
             }
         }
         
-        # self.data['HISTORIC_RESOURCES_AREA_NOTE.E62'] = {
-            # 'branch_lists': self.get_nodes('HISTORIC_RESOURCES_AREA_NOTE.E62'),
-        # }
+        self.data['HISTORIC_RESOURCES_AREA_NOTE.E62'] = {
+            'branch_lists': self.get_nodes('HISTORIC_RESOURCES_AREA_NOTE.E62'),
+        }
+        
+        self.data['NATIVE_AMERICAN_RESOURCES_AREA_NOTE.E62'] = {
+            'branch_lists': self.get_nodes('NATIVE_AMERICAN_RESOURCES_AREA_NOTE.E62'),
+        }
+        
+        self.data['PALEOSOLS_ZONE_NOTE.E62'] = {
+            'branch_lists': self.get_nodes('PALEOSOLS_ZONE_NOTE.E62'),
+        }
+        
+        self.data['DISTURBED_AREA_NOTE.E62'] = {
+            'branch_lists': self.get_nodes('DISTURBED_AREA_NOTE.E62'),
+        }
 
         return
 

@@ -77,6 +77,35 @@ define([
             });
             
             this.addBranchList(locationBranchList);
+            
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#historic-note-section')[0],
+                data: this.data,
+                dataKey: 'HISTORIC_RESOURCES_AREA_NOTE.E62',
+                singleEdit: true
+            }));
+            
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#native-note-section')[0],
+                data: this.data,
+                dataKey: 'NATIVE_AMERICAN_RESOURCES_AREA_NOTE.E62',
+                singleEdit: true
+            }));
+            
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#paleosol-note-section')[0],
+                data: this.data,
+                dataKey: 'PALEOSOLS_ZONE_NOTE.E62',
+                singleEdit: true
+            }));
+            
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#disturbed-note-section')[0],
+                data: this.data,
+                dataKey: 'DISTURBED_AREA_NOTE.E62',
+                singleEdit: true
+            }));
+
 
         }
     });
