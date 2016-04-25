@@ -468,6 +468,8 @@ def get_related_resources(resourceid, lang, limit=1000, start=0, filtertypes=[])
 
     entityids = set()
     for relation in resource_relations['hits']['hits']:
+        ## this filter should be done by passing the allowed doc types to the search function
+        ## used allowed types function below
         if Entity(relation['_source']['entityid1']).entitytypeid in filtertypes:
              continue
         relation['_source']['preflabel'] = get_preflabel_from_valueid(relation['_source']['relationshiptype'], lang)
@@ -575,4 +577,25 @@ def get_filter_types(request):
             if k.startswith(res):
                 filtertypes.remove(k)
 
-    return filtertypes  
+    return filtertypes
+    
+def get_allowed_types(request):
+    ''' references the user permissions in the request and returns a list of resource types to filter'''
+
+    if request.user.username == 'anonymous':
+        return ['ACTIVITY_A.E7','ACTIVITY_B.E7']
+        
+    allowedtypes = []
+    permissions = request.user.get_all_permissions()
+
+    for k in settings.RESOURCE_TYPE_CONFIGS().keys():
+        for p in permissions:
+            
+            t,res = p.split(".")[:2]
+            if not t == "VIEW":
+                continue
+            print p
+            if k.startswith(res):
+                allowedtypes.append(k)
+
+    return allowedtypes  
