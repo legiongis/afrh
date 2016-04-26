@@ -21,11 +21,11 @@ from arches.app.models.edit_history import EditHistory
 from arches.app.models.resource import Resource as ArchesResource
 from arches.app.search.search_engine_factory import SearchEngineFactory
 from arches.app.utils.betterJSONSerializer import JSONSerializer, JSONDeserializer
-#from arches_hip.models import forms
 from forms import summary
 from forms import description
 from forms import location
 from forms import other
+from forms import wizard
 from arches.app.models.forms import DeleteResourceForm
 from django.utils.translation import ugettext as _
 
@@ -51,11 +51,10 @@ class Resource(ArchesResource):
                 other.FormDimensionForm.get_info(),
                 other.ComponentForm.get_info(),
                 location.LocationForm.get_info(),
-                other.ConditionForm.get_info(),
-                other.RelatedFilesForm.get_info(),
+                wizard.ConditionForm.get_info(),
+                wizard.RelatedFilesForm.get_info(),
                 other.InventoryEvaluationForm.get_info(),
                 other.ExternalReferenceForm.get_info(),
-                other.NewDatesForm.get_info()
             ]
 
         elif self.entitytypeid == 'CHARACTER_AREA.E53':
@@ -71,7 +70,7 @@ class Resource(ArchesResource):
                 summary.MPZoneSummaryForm.get_info(),
                 description.InventoryDescriptionForm.get_info(),
                 location.SimpleLocationForm.get_info(),
-                other.MPZoneGuidelinesForm.get_info(),
+                wizard.MPZoneGuidelinesForm.get_info(),
             ]
             
         elif self.entitytypeid == 'ARCHAEOLOGICAL_ZONE.E53':
@@ -94,7 +93,7 @@ class Resource(ArchesResource):
                 summary.ActorSummaryForm.get_info(), 
                 description.InventoryDescriptionForm.get_info(),
                 location.LocationForm.get_info(),
-                other.RelatedFilesForm.get_info(),
+                wizard.RelatedFilesForm.get_info(),
                 #other.RoleForm.get_info(),
                 other.ExternalReferenceForm.get_info()
             ]
@@ -105,7 +104,7 @@ class Resource(ArchesResource):
                 other.PublicationForm.get_info(),
                 location.LocationForm.get_info(),
                 description.InventoryDescriptionForm.get_info(),
-                other.FileUploadForm.get_info()
+                wizard.FileUploadForm.get_info()
             ]
             
         elif self.entitytypeid == 'ACTIVITY_A.E7':
