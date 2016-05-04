@@ -1,0 +1,8 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+BS_REC:1,Protect and maintain the resource's original/historic elements (interior).,,BUILDING_STRUCTURES_RECOMMENDATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+BS_REC:2,Protect and maintain the resource's original/historic elements (exterior).,,BUILDING_STRUCTURES_RECOMMENDATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+BS_REC:3,Implement AFRH HPMP for original historic element (interior).,,BUILDING_STRUCTURES_RECOMMENDATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+BS_REC:4,Implement AFRH HPMP for original historic element (exterior).,,BUILDING_STRUCTURES_RECOMMENDATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+BS_REC:5,Replace original/historic elements only if a repair is not possible. Replacement should replicate materials and finishes (interior).,,BUILDING_STRUCTURES_RECOMMENDATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+BS_REC:6,Replace original/historic elements only if a repair is not possible. Replacement should replicate materials and finishes (exterior).,,BUILDING_STRUCTURES_RECOMMENDATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+BS_REC:7,n/a,,BUILDING_STRUCTURES_RECOMMENDATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
