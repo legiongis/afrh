@@ -19,6 +19,7 @@ from django.conf import settings
 import arches.app.models.models as archesmodels
 from arches.app.models.edit_history import EditHistory
 from arches.app.models.resource import Resource as ArchesResource
+from arches.app.models.entity import Entity
 from arches.app.search.search_engine_factory import SearchEngineFactory
 from arches.app.utils.betterJSONSerializer import JSONSerializer, JSONDeserializer
 from forms import summary
@@ -160,6 +161,29 @@ class Resource(ArchesResource):
 
         return names
 
+    def index(self):
+        """
+        Indexes all the nessesary documents related to resources to support the map, search, and reports
+
+        """
+        print "INDEX ME PROUD!!!"
+        se = SearchEngineFactory().create()
+
+        search_documents = self.prepare_documents_for_search_index()
+        for document in search_documents:
+            se.index_data('entity', self.entitytypeid, document, id=self.entityid)
+
+            report_documents = self.prepare_documents_for_report_index(geom_entities=document['geometries'])
+            for report_document in report_documents:
+                se.index_data('resource', self.entitytypeid, report_document, id=self.entityid)
+
+            geojson_documents = self.prepare_documents_for_map_index(geom_entities=document['geometries'])
+            for geojson in geojson_documents:
+                se.index_data('maplayers', self.entitytypeid, geojson, idfield='id')
+
+        for term in self.prepare_terms_for_search_index():
+           se.index_term(term['term'], term['entityid'], term['context'], term['options'])
+        
     def prepare_documents_for_search_index(self):
         """
         Generates a list of specialized resource based documents to support resource search
@@ -187,7 +211,7 @@ class Resource(ArchesResource):
         """
         Generates a list of geojson documents to support the display of resources on a map
         """
-
+        print "MAP INDEX ME PROUD!!!"
         documents = super(Resource, self).prepare_documents_for_map_index(geom_entities=geom_entities)
         
         def get_entity_data(entitytypeid, get_label=False):
@@ -207,7 +231,7 @@ class Resource(ArchesResource):
         document_data = {}
         
         if self.entitytypeid == 'INVENTORY_RESOURCE.E18':
-            document_data['resource_type'] = get_entity_data('NHRP_RESOURCE_TYPE.E55', get_label=True)
+            document_data['resource_type'] = "here we go again..."#get_entity_data('NHRP_RESOURCE_TYPE.E55', get_label=True)
             document_data['address'] = _('None specified')
             address_nodes = self.find_entities_by_type_id('PLACE_ADDRESS.E45')
             for node in address_nodes:
@@ -244,6 +268,29 @@ class Resource(ArchesResource):
                 document['properties'][key] = document_data[key]
 
         return documents
+        
+    def prepare_documents_for_report_index(self, geom_entities=[]):
+        """
+        Generates a list of specialized resource based documents to support resource reports
+
+        """
+
+        geojson_geom = None
+        if len(geom_entities) > 0:
+            geojson_geom = {
+                'type': 'GeometryCollection',
+                'geometries': [geom_entity['value'] for geom_entity in geom_entities]
+            }
+
+        entity_dict = Entity()
+        entity_dict.property = self.property
+        entity_dict.entitytypeid = self.entitytypeid
+        entity_dict.entityid = self.entityid
+        entity_dict.primaryname = self.get_primary_name()
+        entity_dict.geometry = geojson_geom
+        
+        entity_dict.graph = self.dictify(keys=['label', 'value'])
+        return [JSONSerializer().serializeToPython(entity_dict)]
 
     def prepare_search_index(self, resource_type_id, create=False):
         """
