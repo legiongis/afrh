@@ -222,12 +222,9 @@ class InventoryDescriptionForm(ResourceForm):
         }
 
     def update(self, data, files):
-        
-        print data['DESCRIPTION.E62']
-        print "\n\n"
+
         self.update_nodes('DESCRIPTION.E62', data)
-        print self.data
-        print "\n\n"
+
         if self.resource.entitytypeid == 'ACTOR.E39':
             self.update_nodes('PHASE_TYPE_ASSIGNMENT.E17', data)
         if self.resource.entitytypeid == 'INVENTORY_RESOURCE.E18':

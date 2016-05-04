@@ -518,57 +518,61 @@ class ActorSummaryForm(ResourceForm):
                 }
             }
             
-class ActivityAForm(ResourceForm):
+class ActivityForm(ResourceForm):
     @staticmethod
     def get_info():
         return {
-            'id': 'activity-a-summary',
+            'id': 'activity-summary',
             'icon': 'fa-tag',
             'name': _('Summary'),
-            'class': ActivityAForm
+            'class': ActivityForm
         }
 
     def update(self, data, files):
-        update_nodes = [
-            'ACTIVITY_NAME.E41',
+    
+        act_a_nodes = [
             'WORK_ORDER_ASSIGNMENT.E13',
-            'ACTION_AGENT.E39',
-            'ACTION_AGENT_REQUEST_DATE.E49',
             'ACTIVITY_PROCEDURE_TYPE.E55',
             'ACTIVITY_PROCEDURE_NOTE.E62',
+            'ACTION_AGENT_REQUEST_DATE.E49',
+            'ACTION_STATUS_ASSIGNMENT.E13',
+        ]
+        
+        act_b_nodes = [
+            'BUILDING_PERMIT_NUMBER.E42',
+        ]
+        
+        both_nodes = [
+            'ACTIVITY_NAME.E41',
+            'ACTION_AGENT.E39',
             'ACTIVITY_REVIEW_TYPE.E55',
             'ACTIVITY_REVIEW_NOTE.E62',
-            # 'ACTION_STATUS_ASSIGNMENT.E55',
-            # 'ACTIVITY_MILESTONE_ACHIEVEMENT.E5',
+            'ACTIVITY_MILESTONE_ACHIEVEMENT.E5',
         ]
+        
+        if self.resource.entitytypeid == 'ACTIVITY_A.E7':   
+            update_nodes = act_a_nodes + both_nodes
+        if self.resource.entitytypeid == 'ACTIVITY_B.E7':   
+            update_nodes = act_b_nodes + both_nodes
+            
         for node in update_nodes:
             self.update_nodes(node, data)
             
+        
         return
 
     def load(self, lang):
 
         load_nodes = {
             'ACTIVITY_NAME.E41':[],
-            'WORK_ORDER_ASSIGNMENT.E13':[],
             'ACTION_AGENT.E39':[
                 'ACTION_AGENT_TYPE.E55',
             ],
-            'ACTION_AGENT_REQUEST_DATE.E49':[],
-            'ACTIVITY_PROCEDURE_TYPE.E55':[
-                'ACTIVITY_PROCEDURE_TYPE.E55',
-            ],
-            'ACTIVITY_PROCEDURE_NOTE.E62':[],
             'ACTIVITY_REVIEW_TYPE.E55':[
                 'ACTIVITY_REVIEW_TYPE.E55',
             ],
             'ACTIVITY_REVIEW_NOTE.E62':[],
-            # 'ACTION_STATUS_ASSIGNMENT.E13':[
-                # 'CURRENT_ACTION_STATUS.E55',
-            # ],
-            # 'ACTIVITY_MILESTONE_ACHIEVEMENT.E5':[
-                # 'ACTIVITY_MILESTONE.E55',
-            # ]
+            'ACTIVITY_MILESTONE_ACHIEVEMENT.E5':[]
         }
         
         for node, domains in load_nodes.iteritems():
@@ -576,3 +580,34 @@ class ActivityAForm(ResourceForm):
                 'branch_lists': self.get_nodes(node),
                 'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
             }
+            
+        if self.resource.entitytypeid == 'ACTIVITY_A.E7':
+            self.data['WORK_ORDER_ASSIGNMENT.E13'] = {
+                'branch_lists': self.get_nodes('WORK_ORDER_ASSIGNMENT.E13')
+            }
+            self.data['ACTION_AGENT_REQUEST_DATE.E49'] = {
+                'branch_lists': self.get_nodes('ACTION_AGENT_REQUEST_DATE.E49')
+            }
+            self.data['ACTIVITY_PROCEDURE_TYPE.E55'] = {
+                'branch_lists': self.get_nodes('ACTIVITY_PROCEDURE_TYPE.E55'),
+                'domains': Concept().get_e55_domain('ACTIVITY_PROCEDURE_TYPE.E55')
+            }
+            self.data['ACTIVITY_PROCEDURE_NOTE.E62'] = {
+                'branch_lists': self.get_nodes('ACTIVITY_PROCEDURE_NOTE.E62')
+            }
+            self.data['ACTION_STATUS_ASSIGNMENT.E13'] = {
+                'branch_lists': self.get_nodes('ACTION_STATUS_ASSIGNMENT.E13'),
+                'domains': Concept().get_e55_domain('CURRENT_ACTION_STATUS.E55')
+            }
+            self.data['ACTIVITY_MILESTONE_ACHIEVEMENT.E5']['domains'] = {
+                    'ACTIVITY_A_MILESTONE.E55' : Concept().get_e55_domain('ACTIVITY_A_MILESTONE.E55')
+                }
+                
+            
+        if self.resource.entitytypeid == 'ACTIVITY_B.E7':
+            self.data['BUILDING_PERMIT_NUMBER.E42'] = {
+                'branch_lists': self.get_nodes('BUILDING_PERMIT_NUMBER.E42')
+            }
+            self.data['ACTIVITY_MILESTONE_ACHIEVEMENT.E5']['domains'] = {
+                    'ACTIVITY_B_MILESTONE.E55' : Concept().get_e55_domain('ACTIVITY_B_MILESTONE.E55')
+                }
