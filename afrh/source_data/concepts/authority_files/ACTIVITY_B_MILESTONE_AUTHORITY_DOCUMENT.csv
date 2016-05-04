@@ -1,0 +1,3 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+ACTB_MILE:1,Permit Issued,,ACTIVITY_B_MILESTONE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+ACTB_MILE:2,Certificate of Occupancy,,ACTIVITY_B_MILESTONE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
