@@ -61,6 +61,58 @@ class CharAreaDescriptionForm(ResourceForm):
             'branch_lists': self.get_nodes('DESCRIPTION.E62'),
         }
         
+class ActADescriptionForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'activity-a-description',
+            'icon': 'fa-flash',
+            'name': _('Description'),
+            'class': ActADescriptionForm
+        }
+
+    def update(self, data, files):
+        
+        update_nodes = [
+            'ACTIVITY_SCOPE_OF_WORK_TYPE.E55',
+            'ACTIVITY_CONDITION.E3'
+            'BUILDING_STRUCTURES_RECOMMENDATION_TYPE.E55',
+            'OBJECT_RECOMMENDATION_TYPE.E55',
+            'LANDSCAPE_RECOMMENDATION_TYPE.E55',
+        ]
+    
+        for node in update_nodes:
+            self.update_nodes(node, data)
+            
+        return
+
+    def load(self, lang):
+        
+        load_nodes = {
+            'ACTIVITY_SCOPE_OF_WORK_TYPE.E55':[
+                'ACTIVITY_SCOPE_OF_WORK_TYPE.E55'
+            ],
+            'ACTIVITY_CONDITION.E3':[
+                'ACTIVITY_CONDITION_TYPE.E55'
+            ],
+            'BUILDING_STRUCTURES_RECOMMENDATION_TYPE.E55':[
+                'BUILDING_STRUCTURES_RECOMMENDATION_TYPE.E55',
+            ],
+            'OBJECT_RECOMMENDATION_TYPE.E55':[
+                'OBJECT_RECOMMENDATION_TYPE.E55',
+            ],
+            'LANDSCAPE_RECOMMENDATION_TYPE.E55':[
+                'LANDSCAPE_RECOMMENDATION_TYPE.E55',
+            ]
+        }
+        
+        for node, domains in load_nodes.iteritems():
+            self.data[node] = {
+                'branch_lists': self.get_nodes(node),
+                'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
+            }
+
+        
 class DesDescriptionForm(ResourceForm):
     @staticmethod
     def get_info():

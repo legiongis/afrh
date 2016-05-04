@@ -204,7 +204,6 @@ class Section106ReviewForm(ResourceForm):
         }
         
         for node, domains in load_nodes.iteritems():
-
             self.data[node] = {
                 'branch_lists': self.get_nodes(node),
                 'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])

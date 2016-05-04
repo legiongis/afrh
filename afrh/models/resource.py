@@ -110,7 +110,10 @@ class Resource(ArchesResource):
             
         elif self.entitytypeid == 'ACTIVITY_A.E7':
             description_group['forms'][:0] = [
-                other.ActivityConsultationForm.get_info(),
+                summary.ActivityAForm.get_info(),
+                location.ActALocationForm.get_info(),
+                description.ActADescriptionForm.get_info(),
+                wizard.ActivityConsultationForm.get_info(),
                 review.Section106ReviewForm.get_info(),
                 review.ARPAReviewForm.get_info(),
                 review.NEPAReviewForm.get_info(),
@@ -205,7 +208,6 @@ class Resource(ArchesResource):
         
         if self.entitytypeid == 'INVENTORY_RESOURCE.E18':
             document_data['resource_type'] = get_entity_data('NHRP_RESOURCE_TYPE.E55', get_label=True)
-
             document_data['address'] = _('None specified')
             address_nodes = self.find_entities_by_type_id('PLACE_ADDRESS.E45')
             for node in address_nodes:

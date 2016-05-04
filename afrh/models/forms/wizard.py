@@ -227,8 +227,11 @@ class MPZoneGuidelinesForm(ResourceForm):
                 'GUIDELINE_IMAGE_TYPE.E55' : Concept().get_e55_domain('GUIDELINE_IMAGE_TYPE.E55'),
             }
         }
-
+        
+        
         condition_assessment_entities = self.resource.find_entities_by_type_id('GUIDELINE.E89')
+        print "entities"
+        print condition_assessment_entities
 
         for entity in condition_assessment_entities:
             self.data['data'].append({
@@ -248,7 +251,7 @@ class MPZoneGuidelinesForm(ResourceForm):
                     'branch_lists': self.get_nodes(entity, 'GUIDELINE.E89')
                 }
             })
-
+            
 class ConditionForm(ResourceForm):
     baseentity = None
 
@@ -373,6 +376,101 @@ class ConditionForm(ResourceForm):
                 },
                 'CONDITION_ASSESSMENT.E14': {
                     'branch_lists': self.get_nodes(entity, 'CONDITION_ASSESSMENT.E14')
+                }
+            })
+            
+class ActivityConsultationForm(ResourceForm):
+    baseentity = None
+
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'activity-consultation',
+            'icon': 'fa-asterisk',
+            'name': _('Consultations'),
+            'class': ActivityConsultationForm
+        }
+
+    def get_nodes(self, entity, entitytypeid):
+        ret = []
+        entities = entity.find_entities_by_type_id(entitytypeid)
+        for entity in entities:
+            ret.append({'nodes': entity.flatten()})
+
+        return ret
+
+    def update_nodes(self, entitytypeid, data):
+        if self.schema == None:
+            self.schema = Entity.get_mapping_schema(self.resource.entitytypeid)
+
+        for value in data[entitytypeid]:
+            for newentity in value['nodes']:
+                entity = Entity()
+                entity.create_from_mapping(self.resource.entitytypeid, self.schema[newentity['entitytypeid']]['steps'], newentity['entitytypeid'], newentity['value'], newentity['entityid'])
+
+                if self.baseentity == None:
+                    self.baseentity = entity
+                else:
+                    self.baseentity.merge(entity)
+
+    def update(self, data, files):
+        print json.dumps(data, indent=2)
+
+        for value in data['ACTIVITY_CONSULTATION.E5']:
+            for node in value['nodes']:
+                if node['entitytypeid'] == 'ACTIVITY_CONSULTATION.E5' and node['entityid'] != '':
+                    #remove the node
+                    self.resource.filter(lambda entity: entity.entityid != node['entityid'])
+
+        #self.update_nodes('ACTIVITY_CONSULTATION.E5', data)
+        self.update_nodes('CONSULTATION_METHOD.E55', data)
+        self.update_nodes('CONSULTATION_TYPE.E55', data)
+        self.update_nodes('CONSULTATION_DATE.E49', data)
+        self.update_nodes('CONSULTATION_NOTE.E62', data)
+        self.update_nodes('CONSULTATION_DOCUMENTATION_TYPE.E55', data)
+        self.update_nodes('CONSULTATION_ATTENDEE.E39', data)
+        self.resource.merge_at(self.baseentity, self.resource.entitytypeid)
+        self.resource.trim()
+                   
+    def load(self, lang):
+
+        self.data = {
+            'data': [],
+            'domains': {
+                'CONSULTATION_METHOD.E55': Concept().get_e55_domain('CONSULTATION_METHOD.E55'),
+                'CONSULTATION_TYPE.E55' : Concept().get_e55_domain('CONSULTATION_TYPE.E55'),
+                'CONSULTATION_DOCUMENTATION_TYPE.E55' : Concept().get_e55_domain('CONSULTATION_DOCUMENTATION_TYPE.E55'),
+            }
+        }
+
+        print self.resource
+        consultation_entities = self.resource.find_entities_by_type_id('ACTIVITY_CONSULTATION.E5')
+        print "consultation entities:"
+        print consultation_entities
+
+        for entity in consultation_entities:
+            print entity
+            self.data['data'].append({
+                'CONSULTATION_METHOD.E55': {
+                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_METHOD.E55')
+                },
+                'CONSULTATION_TYPE.E55': {
+                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_TYPE.E55')
+                },
+                'CONSULTATION_DOCUMENTATION_TYPE.E55': {
+                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_DOCUMENTATION_TYPE.E55')
+                },
+                'CONSULTATION_ATTENDEE.E39': {
+                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_ATTENDEE.E39')
+                },
+                'CONSULTATION_DATE.E49': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONSULTATION_DATE.E49'))
+                },
+                'CONSULTATION_NOTE.E62': {
+                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_NOTE.E62')
+                },
+                'ACTIVITY_CONSULTATION.E5': {
+                    'branch_lists': self.get_nodes(entity, 'ACTIVITY_CONSULTATION.E5')
                 }
             })
 

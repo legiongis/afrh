@@ -517,3 +517,62 @@ class ActorSummaryForm(ResourceForm):
                     'END_OF_EXISTENCE_TYPE.E55' : Concept().get_e55_domain('END_OF_EXISTENCE_TYPE.E55')
                 }
             }
+            
+class ActivityAForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'activity-a-summary',
+            'icon': 'fa-tag',
+            'name': _('Summary'),
+            'class': ActivityAForm
+        }
+
+    def update(self, data, files):
+        update_nodes = [
+            'ACTIVITY_NAME.E41',
+            'WORK_ORDER_ASSIGNMENT.E13',
+            'ACTION_AGENT.E39',
+            'ACTION_AGENT_REQUEST_DATE.E49',
+            'ACTIVITY_PROCEDURE_TYPE.E55',
+            'ACTIVITY_PROCEDURE_NOTE.E62',
+            'ACTIVITY_REVIEW_TYPE.E55',
+            'ACTIVITY_REVIEW_NOTE.E62',
+            # 'ACTION_STATUS_ASSIGNMENT.E55',
+            # 'ACTIVITY_MILESTONE_ACHIEVEMENT.E5',
+        ]
+        for node in update_nodes:
+            self.update_nodes(node, data)
+            
+        return
+
+    def load(self, lang):
+
+        load_nodes = {
+            'ACTIVITY_NAME.E41':[],
+            'WORK_ORDER_ASSIGNMENT.E13':[],
+            'ACTION_AGENT.E39':[
+                'ACTION_AGENT_TYPE.E55',
+            ],
+            'ACTION_AGENT_REQUEST_DATE.E49':[],
+            'ACTIVITY_PROCEDURE_TYPE.E55':[
+                'ACTIVITY_PROCEDURE_TYPE.E55',
+            ],
+            'ACTIVITY_PROCEDURE_NOTE.E62':[],
+            'ACTIVITY_REVIEW_TYPE.E55':[
+                'ACTIVITY_REVIEW_TYPE.E55',
+            ],
+            'ACTIVITY_REVIEW_NOTE.E62':[],
+            # 'ACTION_STATUS_ASSIGNMENT.E13':[
+                # 'CURRENT_ACTION_STATUS.E55',
+            # ],
+            # 'ACTIVITY_MILESTONE_ACHIEVEMENT.E5':[
+                # 'ACTIVITY_MILESTONE.E55',
+            # ]
+        }
+        
+        for node, domains in load_nodes.iteritems():
+            self.data[node] = {
+                'branch_lists': self.get_nodes(node),
+                'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
+            }

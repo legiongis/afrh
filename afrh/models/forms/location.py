@@ -223,6 +223,46 @@ class ProbabilityAreaForm(ResourceForm):
         }
 
         return
+        
+class ActALocationForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'activity-a-location',
+            'icon': 'fa-map-marker',
+            'name': _('Location'),
+            'class': ActALocationForm
+        }
+
+    def update(self, data, files):
+        
+        update_nodes = [
+            'SPATIAL_COORDINATES_GEOMETRY.E47',
+            'AREA_OF_POTENTIAL_EFFECT_NOTE.E62',
+            'PROJECT_AREA_NOTE.E62',
+        ]
+        
+        for node in update_nodes:
+            self.update_nodes(node, data)
+
+        return
+
+    def load(self, lang):
+    
+        load_nodes = {
+            'SPATIAL_COORDINATES_GEOMETRY.E47':[
+                'ACTIVITY_GEOMETRY_TYPE.E55'
+            ],
+            'AREA_OF_POTENTIAL_EFFECT_NOTE.E62':[],
+            'PROJECT_AREA_NOTE.E62':[],
+        }
+        for node, domains in load_nodes.iteritems():
+            self.data[node] = {
+                'branch_lists': self.get_nodes(node),
+                'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
+            }
+
+        return
 
 #not used
 class CoverageForm(ResourceForm):
