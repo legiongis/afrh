@@ -28,7 +28,7 @@ Source,Target,Type,Id,Label,Weight
 50,53,Directed,53,P4,1.0
 53,54,Directed,54,P78,1.0
 50,57,Directed,57,P2,1.0
-57,58,Directed,58,P1,1.0
+57,58,Directed,58,-P71,1.0
 1,62,Directed,62,P148,1.0
 62,63,Directed,63,P3,1.0
 62,65,Directed,65,P2,1.0
