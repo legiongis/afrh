@@ -113,7 +113,7 @@ def RESOURCE_TYPE_CONFIGS():
             'fill_color': '#C4171D',
             'primary_name_lookup': {
                 'entity_type': 'NAME.E41',
-                'lookup_value': 'Current'
+                'lookup_value': ('NAME_TYPE.E55','Current')
             },
             'sort_order': 1,
             'show_polygons':True,
@@ -140,7 +140,7 @@ def RESOURCE_TYPE_CONFIGS():
             'fill_color': '#FF2D9D',
             'primary_name_lookup': {
                 'entity_type': 'NAME.E48',
-                'lookup_value': 'Primary'
+                'lookup_value': False
             },
             'sort_order': 2,
             'layer_model': 'area',
@@ -166,7 +166,7 @@ def RESOURCE_TYPE_CONFIGS():
             'fill_color': '#009DFF',
             'primary_name_lookup': {
                 'entity_type': 'NAME.E48',
-                'lookup_value': 'Primary'
+                'lookup_value': False
             },
             'sort_order': 3,
             'layer_model': 'area',
@@ -192,7 +192,7 @@ def RESOURCE_TYPE_CONFIGS():
             'fill_color': '#FF1000',
             'primary_name_lookup': {
                 'entity_type': 'ARCHAEOLOGICAL_ZONE_NAME.E48',
-                'lookup_value': 'Primary'
+                'lookup_value': False
             },
             'sort_order': 4,
             'layer_model': 'arch',
@@ -218,7 +218,7 @@ def RESOURCE_TYPE_CONFIGS():
             'fill_color': '#c3b5d8',
             'primary_name_lookup': {
                 'entity_type': 'TITLE.E41',
-                'lookup_value': 'Primary'
+                'lookup_value': False
             },
             'sort_order': 5,
             'layer_model': 'area',
@@ -244,7 +244,7 @@ def RESOURCE_TYPE_CONFIGS():
             'fill_color': '#c8b2a3',
             'primary_name_lookup': {
                 'entity_type': 'ACTOR_APPELLATION.E82',
-                'lookup_value': 'Primary'
+                'lookup_value': ('ACTOR_NAME_TYPE.E55','Primary')
             },
             'sort_order': 6,
             'permissions': {
@@ -269,7 +269,7 @@ def RESOURCE_TYPE_CONFIGS():
             'fill_color': '#c3b5d8',
             'primary_name_lookup': {
                 'entity_type': 'TITLE.E41',
-                'lookup_value': 'Primary'
+                'lookup_value': ('TITLE_TYPE.E55','Primary')
             },
             'sort_order': 7,
             'layer_model': 'marker',
@@ -284,7 +284,7 @@ def RESOURCE_TYPE_CONFIGS():
             'resourcetypeid': 'ACTIVITY_A.E7',
             'name': _('Management Activity (A)'),
             'icon_class': 'fa fa-clipboard',
-            'default_page': 'ncpc-review',
+            'default_page': 'activity-a-summary',
             'default_description': 'no description available',
             'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
             'categories': [_('Resource')],
@@ -295,7 +295,7 @@ def RESOURCE_TYPE_CONFIGS():
             'fill_color': '#c8b2a3',
             'primary_name_lookup': {
                 'entity_type': 'ACTOR_APPELLATION.E82',
-                'lookup_value': 'Primary'
+                'lookup_value': False
             },
             'sort_order': 8,
             'layer_model': 'marker',
@@ -322,7 +322,7 @@ def RESOURCE_TYPE_CONFIGS():
             'fill_color': '#c8b2a3',
             'primary_name_lookup': {
                 'entity_type': 'ACTOR_APPELLATION.E82',
-                'lookup_value': 'Primary'
+                'lookup_value': False
             },
             'sort_order': 9,
             'layer_model': 'marker',
