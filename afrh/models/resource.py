@@ -141,10 +141,21 @@ class Resource(ArchesResource):
             })
 
     def get_primary_name(self):
+        """
+        Gets the primary name based on lookup values stored in the resource type configs
+        """
+        
         displayname = super(Resource, self).get_primary_name()
+        
+        lookup = settings.RESOURCE_TYPE_CONFIGS()[self.entitytypeid]['primary_name_lookup']['lookup_value']
         names = self.get_names()
-        if len(names) > 0:
-            displayname = names[0].value
+        for name in names:
+            if lookup:
+                if name.find_entities_by_type_id(lookup[0])[0].label == lookup[1]:
+                    displayname = name.value
+            else:
+                displayname = name.value
+                break
         return displayname
 
 
@@ -152,13 +163,11 @@ class Resource(ArchesResource):
         """
         Gets the human readable name to display for entity instances
         """
-
         names = []
         name_nodes = self.find_entities_by_type_id(settings.RESOURCE_TYPE_CONFIGS()[self.entitytypeid]['primary_name_lookup']['entity_type'])
         if len(name_nodes) > 0:
             for name in name_nodes:
                 names.append(name)
-
         return names
 
     def index(self):
@@ -166,7 +175,6 @@ class Resource(ArchesResource):
         Indexes all the nessesary documents related to resources to support the map, search, and reports
 
         """
-        print "INDEX ME PROUD!!!"
         se = SearchEngineFactory().create()
 
         search_documents = self.prepare_documents_for_search_index()
@@ -211,13 +219,13 @@ class Resource(ArchesResource):
         """
         Generates a list of geojson documents to support the display of resources on a map
         """
-        print "MAP INDEX ME PROUD!!!"
         documents = super(Resource, self).prepare_documents_for_map_index(geom_entities=geom_entities)
+        
+        
         
         def get_entity_data(entitytypeid, get_label=False):
             entity_data = _('None specified')
             entity_nodes = self.find_entities_by_type_id(entitytypeid)
-            print entity_nodes
             if len(entity_nodes) > 0:
                 entity_data = []
                 for node in entity_nodes:
@@ -227,11 +235,21 @@ class Resource(ArchesResource):
                         entity_data.append(str(node.value))
                 entity_data = ', '.join(entity_data)
             return entity_data
+        
+        # NOT USED
+        def get_entity_data2(eid, get_label=False):
+            if get_label:
+                entity_data = [i.label for i in self.child_entities if i.entitytypeid == eid]
+            else:
+                entity_data = [i.value for i in self.child_entities if i.entitytypeid == eid]
+            ret = ', '.join(entity_data)
+            return ret
 
         document_data = {}
         
         if self.entitytypeid == 'INVENTORY_RESOURCE.E18':
-            document_data['resource_type'] = "here we go again..."#get_entity_data('NHRP_RESOURCE_TYPE.E55', get_label=True)
+
+            document_data['resource_type'] = get_entity_data('NRHP_RESOURCE_TYPE.E55', get_label=True)
             document_data['address'] = _('None specified')
             address_nodes = self.find_entities_by_type_id('PLACE_ADDRESS.E45')
             for node in address_nodes:
@@ -259,9 +277,6 @@ class Resource(ArchesResource):
         if self.entitytypeid == 'HISTORICAL_EVENT.E5' or self.entitytypeid == 'ACTIVITY.E7' or self.entitytypeid == 'ACTOR.E39':
             document_data['start_date'] = get_entity_data('BEGINNING_OF_EXISTENCE.E63')
             document_data['end_date'] = get_entity_data('END_OF_EXISTENCE.E64')
-
-        #if self.entitytypeid == 'INVENTORY_RESOURCE.E18' or self.entitytypeid == 'HERITAGE_RESOURCE_GROUP.E27':
-        #    document_data['designations'] = get_entity_data('TYPE_OF_DESIGNATION_OR_PROTECTION.E55', get_label=True)
 
         for document in documents:
             for key in document_data:
