@@ -55,33 +55,60 @@ class SimpleLocationForm(ResourceForm):
             self.update_nodes('HISTORIC_AREA_LOCATION_NOTE.E62', data)
         if self.resource.entitytypeid == 'MASTER_PLAN_ZONE.E53':
             self.update_nodes('PLACE_DESCRIPTION.E62', data)
+        if self.resource.entitytypeid == 'ACTIVITY_B.E7':
+            self.update_nodes('DESCRIPTION_OF_LOCATION.E62', data)
+            self.update_nodes('MASTER_PLAN_PARCEL_ID.E53', data)
+            self.update_nodes('PLACE_ADDRESS.E45', data)
+            self.update_nodes('SQUARE_ID.E53', data)
+            self.update_nodes('LOT_ID.E53', data)
     
         return
 
     def load(self, lang):
-        self.data['SPATIAL_COORDINATES_GEOMETRY.E47'] = {
-            'branch_lists': self.get_nodes('SPATIAL_COORDINATES_GEOMETRY.E47'),
-        }
+    
+        if self.resource.entitytypeid == 'ARCHAEOLOGICAL_ZONE.E53':
+            self.data['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY.E47'] = {
+                'branch_lists': self.get_nodes('ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY.E47'),
+            }
+            self.data['ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE.E62'] = {
+                'branch_lists': self.get_nodes('ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE.E62'),
+            }
+        else:
+            self.data['SPATIAL_COORDINATES_GEOMETRY.E47'] = {
+                'branch_lists': self.get_nodes('SPATIAL_COORDINATES_GEOMETRY.E47'),
+            }
         
-        self.data['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY.E47'] = {
-            'branch_lists': self.get_nodes('ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY.E47'),
-        }
+        if self.resource.entitytypeid == 'CHARACTER_AREA.E53':
+            self.data['CHARACTER_AREA_PLACE_NOTE.E62'] = {
+                'branch_lists': self.get_nodes('CHARACTER_AREA_PLACE_NOTE.E62'),
+            }
         
-        self.data['CHARACTER_AREA_PLACE_NOTE.E62'] = {
-            'branch_lists': self.get_nodes('CHARACTER_AREA_PLACE_NOTE.E62'),
-        }
+        if self.resource.entitytypeid == 'HISTORIC_AREA.E53':
+            self.data['HISTORIC_AREA_LOCATION_NOTE.E62'] = {
+                'branch_lists': self.get_nodes('HISTORIC_AREA_LOCATION_NOTE.E62'),
+            }
         
-        self.data['HISTORIC_AREA_LOCATION_NOTE.E62'] = {
-            'branch_lists': self.get_nodes('HISTORIC_AREA_LOCATION_NOTE.E62'),
-        }
+        if self.resource.entitytypeid == 'MASTER_PLAN_ZONE.E53':
+            self.data['PLACE_DESCRIPTION.E62'] = {
+                'branch_lists': self.get_nodes('PLACE_DESCRIPTION.E62'),
+            }
         
-        self.data['PLACE_DESCRIPTION.E62'] = {
-            'branch_lists': self.get_nodes('PLACE_DESCRIPTION.E62'),
-        }
-        
-        self.data['ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE.E62'] = {
-            'branch_lists': self.get_nodes('ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE.E62'),
-        }
+        if self.resource.entitytypeid == 'ACTIVITY_B.E7':
+            self.data['DESCRIPTION_OF_LOCATION.E62'] = {
+                'branch_lists': self.get_nodes('DESCRIPTION_OF_LOCATION.E62'),
+            }
+            self.data['MASTER_PLAN_PARCEL_ID.E53'] = {
+                'branch_lists': self.get_nodes('MASTER_PLAN_PARCEL_ID.E53'),
+            }
+            self.data['PLACE_ADDRESS.E45'] = {
+                'branch_lists': self.get_nodes('PLACE_ADDRESS.E45'),
+            }
+            self.data['SQUARE_ID.E53'] = {
+                'branch_lists': self.get_nodes('SQUARE_ID.E53'),
+            }
+            self.data['LOT_ID.E53'] = {
+                'branch_lists': self.get_nodes('LOT_ID.E53'),
+            }
         
         return
 
@@ -255,6 +282,45 @@ class ActALocationForm(ResourceForm):
             ],
             'AREA_OF_POTENTIAL_EFFECT_NOTE.E62':[],
             'PROJECT_AREA_NOTE.E62':[],
+        }
+        for node, domains in load_nodes.iteritems():
+            self.data[node] = {
+                'branch_lists': self.get_nodes(node),
+                'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
+            }
+
+        return
+        
+class ActBLocationForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'activity-b-location',
+            'icon': 'fa-object-ungroup',
+            'name': _('Location'),
+            'class': ActBLocationForm
+        }
+
+    def update(self, data, files):
+        
+        update_nodes = [
+            
+        ]
+        
+        for node in update_nodes:
+            self.update_nodes(node, data)
+
+        return
+
+    def load(self, lang):
+    
+        load_nodes = {
+            'SPATIAL_COORDINATES_GEOMETRY.E47':[],
+            'MASTER_PLAN_PARCEL_ID.E53':[],
+            'PLACE_ADDRESS.E45':[],
+            'SQUARE_ID.E53':[],
+            'LOT_ID.E53':[],
+            'DESCRIPTION_OF_LOCATION.E62':[],
         }
         for node, domains in load_nodes.iteritems():
             self.data[node] = {

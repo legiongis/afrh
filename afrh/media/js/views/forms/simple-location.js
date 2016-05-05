@@ -28,6 +28,13 @@ define([
                     data: this.data,
                     dataKey: 'ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY.E47'
                 });
+                
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#description-section')[0],
+                    data: this.data,
+                    dataKey: 'ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE.E62',
+                    singleEdit: true
+                }));
             }
             
             locationBranchList.on('geometrychange', function(feature, wkt) {
@@ -113,13 +120,46 @@ define([
                 }));
             }
             
-            if (resourcetypeid == "ARCHAEOLOGICAL_ZONE.E53"){
+            if (resourcetypeid == "ACTIVITY_B.E7"){
                 this.addBranchList(new BranchList({
                     el: this.$el.find('#description-section')[0],
                     data: this.data,
-                    dataKey: 'ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE.E62',
+                    dataKey: 'DESCRIPTION_OF_LOCATION.E62',
                     singleEdit: true
                 }));
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#parcel-section')[0],
+                    data: this.data,
+                    dataKey: 'MASTER_PLAN_PARCEL_ID.E53',
+                    validateBranch: function(nodes){
+                        return this.validateHasValues(nodes);
+                    }
+                }));
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#address-section')[0],
+                    data: this.data,
+                    dataKey: 'PLACE_ADDRESS.E45',
+                    validateBranch: function(nodes){
+                        return this.validateHasValues(nodes);
+                    }
+                }));
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#square-section')[0],
+                    data: this.data,
+                    dataKey: 'SQUARE_ID.E53',
+                    validateBranch: function(nodes){
+                        return this.validateHasValues(nodes);
+                    }
+                }));
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#lot-section')[0],
+                    data: this.data,
+                    dataKey: 'LOT_ID.E53',
+                    validateBranch: function(nodes){
+                        return this.validateHasValues(nodes);
+                    }
+                }));
+            
             }
         }
     });
