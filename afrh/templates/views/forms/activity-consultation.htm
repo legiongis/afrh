@@ -32,9 +32,11 @@
                                                 <span data-bind="text: $data['CONSULTATION_METHOD.E55'].branch_lists[0].nodes[0].label"></span>
                                             </a>
                                         </h4>
+                                        {% if resourcetypeid == 'ACTIVITY_A.E7' %}
                                         <div data-bind="if: $data['CONSULTATION_TYPE.E55'].branch_lists.length > 0">
                                             <span data-bind="text: 'Type: ' + $data['CONSULTATION_TYPE.E55'].branch_lists[0].nodes[0].label"></span>
                                         </div>
+                                        {% endif %}
                                         <div data-bind="if: $data['CONSULTATION_DATE.E49'].branch_lists.length > 0">
                                             <span data-bind="text: 'Date: ' + $data['CONSULTATION_DATE.E49'].branch_lists[0].nodes[0].label.slice(0,10)"></span>
                                         </div>
@@ -67,7 +69,6 @@
             </div>
         </div>
         <!-- End Completed Condition Assessements -->
-
     </div>
     <!-- End Related Information Objects Container -->
 
@@ -75,7 +76,6 @@
     <div style="display: none;" id="workflow-container">     
         <div class="padding-10" id="crud">
             <div>
-                
                 <!-- Arches form container -->
                 <dl>
                     <dd class="arches-RDM-labels">
@@ -106,17 +106,29 @@
                                                 <h3 class="margin-bottom-15"><strong>{% trans "Part 1" %}</strong> {% trans "Summary" %}</h3>
                                                 <div class="col-xs-12">
                                                     <div class="row">
+                                                        {% if resourcetypeid == 'ACTIVITY_A.E7' %}
                                                         <div class="col-xs-12 col-sm-4 form-section-input add-padding-right" id="method-section">
+                                                        {% endif %}
+                                                        {% if resourcetypeid == 'ACTIVITY_B.E7' %}
+                                                        <div class="col-xs-12 col-sm-6 form-section-input add-padding-right" id="method-section">
+                                                        {% endif %}
                                                             <div class="form-group">
                                                                 <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CONSULTATION_METHOD.E55', 'value'), placeholder: '{% trans 'Method' %}', dataKey: 'CONSULTATION_METHOD.E55'}"></input>
                                                             </div>
                                                         </div>
+                                                        {% if resourcetypeid == 'ACTIVITY_A.E7' %}
                                                         <div class="col-xs-12 col-sm-4 form-section-input add-padding-right add-margin-top" id="type-section">
                                                             <div class="form-group">
                                                                 <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CONSULTATION_TYPE.E55', 'value'), placeholder: '{% trans 'Type' %}', dataKey: 'CONSULTATION_TYPE.E55'}"></input>
                                                             </div>
                                                         </div>
+                                                        {% endif %}
+                                                        {% if resourcetypeid == 'ACTIVITY_A.E7' %}
                                                         <div class="col-xs-12 col-sm-4 form-section-input add-margin-top" id="date-section">
+                                                        {% endif %}
+                                                        {% if resourcetypeid == 'ACTIVITY_B.E7' %}
+                                                        <div class="col-xs-12 col-sm-6 form-section-input add-margin-top" id="date-section">
+                                                        {% endif %}
                                                             <div class="form-group">
                                                                 <div class="input-group datetimepicker">
                                                                     <input type="text" id="date" placeholder="{% trans 'Date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('CONSULTATION_DATE.E49', 'value')} ">

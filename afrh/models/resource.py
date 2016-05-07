@@ -127,6 +127,7 @@ class Resource(ArchesResource):
             description_group['forms'][:0] = [
                 summary.ActivityForm.get_info(),
                 location.SimpleLocationForm.get_info(),
+                wizard.ActivityConsultationForm.get_info(),
                 review.NCPCReviewForm.get_info(),
                 review.CFAReviewForm.get_info(),
             ]

@@ -414,21 +414,20 @@ class ActivityConsultationForm(ResourceForm):
                     self.baseentity.merge(entity)
 
     def update(self, data, files):
-        print json.dumps(data, indent=2)
-
         for value in data['ACTIVITY_CONSULTATION.E5']:
             for node in value['nodes']:
                 if node['entitytypeid'] == 'ACTIVITY_CONSULTATION.E5' and node['entityid'] != '':
                     #remove the node
                     self.resource.filter(lambda entity: entity.entityid != node['entityid'])
 
-        #self.update_nodes('ACTIVITY_CONSULTATION.E5', data)
+        self.update_nodes('ACTIVITY_CONSULTATION.E5', data)
         self.update_nodes('CONSULTATION_METHOD.E55', data)
-        self.update_nodes('CONSULTATION_TYPE.E55', data)
         self.update_nodes('CONSULTATION_DATE.E49', data)
         self.update_nodes('CONSULTATION_NOTE.E62', data)
         self.update_nodes('CONSULTATION_DOCUMENTATION_TYPE.E55', data)
         self.update_nodes('CONSULTATION_ATTENDEE.E39', data)
+        if self.resource.entitytypeid == 'ACTIVITY_A.E7':
+            self.update_nodes('CONSULTATION_TYPE.E55', data)
         self.resource.merge_at(self.baseentity, self.resource.entitytypeid)
         self.resource.trim()
                    
@@ -438,24 +437,19 @@ class ActivityConsultationForm(ResourceForm):
             'data': [],
             'domains': {
                 'CONSULTATION_METHOD.E55': Concept().get_e55_domain('CONSULTATION_METHOD.E55'),
-                'CONSULTATION_TYPE.E55' : Concept().get_e55_domain('CONSULTATION_TYPE.E55'),
                 'CONSULTATION_DOCUMENTATION_TYPE.E55' : Concept().get_e55_domain('CONSULTATION_DOCUMENTATION_TYPE.E55'),
             }
         }
+        
+        if self.resource.entitytypeid == 'ACTIVITY_A.E7':
+            self.data['domains']['CONSULTATION_TYPE.E55'] = Concept().get_e55_domain('CONSULTATION_TYPE.E55')
 
-        print self.resource
         consultation_entities = self.resource.find_entities_by_type_id('ACTIVITY_CONSULTATION.E5')
-        print "consultation entities:"
-        print consultation_entities
 
         for entity in consultation_entities:
-            print entity
-            self.data['data'].append({
+            data_append = {
                 'CONSULTATION_METHOD.E55': {
                     'branch_lists': self.get_nodes(entity, 'CONSULTATION_METHOD.E55')
-                },
-                'CONSULTATION_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_TYPE.E55')
                 },
                 'CONSULTATION_DOCUMENTATION_TYPE.E55': {
                     'branch_lists': self.get_nodes(entity, 'CONSULTATION_DOCUMENTATION_TYPE.E55')
@@ -472,7 +466,12 @@ class ActivityConsultationForm(ResourceForm):
                 'ACTIVITY_CONSULTATION.E5': {
                     'branch_lists': self.get_nodes(entity, 'ACTIVITY_CONSULTATION.E5')
                 }
-            })
+            }
+            if self.resource.entitytypeid == 'ACTIVITY_A.E7':
+                data_append['CONSULTATION_TYPE.E55'] = {
+                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_TYPE.E55')
+                }
+            self.data['data'].append(data_append)
 
 class RelatedFilesForm(ResourceForm):
     @staticmethod
