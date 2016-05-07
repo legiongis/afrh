@@ -71,6 +71,37 @@ class NCPCReviewForm(ResourceForm):
             }
         }
         
+class HPOHPRBReviewForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'hpo-hprb-review',
+            'icon': 'fa-random',
+            'name': _('HPO/HPRB Review'),
+            'class': HPOHPRBReviewForm
+        }
+
+    def update(self, data, files):
+        self.update_nodes('HPO-HPRB_REVIEW_IDENTIFICATION.E15', data)
+        self.update_nodes('HPO-HPRB_SUBMISSION.E5', data)
+        return
+
+    def load(self, lang):
+
+        self.data['HPO-HPRB_REVIEW_IDENTIFICATION.E15'] = {
+            'branch_lists': self.get_nodes('HPO-HPRB_REVIEW_IDENTIFICATION.E15'),
+        }
+        
+        self.data['HPO-HPRB_SUBMISSION.E5'] = {
+            'branch_lists': self.get_nodes('HPO-HPRB_SUBMISSION.E5'),
+            'domains': {
+                'HPO-HPRB_SUBMISSION_TYPE.E55': Concept().get_e55_domain('HPO-HPRB_SUBMISSION_TYPE.E55'),
+                'HPO-HPRB_SUBMISSION_DECISION.E55': Concept().get_e55_domain('HPO-HPRB_SUBMISSION_DECISION.E55'),
+                'HPO-HPRB_SUBMISSION_REVIEW_TYPE.E55': Concept().get_e55_domain('HPO-HPRB_SUBMISSION_REVIEW_TYPE.E55'),
+                
+            }
+        }
+        
 class CFAReviewForm(ResourceForm):
     @staticmethod
     def get_info():

@@ -552,10 +552,12 @@ class ActivityForm(ResourceForm):
         
         if self.resource.entitytypeid == 'ACTIVITY_A.E7':   
             update_nodes = act_a_nodes + both_nodes
+            print update_nodes
         if self.resource.entitytypeid == 'ACTIVITY_B.E7':   
             update_nodes = act_b_nodes + both_nodes
             
         for node in update_nodes:
+            print node
             self.update_nodes(node, data)
             
         
@@ -590,14 +592,18 @@ class ActivityForm(ResourceForm):
             }
             self.data['ACTIVITY_PROCEDURE_TYPE.E55'] = {
                 'branch_lists': self.get_nodes('ACTIVITY_PROCEDURE_TYPE.E55'),
-                'domains': Concept().get_e55_domain('ACTIVITY_PROCEDURE_TYPE.E55')
+                'domains': {
+                    'ACTIVITY_PROCEDURE_TYPE.E55' : Concept().get_e55_domain('ACTIVITY_PROCEDURE_TYPE.E55')
+                }
             }
             self.data['ACTIVITY_PROCEDURE_NOTE.E62'] = {
                 'branch_lists': self.get_nodes('ACTIVITY_PROCEDURE_NOTE.E62')
             }
             self.data['ACTION_STATUS_ASSIGNMENT.E13'] = {
                 'branch_lists': self.get_nodes('ACTION_STATUS_ASSIGNMENT.E13'),
-                'domains': Concept().get_e55_domain('CURRENT_ACTION_STATUS.E55')
+                'domains': {
+                    'CURRENT_ACTION_STATUS.E55' : Concept().get_e55_domain('CURRENT_ACTION_STATUS.E55')
+                }
             }
             self.data['ACTIVITY_MILESTONE_ACHIEVEMENT.E5']['domains'] = {
                     'ACTIVITY_A_MILESTONE.E55' : Concept().get_e55_domain('ACTIVITY_A_MILESTONE.E55')
@@ -609,5 +615,5 @@ class ActivityForm(ResourceForm):
                 'branch_lists': self.get_nodes('BUILDING_PERMIT_NUMBER.E42')
             }
             self.data['ACTIVITY_MILESTONE_ACHIEVEMENT.E5']['domains'] = {
-                    'ACTIVITY_B_MILESTONE.E55' : Concept().get_e55_domain('ACTIVITY_B_MILESTONE.E55')
-                }
+                'ACTIVITY_B_MILESTONE.E55' : Concept().get_e55_domain('ACTIVITY_B_MILESTONE.E55')
+            }

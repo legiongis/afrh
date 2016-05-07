@@ -585,55 +585,83 @@ class EntitiesForm(ResourceForm):
         }
 
     def update(self, data, files):
-        self.update_nodes('AFRH_PROJECT_CONTACT.E39', data)
-        self.update_nodes('ACTIVITY_ARCHITECT.E39', data)
-        self.update_nodes('ACTIVITY_CONTRACTOR.E39', data)
-        self.update_nodes('ACTIVITY_ENGINEER.E39', data)
-        self.update_nodes('ACTIVITY_ARCHAEOLOGIST.E39', data)
-        self.update_nodes('ACTIVITY_CONSULTANT.E39', data)
-        self.update_nodes('ACTIVITY_CONSULTING_PARTY.E39', data)
-        self.update_nodes('ACTIVITY_NCPC_CONTACT.E39', data)
-        self.update_nodes('ACTIVITY_CFA_CONTACT.E39', data)
-        self.update_nodes('ACTIVITY_DCSHPO_CONTACT.E39', data)
-        self.update_nodes('ACTIVITY_ENTITIES_NOTE.E62', data)
+        update_nodes = [
+            'ACTIVITY_ARCHITECT.E39',
+            'ACTIVITY_CONTRACTOR.E39',
+            'ACTIVITY_ENGINEER.E39',
+            'ACTIVITY_ARCHAEOLOGIST.E39',
+            'ACTIVITY_CONSULTANT.E39',
+            'ACTIVITY_CONSULTING_PARTY.E39',
+            'ACTIVITY_NCPC_CONTACT.E39',
+            'ACTIVITY_CFA_CONTACT.E39',
+            'ACTIVITY_DCSHPO_CONTACT.E39',
+            'ACTIVITY_ENTITIES_NOTE.E62',
+        ]
+        if self.resource.entitytypeid == 'ACTIVITY_A.E7':
+            update_nodes.append('AFRH_PROJECT_CONTACT.E39')
+        
+        for node in update_nodes:
+            self.update_nodes(node, data)
+            
         return
 
 
     def load(self, lang):
+    
+        load_nodes = {
+            'ACTIVITY_ARCHITECT.E39':[],
+            'ACTIVITY_CONTRACTOR.E39':[],
+            'ACTIVITY_ENGINEER.E39':[],
+            'ACTIVITY_ARCHAEOLOGIST.E39':[],
+            'ACTIVITY_CONSULTANT.E39':[],
+            'ACTIVITY_CONSULTING_PARTY.E39':[],
+            'ACTIVITY_NCPC_CONTACT.E39':[],
+            'ACTIVITY_CFA_CONTACT.E39':[],
+            'ACTIVITY_DCSHPO_CONTACT.E39':[],
+            'ACTIVITY_ENTITIES_NOTE.E62':[],
+        }
+        if self.resource.entitytypeid == 'ACTIVITY_A.E7':
+            load_nodes['AFRH_PROJECT_CONTACT.E39'] = []
 
-        self.data['AFRH_PROJECT_CONTACT.E39'] = {
-            'branch_lists': self.get_nodes('AFRH_PROJECT_CONTACT.E39'),
-        }
-        self.data['ACTIVITY_ARCHITECT.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_ARCHITECT.E39'),
-        }
-        self.data['ACTIVITY_CONTRACTOR.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_CONTRACTOR.E39'),
-        }
-        self.data['ACTIVITY_ENGINEER.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_ENGINEER.E39'),
-        }
-        self.data['ACTIVITY_ARCHAEOLOGIST.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_ARCHAEOLOGIST.E39'),
-        }
-        self.data['ACTIVITY_CONSULTANT.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_CONSULTANT.E39'),
-        }
-        self.data['ACTIVITY_CONSULTING_PARTY.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_CONSULTING_PARTY.E39'),
-        }
-        self.data['ACTIVITY_NCPC_CONTACT.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_NCPC_CONTACT.E39'),
-        }
-        self.data['ACTIVITY_CFA_CONTACT.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_CFA_CONTACT.E39'),
-        }
-        self.data['ACTIVITY_DCSHPO_CONTACT.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_DCSHPO_CONTACT.E39'),
-        }
-        self.data['ACTIVITY_ENTITIES_NOTE.E62'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_ENTITIES_NOTE.E62'),
-        }
+        for node, domains in load_nodes.iteritems():
+            self.data[node] = {
+                'branch_lists': self.get_nodes(node),
+                'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
+            }
+
+        # self.data['AFRH_PROJECT_CONTACT.E39'] = {
+            # 'branch_lists': self.get_nodes('AFRH_PROJECT_CONTACT.E39'),
+        # }
+        # self.data['ACTIVITY_ARCHITECT.E39'] = {
+            # 'branch_lists': self.get_nodes('ACTIVITY_ARCHITECT.E39'),
+        # }
+        # self.data['ACTIVITY_CONTRACTOR.E39'] = {
+            # 'branch_lists': self.get_nodes('ACTIVITY_CONTRACTOR.E39'),
+        # }
+        # self.data['ACTIVITY_ENGINEER.E39'] = {
+            # 'branch_lists': self.get_nodes('ACTIVITY_ENGINEER.E39'),
+        # }
+        # self.data['ACTIVITY_ARCHAEOLOGIST.E39'] = {
+            # 'branch_lists': self.get_nodes('ACTIVITY_ARCHAEOLOGIST.E39'),
+        # }
+        # self.data['ACTIVITY_CONSULTANT.E39'] = {
+            # 'branch_lists': self.get_nodes('ACTIVITY_CONSULTANT.E39'),
+        # }
+        # self.data['ACTIVITY_CONSULTING_PARTY.E39'] = {
+            # 'branch_lists': self.get_nodes('ACTIVITY_CONSULTING_PARTY.E39'),
+        # }
+        # self.data['ACTIVITY_NCPC_CONTACT.E39'] = {
+            # 'branch_lists': self.get_nodes('ACTIVITY_NCPC_CONTACT.E39'),
+        # }
+        # self.data['ACTIVITY_CFA_CONTACT.E39'] = {
+            # 'branch_lists': self.get_nodes('ACTIVITY_CFA_CONTACT.E39'),
+        # }
+        # self.data['ACTIVITY_DCSHPO_CONTACT.E39'] = {
+            # 'branch_lists': self.get_nodes('ACTIVITY_DCSHPO_CONTACT.E39'),
+        # }
+        # self.data['ACTIVITY_ENTITIES_NOTE.E62'] = {
+            # 'branch_lists': self.get_nodes('ACTIVITY_ENTITIES_NOTE.E62'),
+        # }
 
 
         return

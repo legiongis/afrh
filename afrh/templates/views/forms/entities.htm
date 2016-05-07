@@ -3,6 +3,7 @@
 {% block form_content %}
 
 <div class="form-full-content">
+    {% if resourcetypeid == 'ACTIVITY_A.E7' %}
     <div class="row">
         <div class="col-xs-12 margin-bottom-10">
             <div class="form-section-header"><span>{% trans "AFRH Project Contact" %}</span></div>
@@ -47,6 +48,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     <div class="row">
         <div class="col-xs-12 margin-bottom-10">
             <div class="form-section-header"><span>{% trans "Architects" %}</span></div>

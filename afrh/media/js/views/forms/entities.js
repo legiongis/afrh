@@ -9,17 +9,19 @@ define(['jquery',
     
     return BaseForm.extend({
         initialize: function() {
-            
+            var resourcetypeid = $('#resourcetypeid').val();
             BaseForm.prototype.initialize.apply(this);
 
-            this.addBranchList(new BranchList({
-                el: this.$el.find('#project-contact-section')[0],
-                data: this.data,
-                dataKey: 'AFRH_PROJECT_CONTACT.E39',
-                validateBranch: function(nodes){
-                    return this.validateHasValues(nodes);
-                }
-            }));
+            if (resourcetypeid == "ACTIVITY_A.E7"){
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#project-contact-section')[0],
+                    data: this.data,
+                    dataKey: 'AFRH_PROJECT_CONTACT.E39',
+                    validateBranch: function(nodes){
+                        return this.validateHasValues(nodes);
+                    }
+                }));
+            }
             
             this.addBranchList(new BranchList({
                 el: this.$el.find('#architect-section')[0],

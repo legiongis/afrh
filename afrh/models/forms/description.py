@@ -143,6 +143,37 @@ class DesDescriptionForm(ResourceForm):
                     'NUMBER_OF_RESOURCES_TYPE.E55' : Concept().get_e55_domain('NUMBER_OF_RESOURCES_TYPE.E55'), 
                 },
         }
+        
+class ActBDescriptionForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'activity-b-description',
+            'icon': 'fa-flash',
+            'name': _('Description'),
+            'class': ActBDescriptionForm
+        }
+
+    def update(self, data, files):
+        self.update_nodes('ACTIVITY_B_USE.E55', data)
+        self.update_nodes('ACTIVITY_B_PROJECT_TYPE.E55', data)
+        return
+
+    def load(self, lang):
+
+        self.data['ACTIVITY_B_USE.E55'] = {
+            'branch_lists': self.get_nodes('ACTIVITY_B_USE.E55'),
+            'domains': {
+                    'ACTIVITY_B_USE.E55' : Concept().get_e55_domain('ACTIVITY_B_USE.E55'), 
+                },
+        }
+        
+        self.data['ACTIVITY_B_PROJECT_TYPE.E55'] = {
+            'branch_lists': self.get_nodes('ACTIVITY_B_PROJECT_TYPE.E55'),
+            'domains': {
+                    'ACTIVITY_B_PROJECT_TYPE.E55' : Concept().get_e55_domain('ACTIVITY_B_PROJECT_TYPE.E55'), 
+                },
+        }
 
 class DescriptionForm(ResourceForm):
     @staticmethod

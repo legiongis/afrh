@@ -57,6 +57,7 @@ class Resource(ArchesResource):
                 wizard.RelatedFilesForm.get_info(),
                 other.InventoryEvaluationForm.get_info(),
                 other.ExternalReferenceForm.get_info(),
+                other.RelatedResourcesForm.get_info(),
             ]
 
         elif self.entitytypeid == 'CHARACTER_AREA.E53':
@@ -127,9 +128,14 @@ class Resource(ArchesResource):
             description_group['forms'][:0] = [
                 summary.ActivityForm.get_info(),
                 location.SimpleLocationForm.get_info(),
+                description.ActBDescriptionForm.get_info(),
                 wizard.ActivityConsultationForm.get_info(),
+                review.ARPAReviewForm.get_info(),
+                review.NEPAReviewForm.get_info(),
+                review.HPOHPRBReviewForm.get_info(),
                 review.NCPCReviewForm.get_info(),
                 review.CFAReviewForm.get_info(),
+                other.EntitiesForm.get_info(),
             ]
 
         if self.entityid != '':
