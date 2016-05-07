@@ -479,32 +479,32 @@ cf https://github.com/summernote/summernote/issues/187
 }
 
 option.select-placeholder {
-    color: #866 !important;
+    color: #555 !important;
     font-style: italic !important;
 }
 
 .form-control::-webkit-input-placeholder {
-    color: #866 !important;
+    color: #555 !important;
     font-style: italic !important;
 }
  
 .form-control:-moz-placeholder { /* Firefox 18- */
-    color: #866 !important;
+    color: #555 !important;
     font-style: italic !important;
 }
  
 .form-control::-moz-placeholder {  /* Firefox 19+ */
-    color: #866 !important;
+    color: #555 !important;
     font-style: italic !important;
 }
  
 .form-control:-ms-input-placeholder {  
-    color: #866 !important;
+    color: #555 !important;
     font-style: italic !important;
 }
 
 .select2-default {
-    color: #866 !important;
+    color: #555 !important;
     font-style: italic !important;
 }
 
