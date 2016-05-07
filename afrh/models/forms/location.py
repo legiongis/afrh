@@ -37,7 +37,7 @@ class SimpleLocationForm(ResourceForm):
     def get_info():
         return {
             'id': 'simple-location',
-            'icon': 'fa-map-marker',
+            'icon': 'fa-object-ungroup',
             'name': _('Location'),
             'class': SimpleLocationForm
         }
@@ -209,7 +209,7 @@ class ProbabilityAreaForm(ResourceForm):
     def get_info():
         return {
             'id': 'probability-areas',
-            'icon': 'fa-map-marker',
+            'icon': 'fa-object-group',
             'name': _('Areas of Probability'),
             'class': ProbabilityAreaForm
         }
