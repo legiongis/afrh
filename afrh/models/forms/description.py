@@ -289,51 +289,7 @@ class InventoryDescriptionForm(ResourceForm):
                     'STYLE.E55' : Concept().get_e55_domain('STYLE.E55'),
                 }               
             }
-    @staticmethod
-    def get_info():
-        return {
-            'id': 'publication',
-            'icon': 'fa-flash',
-            'name': _('Creation and Publication'),
-            'class': PublicationForm
-        }
-
-    def update(self, data, files):
-        self.update_nodes('CREATOR.E39', data)
-        self.update_nodes('TIME-SPAN_RESOURCE_CREATION_EVENT.E52', data)
-        self.update_nodes('PUBLICATION_EVENT.E12', data)
-        self.update_nodes('RIGHT_TYPE.E55', data)
-        return
-
-    def load(self, lang):
-        if self.resource:
-            self.data['TIME-SPAN_RESOURCE_CREATION_EVENT.E52'] = {
-                'branch_lists': datetime_nodes_to_dates(self.get_nodes('TIME-SPAN_RESOURCE_CREATION_EVENT.E52')),
-                'domains': {
-                    'CREATION_FORMAT.E55' : Concept().get_e55_domain('CREATION_FORMAT.E55')
-                }
-            }
-            
-            self.data['CREATOR.E39'] = {
-                'branch_lists': self.get_nodes('CREATOR.E39'),
-                'domains': {
-                    'CREATOR_TYPE.E55' : Concept().get_e55_domain('CREATOR_TYPE.E55')
-                }
-            }
-
-            self.data['PUBLICATION_EVENT.E12'] = {
-                'branch_lists': datetime_nodes_to_dates(self.get_nodes('PUBLICATION_EVENT.E12')),
-                'domains': {}
-            }
-
-            self.data['RIGHT_TYPE.E55'] = {
-                'branch_lists': self.get_nodes('RIGHT_TYPE.E55'),
-                'domains': {
-                    'RIGHT_TYPE.E55' : Concept().get_e55_domain('RIGHT_TYPE.E55')
-                }
-            }
-
-        return
+    
 
 class PublicationForm(ResourceForm):
     @staticmethod
