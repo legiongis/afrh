@@ -112,7 +112,6 @@ class ActADescriptionForm(ResourceForm):
                 'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
             }
 
-        
 class DesDescriptionForm(ResourceForm):
     @staticmethod
     def get_info():
@@ -175,73 +174,6 @@ class ActBDescriptionForm(ResourceForm):
                 },
         }
 
-class DescriptionForm(ResourceForm):
-    @staticmethod
-    def get_info():
-        return {
-            'id': 'description',
-            'icon': 'fa-picture-o',
-            'name': _('Description'),
-            'class': DescriptionForm
-        }
-
-    def update(self, data, files):
-        self.update_nodes('DESCRIPTION.E62', data)
-
-    def load(self, lang):
-    
-        if self.resource:
-            self.data['DESCRIPTION.E62'] = {
-                'branch_lists': self.get_nodes('DESCRIPTION.E62'),
-                'domains': {
-                    'DESCRIPTION_TYPE.E55' : Concept().get_e55_domain('DESCRIPTION_TYPE.E55'), 
-                },
-            }
-
-## CRIP heritage resource form
-class ResourceDescriptionForm(ResourceForm):
-    @staticmethod
-    def get_info():
-        return {
-            'id': 'heritage-resource-description',
-            'icon': 'fa-picture-o',
-            'name': _('Description'),
-            'class': ResourceDescriptionForm
-        }
-
-    def update(self, data, files):
-        self.update_nodes('DESCRIPTION.E62', data)       
-        self.update_nodes('STYLE.E55', data)
-        self.update_nodes('CULTURAL_PERIOD.E55', data)
-
-    def load(self, lang):
-        ## this is a good example of how to set the default in a dropdown
-        #description_types = Concept().get_e55_domain('DESCRIPTION_TYPE.E55')
-        #default_description_type = description_types[0]
-        
-        if self.resource:
-            self.data['DESCRIPTION.E62'] = {
-                'branch_lists': self.get_nodes('DESCRIPTION.E62'),
-                'domains': {
-                    'DESCRIPTION_TYPE.E55' : Concept().get_e55_domain('DESCRIPTION_TYPE.E55'), 
-                    },                
-                #'defaults': {
-                #    'DESCRIPTION_TYPE.E55': default_description_type['id'],
-                #}
-            }
-            self.data['STYLE.E55'] = {
-                'branch_lists': self.get_nodes('STYLE.E55'),
-                'domains': {
-                    'STYLE.E55' : Concept().get_e55_domain('STYLE.E55'),
-                }               
-            }
-            self.data['CULTURAL_PERIOD.E55'] = {
-                'branch_lists': self.get_nodes('CULTURAL_PERIOD.E55'),
-                'domains': {
-                    'CULTURAL_PERIOD.E55' : Concept().get_e55_domain('CULTURAL_PERIOD.E55'),
-                }               
-            }
-
 class InventoryDescriptionForm(ResourceForm):
     @staticmethod
     def get_info():
@@ -289,51 +221,3 @@ class InventoryDescriptionForm(ResourceForm):
                     'STYLE.E55' : Concept().get_e55_domain('STYLE.E55'),
                 }               
             }
-    
-
-class PublicationForm(ResourceForm):
-    @staticmethod
-    def get_info():
-        return {
-            'id': 'publication',
-            'icon': 'fa-flash',
-            'name': _('Creation and Publication'),
-            'class': PublicationForm
-        }
-
-    def update(self, data, files):
-        self.update_nodes('CREATOR.E39', data)
-        self.update_nodes('TIME-SPAN_RESOURCE_CREATION_EVENT.E52', data)
-        self.update_nodes('PUBLICATION_EVENT.E12', data)
-        self.update_nodes('RIGHT_TYPE.E55', data)
-        return
-
-    def load(self, lang):
-        if self.resource:
-            self.data['TIME-SPAN_RESOURCE_CREATION_EVENT.E52'] = {
-                'branch_lists': datetime_nodes_to_dates(self.get_nodes('TIME-SPAN_RESOURCE_CREATION_EVENT.E52')),
-                'domains': {
-                    'CREATION_FORMAT.E55' : Concept().get_e55_domain('CREATION_FORMAT.E55')
-                }
-            }
-            
-            self.data['CREATOR.E39'] = {
-                'branch_lists': self.get_nodes('CREATOR.E39'),
-                'domains': {
-                    'CREATOR_TYPE.E55' : Concept().get_e55_domain('CREATOR_TYPE.E55')
-                }
-            }
-
-            self.data['PUBLICATION_EVENT.E12'] = {
-                'branch_lists': datetime_nodes_to_dates(self.get_nodes('PUBLICATION_EVENT.E12')),
-                'domains': {}
-            }
-
-            self.data['RIGHT_TYPE.E55'] = {
-                'branch_lists': self.get_nodes('RIGHT_TYPE.E55'),
-                'domains': {
-                    'RIGHT_TYPE.E55' : Concept().get_e55_domain('RIGHT_TYPE.E55')
-                }
-            }
-
-        return
