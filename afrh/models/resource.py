@@ -38,15 +38,26 @@ class Resource(ArchesResource):
             'id': 'resource-description',
             'icon':'fa-folder',
             'name': _('Resource Description'),
+            'forms': []
+        }
+        review_group = {
+            'id': 'resource-reviews',
+            'icon':'fa-clipboard',
+            'name': _('Reviews'),
+            'forms': []
+        }
+        manage_group = {
+            'id': 'manage-resource',
+            'icon': 'fa-wrench',
+            'name': _('Manage Resource'),
             'forms': [
-                other.RelatedResourcesForm.get_info(),
-            ]   
+                EditHistory.get_info(),
+                DeleteResourceForm.get_info()
+            ]
         }
 
-        self.form_groups.append(description_group)
-
         if self.entitytypeid == 'INVENTORY_RESOURCE.E18':
-            description_group['forms'][:0] = [
+            description_group['forms'] = [
                 summary.InventorySummaryForm.get_info(), 
                 description.InventoryDescriptionForm.get_info(),
                 other.FunctionAndUseForm.get_info(),
@@ -57,33 +68,32 @@ class Resource(ArchesResource):
                 wizard.RelatedFilesForm.get_info(),
                 other.InventoryEvaluationForm.get_info(),
                 other.ExternalReferenceForm.get_info(),
-                other.RelatedResourcesForm.get_info(),
             ]
 
-        elif self.entitytypeid == 'CHARACTER_AREA.E53':
-            description_group['forms'][:0] = [
+        if self.entitytypeid == 'CHARACTER_AREA.E53':
+            description_group['forms'] = [
                 summary.CharAreaSummaryForm.get_info(),
                 description.CharAreaDescriptionForm.get_info(),
                 other.CharAreaGuidelinesForm.get_info(),
                 location.SimpleLocationForm.get_info(),
             ]
             
-        elif self.entitytypeid == 'MASTER_PLAN_ZONE.E53':
-            description_group['forms'][:0] = [
+        if self.entitytypeid == 'MASTER_PLAN_ZONE.E53':
+            description_group['forms'] = [
                 summary.MPZoneSummaryForm.get_info(),
                 description.InventoryDescriptionForm.get_info(),
                 location.SimpleLocationForm.get_info(),
                 wizard.MPZoneGuidelinesForm.get_info(),
             ]
             
-        elif self.entitytypeid == 'ARCHAEOLOGICAL_ZONE.E53':
-            description_group['forms'][:0] = [
+        if self.entitytypeid == 'ARCHAEOLOGICAL_ZONE.E53':
+            description_group['forms'] = [
                 summary.ArchZoneSummaryForm.get_info(),
                 location.SimpleLocationForm.get_info(),
                 location.ProbabilityAreaForm.get_info(),
             ]
             
-        elif self.entitytypeid == 'HISTORIC_AREA.E53':
+        if self.entitytypeid == 'HISTORIC_AREA.E53':
             description_group['forms'][:0] = [
                 summary.DesSummaryForm.get_info(),
                 location.SimpleLocationForm.get_info(),
@@ -91,63 +101,66 @@ class Resource(ArchesResource):
                 other.DesEvaluationForm.get_info(),
             ]
 
-        elif self.entitytypeid == 'ACTOR.E39':
-            description_group['forms'][:0] = [
+        if self.entitytypeid == 'ACTOR.E39':
+            description_group['forms'] = [
                 summary.ActorSummaryForm.get_info(), 
                 description.InventoryDescriptionForm.get_info(),
                 location.LocationForm.get_info(),
                 wizard.RelatedFilesForm.get_info(),
-                #other.RoleForm.get_info(),
                 other.ExternalReferenceForm.get_info()
             ]
 
-        elif self.entitytypeid == 'INFORMATION_RESOURCE.E73':
-            description_group['forms'][:0] = [
+        if self.entitytypeid == 'INFORMATION_RESOURCE.E73':
+            description_group['forms'] = [
                 summary.InformationResourceSummaryForm.get_info(), 
                 other.PublicationForm.get_info(),
                 location.LocationForm.get_info(),
                 description.InventoryDescriptionForm.get_info(),
                 wizard.FileUploadForm.get_info()
             ]
-            
-        elif self.entitytypeid == 'ACTIVITY_A.E7':
-            description_group['forms'][:0] = [
+ 
+        if self.entitytypeid == 'ACTIVITY_A.E7':
+            description_group['forms'] = [
                 summary.ActivityForm.get_info(),
                 location.ActALocationForm.get_info(),
                 description.ActADescriptionForm.get_info(),
                 wizard.ActivityConsultationForm.get_info(),
+                other.EntitiesForm.get_info(),
+            ]
+            review_group['forms'] = [
                 review.Section106ReviewForm.get_info(),
                 review.ARPAReviewForm.get_info(),
                 review.NEPAReviewForm.get_info(),
                 review.NCPCReviewForm.get_info(),
                 review.CFAReviewForm.get_info(),
-                other.EntitiesForm.get_info(),
             ]
 
-        elif self.entitytypeid == 'ACTIVITY_B.E7':
-            description_group['forms'][:0] = [
+        if self.entitytypeid == 'ACTIVITY_B.E7':
+            description_group['forms'] = [
                 summary.ActivityForm.get_info(),
                 location.SimpleLocationForm.get_info(),
                 description.ActBDescriptionForm.get_info(),
                 wizard.ActivityConsultationForm.get_info(),
+                other.EntitiesForm.get_info(),
+            ]
+            review_group['forms'] = [
                 review.ARPAReviewForm.get_info(),
                 review.NEPAReviewForm.get_info(),
                 review.HPOHPRBReviewForm.get_info(),
                 review.NCPCReviewForm.get_info(),
                 review.CFAReviewForm.get_info(),
-                other.EntitiesForm.get_info(),
             ]
+        
+        ## all resource types get the related resource form
+        description_group['forms'].append(other.RelatedResourcesForm.get_info())
+            
+        self.form_groups.append(description_group)
+        
+        if len(review_group['forms']) != 0:
+            self.form_groups.append(review_group)
 
         if self.entityid != '':
-            self.form_groups.append({
-                'id': 'manage-resource',
-                'icon': 'fa-wrench',
-                'name': _('Manage Resource'),
-                'forms': [
-                    EditHistory.get_info(),
-                    DeleteResourceForm.get_info()
-                ]
-            })
+            self.form_groups.append(manage_group)
 
     def get_primary_name(self):
         """
