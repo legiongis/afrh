@@ -382,10 +382,10 @@ def resource_manager(request, resourcetypeid='', form_id='default', resourceid='
         filtertypes = get_filter_types(request)
         resource.delete_index()
         se = SearchEngineFactory().create()
-        realtionships = resource.get_related_resources(return_entities=False,filtertypes=filtertypes)
-        for realtionship in realtionships:
-            se.delete(index='resource_relations', doc_type='all', id=realtionship.resourcexid)
-            realtionship.delete()
+        relationships = resource.get_related_resources(return_entities=False)
+        for relationship in relationships:
+            se.delete(index='resource_relations', doc_type='all', id=relationship.resourcexid)
+            relationship.delete()
         resource.delete()
         return JSONResponse({ 'success': True })
 
