@@ -22,7 +22,7 @@ define(['jquery',
                     var comp = document.getElementById("comp");
                     comp.value = sum;
                     $(comp).trigger('change');
-                    //comp.innerHTML = sum;
+                    comp.innerHTML = sum;
                 });
 
                 BaseForm.prototype.initialize.apply(this);
@@ -88,7 +88,7 @@ define(['jquery',
                     el: this.$el.find('#score-section')[0],
                     data: this.data,
                     dataKey: 'COMPOSITE_SCORE.E60',
-                    //singleEdit: true,
+                    singleEdit: true,
                     // validateBranch: function (nodes) {
                         // var valid = false;
                         // if (nodes[0]["value"] != "") {

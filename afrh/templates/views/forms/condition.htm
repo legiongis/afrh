@@ -29,17 +29,18 @@
                     <div class="margin-left-5">
                         <dl class="margin-bottom-10"> 
                             <dd>
-                                <div class="form-section-subheader">
-                                    <a href="javascript:void(0)" title="Remove this condition assessment" data-bind="click: $root.deleteAssessment">
+                                <!--<div class="form-section-header">-->
+                                <div>
+                                    <a href="javascript:void(0)" title="remove" data-bind="click: $root.deleteAssessment">
                                         <i class="arches-CRUD-delete fa fa-times-circle"></i>
                                     </a>
-                                    <a href="javascript:void(0)" class="" title="Edit this assessment" data-bind="click: $root.editAssessment">{% trans "Condition State on" %} 
+                                    <a href="javascript:void(0)" title="edit" data-bind="click: $root.editAssessment">{% trans "Condition State on" %} 
                                         <span data-bind="if: $data['DATE_CONDITION_ASSESSED.E49'].branch_lists.length > 0">
                                             <span data-bind="text: $data['DATE_CONDITION_ASSESSED.E49'].branch_lists[0].nodes[0].label + ': ' + $data['CONDITION_TYPE.E55'].branch_lists[0].nodes[0].label"></span>
                                         </span>
                                     </a>
                                     <br>
-                                    <em><span class="text-muted" data-bind="html: $data['CONDITION_ASSESSMENT_TYPE.E55'].branch_lists[0].nodes[0].label"></span></em>
+                                    <em><span class="text-muted" data-bind="html: $data['CONDITION_ASSESSMENT_TYPE.E55'].branch_lists[0].nodes[0].label + ' Assessment'"></span></em>
                                 </div>
                             </dd>
                         </dl>
@@ -269,7 +270,7 @@
                                                 <div id="disturbances-section">
                                                     <div class="row">
                                                         <div class="col-xs-12">
-                                                            <div class="form-section-subheader">{% trans "Disturbances (actual impacts)" %}</div>
+                                                            <div class="form-section-header">{% trans "Disturbances (actual impacts)" %}</div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -312,7 +313,7 @@
                                                 <div id="threats-section">
                                                     <div class="row">
                                                         <div class="col-xs-12">
-                                                            <div class="form-section-subheader">{% trans "Threats (possible impacts)" %}</div>
+                                                            <div class="form-section-header">{% trans "Threats (possible impacts)" %}</div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -365,7 +366,7 @@
                                                 <div id="recommendations-section">
                                                     <div class="row">
                                                         <div class="col-xs-12">
-                                                            <div class="form-section-subheader">{% trans "Management Recommendations" %}</div>
+                                                            <div class="form-section-header">{% trans "Management Recommendations" %}</div>
                                                         </div>
                                                     </div>
                                                     <div class="row">

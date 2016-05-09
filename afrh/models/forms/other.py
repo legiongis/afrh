@@ -301,16 +301,16 @@ class FunctionAndUseForm(ResourceForm):
         if self.resource:
 
             self.data['PHASE_TYPE_ASSIGNMENT.E17'] = {
-                'branch_lists': self.get_nodes('PHASE_TYPE_ASSIGNMENT.E17'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('PHASE_TYPE_ASSIGNMENT.E17')),
                 'domains': {
                     'FUNCTION_PERIOD.E55' : Concept().get_e55_domain('FUNCTION_PERIOD.E55'),
                 }
             }
 
             self.data['HERITAGE_ASSET_REPORT.E3'] = {
-                'branch_lists': self.get_nodes('HERITAGE_ASSET_REPORT.E3'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('HERITAGE_ASSET_REPORT.E3')),
                 'domains': {
-                    'CURRENT_USER.E55' : Concept().get_e55_domain('CURRENT_USER.E55'),
+                    'CURRENT_USER.E39' : Concept().get_e55_domain('CURRENT_USER.E39'),
                     'CURRENT_OPERATIONAL_STATUS.E55' : Concept().get_e55_domain('CURRENT_OPERATIONAL_STATUS.E55'),
                     'HERITAGE_ASSET_CONDITION.E3' : Concept().get_e55_domain('HERITAGE_ASSET_CONDITION.E3'),
                     'HERITAGE_ASSET_CLASSIFICATION.E55': Concept().get_e55_domain('HERITAGE_ASSET_CLASSIFICATION.E55'),

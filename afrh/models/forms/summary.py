@@ -338,15 +338,15 @@ class ActorSummaryForm(ResourceForm):
         }
 
     def update(self, data, files):
-        self.update_nodes('APPELLATION.E41', data)
+        self.update_nodes('ACTOR_APPELLATION.E82', data)
         self.update_nodes('EPITHET.E82', data)
         self.update_nodes('BEGINNING_OF_EXISTENCE.E63', data)
         self.update_nodes('END_OF_EXISTENCE.E64', data)
 
     def load(self, lang):
         if self.resource:
-            self.data['APPELLATION.E41'] = {
-                'branch_lists': self.get_nodes('APPELLATION.E41'),
+            self.data['ACTOR_APPELLATION.E82'] = {
+                'branch_lists': self.get_nodes('ACTOR_APPELLATION.E82'),
                 'domains': {
                     'ACTOR_NAME_TYPE.E55' : Concept().get_e55_domain('ACTOR_NAME_TYPE.E55')
                 }

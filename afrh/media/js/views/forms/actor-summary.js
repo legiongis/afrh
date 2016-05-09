@@ -19,7 +19,7 @@ define(['jquery',
             this.addBranchList(new BranchList({
                 el: this.$el.find('#name-section')[0],
                 data: this.data,
-                dataKey: 'APPELLATION.E41',
+                dataKey: 'ACTOR_APPELLATION.E82',
                 validateBranch: function (nodes) {
                     return this.validateHasValues(nodes);
                     // ignore this function below (not working)

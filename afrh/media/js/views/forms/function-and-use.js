@@ -40,7 +40,7 @@ define(['jquery',
                     dataKey: 'HERITAGE_ASSET_REPORT.E3',
                     validateBranch: function (nodes) {
                         var chk1 = vt.isValidDate(nodes, 'HERITAGE_ASSET_REPORT_DATE.E49');
-                        var chk2 = vt.nodesHaveValues(nodes, ['CURRENT_USER.E55','CURRENT_OPERATION_STATUS.E55','HERITAGE_ASSET_REPORT_DATE.E49']);
+                        var chk2 = vt.nodesHaveValues(nodes, ['CURRENT_USER.E39','CURRENT_OPERATION_STATUS.E55','HERITAGE_ASSET_REPORT_DATE.E49']);
                         return chk1 == true && chk2 == true;
                     }
                 }));
