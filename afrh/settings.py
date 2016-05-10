@@ -15,6 +15,7 @@ TEMPLATE_DIRS = (os.path.join(PACKAGE_ROOT, 'templates'),os.path.join(PACKAGE_RO
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT =  os.path.join(PACKAGE_ROOT, 'uploadedfiles')
+print MEDIA_URL
 
 # Set up default users
 EXAMPLE_USERS = {
@@ -217,7 +218,7 @@ def RESOURCE_TYPE_CONFIGS():
             'stroke_color': '#9367d5',
             'fill_color': '#c3b5d8',
             'primary_name_lookup': {
-                'entity_type': 'TITLE.E41',
+                'entity_type': 'HISTORIC_AREA_NAME.E48',
                 'lookup_value': False
             },
             'sort_order': 5,
@@ -294,7 +295,7 @@ def RESOURCE_TYPE_CONFIGS():
             'stroke_color': '#a7673d',
             'fill_color': '#c8b2a3',
             'primary_name_lookup': {
-                'entity_type': 'ACTOR_APPELLATION.E82',
+                'entity_type': 'ACTIVITY_NAME.E41',
                 'lookup_value': False
             },
             'sort_order': 8,
@@ -313,7 +314,7 @@ def RESOURCE_TYPE_CONFIGS():
             'icon_class': 'fa fa-clipboard',
             'default_page': 'activity-summary',
             'default_description': 'no description available',
-            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
+            'description_node': _('ACTIVITY_SCOPE_OF_WORK_DESCRIPTION.E62'),
             'categories': [_('Resource')],
             'has_layer': True,
             'on_map': True,
@@ -321,7 +322,7 @@ def RESOURCE_TYPE_CONFIGS():
             'stroke_color': '#a7673d',
             'fill_color': '#c8b2a3',
             'primary_name_lookup': {
-                'entity_type': 'ACTOR_APPELLATION.E82',
+                'entity_type': 'ACTIVITY_NAME.E41',
                 'lookup_value': False
             },
             'sort_order': 9,
