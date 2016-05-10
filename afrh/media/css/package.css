@@ -526,7 +526,7 @@ option.select-placeholder {
 }
 
 .filler-text-inline {
-    height: 23px;
+    height: 21px;
 }
 
 .filler-text-block {
@@ -599,11 +599,27 @@ dl.score-table dd{
     margin: 20px 0px 15px; 
     font-size: 24px;
     font-weight: 700;
+    
 }
 
 .report-section-header span {
     background: #F9F9F9;
     padding-right: 10px;
+}
+
+.section-toggle {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.section-toggle:hover {
+    color: #4765a0;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.report-content {
+    display: none;
 }
 
 

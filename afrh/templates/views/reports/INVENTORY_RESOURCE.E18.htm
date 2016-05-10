@@ -106,45 +106,52 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
             <div>
 
                 <!-- Section Header -->
-                <div class="report-section-header">
-                    <span>{% trans "Resource Identification" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                </div>
-
-                <!-- Anchor for in=page navigation from "report options" menu -->
-                <a href="overview" id="overview" style="top: 250px;"></a>
-
-                <!-- Resource Description Content -->
-                <div class="row">
-                    
-                    <!-- Spacer -->
-                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-
-                    <!-- Resource Summary Info -->
-                    <div class="col-xs-12">
-                        <div class="right-inner arches-box-grey-border">
-                            
-                            {% include 'views/reports/sections/IR_resource_identification.htm' %}
-
-                        </div>
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "Resource Identification" %}<i class="rounded-x fa fa-folder" style="padding-left:15px;"></i></span>
                     </div>
-                </div>
-                <div class="report-section-header">
-                    <span>{% trans "Evaluation" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                </div>
-                
-                <div class="row">
-                    
-                    <!-- Spacer -->
-                    <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
 
-                    <!-- Resource Summary Info -->
-                    <div class="col-xs-12">
-                        <div class="right-inner arches-box-grey-border">
-                            {% include 'views/reports/sections/IR_evaluation.htm' %}
+                    <!-- Anchor for in=page navigation from "report options" menu -->
+                    <a href="overview" id="overview" style="top: 250px;"></a>
+
+                    <!-- Resource Description Content -->
+                    <div class="row report-content">
+                        
+                        <!-- Spacer -->
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                        <!-- Resource Summary Info -->
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/IR_resource_identification.htm' %}
+                            </div>
                         </div>
                     </div>
                 </div>
                 
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "Evaluation" %}<i class="rounded-x fa fa-folder" style="padding-left:15px;"></i></span>
+                    </div>
+
+                    <!-- Anchor for in=page navigation from "report options" menu -->
+                    <a href="overview" id="overview" style="top: 250px;"></a>
+
+                    <!-- Resource Description Content -->
+                    <div class="row report-content">
+                        
+                        <!-- Spacer -->
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+
+                        <!-- Resource Summary Info -->
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/IR_evaluation.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="report-section-header">
                     <span>{% trans "Classification" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
                 </div>
@@ -247,9 +254,12 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                     </div>
                 </div>
                 
-                {% if report_info.type in view %}
+                {% if report_info.type in fullreport %}
                 <div class="report-section-header">
-                    <span>{% trans "Heritage Asset Data" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    <a href="javascript:void(0);" class="section-toggle">
+                        <span>{% trans "Heritage Asset Data" %}<i class="rounded-x fa fa-folder-open section-header-icon" style="padding-left:15px;"></i>
+                        </span>
+                    </a>
                 </div>
                 
                 <div class="row">

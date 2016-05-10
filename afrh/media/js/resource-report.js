@@ -13,12 +13,19 @@ require([
     var ReportView = Backbone.View.extend({
 
         initialize: function(options) {
-            
-            
-            
+ 
             var resize;
             var self = this;
             var resource_geometry = $('#resource_geometry');
+            
+            $(".section-toggle").click(function (){ 
+                iconEl = $(this).find('i');
+                sectionEl = $(this).closest('.report-section');
+                contentEl = $(sectionEl).find('.report-content');
+                $(contentEl).toggle('fast');
+                $(iconEl).toggleClass("fa-folder-open");
+                $(iconEl).toggleClass("fa-folder");
+            });
             
             if(resource_geometry.length > 0){
                 var geom = JSON.parse(resource_geometry.val());
