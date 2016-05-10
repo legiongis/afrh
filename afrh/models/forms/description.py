@@ -74,8 +74,8 @@ class ActADescriptionForm(ResourceForm):
     def update(self, data, files):
         
         update_nodes = [
-            'ACTIVITY_SCOPE_OF_WORK_TYPE.E55',
-            'ACTIVITY_CONDITION.E3'
+            'ACTIVITY_SCOPE_OF_WORK.E89',
+            'ACTIVITY_CONDITION.E3',
             'BUILDING_STRUCTURES_RECOMMENDATION_TYPE.E55',
             'OBJECT_RECOMMENDATION_TYPE.E55',
             'LANDSCAPE_RECOMMENDATION_TYPE.E55',
@@ -89,7 +89,7 @@ class ActADescriptionForm(ResourceForm):
     def load(self, lang):
         
         load_nodes = {
-            'ACTIVITY_SCOPE_OF_WORK_TYPE.E55':[
+            'ACTIVITY_SCOPE_OF_WORK.E89':[
                 'ACTIVITY_SCOPE_OF_WORK_TYPE.E55'
             ],
             'ACTIVITY_CONDITION.E3':[

@@ -20,7 +20,7 @@ define(['jquery',
             this.addBranchList(new BranchList({
                 el: this.$el.find('#scope-section')[0],
                 data: this.data,
-                dataKey: 'ACTIVITY_SCOPE_OF_WORK_TYPE.E55',
+                dataKey: 'ACTIVITY_SCOPE_OF_WORK.E89',
                 validateBranch: function(nodes){
                     return this.validateHasValues(nodes);
                 }

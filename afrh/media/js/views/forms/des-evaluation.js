@@ -41,9 +41,10 @@ define(['jquery',
                 el: this.$el.find('#criteria-section')[0],
                 data: this.data,
                 dataKey: 'NRHP_CRITERIA.E17',
-                validateBranch: function(nodes){
-                    return this.validateHasValues(nodes);
-                }
+                singleEdit: true,
+                // validateBranch: function(nodes){
+                    // return this.validateHasValues(nodes);
+                // }
             }));
             
             this.addBranchList(new BranchList({

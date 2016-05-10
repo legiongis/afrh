@@ -13,7 +13,7 @@
             <div class="col-xs-12 col-sm-10">
                 <div class="col-xs-12 form-section-input">
                     <div class="form-group">
-                        <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "name" %}' data-bind='value: getEditedNode("ARCHAEOLOGICAL_ZONE_NAME.E48", "value")'>
+                        <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "Name" %}' data-bind='value: getEditedNode("ARCHAEOLOGICAL_ZONE_NAME.E48", "value")'>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,11 @@
             </div>
         </div>
     </div>
-    
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Description" %}</span></div>
+        </div>
+    </div>
     <div id="description-section">
         <div class="row">
             <div class="col-xs-12 col-sm-10">
@@ -70,7 +74,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no descriptions" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "none recorded" %}</div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>

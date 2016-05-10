@@ -57,7 +57,7 @@
                 <div class="col-xs-12 col-sm-6 form-section-input add-padding-right">
                     <div class="form-group">
                         <div class="input-group datetimepicker">
-                            <input style="font-size: 13px; height:32px;" type="text" id="date" placeholder="{% trans 'start date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('PERIOD_OF_SIGNIFICANCE_BEGINNING_DATE.E49', 'value')} ">
+                            <input type="text" id="date" placeholder="{% trans 'start date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('PERIOD_OF_SIGNIFICANCE_BEGINNING_DATE.E49', 'value')} ">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                 <div class="col-xs-12 col-sm-6 form-section-input add-margin-top">
                     <div class="form-group">
                         <div class="input-group datetimepicker">
-                            <input style="font-size: 13px; height:32px;" type="text" id="date" placeholder="{% trans 'end date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('PERIOD_OF_SIGNIFICANCE_END_DATE.E49', 'value')} ">
+                            <input type="text" id="date" placeholder="{% trans 'end date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('PERIOD_OF_SIGNIFICANCE_END_DATE.E49', 'value')} ">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
@@ -89,9 +89,9 @@
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">edit</a>
-                                    <br><span class="arches-CRUD-child arches-CRUD-edit" data-bind="text: 'Start Date: '+nodes.get('PERIOD_OF_SIGNIFICANCE_BEGINNING_DATE.E49', 'value').slice(0,10)" style="padding-right:2px;"></span>
-                                    <br><span class="arches-CRUD-child arches-CRUD-edit" data-bind="text: 'End Date: '+nodes.get('PERIOD_OF_SIGNIFICANCE_END_DATE.E49', 'value').slice(0,10)" style="padding-right:2px;"></span>
+                                    <a href="javascript:void(0)" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                    <span class="arches-CRUD-child arches-CRUD-edit" data-bind="text: 'Start Date: '+nodes.get('PERIOD_OF_SIGNIFICANCE_BEGINNING_DATE.E49', 'value').slice(0,10)" style="padding-right:2px;"></span>&nbsp;&nbsp;<span class="arches-CRUD-child arches-CRUD-edit" data-bind="text: 'End Date: '+nodes.get('PERIOD_OF_SIGNIFICANCE_END_DATE.E49', 'value').slice(0,10)" style="padding-right:2px;"></span>
+                                    </a>
                                 </div>
                             </div>
                         </dd>
@@ -108,26 +108,6 @@
     <div id="criteria-section">
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <!--<div class="col-xs-12 col-sm-3 form-section-input add-padding-right">
-                    <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CRITERION_A_RELEVANCE.E55', 'value'), placeholder: '{% trans 'select status' %}', dataKey: 'CRITERION_A_RELEVANCE.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3 form-section-input add-padding-right">
-                    <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CRITERION_B_RELEVANCE.E55', 'value'), placeholder: '{% trans 'select status' %}', dataKey: 'CRITERION_B_RELEVANCE.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3 form-section-input add-padding-right">
-                    <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CRITERION_C_RELEVANCE.E55', 'value'), placeholder: '{% trans 'select status' %}', dataKey: 'CRITERION_C_RELEVANCE.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3 form-section-input add-margin-top">
-                    <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CRITERION_D_RELEVANCE.E55', 'value'), placeholder: '{% trans 'select status' %}', dataKey: 'CRITERION_D_RELEVANCE.E55'}"></input>
-                    </div>
-                </div>-->
                 <div class="col-xs-12 col-md-7 form-section-input">
                     <dl class="score-table" style="display:inline">
                         <div class="col-xs-12 form-section-input">
@@ -135,7 +115,7 @@
                             <dd style="display:inline">
                                 <div class="form-group">
                                     <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_A_RELEVANCE.E62", "value")'>
-                                        <option>Yes</option><option>No</option>
+                                        <option></option><option>Yes</option><option>No</option>
                                     </select>
                                 </div>
                             </dd>
@@ -145,7 +125,7 @@
                             <dd style="display:inline">
                                 <div class="form-group">
                                     <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_B_RELEVANCE.E62", "value")'>
-                                        <option>Yes</option><option>No</option>
+                                        <option></option><option>Yes</option><option>No</option>
                                     </select>
                                 </div>
                             </dd>
@@ -155,7 +135,7 @@
                             <dd style="display:inline">
                                 <div class="form-group">
                                     <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_C_RELEVANCE.E62", "value")'>
-                                        <option>Yes</option><option>No</option>
+                                        <option></option><option>Yes</option><option>No</option>
                                     </select>
                                 </div>
                             </dd>
@@ -165,38 +145,11 @@
                             <dd style="display:inline">
                                 <div class="form-group">
                                     <select class="form-control arches-form-input totalscore" data-bind='value: getEditedNode("CRITERION_D_RELEVANCE.E62", "value")'>
-                                        <option>Yes</option><option>No</option>
+                                        <option></option><option>Yes</option><option>No</option>
                                     </select>
                                 </div>
                             </dd>
                         </div>
-                    </dl>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
-                {% include 'views/components/add-item-button.htm' %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must evaluate all criteria." %}</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="arches-crud-child-section">
-                    <dl>
-                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "none recorded" %}</div>   
-                            <div data-bind='foreach: getBranchLists()'>
-                                <div class="arches-crud-record" style="display:inline;">
-                                    <a href="javascript:void(0)" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" title="edit"><i data-bind="click: $parent.editItem.bind($parent)" class="arches-CRUD-delete fa fa-edit" style="color:#0F3CE8"></i></a>
-                                        <span data-bind="text: 'A: ' + nodes.get('CRITERION_A_RELEVANCE.E62', 'value') + ', B: ' + nodes.get('CRITERION_B_RELEVANCE.E62', 'value') + ', C: ' + nodes.get('CRITERION_C_RELEVANCE.E62', 'value') + ', D: ' + nodes.get('CRITERION_D_RELEVANCE.E62', 'value')"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </dd>
                     </dl>
                 </div>
             </div>
