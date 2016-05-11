@@ -45,7 +45,7 @@ define(['jquery',
                         'AFRH_DETERMINATION_OF_EFFECT.E55'
                     ]);
                     var ck2 = vt.isValidDate(nodes,'DCSHPO_SUBMISSION_DATE.E49');
-                    return ck1 == true && ck2 == true;
+                    return ck1 && ck2;
                 }
             }));
             

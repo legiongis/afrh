@@ -87,7 +87,7 @@ define(['jquery',
                     ]);
                     var ck1 = vt.isValidDate(nodes,'ARPA_FIELD_INVESTIGATION_START_DATE.E49');
                     var ck2 = vt.isValidDate(nodes,'ARPA_FIELD_INVESTIGATION_END_DATE.E49');
-                    return ck0 == true && ck1 == true && ck2 == true;
+                    return ck0 && ck1 && ck2;
                 }
             }));
             
@@ -100,7 +100,7 @@ define(['jquery',
                     var ck1 = vt.isValidDate(nodes,'ARPA_DISCOVERY_DATE.E49');
                     var ck2 = vt.isValidDate(nodes,'ARPA_DISCOVERY_DOCUMENTATION_DATE.E49');
                     var ck3 = vt.isValidDate(nodes,'ARPA_DISCOVERY_DCSHPO_NOTIFICATION_DATE.E49');
-                    return ck0 == true && ck1 == true && ck2 == true && ck3 == true;
+                    return ck0 && ck1 && ck2 && ck3;
                 }
             }));
             

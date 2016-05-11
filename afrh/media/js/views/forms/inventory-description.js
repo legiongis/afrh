@@ -27,7 +27,7 @@ define(['jquery',
                         var ck1 = vt.isValidDate(nodes,'FROM_DATE.E49');
                         var ck2 = vt.isValidDate(nodes,'TO_DATE.E49');
                         var ck3 = vt.nodesHaveValues(nodes, ['ACTOR_TYPE.E55']);
-                        return ck1 == true && ck2 == true && ck3 == true;
+                        return ck1 && ck2 && ck3;
                     }
             }));
             }

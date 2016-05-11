@@ -123,7 +123,7 @@ define(['jquery',
                     validateBranch: function (nodes) {
                         var ck1 = vt.isValidDate(nodes, 'START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49');
                         var ck2 = vt.nodesHaveValues(nodes, ['START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49','BEGINNING_OF_EXISTENCE_TYPE.E55,END_OF_EXISTENCE_TYPE.E55','BEGINNING_OF_EXISTENCE_TYPE.E55','END_OF_EXISTENCE_TYPE.E55']);
-                        return ck1 == true && ck2 == true;
+                        return ck1 && ck2;
                     }
                 }));
             }

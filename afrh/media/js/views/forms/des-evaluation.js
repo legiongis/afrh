@@ -33,7 +33,7 @@ define(['jquery',
                 validateBranch: function(nodes){
                     var ck1 = vt.isValidDate(nodes,'PERIOD_OF_SIGNIFICANCE_BEGINNING_DATE.E49');
                     var ck2 = vt.isValidDate(nodes,'PERIOD_OF_SIGNIFICANCE_END_DATE.E49');
-                    return ck1 == true && ck2 == true;
+                    return ck1 && ck2;
                 }
             }));
             
@@ -42,9 +42,6 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'NRHP_CRITERIA.E17',
                 singleEdit: true,
-                // validateBranch: function(nodes){
-                    // return this.validateHasValues(nodes);
-                // }
             }));
             
             this.addBranchList(new BranchList({

@@ -119,7 +119,7 @@ define(['jquery',
                     }
                     var ck1 = vt.nodesHaveValues(nodes,[typenode,'ACTIVITY_MILESTONE_DATE.E49'])
                     var ck2 = vt.isValidDate(nodes,'ACTIVITY_MILESTONE_DATE.E49')
-                    return ck1 == true && ck2 == true;
+                    return ck1 && ck2;
                 }
             }));
 

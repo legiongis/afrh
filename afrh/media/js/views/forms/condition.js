@@ -144,7 +144,7 @@ define(['jquery',
                 validateBranch: function (nodes) {
                     ck1 = vt.isValidDate(nodes,'DATE_CONDITION_ASSESSED.E49');
                     ck2 = this.validateHasValues(nodes)
-                    return ck1 == true && ck2 == true;
+                    return ck1 && ck2;
                 }
             }));
 

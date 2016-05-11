@@ -39,7 +39,7 @@ define(['jquery',
                     validateBranch: function (nodes) {
                         var ck1 = vt.isValidDate(nodes,'AFRH_W_HISTORIC_DISTRICT_STATUS_DATE.E50');
                         var ck2 = this.validateHasValues(nodes);
-                        return ck1 == true && ck2 == true;
+                        return ck1 && ck2;
                     }
                 }));
                 
@@ -68,7 +68,7 @@ define(['jquery',
                     validateBranch: function (nodes) {
                         var ck1 = vt.isValidDate(nodes,'OTHER_AFRH_W_DESIGNATION_DATE.E50');
                         var ck2 = this.validateHasValues(nodes);
-                        return ck1 == true && ck2 == true;
+                        return ck1 && ck2;
                     }
                 }));
                 
@@ -79,25 +79,15 @@ define(['jquery',
                     validateBranch: function (nodes) {
                         var ck1 = vt.isValidDate(nodes,'OTHER_DESIGNATION_DATE.E50');
                         var ck2 = vt.nodesHaveValues(nodes,['OTHER_DESIGNATION_TYPE.E55','OTHER_DESIGNATION_STATUS.E55','OTHER_DESIGNATION_DATE.E50']);
-                        return ck1 == true && ck2 == true;
+                        return ck1 && ck2;
                     }
                 }));
                 
-                console.log("before score section branchlist");
                 this.addBranchList(new BranchList({
                     el: this.$el.find('#score-section')[0],
                     data: this.data,
                     dataKey: 'COMPOSITE_SCORE.E60',
                     singleEdit: true,
-                    // validateBranch: function (nodes) {
-                        // var valid = false;
-                        // if (nodes[0]["value"] != "") {
-                            // console.log(nodes[0]["value"]);
-                            // valid = true;
-                        // };
-                        // console.log(valid);
-                        // return valid;
-                    // }
                 }));
                 
                 this.addBranchList(new BranchList({
@@ -116,7 +106,7 @@ define(['jquery',
                     validateBranch: function (nodes) {
                         var ck1 = vt.isValidDate(nodes,'RELATIVE_LEVEL_OF_SIGNIFICANCE_DATE.E50');
                         var ck2 = this.validateHasValues(nodes);
-                        return ck1 == true && ck2 == true;
+                        return ck1 && ck2;
                     }
                 }));
                 

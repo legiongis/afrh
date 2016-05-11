@@ -24,7 +24,7 @@ define(['jquery',
                 validateBranch: function (nodes) {
                     var ck1 = vt.isValidDate(nodes, 'COMPONENT_TIME-SPAN_DATE.E50');
                     var ck2 = vt.nodesHaveValues(nodes,['COMPONENT_TYPE.E55']);
-                    return ck1 == true && ck2 == true;
+                    return ck1 && ck2;
                 }
             }));
             
@@ -35,7 +35,7 @@ define(['jquery',
                 validateBranch: function (nodes) {
                     var ck1 = vt.isValidDate(nodes, 'MODIFICATION_EVENT_TIME-SPAN_DATE.E50');
                     var ck2 = vt.nodesHaveValues(nodes,['MODIFICATION_TYPE.E55']);
-                    return ck1 == true && ck2 == true;
+                    return ck1 && ck2;
                 }
             }));
         },
