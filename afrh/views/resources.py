@@ -41,17 +41,6 @@ import json
 def report(request, resourceid):
     lang = request.GET.get('lang', settings.LANGUAGE_CODE)
     se = SearchEngineFactory().create()
-
-    ## taking a stab at filtering resources with the search engine (unsuccessful here)
-##    actors = se.search(index='resource', type="ACTOR.E39")
-##    print actors
-##    all_resources = se.search(index='resource')
-##
-##    hit_list = all_resources['hits']['hits']
-##    print "hitlist count:"
-##    print len(hit_list)
-##    actors2 = [i for i in hit_list if i['_type'] == "ACTOR.E39"]
-
     report_info = se.search(index='resource', id=resourceid)
     report_info['source'] = report_info['_source']
     report_info['type'] = report_info['_type']
@@ -202,6 +191,7 @@ def report(request, resourceid):
             entitytypeidkey = '%s_%s' % (entitytypeidkey, information_resource_type)
         related_resource_dict[entitytypeidkey].append(related_resource)
 
+    # set boolean to trigger display of related resource graph
     related_resource_flag = False
     for k,v in related_resource_dict.iteritems():
         if len(v) > 0:
@@ -213,7 +203,14 @@ def report(request, resourceid):
             print >> log, json.dumps(related_resource_dict, sort_keys=True,indent=4, separators=(',', ': '))
     except:
         pass
-            
+        
+    try:
+        with open(r"C:\arches\afrh\catchall\report_info","wb") as log:
+            print >> log, json.dumps(report_info['source']['graph'], sort_keys=True,indent=2, separators=(',', ': '))
+    except:
+        pass
+    
+    
     return render_to_response('resource-report.htm', {
             'geometry': JSONSerializer().serialize(report_info['source']['geometry']),
             'resourceid': resourceid,
