@@ -1,0 +1,138 @@
+{% load i18n %}
+<!--<div class="row">-->
+    <div id="map-container">
+
+        <div id="map" class="map map-report-panel" style="display: block; border-color: #dcdcdc; border: 1px solid rgba(0,0,0,.1);">
+            <div id="olmap" class="fill"></div>
+            <div style="display:none;" id="map-data">
+                <input type="hidden" id="resource_geometry" value='{{ geometry }}' />
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-6" style="min-height:0px !important;">
+
+                <div id="basemaps-panel" class="tools-panel hidden" style=" border-top-left-radius: 5px; border-top-right-radius: 5px; margin-top: -329px; height: 298px; width: 279px; margin-left: 44px;">
+                    <div class="modal-header arches-modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            ×
+                        </button>
+                        <h4 class="modal-title">
+                            {% trans "Basemaps" %}
+                        </h4>
+                    </div>
+
+                    <!-- Body Content -->
+                    <div class="modal-body modal-layer-list" data-bind='foreach: baseLayers'>
+
+                        <div class="row">
+                            
+                            <div class="arches-basemap-entry" style="" data-bind="attr: { id: id}">
+                    
+                                <div class="">
+                                    <a data-bind="attr: { id: id, title: alttext }" class="basemap info-click" data-rel="" href="javascript:void(0);">
+                                        <span class="">  
+                                            <img data-bind="attr: { src: icon }" class="arches-basemap-thumbnail" alt="" />
+                                            <span class="zoom-icon"></span>                   
+                                        </span>                                              
+                                    </a>                    
+                                    <span class="arches-basemap-caption">
+                                        <a data-bind="attr: { id: id }, text: name" class="caption-text hover-effect basemap info-click" href="javascript:void(0);" style="font-size:12pt"> </a>
+                                    </span>
+                                    
+                                    <div style="float:right; padding-top:10px; padding-right:5px;">
+                                    <a href="javascript:void(0);" title="change color scheme" data-bind="if: altlayer, attr: {'data-layerid': id}"><i data-bind="attr: { id: id+'-extra'}" class="fa fa-2x fa-circle alt-map-icon" style="color: #65a5da;"></i></a> &nbsp;
+
+                                    <a href="javascript:void(0);" data-toggle="popover" data-container="body" data-placement="right" data-bind="if: showInfo, attr: {'data-content': showInfo, title: name}" data-html="true"><i class="fa fa-2x fa-info-circle" style="color: #65a5da;"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- End Body Content -->
+
+                </div>
+            </div>
+        </div>
+        <!-- end basemap panel -->
+        <!-- historic map panel -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-6" style="min-height:0px !important;">
+                <div id="historicmaps-panel" class="tools-panel hidden" style=" border-top-left-radius: 5px; border-top-right-radius: 5px; margin-top: -329px; height: 298px; width: 279px; margin-left: 44px;">
+                    <div class="modal-header arches-modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            ×
+                        </button>
+                        <h4 class="modal-title">
+                            {% trans "Historic Maps" %}
+                        </h4>
+                    </div>
+
+                    <div class= "modal-body modal-layer-list" style="overflow-y: scroll; height: 202px" data-bind='foreach: historicLayers'>
+
+                        <div class="row">
+
+                            <div class="arches-basemap-entry" style="" data-bind="attr: { id: id}">
+                        
+                                <div class="">
+                                    
+                                <!--class="historicmap info-click" -->
+                                    <!--<ul>-->
+                                        <div style="display:inline; float: left;">
+                                            <a data-bind="attr: { id: id, title: name }" data-rel="" href="javascript:void(0);">
+                                                <span class="">  
+                                                    <img data-bind="attr: {src: icon }" class="arches-basemap-thumbnail" alt="" />
+                                                </span>                                              
+                                            </a>                    
+                                        </div>
+                                    
+                                        <div style="display:inline; height: 48px; vertical-align: middle;">
+                                            <div style="height: 48px;">
+                                            <span class="arches-basemap-caption" style="vertical-align: middle;">
+                                                <a data-bind="attr: { id: id }, text: name" class="caption-text hover-effect historicmap info-click" href="javascript:void(0);" style="font-size:12pt"> </a>
+                                            </span>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- End Body Content -->
+
+            </div>
+        </div>
+
+        <!-- Map: Project Info Panel -->
+        <div class="container">
+
+            <!-- Map Tools Panel -->
+
+            <!-- End Map Tools Panel -->
+
+            <!-- Map Tools -->
+            <div class="row hidden-xs">
+                <div class="col-xs-12 col-sm-12 col-md-12 ol-lg-12" style="margin-top: -70px;margin-left: 30px;">
+                    <div class="btn-group">
+                        <!-- what is this first button for?allows the close button to work.  This should be fixed...-->
+                        <button id="inventory-home" type="button" class="btn btn-primary arches-map-tools-pressed" style="display:none; width: 50px; margin-left:1px !important; border: 1px solid rgba(206,217,233,.95);"><i class="fa fa-caret-down;"></i></button>
+                        <button id="inventory-basemaps" type="button" class="btn btn-primary arches-map-tools inventory-basemaps" style="border-top-left-radius:4px; border-bottom-left-radius:4px;"><i class="fa fa-globe"></i> {% trans 'Basemaps' %}</button>
+                        <button id="inventory-historicmaps" type="button" class="btn btn-primary arches-map-tools" style="" ><i class="fa fa-newspaper-o"></i> {% trans 'Historic Maps' %}</button>
+                        <!--<button id="inventory-overlays" type="button" class="btn btn-primary arches-map-tools" "><i class="fa fa-plus"></i> {% trans 'Add Geometry' %}</button>-->
+                    </div>
+                </div>
+            </div>
+            <!--
+            <div class="row">
+                <div class="col-xs-12 col-sm-7 col-md-5 col-lg-4" style="margin-top: -77px;">
+                    <div class="btn-group">
+                        <button id="inventory-basemaps" type="button" class="btn btn-primary arches-map-tools" style="width:290px;"><i class="fa fa-globe"></i> {% trans "Basemaps" %}
+                        </button>
+                    </div>
+                </div>
+            </div>-->
+            <!-- End Map Tools -->
+        </div>
+    </div>
+<!--</div>-->

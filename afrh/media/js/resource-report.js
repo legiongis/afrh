@@ -34,18 +34,25 @@ require([
                 });
 
                 ko.applyBindings(this.map, $('#basemaps-panel')[0]);
-
-                this.highlightFeatures(JSON.parse(resource_geometry.val()));
+                ko.applyBindings(this.map, $('#historicmaps-panel')[0]);
+                
+                // set this level so the feature will always be on top of the historic map layers
+                featlvl = this.map.historicLayers.length + this.map.baseLayers.length + 1;
+                this.highlightFeatures(geom,featlvl);
                 this.zoomToResource('1');
-
+                
                 var hideAllPanels = function(){
                     $("#basemaps-panel").addClass("hidden");
+                    $("#historicmaps-panel").addClass("hidden");
 
                     //Update state of remaining buttons
                     $("#inventory-basemaps")
                         .removeClass("arches-map-tools-pressed")
                         .addClass("arches-map-tools")
-                        .css("border-bottom-left-radius", "1px");
+                        
+                    $("#inventory-historicmaps")
+                        .removeClass("arches-map-tools-pressed")
+                        .addClass("arches-map-tools")
                 };
 
                 //Inventory-basemaps button opens basemap panel
@@ -54,12 +61,28 @@ require([
                         hideAllPanels();
                     } else {
                         $("#basemaps-panel").removeClass("hidden");
+                        $("#historicmaps-panel").addClass("hidden");
 
                         //Update state of current button and adjust position
                         $("#inventory-basemaps")
                             .addClass("arches-map-tools-pressed")
                             .removeClass("arches-map-tools")
-                            .css("border-bottom-left-radius", "5px");
+                            //.css("border-bottom-left-radius", "5px");
+                    }
+                });
+                
+                $("#inventory-historicmaps").click(function (){
+                    if ($(this).hasClass('arches-map-tools-pressed')) {
+                        hideAllPanels();
+                    } else {
+                        $("#historicmaps-panel").removeClass("hidden");
+                        $("#basemaps-panel").addClass("hidden");
+
+                        //Update state of current button and adjust position
+                        $("#inventory-historicmaps")
+                            .addClass("arches-map-tools-pressed")
+                            .removeClass("arches-map-tools")
+                            //.css("border-bottom-left-radius", "5px");
                     }
                 });
 
@@ -70,9 +93,37 @@ require([
                     });
                     hideAllPanels();
                 });
+                
+                // activate historic map when button is clicked, stays on until clicked again
+                // historic map panel doesn't close automatically
+                $(".historicmap").click(function (){
+                    var historicmap = $(this).attr('id');
+                    _.each(self.map.historicLayers, function(historicLayer){
+                        if (historicLayer.id == historicmap){
+                            historicLayer.layer.setVisible(!historicLayer.layer.getVisible());
+                            // if activated, set layer on top of all historic maps/basemaps
+                            // also highlight layer button by changing background
+                            if (historicLayer.layer.getVisible() == true) {
+                                setlyrs = self.map.historicLayers.length + self.map.baseLayers.length;
+                                
+                                self.map.map.removeLayer(historicLayer.layer);
+                                self.map.map.getLayers().insertAt(setlyrs, historicLayer.layer);
+                                
+                                $('#'+historicLayer.id).css("background","#eaeaea");
+                            } else {
+                                $('#'+historicLayer.id).css("background","");
+                            }
+                        }
+                    });
+                    self.highlightFeatures(geom);
+                });
 
                 //Close Button
                 $(".close").click(function (){ 
+                    hideAllPanels();
+                });
+                
+                $("#map").click(function (){
                     hideAllPanels();
                 });
                
@@ -95,9 +146,6 @@ require([
                     $(list).find('.empty-message').show();
                 }
             })
-            
-            
-
         },
         
         showRelatedResourcesGraph: function () {
@@ -135,13 +183,13 @@ require([
             }
         },
 
-        highlightFeatures: function(geometry){
+        highlightFeatures: function(geometry,lvl){
             var source, geometries;
             var self = this;
             var f = new ol.format.GeoJSON({defaultDataProjection: 'EPSG:4326'});
 
             if(!this.selectedFeatureLayer){
-                var zIndex = 0;
+                var zIndex = 100;
                 var styleCache = {};
 
                 var style = function(feature, resolution) {
@@ -167,9 +215,11 @@ require([
                 };                     
                 this.selectedFeatureLayer = new ol.layer.Vector({
                     source: new ol.source.GeoJSON(),
-                    style: style
+                    style: style,
+                    name: 'feature'
                 });
-                this.map.map.addLayer(this.selectedFeatureLayer);  
+                this.map.map.addLayer(this.selectedFeatureLayer);
+                this.map.map.getLayers().setAt(lvl,this.selectedFeatureLayer);
             }
             this.selectedFeatureLayer.getSource().clear();
 
