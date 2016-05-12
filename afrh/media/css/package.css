@@ -618,10 +618,18 @@ dl.score-table dd{
     cursor: hand;
 }
 
+/*
 .report-content {
     display: none;
 }
+*/
 
+.report-map-panel {
+    margin-left: -53px;
+    height: 300px;
+    margin-top: -350px !important;
+    margin-left: -19px;
+}
 
 /* map rules */
 .modal-layer-list .row {
