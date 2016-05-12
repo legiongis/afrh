@@ -163,7 +163,7 @@ define(['jquery',
                         $("#basemaps-panel").addClass("hidden");
 
                         //Update state of current button and adjust position
-                        $("#historic-maps-panel")
+                        $("#historic-maps")
                             .addClass("arches-map-tools-pressed")
                             .removeClass("arches-map-tools")
                             //.css("border-bottom-left-radius", "5px");
