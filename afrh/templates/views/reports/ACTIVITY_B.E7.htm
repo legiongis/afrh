@@ -25,7 +25,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 <div id="report-body" class="report-body">
 
     <!--=== Resource Description Section ===-->
-    <div class="block-description report-block-description" id="report">
+    <div class="block-description report-block-description" style="padding:0px !important;" id="report">
         <div class="container">
 
             <!-- Resource Report Container -->
@@ -38,13 +38,26 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                     <div class="row report-content">
                         <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
                         <div class="col-xs-12">
-                            
                                 {% include 'views/reports/sections/map-section.htm' %}
                             
                         </div>
                     </div>
                 </div>
                 {% endif %}
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "NEPA Review" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/ACT-nepa-review.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="report-section" >
                     <div class="report-section-header">
@@ -62,7 +75,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                 
                 <div class="report-section" >
                     <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "NCPC Reviews" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "NCPC Review" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
                     </div>
                     <div class="row report-content">
                         <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
@@ -76,7 +89,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                 
                 <div class="report-section" >
                     <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "CFA Reviews" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "CFA Review" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
                     </div>
                     <div class="row report-content">
                         <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
@@ -90,13 +103,27 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                 
                 <div class="report-section" >
                     <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "HPO/HPRB Reviews" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "HPO/HPRB Review" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
                     </div>
                     <div class="row report-content">
                         <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
                         <div class="col-xs-12">
                             <div class="right-inner arches-box-grey-border">
                                 {% include 'views/reports/sections/ACT-hpo-hprb-review.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "ARPA Review" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/ACT-arpa-review.htm' %}
                             </div>
                         </div>
                     </div>

@@ -22,7 +22,12 @@ require([
                 iconEl = $(this).find('i');
                 sectionEl = $(this).closest('.report-section');
                 contentEl = $(sectionEl).find('.report-content');
-                $(contentEl).toggle('fast');
+                if (contentEl.is(":visible")){
+                    contentEl.hide();
+                } else {
+                    contentEl.show();
+                }
+                //$(contentEl).toggle('fast');
                 $(iconEl).toggleClass("fa-folder-open");
                 $(iconEl).toggleClass("fa-folder");
             });
