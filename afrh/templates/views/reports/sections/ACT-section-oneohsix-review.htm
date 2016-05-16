@@ -1,6 +1,6 @@
 {% load i18n %}
 <div class="row">
-    {% if 'NEPA_REVIEW_E7' not in report_info.source.graph %}
+    {% if 'SECTION_106_REVIEW_E7' not in report_info.source.graph %}
     <div class="col-sm-3 col-md-4">
         <h3 class="arches-report-subsection"></h3>
     </div>
@@ -13,15 +13,16 @@
     </div>
     {% else %}
     <div class="col-sm-3 col-md-4">
-        <h3 class="arches-report-subsection">Documentation Types</h3>
+        <h3 class="arches-report-subsection">Determination of Exemption</h3>
     </div>
     <div class="col-sm-9 col-md-8">
-        {% for NEPA_REVIEW_E7 in report_info.source.graph.NEPA_REVIEW_E7 %}
-            {% if 'NEPA_DOCUMENTATION_TYPE_E55' in NEPA_REVIEW_E7 %}
+        {% for SECTION_106_REVIEW_E7 in report_info.source.graph.SECTION_106_REVIEW_E7 %}
+            {% if 'SECTION_106_EXEMPTION_E55' in SECTION_106_REVIEW_E7 %}
             <div class="row">
                 <div class="col-xs-12 arches-report-subsection-content">
-                    <h3 class="arches-report-subsection">{{NEPA_REVIEW_E7.NEPA_DOCUMENTATION_TYPE_E55.0.NEPA_DOCUMENTATION_TYPE_E55__label}}</h3>
-                    <p class="arches-report-subsection-item">{{NEPA_REVIEW_E7.NEPA_DOCUMENTATION_TYPE_E55.0.NEPA_DOCUMENTATION_TYPE_NOTE_E62__value|safe}}
+                    <h3 class="arches-report-subsection">{{SECTION_106_REVIEW_E7.SECTION_106_EXEMPTION_E55.0.SECTION_106_EXEMPTION_TYPE_E55.0.SECTION_106_EXEMPTION_TYPE_E55__label}} ({{SECTION_106_REVIEW_E7.SECTION_106_EXEMPTION_E55.0.FPO_CRM_CONFIRMATION_TIME___SPAN_E52.0.FPO_CRM_CONFIRMATION_DATE_E49.0.FPO_CRM_CONFIRMATION_DATE_E49__value|slice:":10"}})</h3>
+                    <p class="arches-report-subsection-item"><em><strong>Justification</strong></em></p>
+                    <p class="arches-report-subsection-item">{{SECTION_106_REVIEW_E7.SECTION_106_EXEMPTION_E55.0.SECTION_106_EXEMPTION_JUSTIFICATION_E62.0.SECTION_106_EXEMPTION_JUSTIFICATION_E62__value|safe}}
                     </p>
                 </div>
             </div>
@@ -32,51 +33,79 @@
             <hr class="devider margin-top-20 margin-bottom-20"></hr>
         </div>
     <div class="col-sm-3 col-md-4">
-        <h3 class="arches-report-subsection">Documentation</h3>
-    </div>
-    <div class="col-sm-9 col-md-8">
-        {% for NEPA_REVIEW_E7 in report_info.source.graph.NEPA_REVIEW_E7 %}
-            {% if 'NEPA_DOCUMENTATION_E31' in NEPA_REVIEW_E7 %}
-            <div class="row">
-                <div class="col-xs-12 arches-report-subsection-content">
-                    <h3 class="arches-report-subsection">{{NEPA_REVIEW_E7.NEPA_DOCUMENTATION_E31.0.NEPA_DOCUMENTATION_E31__value}}</h3>
-                    <p class="arches-report-subsection-item">{{NEPA_REVIEW_E7.NEPA_DOCUMENTATION_E31.0.NEPA_DOCUMENTATION_DATE_E49__value|slice:":10"}}
-                    </p>
-                </div>
-            </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-    <div class="col-xs-12">
-            <hr class="devider margin-top-20 margin-bottom-20"></hr>
-        </div>
-    <div class="col-sm-3 col-md-4">
-        <h3 class="arches-report-subsection">Regulatory Citation</h3>
+        <h3 class="arches-report-subsection">DCSPHO Consultation</h3>
     </div>
     <div class="col-sm-9 col-md-8">
         <div class="row">
             <div class="col-xs-12 arches-report-subsection-content">
-                <p class="arches-report-subsection-item"><em><strong>Catex Reviews</strong></em></p>
-                {% for NEPA_REVIEW_E7 in report_info.source.graph.NEPA_REVIEW_E7 %}
-                {% if 'CATEX_TYPE_E55' in NEPA_REVIEW_E7 %}
-                    <p class="arches-report-subsection-item">{{NEPA_REVIEW_E7.CATEX_TYPE_E55.0.CATEX_TYPE_E55__value}} - {{NEPA_REVIEW_E7.CATEX_TYPE_E55.0.CATEX_TYPE_NOTE_E62__value|safe}}</p>
-                {% endif %}
-                {% endfor %}
-                <p class="arches-report-subsection-item"><em><strong>Environmental Assessments</strong></em></p>
-                {% for NEPA_REVIEW_E7 in report_info.source.graph.NEPA_REVIEW_E7 %}
-                {% if 'EA_TYPE_E55' in NEPA_REVIEW_E7 %}
-                    <p class="arches-report-subsection-item">{{NEPA_REVIEW_E7.EA_TYPE_E55.0.EA_TYPE_E55__value}} - 
-                    {{NEPA_REVIEW_E7.EA_TYPE_E55.0.EA_TYPE_NOTE_E62__value|safe}}</p>
-                {% endif %}
-                {% endfor %}
-                <p class="arches-report-subsection-item"><em><strong>Environmental Impact Statements</strong></em></p>
-                {% for NEPA_REVIEW_E7 in report_info.source.graph.NEPA_REVIEW_E7 %}
-                {% if 'EIS_TYPE_E55' in NEPA_REVIEW_E7 %}
-                    <p class="arches-report-subsection-item">{{NEPA_REVIEW_E7.EIS_TYPE_E55.0.EIS_TYPE_E55__value}} - {{NEPA_REVIEW_E7.EIS_TYPE_E55.0.EIS_TYPE_E55__value|safe}}</p>
-                {% endif %}
+                <p class="arches-report-subsection-item"><em><strong>DCSHPO URR</strong></em></p>
+                {% for SECTION_106_REVIEW_E7 in report_info.source.graph.SECTION_106_REVIEW_E7 %}
+                    {% if 'DCSHPO_URR_E42' in SECTION_106_REVIEW_E7 %}
+                        <p class="arches-report-subsection-item">{{SECTION_106_REVIEW_E7.DCSHPO_URR_E42.0.DCSHPO_URR_E42__label}}</p>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
+        {% for SECTION_106_REVIEW_E7 in report_info.source.graph.SECTION_106_REVIEW_E7 %}
+            {% if 'DCSHPO_SUBMISSION_E5' in SECTION_106_REVIEW_E7 %}
+            <div class="row">
+                <div class="col-xs-12 arches-report-subsection-content">
+                    <p class="arches-report-subsection-item"><em><strong>{{SECTION_106_REVIEW_E7.DCSHPO_SUBMISSION_E5.0.DCSHPO_SUBMISSION_TYPE_E55.0.DCSHPO_SUBMISSION_TYPE_E55__label}} Submission ({{SECTION_106_REVIEW_E7.DCSHPO_SUBMISSION_E5.0.DCSHPO_SUBMISSION_TIME___SPAN_E52.0.DCSHPO_SUBMISSION_DATE_E49.0.DCSHPO_SUBMISSION_DATE_E49__label|slice:":10"}})</strong></em></p>
+                    <p class="arches-report-subsection-item">Submission Method: {{SECTION_106_REVIEW_E7.DCSHPO_SUBMISSION_E5.0.DCSHPO_SUBMISSION_METHOD_E55.0.DCSHPO_SUBMISSION_METHOD_E55__label}}</p>
+                    <p class="arches-report-subsection-item">Determination of Effect:  {{SECTION_106_REVIEW_E7.DCSHPO_SUBMISSION_E5.0.AFRH_DETERMINATION_OF_EFFECT_E55.0.AFRH_DETERMINATION_OF_EFFECT_E55__label}}</p>
+                    <p class="arches-report-subsection-item"><em>Notes: </em>{{SECTION_106_REVIEW_E7.DCSHPO_SUBMISSION_E5.0.DCSHPO_SUBMISSION_NOTES_E62.0.DCSHPO_SUBMISSION_NOTES_E62__label|safe}}</p>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+        {% for SECTION_106_REVIEW_E7 in report_info.source.graph.SECTION_106_REVIEW_E7 %}
+            {% if 'DCSHPO_RESPONSE_E5' in SECTION_106_REVIEW_E7 %}
+            <div class="row">
+                <div class="col-xs-12 arches-report-subsection-content">
+                    <p class="arches-report-subsection-item"><em><strong>{{SECTION_106_REVIEW_E7.DCSHPO_RESPONSE_E5.0.DCSHPO_RESPONSE_TYPE_E55.0.DCSHPO_RESPONSE_TYPE_E55__label}} Response ({{SECTION_106_REVIEW_E7.DCSHPO_RESPONSE_E5.0.DCSHPO_RESPONSE_TIME___SPAN_E52.0.DCSHPO_RESPONSE_DATE_E49.0.DCSHPO_RESPONSE_DATE_E49__label|slice:":10"}}) </strong></em></p>
+                    <p class="arches-report-subsection-item">Response File Number: {{SECTION_106_REVIEW_E7.DCSHPO_RESPONSE_E5.0.DCSHPO_RESPONSE_FILE_NUMBER_E42.0.DCSHPO_RESPONSE_FILE_NUMBER_E42__label}}</p>
+                    <p class="arches-report-subsection-item">Determination of Effect:  {{SECTION_106_REVIEW_E7.DCSHPO_RESPONSE_E5.0.DCSHPO_RESPONSE_EVALUATION_E55.0.DCSHPO_RESPONSE_EVALUATION_E55__label}}</p>
+                    <p class="arches-report-subsection-item"><em>Notes: </em>{{SECTION_106_REVIEW_E7.DCSHPO_RESPONSE_E5.0.DCSHPO_RESPONSE_NOTES_E62.0.DCSHPO_RESPONSE_NOTES_E62__label|safe}}</p>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-xs-12">
+            <hr class="devider margin-top-20 margin-bottom-20"></hr>
+        </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Section 106 Notification</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        {% for SECTION_106_REVIEW_E7 in report_info.source.graph.SECTION_106_REVIEW_E7 %}
+            {% if 'SECTION_106_NOTIFICATION_E5' in SECTION_106_REVIEW_E7 %}
+            <div class="row">
+                <div class="col-xs-12 arches-report-subsection-content">
+                    <p class="arches-report-subsection-item"><em><strong>{{SECTION_106_REVIEW_E7.SECTION_106_NOTIFICATION_E5.0.SECTION_106_NOTIFICATION_TYPE_E55.0.SECTION_106_NOTIFICATION_TYPE_E55__label}} Notification ({{SECTION_106_REVIEW_E7.SECTION_106_NOTIFICATION_E5.0.SECTION_106_NOTIFICATION_TIME___SPAN_E52.0.SECTION_106_NOTIFICATION_DATE_E49.0.SECTION_106_NOTIFICATION_DATE_E49__label|slice:":10"}})</strong></em></p>
+                    <p class="arches-report-subsection-item">Notification Method: {{SECTION_106_REVIEW_E7.SECTION_106_NOTIFICATION_E5.0.SECTION_106_NOTIFICATION_METHOD_E55.0.SECTION_106_NOTIFICATION_METHOD_E55__label}}</p>
+                    <p class="arches-report-subsection-item"><em>Notes: </em>{{SECTION_106_REVIEW_E7.SECTION_106_NOTIFICATION_E5.0.SECTION_106_NOTIFICATION_NOTES_E62.0.SECTION_106_NOTIFICATION_NOTES_E62__label|safe}}</p>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="col-xs-12">
+            <hr class="devider margin-top-20 margin-bottom-20"></hr>
+        </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Dispute Resolution</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        {% for SECTION_106_REVIEW_E7 in report_info.source.graph.SECTION_106_REVIEW_E7 %}
+            {% if 'SECTION_106_DISPUTE_RESOLUTION_NOTES_E62' in SECTION_106_REVIEW_E7 %}
+            <div class="row">
+                <div class="col-xs-12 arches-report-subsection-content">
+                    <p class="arches-report-subsection-item">{{SECTION_106_REVIEW_E7.SECTION_106_DISPUTE_RESOLUTION_NOTES_E62.0.SECTION_106_DISPUTE_RESOLUTION_NOTES_E62__value|safe}}</p>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
     </div>
     {% endif %}
 </div>
