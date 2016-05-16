@@ -23,11 +23,10 @@ require([
                 sectionEl = $(this).closest('.report-section');
                 contentEl = $(sectionEl).find('.report-content');
                 if (contentEl.is(":visible")){
-                    contentEl.hide();
+                    contentEl.hide("fast");
                 } else {
-                    contentEl.show();
+                    contentEl.show("fast");
                 }
-                //$(contentEl).toggle('fast');
                 $(iconEl).toggleClass("fa-folder-open");
                 $(iconEl).toggleClass("fa-folder");
             });
