@@ -1,4 +1,0 @@
-conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
-TEST_METH:1,Shovel Test Pit,,TEST_PIT_METHOD_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
-TEST_METH:2,Mechanical Test Pit,,TEST_PIT_METHOD_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
-TEST_METH:3,Other,,TEST_PIT_METHOD_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes

@@ -1,4 +1,0 @@
-conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
-TP_SEN:1,High Native American Sensitivity,,TEST_PIT_SENSITIVITY_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
-TP_SEN:2,High Historic Sensitivity,,TEST_PIT_SENSITIVITY_AUTHORITY_DOCUMENT.csv,Index,
-TP_SEN:3,Other,,TEST_PIT_SENSITIVITY_AUTHORITY_DOCUMENT.csv,Index,

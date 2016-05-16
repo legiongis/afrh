@@ -1,9 +1,0 @@
-Source,Target,Type,Id,Label,Weight
-1,2,Directed,2,P2,1.0
-2,3,Directed,3,-P71,1.0
-1,6,Directed,6,P3,1.0
-1,8,Directed,8,P1,1.0
-1,10,Directed,10,P3,1.0
-1,12,Directed,12,P7,1.0
-12,13,Directed,13,P3,1.0
-12,15,Directed,15,P87,1.0
