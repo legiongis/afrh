@@ -16,6 +16,9 @@ TEMPLATE_DIRS = (os.path.join(PACKAGE_ROOT, 'templates'),os.path.join(PACKAGE_RO
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 MEDIA_ROOT =  os.path.join(PACKAGE_ROOT, 'uploadedfiles')
 
+DEBUG = False
+ALLOWED_HOSTS = ['*'] # also acceptable is ['.domain.com']
+
 # Set up default users
 EXAMPLE_USERS = {
     'admin1_user':{
