@@ -1,0 +1,40 @@
+{% load i18n %}
+<div class="row">
+     <div class="col-xs-12">
+        <dl>
+            <dt>
+                <h5 id="" class="arches-report-subsection-title">{% trans "AFRH-W Historic District" %}</h5>
+            </dt>
+
+            {% if 'AFRH_W_HISTORIC_DISTRICT_EVALUATION_E3' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                </dd>
+            {% else %}
+                {% for AFRH_W_HISTORIC_DISTRICT_EVALUATION_E3 in report_info.source.graph.AFRH_W_HISTORIC_DISTRICT_EVALUATION_E3 %}
+                    {% for AFRH_W_HISTORIC_DISTRICT_STATE_E3 in AFRH_W_HISTORIC_DISTRICT_EVALUATION_E3.AFRH_W_HISTORIC_DISTRICT_STATE_E3 %}
+                        <dd class="arches-report-subsection-item">
+                        {% for AFRH_W_HISTORIC_DISTRICT_STATUS_E55 in AFRH_W_HISTORIC_DISTRICT_STATE_E3.AFRH_W_HISTORIC_DISTRICT_STATUS_E55 %}
+                            {{ AFRH_W_HISTORIC_DISTRICT_STATUS_E55.AFRH_W_HISTORIC_DISTRICT_STATUS_E55__value }}
+                        {% endfor %}
+                        {% for AFRH_W_HISTORIC_DISTRICT_STATUS_DATE_E50 in AFRH_W_HISTORIC_DISTRICT_STATE_E3.AFRH_W_HISTORIC_DISTRICT_STATUS_DATE_E50 %}
+                            <span class="arches-report-subsection-item-type">({{ AFRH_W_HISTORIC_DISTRICT_STATUS_DATE_E50.AFRH_W_HISTORIC_DISTRICT_STATUS_DATE_E50__value|slice:":10" }})</span>
+                        {% endfor %}
+                        </dd>
+                    {% endfor %}
+                    
+                    {% for PERIOD_OF_SIGNIFICANCE_E55 in AFRH_W_HISTORIC_DISTRICT_EVALUATION_E3.PERIOD_OF_SIGNIFICANCE_E55 %}
+                        <dd class="arches-report-subsection-item">
+                        {{ PERIOD_OF_SIGNIFICANCE_E55.PERIOD_OF_SIGNIFICANCE_E55__value }}<span class="arches-report-subsection-item-type"> (period of significance)</span>
+                        </dd>
+                    {% endfor %}
+                    {% for AREA_OF_SIGNIFICANCE_E55 in AFRH_W_HISTORIC_DISTRICT_EVALUATION_E3.AREA_OF_SIGNIFICANCE_E55 %}
+                        <dd class="arches-report-subsection-item">
+                        {{ AREA_OF_SIGNIFICANCE_E55.AREA_OF_SIGNIFICANCE_E55__value }}<span class="arches-report-subsection-item-type"> (area of significance)</span>
+                        </dd>
+                    {% endfor %}
+                {% endfor %}            
+            {% endif %}
+        </dl>
+    </div>
+</div>

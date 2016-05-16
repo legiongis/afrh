@@ -1,0 +1,5 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+SUB_DEC:1,Concept Approval,,SUBMISSION_DECISION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+SUB_DEC:2,Preliminary Approval,Preliminary Approval,SUBMISSION_DECISION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+SUB_DEC:3,Final Approval,,SUBMISSION_DECISION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+SUB_DEC:4,Not Approved,,SUBMISSION_DECISION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes

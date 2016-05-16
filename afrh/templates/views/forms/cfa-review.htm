@@ -1,0 +1,148 @@
+{% extends "views/forms/base.htm" %}
+{% load i18n %}
+{% block form_content %}
+
+<div class="form-full-content">
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Project Identification" %}</span></div>
+        </div>
+    </div>
+    <div id="identification-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right">
+                    <div class="form-group">
+                        <input class="form-control arches-form-input" placeholder='{% trans "Project Name" %}' data-bind='value: getEditedNode("CFA_PROJECT_NAME.E41", "value")'>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right add-margin-top">
+                    <div class="form-group">
+                        <input class="form-control arches-form-input" placeholder='{% trans "Project Number" %}' data-bind='value: getEditedNode("CFA_FILE_NUMBER.E42", "value")'>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must fill all fields." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "none recorded" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record" style="display:block;">
+                                    <a href="javascript:void(0)" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" title="{% trans 'edit' %}" data-bind='click: $parent.editItem.bind($parent)'>
+                                        <span data-bind="text: nodes.get('CFA_PROJECT_NAME.E41', 'value')"></span>
+                                        <span data-bind="text: nodes.get('CFA_FILE_NUMBER.E42', 'value')"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Submission/Review" %}</span></div>
+        </div>
+    </div>
+    <div id="submission-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 col-sm-8 form-section-input add-padding-right">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CFA_SUBMISSION_TYPE.E55', 'value'), placeholder: '{% trans 'Submission Type' %}', dataKey: 'CFA_SUBMISSION_TYPE.E55'}"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 form-section-input add-margin-top">
+                    <div class="form-group">
+                        <div class="input-group datetimepicker">
+                            <input style="font-size: 13px; height:32px;" type="text" id="date" placeholder="{% trans 'Submission Date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('CFA_SUBMISSION_DATE.E49', 'value')} ">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-8 form-section-input margin-top-5 add-padding-right">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CFA_SUBMISSION_REVIEW_TYPE.E55', 'value'), placeholder: '{% trans 'Review Type' %}', dataKey: 'CFA_SUBMISSION_REVIEW_TYPE.E55'}"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <div class="input-group datetimepicker">
+                            <input style="font-size: 13px; height:32px;" type="text" id="date" placeholder="{% trans 'Review Date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('CFA_SUBMISSION_REVIEW_DATE.E49', 'value')} ">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CFA_SUBMISSION_DECISION.E55', 'value'), placeholder: '{% trans 'Decision' %}', dataKey: 'CFA_SUBMISSION_DECISION.E55'}"></input>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <select class="form-control arches-form-input" data-bind='value: getEditedNode("CFA_SUBMISSION_CONDITIONS.E62", "value")' placeholder="Conditions?">
+                            <option value="" disabled selected>Conditions?</option>
+                            <option>Yes</option><option>No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <div class="arches-html-editor">
+                            <div class="summernote" data-bind="summernote: {value: getEditedNode('CFA_SUBMISSION_NOTES.E62', 'value'), options:{}}"></div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a name." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "none recorded" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                        <span data-bind="text: nodes.get('CFA_SUBMISSION_TYPE.E55', 'label')+' Submission'" style="padding-right:2px;"></span>
+                                    </a><br>
+                                    <span data-bind="text: ' Submitted on '+ nodes.get('CFA_SUBMISSION_REVIEW_DATE.E49', 'value').slice(0,10)"></span><br>
+                                    <span data-bind="text: nodes.get('CFA_SUBMISSION_REVIEW_TYPE.E55', 'label')+' Review on '+ nodes.get('CFA_SUBMISSION_REVIEW_DATE.E49', 'value').slice(0,10)"></span><br>
+                                    <span data-bind="text: 'Decision: ' + nodes.get('CFA_SUBMISSION_DECISION.E55', 'label')"></span><br>
+                                    <span data-bind="text: 'Conditions? ' + nodes.get('CFA_SUBMISSION_CONDITIONS.E62', 'value')"></span><br>
+                                    <span class="text-muted" data-bind="html: nodes.get('CFA_SUBMISSION_NOTES.E62', 'value')"></span>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock form_content %}

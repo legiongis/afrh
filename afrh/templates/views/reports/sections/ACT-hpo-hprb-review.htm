@@ -1,0 +1,95 @@
+{% load i18n %}
+<div class="row">
+    {% if 'HPO___HPRB_REVIEW_E7' not in report_info.source.graph %}
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection"></h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    {% for HPO___HPRB_REVIEW_E7 in report_info.source.graph.HPO___HPRB_REVIEW_E7 %}
+        {% if 'HPO___HPRB_REVIEW_IDENTIFICATION_E15' in HPO___HPRB_REVIEW_E7 %}
+        <div class="col-sm-3 col-md-4">
+            <h3 class="arches-report-subsection">Identification</h3>
+        </div>
+        <div class="col-sm-9 col-md-8">
+            <div class="row">
+                <div class="col-xs-12 arches-report-subsection-content">
+                    <p class="arches-report-subsection-item">File Number: {{HPO___HPRB_REVIEW_E7.HPO___HPRB_REVIEW_IDENTIFICATION_E15.0.HPO_FILE_NUMBER_E42.0.HPO_FILE_NUMBER_E42__value}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if forloop.last %}
+        <div class="col-xs-12">
+            <hr class="devider margin-top-20 margin-bottom-20"></hr>
+        </div>
+        {% endif %}
+    {% endfor %}
+    {% for HPO___HPRB_REVIEW_E7 in report_info.source.graph.HPO___HPRB_REVIEW_E7 %}
+        {% if 'HPO___HPRB_SUBMISSION_E5' in HPO___HPRB_REVIEW_E7 %}
+            {% for HPO___HPRB_SUBMISSION_E5 in HPO___HPRB_REVIEW_E7.HPO___HPRB_SUBMISSION_E5 %}
+            <div class="col-sm-3 col-md-4">
+                <h3 class="arches-report-subsection">{{HPO___HPRB_SUBMISSION_E5.HPO___HPRB_SUBMISSION_TYPE_E55.0.HPO___HPRB_SUBMISSION_TYPE_E55__value}} Submission
+                </h3>
+                <h4>{{HPO___HPRB_SUBMISSION_E5.HPO___HPRB_SUBMISSION_TIME___SPAN_E52.0.HPO___HPRB_SUBMISSION_DATE_E49.0.HPO___HPRB_SUBMISSION_DATE_E49__value|slice:":10"}}
+                </h4>
+            </div>
+            <div class="col-sm-9 col-md-8">
+                <div class="row">
+                    <div class="col-xs-12 arches-report-subsection-content">
+                    {% if 'HPO___HPRB_SUBMISSION_REVIEW_TYPE_E55' in HPO___HPRB_SUBMISSION_E5 %}
+                        <p class="arches-report-subsection-item">
+                        Review Type: {{HPO___HPRB_SUBMISSION_E5.HPO___HPRB_SUBMISSION_REVIEW_TYPE_E55.0.HPO___HPRB_SUBMISSION_REVIEW_TYPE_E55__value}}
+                        </p>
+                    {% else %}
+                        <p class="arches-report-subsection-item">Review Type: none recorded</p>
+                    {% endif %}
+                    {% if 'HPO___HPRB_REVIEW_TIME___SPAN_E52' in HPO___HPRB_SUBMISSION_E5 %}
+                        <p class="arches-report-subsection-item">
+                        Review Date: {{HPO___HPRB_SUBMISSION_E5.HPO___HPRB_REVIEW_TIME___SPAN_E52.0.HPO___HPRB_SUBMISSION_REVIEW_DATE_E49.0.HPO___HPRB_SUBMISSION_REVIEW_DATE_E49__value|slice:":10"}}
+                        </p>
+                    {% else %}
+                        <p class="arches-report-subsection-item">Review Date: none recorded</p>
+                    {% endif %}
+                    
+                    {% if 'HPO___HPRB_SUBMISSION_CONDITIONS_E62' in HPO___HPRB_SUBMISSION_E5 %}
+                        <p class="arches-report-subsection-item">
+                        Conditions? {{HPO___HPRB_SUBMISSION_E5.HPO___HPRB_SUBMISSION_CONDITIONS_E62.0.HPO___HPRB_SUBMISSION_CONDITIONS_E62__value}}
+                        </p>
+                    {% else %}
+                        <p class="arches-report-subsection-item">Conditions? none recorded</p>
+                    {% endif %}
+                    {% if 'HPO___HPRB_SUBMISSION_DECISION_E55' in HPO___HPRB_SUBMISSION_E5 %}
+                        <p class="arches-report-subsection-item">
+                        Decision: {{HPO___HPRB_SUBMISSION_E5.HPO___HPRB_SUBMISSION_DECISION_E55.0.HPO___HPRB_SUBMISSION_DECISION_E55__value}}
+                        </p>
+                    {% else %}
+                        <p class="arches-report-subsection-item">Decision: none recorded</p>
+                    {% endif %}
+                    {% if 'HPO___HPRB_SUBMISSION_NOTES_E62' in HPO___HPRB_SUBMISSION_E5 %}
+                        <p class="arches-report-subsection-item">
+                        {{HPO___HPRB_SUBMISSION_E5.HPO___HPRB_SUBMISSION_NOTES_E62.0.HPO___HPRB_SUBMISSION_NOTES_E62__value|safe}}
+                        </p>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if not forloop.last %}
+            <div class="col-xs-12">
+                <hr class="devider margin-top-20 margin-bottom-20"></hr>
+            </div>
+            {% endif %}
+            
+            {% endfor %}
+            
+        {% endif %}
+    {% endfor %}
+    {% endif %}    
+</div>

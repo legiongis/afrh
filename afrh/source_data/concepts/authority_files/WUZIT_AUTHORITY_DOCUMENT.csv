@@ -1,0 +1,81 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider 
+WUZIT:1,Admissions Building,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:2,Airplane,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:3,Archaeological Sensitivity Zone,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:4,Bandstand,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:5,Bridge,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:6,Carriage House,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:7,Channel,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:8,Chapel,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:9,Clubhouse,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:10,Commemorative Marker,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:11,Community Garden,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:12,Culvert,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:13,Dam/Sluice,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:14,Deciduous Forest,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:15,Defined Open Space,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:16,Designed Woodland,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:17,Dormitory,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:18,Drinking Fountain,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:19,Flagstaff,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:20,Foundation Plantings,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:21,Fountain,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:22,Garage,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:23,Gas Station,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:24,Gate/Security,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:25,Gatehouse,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:26,Gazebo,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:27,Golf Course Water Hazards,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:28,Grasslands,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:29,Greenhouse,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:30,Heating Plant,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:31,Hedgerow,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:32,Hitching Posts,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:33,Hospital Ward,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:34,Internal Fencing,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:35,Island/Bird Residence,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:36,Jail,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:37,Lake,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:38,Lamp Post,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:39,Landscape-Related Objects,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:40,Mess Hall,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:41,Mess Hall (Hospital),,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:42,Monument,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:43,Office Building,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:44,Office Building (Hospital),,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:45,Open Stand Woodland,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:46,Ordnance,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:47,Perimeter Buffer,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:48,Perimeter Fencing,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:49,Perimeter Plantings,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:50,Recreation Areas,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:51,Recreational Hall,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:52,Recreational Objects,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:53,Residence,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:54,Restroom,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:55,Retaining Wall,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:56,Road,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:57,Security- and Maintenance-Related Objects,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:58,Sign,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:59,Spatial Organization,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:60,Specimen Trees,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:61,Spring,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:62,Statue,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:63,Storage/Shed,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:64,Stormwater Management Pond,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:65,Substation,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:66,Sundial,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:67,Tank,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:68,Topography,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:69,Transportation-Related Structures,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:70,Tree Cluster,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:71,Tree-Lined Street (Allee),,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:72,Urns,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:73,Utility-Related Object,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:74,Veteran's Medical Hospital,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:75,Vistas and Viewsheds,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:76,Warehouse,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:77,Water Tap,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:78,Water Tower,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:79,Weather Shelter,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+WUZIT:80,Workshop,,WUZIT_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES

@@ -1,0 +1,41 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-xs-12">
+        <dl>
+            <dt>
+                <h5 id="" class="arches-report-subsection-title">Style</h5>
+            </dt>
+            {% if 'STYLE_E55' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                </dd>
+            {% else %}
+                <dd class="arches-report-subsection-item arches-report-spacer">
+                    {% for STYLE_E55 in report_info.source.graph.STYLE_E55 %}
+                        {{ STYLE_E55.STYLE_E55__value }}
+                    {% endfor %}
+                </dd>
+            {% endif %}
+        </dl>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <dl>
+            <dt>
+                <h5 id="" class="arches-report-subsection-title">Form</h5>
+            </dt>
+            {% if 'FORM_TYPE_E55' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                </dd>
+            {% else %}
+                <dd class="arches-report-subsection-item arches-report-spacer">
+                    {% for FORM_TYPE_E55 in report_info.source.graph.FORM_TYPE_E55 %}
+                        {{ FORM_TYPE_E55.FORM_TYPE_E55__value }}
+                    {% endfor %}
+                </dd>
+            {% endif %}
+        </dl>
+    </div>
+</div>

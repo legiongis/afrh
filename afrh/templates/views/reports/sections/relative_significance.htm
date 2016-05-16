@@ -1,0 +1,25 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-xs-12">
+        <dl>
+            <dt>
+                <h5 id="" class="arches-report-subsection-title">{% trans "Relative Level of Signifincance" %}</h5>
+            </dt>
+
+            {% if 'RELATIVE_LEVEL_OF_SIGNIFICANCE_E55' not in report_info.source.graph %}
+                <dd class="arches-report-subsection-item">
+                    <span class="arches-report-subsection-item-type">{% trans "none recorded" %}</span>
+                </dd>
+            {% else %}
+                {% for RELATIVE_LEVEL_OF_SIGNIFICANCE_E55 in report_info.source.graph.RELATIVE_LEVEL_OF_SIGNIFICANCE_E55 %}
+                    <dd class="arches-report-subsection-item">
+                        {{ RELATIVE_LEVEL_OF_SIGNIFICANCE_E55.RELATIVE_LEVEL_OF_SIGNIFICANCE_E55__value }}
+                        <span class="arches-report-subsection-item-type">({{RELATIVE_LEVEL_OF_SIGNIFICANCE_E55.RELATIVE_LEVEL_OF_SIGNIFICANCE_DATE_E50__value|slice:":10"}})</span>
+                    </dd>
+                {% endfor %}            
+            {% endif %}
+
+        </dl>
+
+    </div>
+</div>
