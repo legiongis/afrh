@@ -1,4 +1,0 @@
-conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider 
-DATE_QUAL:1,ca.,,DATE_QUALIFIER_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
-DATE_QUAL:2,pre,,DATE_QUALIFIER_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
-DATE_QUAL:3,post,,DATE_QUALIFIER_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes

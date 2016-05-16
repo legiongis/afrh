@@ -1,3 +1,0 @@
-conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider 
-PRIME_SEC_TYPE:1,Primary,,PRIMARY_OR_SECONDARY_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
-PRIME_SEC_TYPE:2,Secondary,,PRIMARY_OR_SECONDARY_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES

@@ -1,4 +1,0 @@
-conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
-SUBM_TYPE:1,Concept,,SUBMISSION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
-SUBM_TYPE:2,Preliminary,,SUBMISSION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
-SUBM_TYPE:3,Final,,SUBMISSION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes

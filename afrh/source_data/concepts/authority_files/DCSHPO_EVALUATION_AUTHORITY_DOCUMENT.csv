@@ -1,6 +1,0 @@
-conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
-DCSHPO_EV:1,No Effect,,DCSHPO_EVALUATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
-DCSHPO_EV:2,No Historic Properties Affected,,DCSHPO_EVALUATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
-DCSHPO_EV:3,No Adverse Effect,,DCSHPO_EVALUATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
-DCSHPO_EV:4,No Adverse Effect - With Conditions,,DCSHPO_EVALUATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
-DCSHPO_EV:5,Non-Concurrence,,DCSHPO_EVALUATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
