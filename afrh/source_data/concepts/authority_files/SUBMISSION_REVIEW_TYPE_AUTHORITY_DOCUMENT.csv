@@ -1,0 +1,4 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+SUB_REV:1,Consent Calendar,,SUBMISSION_REVIEW_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+SUB_REV:2,Commission,,SUBMISSION_REVIEW_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+SUB_REV:3,Other,,SUBMISSION_REVIEW_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes

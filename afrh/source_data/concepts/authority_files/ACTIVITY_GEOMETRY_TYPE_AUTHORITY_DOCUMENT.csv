@@ -1,0 +1,3 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+ACT_GEOM_TYPE:1,Project Area,,ACTIVITY_GEOMETRY_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+ACT_GEOM_TYPE:2,Area of Potential Effect,,ACTIVITY_GEOMETRY_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes

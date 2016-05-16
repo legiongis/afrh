@@ -1,0 +1,236 @@
+{% load i18n %}
+<div class="row">
+    {% if report_info.type == 'ACTIVITY_A.E7' %}
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">AFRH Project Contacts</h3>
+    </div>
+    {% if 'AFRH_PROJECT_CONTACT_E39' not in report_info.source.graph %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <ul class="report-list">
+            {% for AFRH_PROJECT_CONTACT_E39 in report_info.source.graph.AFRH_PROJECT_CONTACT_E39 %}
+                <li class="arches-report-subsection-item">
+                {{AFRH_PROJECT_CONTACT_E39.AFRH_PROJECT_CONTACT_NAME_E82.0.AFRH_PROJECT_CONTACT_NAME_E82__value}}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Architects</h3>
+    </div>
+    {% if 'ACTIVITY_ARCHITECT_E39' not in report_info.source.graph %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <ul class="report-list">
+            {% for ACTIVITY_ARCHITECT_E39 in report_info.source.graph.ACTIVITY_ARCHITECT_E39 %}
+                <li class="arches-report-subsection-item">
+                {{ACTIVITY_ARCHITECT_E39.ACTIVITY_ARCHITECT_NAME_E82.0.ACTIVITY_ARCHITECT_NAME_E82__value}} <em>({{ACTIVITY_ARCHITECT_E39.ACTIVITY_ARCHITECT_TYPE_E55.0.ACTIVITY_ARCHITECT_TYPE_E55__value}})</em>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Contractors</h3>
+    </div>
+    {% if 'ACTIVITY_CONTRACTOR_E39' not in report_info.source.graph %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <ul class="report-list">
+            {% for ACTIVITY_CONTRACTOR_E39 in report_info.source.graph.ACTIVITY_CONTRACTOR_E39 %}
+                <li class="arches-report-subsection-item">
+                {{ACTIVITY_CONTRACTOR_E39.ACTIVITY_CONTRACTOR_NAME_E82.0.ACTIVITY_CONTRACTOR_NAME_E82__value}} <em>({{ACTIVITY_CONTRACTOR_E39.ACTIVITY_CONTRACTOR_TYPE_E55.0.ACTIVITY_CONTRACTOR_TYPE_E55__value}})</em>
+                </li>
+            {% endfor %}
+            </ul>
+            
+        </div>
+    </div>
+    {% endif %}
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Engineers</h3>
+    </div>
+    {% if 'ACTIVITY_ENGINEER_E39' not in report_info.source.graph %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <ul class="report-list">
+            {% for ACTIVITY_ENGINEER_E39 in report_info.source.graph.ACTIVITY_ENGINEER_E39 %}
+                <li class="arches-report-subsection-item">
+                {{ACTIVITY_ENGINEER_E39.ACTIVITY_ENGINEER_NAME_E82.0.ACTIVITY_ENGINEER_NAME_E82__value}} <em>({{ACTIVITY_ENGINEER_E39.ACTIVITY_ENGINEER_TYPE_E55.0.ACTIVITY_ENGINEER_TYPE_E55__value}})</em>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Archeologists</h3>
+    </div>
+    {% if 'ACTIVITY_ARCHAEOLOGIST_E39' not in report_info.source.graph %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <ul class="report-list">
+            {% for ACTIVITY_ARCHAEOLOGIST_E39 in report_info.source.graph.ACTIVITY_ARCHAEOLOGIST_E39 %}
+                <li class="arches-report-subsection-item">
+                {{ACTIVITY_ARCHAEOLOGIST_E39.ACTIVITY_ARCHAEOLOGIST_NAME_E82.0.ACTIVITY_ARCHAEOLOGIST_NAME_E82__value}}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Consultants</h3>
+    </div>
+    {% if 'ACTIVITY_CONSULTANT_E39' not in report_info.source.graph %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <ul class="report-list">
+            {% for ACTIVITY_CONSULTANT_E39 in report_info.source.graph.ACTIVITY_CONSULTANT_E39 %}
+                <li class="arches-report-subsection-item">
+                {{ACTIVITY_CONSULTANT_E39.ACTIVITY_CONSULTANT_NAME_E82.0.ACTIVITY_CONSULTANT_NAME_E82__value}} <em>({{ACTIVITY_CONSULTANT_E39.ACTIVITY_CONSULTANT_TYPE_E55.0.ACTIVITY_CONSULTANT_TYPE_E55__value}})</em>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Review Contacts</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <p class="arches-report-subsection-item"><em>Consulting Parties</em></p>
+            <ul class="report-list">
+            {% for ACTIVITY_CONSULTING_PARTY_E39 in report_info.source.graph.ACTIVITY_CONSULTING_PARTY_E39 %}
+                <li class="arches-report-subsection-item">
+                {{ACTIVITY_CONSULTING_PARTY_E39.ACTIVITY_CONSULTING_PARTY_NAME_E82.0.ACTIVITY_CONSULTING_PARTY_NAME_E82__value}}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="row">
+            <p class="arches-report-subsection-item"><em>NCPC Contacts</em></p>
+            <ul class="report-list">
+            {% for ACTIVITY_NCPC_CONTACT_E39 in report_info.source.graph.ACTIVITY_NCPC_CONTACT_E39 %}
+                <li class="arches-report-subsection-item">
+                {{ACTIVITY_NCPC_CONTACT_E39.ACTIVITY_NCPC_CONTACT_NAME_E82.0.ACTIVITY_NCPC_CONTACT_NAME_E82__value}}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="row">
+            <p class="arches-report-subsection-item"><em>CFA Contacts</em></p>
+            <ul class="report-list">
+            {% for ACTIVITY_CFA_CONTACT_E39 in report_info.source.graph.ACTIVITY_CFA_CONTACT_E39 %}
+                <li class="arches-report-subsection-item">
+                {{ACTIVITY_CFA_CONTACT_E39.ACTIVITY_CFA_CONTACT_NAME_E82.0.ACTIVITY_CFA_CONTACT_NAME_E82__value}}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="row">
+            <p class="arches-report-subsection-item"><em>DCSHPO Contacts</em></p>
+            <ul class="report-list">
+            {% for ACTIVITY_DCSHPO_CONTACT_E39 in report_info.source.graph.ACTIVITY_DCSHPO_CONTACT_E39 %}
+                <li class="arches-report-subsection-item">
+                {{ACTIVITY_DCSHPO_CONTACT_E39.ACTIVITY_DCSHPO_CONTACT_NAME_E82.0.ACTIVITY_DCSHPO_CONTACT_NAME_E82__value}}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Notes</h3>
+    </div>
+    {% if 'ACTIVITY_ENTITIES_NOTE_E62' not in report_info.source.graph %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <p class="arches-report-subsection-item">
+            {{ report_info.source.graph.ACTIVITY_ENTITIES_NOTE_E62.0.ACTIVITY_ENTITIES_NOTE_E62__value|safe}}
+            </p>
+        </div>
+    </div>
+    {% endif %}
+</div>

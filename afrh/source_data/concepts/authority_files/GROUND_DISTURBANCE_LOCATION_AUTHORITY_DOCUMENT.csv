@@ -1,0 +1,5 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+GRND_DIST:1,Within a known ASZ,,GROUND_DISTURBANCE_LOCATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+GRND_DIST:2,Within a known archaeological site (eligible),,GROUND_DISTURBANCE_LOCATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+GRND_DIST:3,Within a known archaeological site (listed),,GROUND_DISTURBANCE_LOCATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+GRND_DIST:4,Not within a known ASZ or known archaeological site,,GROUND_DISTURBANCE_LOCATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes

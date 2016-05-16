@@ -1,0 +1,8 @@
+*.pyc
+*.egg*
+*.log
+afrh/logs
+afrh/elasticsearch
+afrh/uploadedfiles
+afrh/static
+settings_local.py

@@ -1,0 +1,25 @@
+{% load i18n %}
+<div class="row">
+    
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">HPMP Maintenance Priority</h3>
+    </div>
+    
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if 'HPMP_STATUS_E55' not in report_info.source.graph %}
+                    <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+                {% else %}
+                    {% for HPMP_STATUS_E55 in report_info.source.graph.HPMP_STATUS_E55 %}
+                    <p class="arches-report-subsection-item">
+                    {{HPMP_STATUS_E55.HPMP_STATUS_E55__value}}
+                    </p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+

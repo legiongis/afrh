@@ -1,0 +1,6 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+NEPA_TYPE:1,CATEX (requiring documentation),,NEPA_DOCUMENTATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_TYPE:2,CATEX (not requiring documentation),,NEPA_DOCUMENTATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_TYPE:3,Environmental Assessment,,NEPA_DOCUMENTATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_TYPE:4,Environmental Impact Statement,,NEPA_DOCUMENTATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_TYPE:5,Supplemental Environmental Impact Statement,,NEPA_DOCUMENTATION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes

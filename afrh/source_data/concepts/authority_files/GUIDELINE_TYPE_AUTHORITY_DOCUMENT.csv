@@ -1,0 +1,39 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+GUIDELINE:1,Built Form,,GUIDELINE_TYPE_AUTHORITY_DOCUMENT.csv,Collector,PRESERVEscapes
+GUIDELINE:2,Built Form - General,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:3,Built Form - Height,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:4,Built Form - Massing,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:5,Built Form - Parcel Plan and Built-To Criteria,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:6,Built Form - Streetwall,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:7,Built Form - Elevations and Fenestration,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:8,Built Form - Materials,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:9,Built Form - Entrances,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:10,Built Form - Foundations,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:11,Built Form - Roofs,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:12,Built Form - Architectural Features,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:13,Built Form - Mechanical,,GUIDELINE:1,Index,PRESERVEscapes
+GUIDELINE:14,Landscape,,GUIDELINE_TYPE_AUTHORITY_DOCUMENT.csv,Collector,PRESERVEscapes
+GUIDELINE:15,Landscape - General,,GUIDELINE:14,Index,PRESERVEscapes
+GUIDELINE:16,Landscape - Topography and Views,,GUIDELINE:14,Index,PRESERVEscapes
+GUIDELINE:17,Landscape - Open Space,,GUIDELINE:14,Index,PRESERVEscapes
+GUIDELINE:18,Landscape - Streetscape,,GUIDELINE:14,Index,PRESERVEscapes
+GUIDELINE:19,Landscape - Treescape,,GUIDELINE:14,Index,PRESERVEscapes
+GUIDELINE:20,Landscape - Foundation Plantings,,GUIDELINE:14,Index,PRESERVEscapes
+GUIDELINE:21,Landscape - Surface Parking,,GUIDELINE:14,Index,PRESERVEscapes
+GUIDELINE:22,Landscape - Commemorative Objects and Sculpture,,GUIDELINE:14,Index,PRESERVEscapes
+GUIDELINE:23,Landscape - Site Materials,,GUIDELINE:14,Index,PRESERVEscapes
+GUIDELINE:24,Landscape - Site Furnishings,,GUIDELINE:14,Index,PRESERVEscapes
+GUIDELINE:25,Landscape - Lighting,,GUIDELINE:14,Index,PRESERVEscapes
+GUIDELINE:26,Signage,,GUIDELINE_TYPE_AUTHORITY_DOCUMENT.csv,Collector,PRESERVEscapes
+GUIDELINE:27,Signage - General,,GUIDELINE:26,Index,PRESERVEscapes
+GUIDELINE:28,Signage - Color,,GUIDELINE:26,Index,PRESERVEscapes
+GUIDELINE:29,Signage - Typography,,GUIDELINE:26,Index,PRESERVEscapes
+GUIDELINE:30,Signage - Symbols,,GUIDELINE:26,Index,PRESERVEscapes
+GUIDELINE:31,Signage - Colors,,GUIDELINE:26,Index,PRESERVEscapes
+GUIDELINE:32,Other,,GUIDELINE_TYPE_AUTHORITY_DOCUMENT.csv,Collector,PRESERVEscapes
+GUIDELINE:33,Other - Land Use,,GUIDELINE:32,Index,PRESERVEscapes
+GUIDELINE:34,Other - Transportation,,GUIDELINE:32,Index,PRESERVEscapes
+GUIDELINE:35,Other - Sustainability,,GUIDELINE:32,Index,PRESERVEscapes
+GUIDELINE:36,Other - Storm Water Management,,GUIDELINE:32,Index,PRESERVEscapes
+GUIDELINE:37,Other - Water Quality Management,,GUIDELINE:32,Index,PRESERVEscapes
+GUIDELINE:38,Other - Phasing,,GUIDELINE:32,Index,PRESERVEscapes

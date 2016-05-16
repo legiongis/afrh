@@ -1,0 +1,226 @@
+{% load i18n %}
+<div class="row">
+    {% if 'ARPA_REVIEW_E7' not in report_info.source.graph %}
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection"></h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Ground Disturbance?</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 class="arches-report-subsection">{{report_info.source.graph.GROUND_DISTURBANCE_E62.0.GROUND_DISTURBANCE_E62__value}}
+                {% if report_info.source.graph.GROUND_DISTURBANCE_E62.0.GROUND_DISTURBANCE_E62__value == "No" %}
+                    <em>(no review required)</em>
+                {% endif %}
+                </h3>
+            </div>
+        </div>
+    </div>
+    {% if report_info.source.graph.GROUND_DISTURBANCE_E62.0.GROUND_DISTURBANCE_E62__value == "Yes" %}
+        {% for ARPA_REVIEW_E7 in report_info.source.graph.ARPA_REVIEW_E7 %}
+            {% if 'AFRH_ARPA_ASSESSMENT_E5' in ARPA_REVIEW_E7 %}
+                <div class="col-xs-12">
+                    <hr class="devider margin-top-20 margin-bottom-20"></hr>
+                </div>
+                {% for AFRH_ARPA_ASSESSMENT_E5 in ARPA_REVIEW_E7.AFRH_ARPA_ASSESSMENT_E5 %}
+                <div class="col-sm-3 col-md-4">
+                    <h3 class="arches-report-subsection">AFRH Assessment</h3>
+                </div>
+                <div class="col-sm-9 col-md-8">
+                    <div class="row">
+                        <div class="col-xs-12 arches-report-subsection-content">
+                        <p class="arches-report-subsection-item"><em>Ground Disturbance Locations</em></p>
+                        {% if 'GROUND_DISTURBANCE_LOCATION_E27' in report_info.source.graph %}
+                            <ul class="report-list">
+                            {% for GROUND_DISTURBANCE_LOCATION_E27 in report_info.source.graph.GROUND_DISTURBANCE_LOCATION_E27 %}
+                                <li class="arches-report-subsection-item">
+                                {{GROUND_DISTURBANCE_LOCATION_E27.GROUND_DISTURBANCE_LOCATION_E27__value}}
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="arches-report-subsection-item">none recorded</p>
+                        {% endif %}
+                        <p class="arches-report-subsection-item"><em>AFRH Determination</em>
+                        {% if 'AFRH_ARPA_DETERMINATION_E55' in AFRH_ARPA_ASSESSMENT_E5 %} {{AFRH_ARPA_ASSESSMENT_E5.AFRH_ARPA_DETERMINATION_E55.0.AFRH_ARPA_DETERMINATION_E55__value}}</p>
+                        {% else %}
+                            none recorded</p>
+                        {% endif %}
+                        <p class="arches-report-subsection-item"><em>Notes</em></p>
+                        {% if 'AFRH_ARPA_DETERMINATION_NOTE_E62' in AFRH_ARPA_ASSESSMENT_E5 %}
+                            <p class="arches-report-subsection-item">{{AFRH_ARPA_ASSESSMENT_E5.AFRH_ARPA_DETERMINATION_NOTE_E62.0.AFRH_ARPA_DETERMINATION_NOTE_E62__value|safe}}</p>
+                        {% else %}
+                            <p class="arches-report-subsection-item">none recorded</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+            {% if 'DCSHPO_NOTIFICATION_E5' in ARPA_REVIEW_E7 %}
+                <div class="col-xs-12">
+                    <hr class="devider margin-top-20 margin-bottom-20"></hr>
+                </div>
+                {% for DCSHPO_NOTIFICATION_E5 in ARPA_REVIEW_E7.DCSHPO_NOTIFICATION_E5 %}
+                <div class="col-sm-3 col-md-4">
+                    <h3 class="arches-report-subsection">DCSHPO Notification</h3>
+                    <h4>{{DCSHPO_NOTIFICATION_E5.DCSHPO_NOTIFICATION_TIME___SPAN_E52.0.DCSHPO_NOTIFICATION_DATE_E49.0.DCSHPO_NOTIFICATION_DATE_E49__value|slice:":10"}}</h4>
+                </div>
+                <div class="col-sm-9 col-md-8">
+                    <div class="row">
+                        <div class="col-xs-12 arches-report-subsection-content">
+                        <p class="arches-report-subsection-item"><em>Notification Method: </em>
+                        {% if 'DCSHPO_NOTIFICATION_METHOD_E55' in DCSHPO_NOTIFICATION_E5 %} {{DCSHPO_NOTIFICATION_E5.DCSHPO_NOTIFICATION_METHOD_E55.0.DCSHPO_NOTIFICATION_METHOD_E55__value}}</p>
+                        {% else %}
+                            none recorded</p>
+                        {% endif %}
+                        <p class="arches-report-subsection-item"><em>DCSHPO Response: </em>
+                        {% if 'DCSHPO_NOTIFICATION_RESPONSE_E55' in DCSHPO_NOTIFICATION_E5 %} {{DCSHPO_NOTIFICATION_E5.DCSHPO_NOTIFICATION_RESPONSE_E55.0.DCSHPO_NOTIFICATION_RESPONSE_E55__value}}</p>
+                        {% else %}
+                            none recorded</p>
+                        {% endif %}
+                        <p class="arches-report-subsection-item"><em>Notes</em></p>
+                        {% if 'DCSHPO_NOTIFICATION_NOTES_E62' in DCSHPO_NOTIFICATION_E5 %}
+                            <p class="arches-report-subsection-item">{{DCSHPO_NOTIFICATION_E5.DCSHPO_NOTIFICATION_NOTES_E62.0.DCSHPO_NOTIFICATION_NOTES_E62__value|safe}}</p>
+                        {% else %}
+                            <p class="arches-report-subsection-item">none recorded</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <div class="col-xs-12">
+            <hr class="devider margin-top-20 margin-bottom-20"></hr>
+        </div>
+        <div class="col-sm-3 col-md-4">
+            <h3 class="arches-report-subsection">Required Documentation</h3>
+        </div>
+        <div class="col-sm-9 col-md-8">
+        {% for ARPA_REVIEW_E7 in report_info.source.graph.ARPA_REVIEW_E7 %}
+            {% if 'ARPA_DOCUMENTATION_E31' in ARPA_REVIEW_E7 %}
+                <div class="row">
+                    {% for ARPA_DOCUMENTATION_E31 in ARPA_REVIEW_E7.ARPA_DOCUMENTATION_E31 %}
+                    <div class="col-xs-12 arches-report-subsection-content">
+                    <h4>{{ARPA_DOCUMENTATION_E31.ARPA_DOCUMENTATION_TYPE_E55.0.ARPA_DOCUMENTATION_TYPE_E55__value}}, <em>{{ARPA_DOCUMENTATION_E31.ARPA_DOCUMENTATION_STATUS_E55.0.ARPA_DOCUMENTATION_STATUS_E55__value}}, {{ARPA_DOCUMENTATION_E31.ARPA_DOCUMENTATION_TIME___SPAN_E52.0.ARPA_DOCUMENTATION_DATE_E49.0.ARPA_DOCUMENTATION_DATE_E49__value|slice:":10"}}</em></h4>
+                    <p class="arches-report-subsection-item"><em>Submission Method: </em>
+                    {% if 'ARPA_DOCUMENTATION_SUBMISSION_METHOD_E55' in ARPA_DOCUMENTATION_E31 %} {{ARPA_DOCUMENTATION_E31.ARPA_DOCUMENTATION_SUBMISSION_METHOD_E55.0.ARPA_DOCUMENTATION_SUBMISSION_METHOD_E55__value}}</p>
+                    {% else %}
+                        none recorded</p>
+                    {% endif %}
+                    <p class="arches-report-subsection-item"><em>DCSHPO Submission Date: </em>
+                    {% if 'ARPA_DOCUMENTATION_SUBMISSION_TIME___SPAN_E52' in ARPA_DOCUMENTATION_E31 %} {{ARPA_DOCUMENTATION_E31.ARPA_DOCUMENTATION_SUBMISSION_TIME___SPAN_E52.0.ARPA_DOCUMENTATION_SUBMISSION_DATE_E49.0.ARPA_DOCUMENTATION_SUBMISSION_DATE_E49__value|slice:":10"}}</p>
+                    {% else %}
+                        none recorded</p>
+                    {% endif %}
+                    <p class="arches-report-subsection-item"><em>DCSHPO Response Date: </em>
+                    {% if 'ARPA_DOCUMENTATION_RESPONSE_TIME___SPAN_E52' in ARPA_DOCUMENTATION_E31 %} {{ARPA_DOCUMENTATION_E31.ARPA_DOCUMENTATION_RESPONSE_TIME___SPAN_E52.0.ARPA_DOCUMENTATION_RESPONSE_DATE_E49.0.ARPA_DOCUMENTATION_RESPONSE_DATE_E49__value|slice:":10"}}</p>
+                    {% else %}
+                        none recorded</p>
+                    {% endif %}
+                    <p class="arches-report-subsection-item"><em>DCSHPO Report Number: </em>
+                    {% if 'ARPA_DCSHPO_REPORT_NUMBER_E42' in ARPA_DOCUMENTATION_E31 %} {{ARPA_DOCUMENTATION_E31.ARPA_DCSHPO_REPORT_NUMBER_E42.0.ARPA_DCSHPO_REPORT_NUMBER_E42__value}}</p>
+                    {% else %}
+                        none recorded</p>
+                    {% endif %}
+                    <p class="arches-report-subsection-item"><em>Notes</em></p>
+                    {% if 'ARPA_DOCUMENTATION_NOTES_E62' in ARPA_DOCUMENTATION_E31 %}
+                        <p class="arches-report-subsection-item">{{ARPA_DOCUMENTATION_E31.ARPA_DOCUMENTATION_NOTES_E62.0.ARPA_DOCUMENTATION_NOTES_E62__value|safe}}</p>
+                    {% else %}
+                        <p class="arches-report-subsection-item">none recorded</p>
+                    {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+        <div class="col-xs-12">
+            <hr class="devider margin-top-20 margin-bottom-20"></hr>
+        </div>
+        <div class="col-sm-3 col-md-4">
+            <h3 class="arches-report-subsection">Field Investigations</h3>
+        </div>
+        <div class="col-sm-9 col-md-8">
+        {% for ARPA_REVIEW_E7 in report_info.source.graph.ARPA_REVIEW_E7 %}
+            {% if 'ARPA_FIELD_INVESTIGATION_E5' in ARPA_REVIEW_E7 %}
+                <div class="row">
+                    {% for ARPA_FIELD_INVESTIGATION_E5 in ARPA_REVIEW_E7.ARPA_FIELD_INVESTIGATION_E5 %}
+                    <div class="col-xs-12 arches-report-subsection-content">
+                    <h4>{{ARPA_FIELD_INVESTIGATION_E5.ARPA_FIELD_INVESTIGATION_TYPE_E55.0.ARPA_FIELD_INVESTIGATION_TYPE_E55__value}}</h4>
+                    <p class="arches-report-subsection-item"><em>Start: {{ARPA_FIELD_INVESTIGATION_E5.ARPA_FIELD_INVESTIGATION_START_E63.0.ARPA_FIELD_INVESTIGATION_START_DATE_E49.0.ARPA_FIELD_INVESTIGATION_START_DATE_E49__value|slice:":10"}}, End: {{ARPA_FIELD_INVESTIGATION_E5.ARPA_FIELD_INVESTIGATION_END_E64.0.ARPA_FIELD_INVESTIGATION_END_DATE_E49.0.ARPA_FIELD_INVESTIGATION_END_DATE_E49__value|slice:":10"}}</em>
+                    <p class="arches-report-subsection-item">Artifacts Found? {% if 'ARPA_FIELD_INVESTIGATION_ARTIFACTS_FOUND_E62' in ARPA_FIELD_INVESTIGATION_E5 %} {{ARPA_FIELD_INVESTIGATION_E5.ARPA_FIELD_INVESTIGATION_ARTIFACTS_FOUND_E62.0.ARPA_FIELD_INVESTIGATION_ARTIFACTS_FOUND_E62__value}}</p>
+                    {% else %}
+                        unknown</p>
+                    {% endif %}
+                    <p class="arches-report-subsection-item">Artifact Status: {% if 'ARPA_FIELD_INVESTIGATION_ARTIFACT_STATUS_E55' in ARPA_FIELD_INVESTIGATION_E5 %} {{ARPA_FIELD_INVESTIGATION_E5.ARPA_FIELD_INVESTIGATION_ARTIFACT_STATUS_E55.0.ARPA_FIELD_INVESTIGATION_ARTIFACT_STATUS_E55__value}}</p>
+                    {% else %}
+                        unknown</p>
+                    {% endif %}
+                    <p class="arches-report-subsection-item"><em>Description</em></p>
+                    {% if 'ARPA_FIELD_INVESTIGATION_DESCRIPTION_E62' in ARPA_FIELD_INVESTIGATION_E5 %}
+                        <p class="arches-report-subsection-item">{{ARPA_FIELD_INVESTIGATION_E5.ARPA_FIELD_INVESTIGATION_DESCRIPTION_E62.0.ARPA_FIELD_INVESTIGATION_DESCRIPTION_E62__value|safe}}</p>
+                    {% else %}
+                        <p class="arches-report-subsection-item">none recorded</p>
+                    {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+        <div class="col-xs-12">
+            <hr class="devider margin-top-20 margin-bottom-20"></hr>
+        </div>
+        <div class="col-sm-3 col-md-4">
+            <h3 class="arches-report-subsection">Unanticipated Discoveries</h3>
+        </div>
+        <div class="col-sm-9 col-md-8">
+        {% for ARPA_REVIEW_E7 in report_info.source.graph.ARPA_REVIEW_E7 %}
+            {% if 'ARPA_DISCOVERY_E5' in ARPA_REVIEW_E7 %}
+                <div class="row">
+                    {% for ARPA_DISCOVERY_E5 in ARPA_REVIEW_E7.ARPA_DISCOVERY_E5 %}
+                    <p class="arches-report-subsection-item"><em>Discovery Date: </em>
+                    {% if 'ARPA_DISCOVERY_TIME___SPAN_E52' in ARPA_DISCOVERY_E5 %} {{ARPA_DISCOVERY_E5.ARPA_DISCOVERY_TIME___SPAN_E52.0.ARPA_DISCOVERY_DATE_E49.0.ARPA_DISCOVERY_DATE_E49__value|slice:":10"}}</p>
+                    {% else %}
+                        none recorded</p>
+                    {% endif %}
+                    <p class="arches-report-subsection-item"><em>Documentation Date: </em>
+                    {% if 'ARPA_DISCOVERY_DOCUMENTATION_TIME___SPAN_E52' in ARPA_DISCOVERY_E5 %} {{ARPA_DISCOVERY_E5.ARPA_DISCOVERY_DOCUMENTATION_TIME___SPAN_E52.0.ARPA_DISCOVERY_DOCUMENTATION_DATE_E49.0.ARPA_DISCOVERY_DOCUMENTATION_DATE_E49__value|slice:":10"}}</p>
+                    {% else %}
+                        none recorded</p>
+                    {% endif %}
+                    <p class="arches-report-subsection-item"><em>DCSHPO Notification Date: </em>
+                    {% if 'ARPA_DISCOVERY_DCSHPO_NOTIFICATION_TIME___SPAN_E52' in ARPA_DISCOVERY_E5 %} {{ARPA_DISCOVERY_E5.ARPA_DISCOVERY_DCSHPO_NOTIFICATION_TIME___SPAN_E52.0.ARPA_DISCOVERY_DCSHPO_NOTIFICATION_DATE_E49.0.ARPA_DISCOVERY_DCSHPO_NOTIFICATION_DATE_E49__value|slice:":10"}}</p>
+                    {% else %}
+                        none recorded</p>
+                    {% endif %}
+                    <p class="arches-report-subsection-item"><em>Artifact Status: </em>{% if 'ARPA_DISCOVERY_ARTIFACT_STATUS_E55' in ARPA_DISCOVERY_E5 %} {{ARPA_DISCOVERY_E5.ARPA_DISCOVERY_ARTIFACT_STATUS_E55.0.ARPA_DISCOVERY_ARTIFACT_STATUS_E55__value}}</p>
+                    {% else %}
+                        unknown</p>
+                    {% endif %}
+                    <p class="arches-report-subsection-item"><em>Description</em></p>
+                    {% if 'ARPA_DISCOVERY_NOTES_E62' in ARPA_DISCOVERY_E5 %}
+                        <p class="arches-report-subsection-item">{{ARPA_DISCOVERY_E5.ARPA_DISCOVERY_NOTES_E62.0.ARPA_DISCOVERY_NOTES_E62__value|safe}}</p>
+                    {% else %}
+                        <p class="arches-report-subsection-item">none recorded</p>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endif %}    
+    {% endif %}
+</div>
