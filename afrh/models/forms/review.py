@@ -58,11 +58,11 @@ class NCPCReviewForm(ResourceForm):
     def load(self, lang):
 
         self.data['NCPC_REVIEW_IDENTIFICATION.E15'] = {
-            'branch_lists': self.get_nodes('NCPC_REVIEW_IDENTIFICATION.E15'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('NCPC_REVIEW_IDENTIFICATION.E15')),
         }
         
         self.data['NCPC_SUBMISSION.E5'] = {
-            'branch_lists': self.get_nodes('NCPC_SUBMISSION.E5'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('NCPC_SUBMISSION.E5')),
             'domains': {
                 'NCPC_SUBMISSION_TYPE.E55': Concept().get_e55_domain('NCPC_SUBMISSION_TYPE.E55'),
                 'NCPC_SUBMISSION_DECISION.E55': Concept().get_e55_domain('NCPC_SUBMISSION_DECISION.E55'),
@@ -89,11 +89,11 @@ class HPOHPRBReviewForm(ResourceForm):
     def load(self, lang):
 
         self.data['HPO-HPRB_REVIEW_IDENTIFICATION.E15'] = {
-            'branch_lists': self.get_nodes('HPO-HPRB_REVIEW_IDENTIFICATION.E15'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('HPO-HPRB_REVIEW_IDENTIFICATION.E15')),
         }
         
         self.data['HPO-HPRB_SUBMISSION.E5'] = {
-            'branch_lists': self.get_nodes('HPO-HPRB_SUBMISSION.E5'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('HPO-HPRB_SUBMISSION.E5')),
             'domains': {
                 'HPO-HPRB_SUBMISSION_TYPE.E55': Concept().get_e55_domain('HPO-HPRB_SUBMISSION_TYPE.E55'),
                 'HPO-HPRB_SUBMISSION_DECISION.E55': Concept().get_e55_domain('HPO-HPRB_SUBMISSION_DECISION.E55'),
@@ -120,11 +120,11 @@ class CFAReviewForm(ResourceForm):
     def load(self, lang):
 
         self.data['CFA_REVIEW_IDENTIFICATION.E15'] = {
-            'branch_lists': self.get_nodes('CFA_REVIEW_IDENTIFICATION.E15'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('CFA_REVIEW_IDENTIFICATION.E15')),
         }
         
         self.data['CFA_SUBMISSION.E5'] = {
-            'branch_lists': self.get_nodes('CFA_SUBMISSION.E5'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('CFA_SUBMISSION.E5')),
             'domains': {
                 'CFA_SUBMISSION_TYPE.E55': Concept().get_e55_domain('CFA_SUBMISSION_TYPE.E55'),
                 'CFA_SUBMISSION_DECISION.E55': Concept().get_e55_domain('CFA_SUBMISSION_DECISION.E55'),
@@ -187,7 +187,7 @@ class Section106ReviewForm(ResourceForm):
         
         for node, domains in load_nodes.iteritems():
             self.data[node] = {
-                'branch_lists': self.get_nodes(node),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes(node)),
                 'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
             }
         
@@ -252,7 +252,7 @@ class ARPAReviewForm(ResourceForm):
         for node, domains in load_nodes.iteritems():
 
             self.data[node] = {
-                'branch_lists': self.get_nodes(node),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes(node)),
                 'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
             }
         
@@ -305,7 +305,7 @@ class NEPAReviewForm(ResourceForm):
         for node, domains in load_nodes.iteritems():
 
             self.data[node] = {
-                'branch_lists': self.get_nodes(node),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes(node)),
                 'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
             }
         

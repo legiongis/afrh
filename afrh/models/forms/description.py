@@ -58,7 +58,7 @@ class CharAreaDescriptionForm(ResourceForm):
     def load(self, lang):
         #if self.resource:
         self.data['DESCRIPTION.E62'] = {
-            'branch_lists': self.get_nodes('DESCRIPTION.E62'),
+            'branch_lists':datetime_nodes_to_dates(self.get_nodes('DESCRIPTION.E62')),
         }
         
 class ActADescriptionForm(ResourceForm):
@@ -108,7 +108,7 @@ class ActADescriptionForm(ResourceForm):
         
         for node, domains in load_nodes.iteritems():
             self.data[node] = {
-                'branch_lists': self.get_nodes(node),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes(node)),
                 'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
             }
 
@@ -130,14 +130,14 @@ class DesDescriptionForm(ResourceForm):
     def load(self, lang):
         #if self.resource:
         self.data['DESCRIPTION.E62'] = {
-            'branch_lists': self.get_nodes('DESCRIPTION.E62'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('DESCRIPTION.E62')),
             'domains': {
                     'HISTORIC_AREA_DESCRIPTION_TYPE.E55' : Concept().get_e55_domain('HISTORIC_AREA_DESCRIPTION_TYPE.E55'), 
                 },
         }
         
         self.data['NUMBER_OF_RESOURCES.E62'] = {
-            'branch_lists': self.get_nodes('NUMBER_OF_RESOURCES.E62'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('NUMBER_OF_RESOURCES.E62')),
             'domains': {
                     'NUMBER_OF_RESOURCES_TYPE.E55' : Concept().get_e55_domain('NUMBER_OF_RESOURCES_TYPE.E55'), 
                 },
@@ -161,14 +161,14 @@ class ActBDescriptionForm(ResourceForm):
     def load(self, lang):
 
         self.data['ACTIVITY_B_USE.E55'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_B_USE.E55'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_B_USE.E55')),
             'domains': {
                     'ACTIVITY_B_USE.E55' : Concept().get_e55_domain('ACTIVITY_B_USE.E55'), 
                 },
         }
         
         self.data['ACTIVITY_B_PROJECT_TYPE.E55'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_B_PROJECT_TYPE.E55'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_B_PROJECT_TYPE.E55')),
             'domains': {
                     'ACTIVITY_B_PROJECT_TYPE.E55' : Concept().get_e55_domain('ACTIVITY_B_PROJECT_TYPE.E55'), 
                 },
@@ -207,7 +207,7 @@ class InventoryDescriptionForm(ResourceForm):
             }
         
             self.data['DESCRIPTION.E62'] = {
-                'branch_lists': self.get_nodes('DESCRIPTION.E62'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('DESCRIPTION.E62')),
                 'domains': {
                     'DESCRIPTION_TYPE.E55' : Concept().get_e55_domain('DESCRIPTION_TYPE.E55'),
                     'ZONE_DESCRIPTION_TYPE.E55' : Concept().get_e55_domain('ZONE_DESCRIPTION_TYPE.E55'),
@@ -216,7 +216,7 @@ class InventoryDescriptionForm(ResourceForm):
             
             # used only for inventory resources
             self.data['STYLE.E55'] = {
-                'branch_lists': self.get_nodes('STYLE.E55'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('STYLE.E55')),
                 'domains': {
                     'STYLE.E55' : Concept().get_e55_domain('STYLE.E55'),
                 }               

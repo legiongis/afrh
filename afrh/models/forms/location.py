@@ -32,6 +32,14 @@ from datetime import datetime
 from django.conf import settings
 import json, os
 
+def datetime_nodes_to_dates(branch_list):
+    for branch in branch_list:
+        for node in branch['nodes']:
+            if isinstance(node.value, datetime):
+                node.value = node.value.date()
+                node.label = node.value
+    return branch_list
+
 class SimpleLocationForm(ResourceForm):
     @staticmethod
     def get_info():
@@ -68,46 +76,46 @@ class SimpleLocationForm(ResourceForm):
     
         if self.resource.entitytypeid == 'ARCHAEOLOGICAL_ZONE.E53':
             self.data['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY.E47'] = {
-                'branch_lists': self.get_nodes('ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY.E47'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY.E47')),
             }
             self.data['ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE.E62'] = {
-                'branch_lists': self.get_nodes('ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE.E62'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE.E62')),
             }
         else:
             self.data['SPATIAL_COORDINATES_GEOMETRY.E47'] = {
-                'branch_lists': self.get_nodes('SPATIAL_COORDINATES_GEOMETRY.E47'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('SPATIAL_COORDINATES_GEOMETRY.E47')),
             }
         
         if self.resource.entitytypeid == 'CHARACTER_AREA.E53':
             self.data['CHARACTER_AREA_PLACE_NOTE.E62'] = {
-                'branch_lists': self.get_nodes('CHARACTER_AREA_PLACE_NOTE.E62'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('CHARACTER_AREA_PLACE_NOTE.E62')),
             }
         
         if self.resource.entitytypeid == 'HISTORIC_AREA.E53':
             self.data['HISTORIC_AREA_LOCATION_NOTE.E62'] = {
-                'branch_lists': self.get_nodes('HISTORIC_AREA_LOCATION_NOTE.E62'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('HISTORIC_AREA_LOCATION_NOTE.E62')),
             }
         
         if self.resource.entitytypeid == 'MASTER_PLAN_ZONE.E53':
             self.data['PLACE_DESCRIPTION.E62'] = {
-                'branch_lists': self.get_nodes('PLACE_DESCRIPTION.E62'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('PLACE_DESCRIPTION.E62')),
             }
         
         if self.resource.entitytypeid == 'ACTIVITY_B.E7':
             self.data['DESCRIPTION_OF_LOCATION.E62'] = {
-                'branch_lists': self.get_nodes('DESCRIPTION_OF_LOCATION.E62'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('DESCRIPTION_OF_LOCATION.E62')),
             }
             self.data['MASTER_PLAN_PARCEL_ID.E53'] = {
-                'branch_lists': self.get_nodes('MASTER_PLAN_PARCEL_ID.E53'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('MASTER_PLAN_PARCEL_ID.E53')),
             }
             self.data['PLACE_ADDRESS.E45'] = {
-                'branch_lists': self.get_nodes('PLACE_ADDRESS.E45'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('PLACE_ADDRESS.E45')),
             }
             self.data['SQUARE_ID.E53'] = {
-                'branch_lists': self.get_nodes('SQUARE_ID.E53'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('SQUARE_ID.E53')),
             }
             self.data['LOT_ID.E53'] = {
-                'branch_lists': self.get_nodes('LOT_ID.E53'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('LOT_ID.E53')),
             }
         
         return
@@ -151,52 +159,52 @@ class LocationForm(ResourceForm):
 
     def load(self, lang):
         self.data['SPATIAL_COORDINATES_GEOMETRY.E47'] = {
-            'branch_lists': self.get_nodes('SPATIAL_COORDINATES_GEOMETRY.E47'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('SPATIAL_COORDINATES_GEOMETRY.E47')),
             'domains': {
                 'GEOMETRY_QUALIFIER.E55': Concept().get_e55_domain('GEOMETRY_QUALIFIER.E55')
             }
         }
 
         self.data['PLACE_ADDRESS.E45'] = {
-            'branch_lists': self.get_nodes('PLACE_ADDRESS.E45'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('PLACE_ADDRESS.E45')),
             'domains': {
                 'ADDRESS_TYPE.E55': Concept().get_e55_domain('ADDRESS_TYPE.E55')
             }
         }
         
         self.data['DESCRIPTION_OF_LOCATION.E62'] = {
-            'branch_lists': self.get_nodes('DESCRIPTION_OF_LOCATION.E62'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('DESCRIPTION_OF_LOCATION.E62')),
             'domains': {}
         }
 
         self.data['CHARACTER_AREA.E44'] = {
-            'branch_lists': self.get_nodes('CHARACTER_AREA.E44'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('CHARACTER_AREA.E44')),
             'domains': {
                 'CHARACTER_AREA.E44': Concept().get_e55_domain('CHARACTER_AREA.E44')
             }
         }
 
         self.data['MASTER_PLAN_ZONE.E44'] = {
-            'branch_lists': self.get_nodes('MASTER_PLAN_ZONE.E44'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('MASTER_PLAN_ZONE.E44')),
             'domains': {
                 'MASTER_PLAN_ZONE.E44': Concept().get_e55_domain('MASTER_PLAN_ZONE.E44')
             }
         }
         
         self.data['ARCHAEOLOGICAL_ZONE.E44'] = {
-            'branch_lists': self.get_nodes('ARCHAEOLOGICAL_ZONE.E44'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('ARCHAEOLOGICAL_ZONE.E44')),
             'domains': {
                 'ARCHAEOLOGICAL_ZONE.E44': Concept().get_e55_domain('ARCHAEOLOGICAL_ZONE.E44')
             }
         }
         
         self.data['TEMPORAL_COVERAGE_TIME-SPAN.E52'] = {
-            'branch_lists': self.get_nodes('TEMPORAL_COVERAGE_TIME-SPAN.E52'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('TEMPORAL_COVERAGE_TIME-SPAN.E52')),
             'domains': {}
         }
         
         self.data['COLLECTION.E78'] = {
-            'branch_lists': self.get_nodes('COLLECTION.E78'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('COLLECTION.E78')),
             'domains': {
                 'COLLECTION_TYPE.E55': Concept().get_e55_domain('COLLECTION_TYPE.E55')
             }
@@ -227,26 +235,26 @@ class ProbabilityAreaForm(ResourceForm):
 
     def load(self, lang):
         self.data['AREA_OF_PROBABILITY_GEOMETRY.E47'] = {
-            'branch_lists': self.get_nodes('AREA_OF_PROBABILITY_GEOMETRY.E47'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('AREA_OF_PROBABILITY_GEOMETRY.E47')),
             'domains': {
                 'AREA_OF_PROBABILITY_GEOMETRY_TYPE.E55': Concept().get_e55_domain('AREA_OF_PROBABILITY_GEOMETRY_TYPE.E55')
             }
         }
         
         self.data['HISTORIC_RESOURCES_AREA_NOTE.E62'] = {
-            'branch_lists': self.get_nodes('HISTORIC_RESOURCES_AREA_NOTE.E62'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('HISTORIC_RESOURCES_AREA_NOTE.E62')),
         }
         
         self.data['NATIVE_AMERICAN_RESOURCES_AREA_NOTE.E62'] = {
-            'branch_lists': self.get_nodes('NATIVE_AMERICAN_RESOURCES_AREA_NOTE.E62'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('NATIVE_AMERICAN_RESOURCES_AREA_NOTE.E62')),
         }
         
         self.data['PALEOSOLS_ZONE_NOTE.E62'] = {
-            'branch_lists': self.get_nodes('PALEOSOLS_ZONE_NOTE.E62'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('PALEOSOLS_ZONE_NOTE.E62')),
         }
         
         self.data['DISTURBED_AREA_NOTE.E62'] = {
-            'branch_lists': self.get_nodes('DISTURBED_AREA_NOTE.E62'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('DISTURBED_AREA_NOTE.E62')),
         }
 
         return
@@ -285,7 +293,7 @@ class ActALocationForm(ResourceForm):
         }
         for node, domains in load_nodes.iteritems():
             self.data[node] = {
-                'branch_lists': self.get_nodes(node),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes(node)),
                 'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
             }
 

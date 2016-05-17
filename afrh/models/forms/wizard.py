@@ -138,19 +138,19 @@ class MPZoneGuidelinesForm(ResourceForm):
         for entity in condition_assessment_entities:
             self.data['data'].append({
                 'GUIDELINE_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'GUIDELINE_TYPE.E55')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'GUIDELINE_TYPE.E55'))
                 },
                 'GUIDELINE_NOTE.E62': {
-                    'branch_lists': self.get_nodes(entity, 'GUIDELINE_NOTE.E62')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'GUIDELINE_NOTE.E62'))
                 },
                 'GUIDELINE_IMAGE_NOTE.E62': {
-                    'branch_lists': self.get_nodes(entity, 'GUIDELINE_IMAGE_NOTE.E62')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'GUIDELINE_IMAGE_NOTE.E62'))
                 },
                 'GUIDELINE_IMAGE.E73': {
-                    'branch_lists': self.get_nodes(entity, 'GUIDELINE_IMAGE.E73'),
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'GUIDELINE_IMAGE.E73')),
                 },
                 'GUIDELINE.E89': {
-                    'branch_lists': self.get_nodes(entity, 'GUIDELINE.E89')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'GUIDELINE.E89'))
                 }
             })
             
@@ -253,31 +253,31 @@ class ConditionForm(ResourceForm):
         for entity in condition_assessment_entities:
             self.data['data'].append({
                 'DISTURBANCE_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'DISTURBANCE_TYPE.E55')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'DISTURBANCE_TYPE.E55'))
                 },
                 'CONDITION_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'CONDITION_TYPE.E55')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONDITION_TYPE.E55'))
                 },
                 'CONDITION_ASSESSMENT_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'CONDITION_ASSESSMENT_TYPE.E55')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONDITION_ASSESSMENT_TYPE.E55'))
                 },
                 'THREAT_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'THREAT_TYPE.E55')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'THREAT_TYPE.E55'))
                 },
                 'RECOMMENDATION_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'RECOMMENDATION_TYPE.E55')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'RECOMMENDATION_TYPE.E55'))
                 },
                 'DATE_CONDITION_ASSESSED.E49': {
                     'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'DATE_CONDITION_ASSESSED.E49'))
                 },
                 'CONDITION_DESCRIPTION.E62': {
-                    'branch_lists': self.get_nodes(entity, 'CONDITION_DESCRIPTION.E62')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONDITION_DESCRIPTION.E62'))
                 },
                 'CONDITION_IMAGE.E73': {
-                    'branch_lists': self.get_nodes(entity, 'CONDITION_IMAGE.E73')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONDITION_IMAGE.E73'))
                 },
                 'CONDITION_ASSESSMENT.E14': {
-                    'branch_lists': self.get_nodes(entity, 'CONDITION_ASSESSMENT.E14')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONDITION_ASSESSMENT.E14'))
                 }
             })
             
@@ -351,27 +351,27 @@ class ActivityConsultationForm(ResourceForm):
         for entity in consultation_entities:
             data_append = {
                 'CONSULTATION_METHOD.E55': {
-                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_METHOD.E55')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONSULTATION_METHOD.E55'))
                 },
                 'CONSULTATION_DOCUMENTATION_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_DOCUMENTATION_TYPE.E55')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONSULTATION_DOCUMENTATION_TYPE.E55'))
                 },
                 'CONSULTATION_ATTENDEE.E39': {
-                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_ATTENDEE.E39')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONSULTATION_ATTENDEE.E39'))
                 },
                 'CONSULTATION_DATE.E49': {
                     'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONSULTATION_DATE.E49'))
                 },
                 'CONSULTATION_NOTE.E62': {
-                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_NOTE.E62')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONSULTATION_NOTE.E62'))
                 },
                 'ACTIVITY_CONSULTATION.E5': {
-                    'branch_lists': self.get_nodes(entity, 'ACTIVITY_CONSULTATION.E5')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'ACTIVITY_CONSULTATION.E5'))
                 }
             }
             if self.resource.entitytypeid == 'ACTIVITY_A.E7':
                 data_append['CONSULTATION_TYPE.E55'] = {
-                    'branch_lists': self.get_nodes(entity, 'CONSULTATION_TYPE.E55')
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'CONSULTATION_TYPE.E55'))
                 }
             self.data['data'].append(data_append)
 
@@ -509,7 +509,7 @@ class FileUploadForm(ResourceForm):
         
         if self.resource:
             self.data['INFORMATION_RESOURCE.E73'] = {
-                'branch_lists': self.get_nodes('INFORMATION_RESOURCE.E73'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('INFORMATION_RESOURCE.E73')),
                 'is_image': is_image(self.resource)
             }
 
@@ -524,97 +524,3 @@ def is_image(resource):
     return False
 
     baseentity = None
-
-    @staticmethod
-    def get_info():
-        return {
-            'id': 'district_classification',
-            'icon': 'fa-adjust',
-            'name': _('Classifications'),
-            'class': DistrictClassificationForm
-        }
-
-    def get_nodes(self, entity, entitytypeid):
-        ret = []
-        entities = entity.find_entities_by_type_id(entitytypeid)
-        for entity in entities:
-            ret.append({'nodes': entity.flatten()})
-
-        return ret
-
-    def update_nodes(self, entitytypeid, data):
-        if self.schema == None:
-            self.schema = Entity.get_mapping_schema(self.resource.entitytypeid)
-        for value in data[entitytypeid]:
-            for newentity in value['nodes']:
-                entity = Entity()
-                entity.create_from_mapping(self.resource.entitytypeid, self.schema[newentity['entitytypeid']]['steps'], newentity['entitytypeid'], newentity['value'], newentity['entityid'])
-
-                if self.baseentity == None:
-                    self.baseentity = entity
-                else:
-                    self.baseentity.merge(entity)
-
-    def update(self, data, files):
-
-        for value in data['PHASE_TYPE_ASSIGNMENT.E17']:
-            for node in value['nodes']:
-                if node['entitytypeid'] == 'PHASE_TYPE_ASSIGNMENT.E17' and node['entityid'] != '':
-                    #remove the node
-                    self.resource.filter(lambda entity: entity.entityid != node['entityid'])
-
-        self.update_nodes('HERITAGE_RESOURCE_GROUP_TYPE.E55', data)
-        self.update_nodes('TO_DATE.E49', data)
-        self.update_nodes('FROM_DATE.E49', data)
-        self.update_nodes('HERITAGE_RESOURCE_GROUP_USE_TYPE.E55', data)
-        self.update_nodes('CULTURAL_PERIOD.E55', data)
-        self.update_nodes('ANCILLARY_FEATURE_TYPE.E55', data)
-        production_entities = self.resource.find_entities_by_type_id('PRODUCTION.E12')
-
-        if len(production_entities) > 0:
-            self.resource.merge_at(self.baseentity, 'PRODUCTION.E12')
-        else:
-            self.resource.merge_at(self.baseentity, self.resource.entitytypeid)
-        self.resource.trim()
-                   
-    def load(self, lang):
-
-        self.data = {
-            'data': [],
-            'domains': {
-                'HERITAGE_RESOURCE_GROUP_TYPE.E55': Concept().get_e55_domain('HERITAGE_RESOURCE_GROUP_TYPE.E55'),
-                'HERITAGE_RESOURCE_GROUP_USE_TYPE.E55' : Concept().get_e55_domain('HERITAGE_RESOURCE_GROUP_USE_TYPE.E55'),
-                'CULTURAL_PERIOD.E55' : Concept().get_e55_domain('CULTURAL_PERIOD.E55'),
-                'ANCILLARY_FEATURE_TYPE.E55' : Concept().get_e55_domain('ANCILLARY_FEATURE_TYPE.E55')
-            }
-        }
-
-        classification_entities = self.resource.find_entities_by_type_id('PHASE_TYPE_ASSIGNMENT.E17')
-
-        for entity in classification_entities:
-            to_date_nodes = datetime_nodes_to_dates(self.get_nodes(entity, 'TO_DATE.E49'))
-            from_date_nodes = datetime_nodes_to_dates(self.get_nodes(entity, 'FROM_DATE.E49'))
-
-            self.data['data'].append({
-                'HERITAGE_RESOURCE_GROUP_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'HERITAGE_RESOURCE_GROUP_TYPE.E55')
-                },
-                'HERITAGE_RESOURCE_GROUP_USE_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'HERITAGE_RESOURCE_GROUP_USE_TYPE.E55')
-                },
-                'CULTURAL_PERIOD.E55': {
-                    'branch_lists': self.get_nodes(entity, 'CULTURAL_PERIOD.E55')
-                },
-                'TO_DATE.E49': {
-                    'branch_lists': to_date_nodes
-                },
-                'FROM_DATE.E49': {
-                    'branch_lists': from_date_nodes
-                },
-                'ANCILLARY_FEATURE_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'ANCILLARY_FEATURE_TYPE.E55')
-                },
-                'PHASE_TYPE_ASSIGNMENT.E17': {
-                    'branch_lists': self.get_nodes(entity, 'PHASE_TYPE_ASSIGNMENT.E17')
-                }
-            })

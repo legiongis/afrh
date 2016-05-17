@@ -57,7 +57,7 @@ class ExternalReferenceForm(ResourceForm):
     def load(self, lang):
 
         self.data['EXTERNAL_RESOURCE.E1'] = {
-            'branch_lists': self.get_nodes('EXTERNAL_RESOURCE.E1'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('EXTERNAL_RESOURCE.E1')),
             'domains': {
                 'EXTERNAL_XREF_TYPE.E55': Concept().get_e55_domain('EXTERNAL_XREF_TYPE.E55'),
             }
@@ -84,29 +84,29 @@ class DesEvaluationForm(ResourceForm):
     def load(self, lang):
 
         self.data['HISTORIC_AREA_STATUS.E55'] = {
-            'branch_lists': self.get_nodes('HISTORIC_AREA_STATUS.E55'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('HISTORIC_AREA_STATUS.E55')),
             'domains': {
                 'HISTORIC_AREA_STATUS.E55': Concept().get_e55_domain('HISTORIC_AREA_STATUS.E55'),
             }
         }
         
         self.data['PERIOD_OF_SIGNIFICANCE.E4'] = {
-            'branch_lists': self.get_nodes('PERIOD_OF_SIGNIFICANCE.E4'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('PERIOD_OF_SIGNIFICANCE.E4')),
         }
         
         self.data['NRHP_CRITERIA.E17'] = {
-            'branch_lists': self.get_nodes('NRHP_CRITERIA.E17'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('NRHP_CRITERIA.E17')),
         }
         
         self.data['CRITERION_CONSIDERATIONS.E55'] = {
-            'branch_lists': self.get_nodes('CRITERION_CONSIDERATIONS.E55'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('CRITERION_CONSIDERATIONS.E55')),
             'domains': {
                 'CRITERION_CONSIDERATIONS.E55': Concept().get_e55_domain('CRITERION_CONSIDERATIONS.E55'),
             }
         }
         
         self.data['AREA_OF_SIGNIFICANCE.E55'] = {
-            'branch_lists': self.get_nodes('AREA_OF_SIGNIFICANCE.E55'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('AREA_OF_SIGNIFICANCE.E55')),
             'domains': {
                 'AREA_OF_SIGNIFICANCE.E55': Concept().get_e55_domain('AREA_OF_SIGNIFICANCE.E55'),
             }
@@ -129,7 +129,7 @@ class CharAreaGuidelinesForm(ResourceForm):
     def load(self, lang):
         #if self.resource:
         self.data['GUIDELINES.E62'] = {
-            'branch_lists': self.get_nodes('GUIDELINES.E62'),
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('GUIDELINES.E62')),
         }
 
 class ComponentForm(ResourceForm):
@@ -184,14 +184,14 @@ class ComponentForm(ResourceForm):
         if self.resource:
         
             self.data['MODIFICATION_EVENT.E11'] = {
-                'branch_lists': self.get_nodes('MODIFICATION_EVENT.E11'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('MODIFICATION_EVENT.E11')),
                 'domains': {
                     'MODIFICATION_TYPE.E55' : Concept().get_e55_domain('MODIFICATION_TYPE.E55'),
                 }
             }
 
             self.data['COMPONENT.E18'] = {
-                'branch_lists': self.get_nodes('COMPONENT.E18'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('COMPONENT.E18')),
                 'domains': {
                     'CONSTRUCTION_TECHNIQUE.E55': Concept().get_e55_domain('CONSTRUCTION_TECHNIQUE.E55'),
                     'MATERIAL.E57' : Concept().get_e55_domain('MATERIAL.E57'),
@@ -227,39 +227,39 @@ class InventoryEvaluationForm(ResourceForm):
         if self.resource:
 
             self.data['AFRH_W_HISTORIC_DISTRICT_STATE.E3'] = {
-                'branch_lists': self.get_nodes('AFRH_W_HISTORIC_DISTRICT_STATE.E3'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('AFRH_W_HISTORIC_DISTRICT_STATE.E3')),
                 'domains': {
                     'AFRH_W_HISTORIC_DISTRICT_STATUS.E55' : Concept().get_e55_domain('AFRH_W_HISTORIC_DISTRICT_STATUS.E55'),
                 }
             }
             
             self.data['PERIOD_OF_SIGNIFICANCE.E55'] = {
-                'branch_lists': self.get_nodes('PERIOD_OF_SIGNIFICANCE.E55'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('PERIOD_OF_SIGNIFICANCE.E55')),
                 'domains': {
                     'PERIOD_OF_SIGNIFICANCE.E55' : Concept().get_e55_domain('PERIOD_OF_SIGNIFICANCE.E55'),
                 }
             }
             
             self.data['AREA_OF_SIGNIFICANCE.E55'] = {
-                'branch_lists': self.get_nodes('AREA_OF_SIGNIFICANCE.E55'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('AREA_OF_SIGNIFICANCE.E55')),
                 'domains': {
                     'AREA_OF_SIGNIFICANCE.E55' : Concept().get_e55_domain('AREA_OF_SIGNIFICANCE.E55'),
                 }
             }
             
             self.data['COMPOSITE_SCORE.E60'] = {
-                'branch_lists': self.get_nodes('COMPOSITE_SCORE.E60'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('COMPOSITE_SCORE.E60')),
             }
             
             self.data['RELATIVE_LEVEL_OF_SIGNIFICANCE.E55'] = {
-                'branch_lists': self.get_nodes('RELATIVE_LEVEL_OF_SIGNIFICANCE.E55'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('RELATIVE_LEVEL_OF_SIGNIFICANCE.E55')),
                 'domains': {
                     'RELATIVE_LEVEL_OF_SIGNIFICANCE.E55' : Concept().get_e55_domain('RELATIVE_LEVEL_OF_SIGNIFICANCE.E55')
                 }
             }
             
             self.data['OTHER_AFRH_W_DESIGNATION.E3'] = {
-                'branch_lists': self.get_nodes('OTHER_AFRH_W_DESIGNATION.E3'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('OTHER_AFRH_W_DESIGNATION.E3')),
                 'domains': {
                     'OTHER_AFRH_W_DESIGNATION_TYPE.E55' : Concept().get_e55_domain('OTHER_AFRH_W_DESIGNATION_TYPE.E55'),
                     'OTHER_AFRH_W_DESIGNATION_STATUS.E55' : Concept().get_e55_domain('OTHER_AFRH_W_DESIGNATION_STATUS.E55'),
@@ -267,7 +267,7 @@ class InventoryEvaluationForm(ResourceForm):
             }
 
             self.data['OTHER_DESIGNATION.E3'] = {
-                'branch_lists': self.get_nodes('OTHER_DESIGNATION.E3'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('OTHER_DESIGNATION.E3')),
                 'domains': {
                     'OTHER_DESIGNATION_TYPE.E55' : Concept().get_e55_domain('OTHER_DESIGNATION_TYPE.E55'),
                     'OTHER_DESIGNATION_STATUS.E55' : Concept().get_e55_domain('OTHER_DESIGNATION_STATUS.E55'),
@@ -275,7 +275,7 @@ class InventoryEvaluationForm(ResourceForm):
             }
             
             self.data['HPMP_STATUS.E55'] = {
-                'branch_lists': self.get_nodes('HPMP_STATUS.E55'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('HPMP_STATUS.E55')),
                 'domains': {
                     'HPMP_STATUS.E55' : Concept().get_e55_domain('HPMP_STATUS.E55'),
                 }
@@ -336,14 +336,14 @@ class FormDimensionForm(ResourceForm):
     def load(self, lang):
         if self.resource:
             self.data['MEASUREMENT_TYPE.E55'] = {
-                'branch_lists': self.get_nodes('MEASUREMENT_TYPE.E55'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('MEASUREMENT_TYPE.E55')),
                 'domains': {
                     'MEASUREMENT_TYPE.E55' : Concept().get_e55_domain('MEASUREMENT_TYPE.E55'),
                     'UNIT_OF_MEASUREMENT.E55': Concept().get_e55_domain('UNIT_OF_MEASUREMENT.E55')
                 }
             }
             self.data['FORM_TYPE.E55'] = {
-                'branch_lists': self.get_nodes('FORM_TYPE.E55'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('FORM_TYPE.E55')),
                 'domains': {
                     'FORM_TYPE.E55' : Concept().get_e55_domain('FORM_TYPE.E55'),
                 }
@@ -400,42 +400,42 @@ class EntitiesForm(ResourceForm):
 
         for node, domains in load_nodes.iteritems():
             self.data[node] = {
-                'branch_lists': self.get_nodes(node),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes(node)),
                 'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
             }
 
         # self.data['AFRH_PROJECT_CONTACT.E39'] = {
-            # 'branch_lists': self.get_nodes('AFRH_PROJECT_CONTACT.E39'),
+            # 'branch_lists': datetime_nodes_to_dates(self.get_nodes('AFRH_PROJECT_CONTACT.E39'),
         # }
         # self.data['ACTIVITY_ARCHITECT.E39'] = {
-            # 'branch_lists': self.get_nodes('ACTIVITY_ARCHITECT.E39'),
+            # 'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_ARCHITECT.E39'),
         # }
         # self.data['ACTIVITY_CONTRACTOR.E39'] = {
-            # 'branch_lists': self.get_nodes('ACTIVITY_CONTRACTOR.E39'),
+            # 'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_CONTRACTOR.E39'),
         # }
         # self.data['ACTIVITY_ENGINEER.E39'] = {
-            # 'branch_lists': self.get_nodes('ACTIVITY_ENGINEER.E39'),
+            # 'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_ENGINEER.E39'),
         # }
         # self.data['ACTIVITY_ARCHAEOLOGIST.E39'] = {
-            # 'branch_lists': self.get_nodes('ACTIVITY_ARCHAEOLOGIST.E39'),
+            # 'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_ARCHAEOLOGIST.E39'),
         # }
         # self.data['ACTIVITY_CONSULTANT.E39'] = {
-            # 'branch_lists': self.get_nodes('ACTIVITY_CONSULTANT.E39'),
+            # 'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_CONSULTANT.E39'),
         # }
         # self.data['ACTIVITY_CONSULTING_PARTY.E39'] = {
-            # 'branch_lists': self.get_nodes('ACTIVITY_CONSULTING_PARTY.E39'),
+            # 'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_CONSULTING_PARTY.E39'),
         # }
         # self.data['ACTIVITY_NCPC_CONTACT.E39'] = {
-            # 'branch_lists': self.get_nodes('ACTIVITY_NCPC_CONTACT.E39'),
+            # 'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_NCPC_CONTACT.E39'),
         # }
         # self.data['ACTIVITY_CFA_CONTACT.E39'] = {
-            # 'branch_lists': self.get_nodes('ACTIVITY_CFA_CONTACT.E39'),
+            # 'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_CFA_CONTACT.E39'),
         # }
         # self.data['ACTIVITY_DCSHPO_CONTACT.E39'] = {
-            # 'branch_lists': self.get_nodes('ACTIVITY_DCSHPO_CONTACT.E39'),
+            # 'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_DCSHPO_CONTACT.E39'),
         # }
         # self.data['ACTIVITY_ENTITIES_NOTE.E62'] = {
-            # 'branch_lists': self.get_nodes('ACTIVITY_ENTITIES_NOTE.E62'),
+            # 'branch_lists': datetime_nodes_to_dates(self.get_nodes('ACTIVITY_ENTITIES_NOTE.E62'),
         # }
 
 
@@ -468,7 +468,7 @@ class PublicationForm(ResourceForm):
             }
             
             self.data['CREATOR.E39'] = {
-                'branch_lists': self.get_nodes('CREATOR.E39'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('CREATOR.E39')),
                 'domains': {
                     'CREATOR_TYPE.E55' : Concept().get_e55_domain('CREATOR_TYPE.E55')
                 }
@@ -480,7 +480,7 @@ class PublicationForm(ResourceForm):
             }
 
             self.data['RIGHT_TYPE.E55'] = {
-                'branch_lists': self.get_nodes('RIGHT_TYPE.E55'),
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('RIGHT_TYPE.E55')),
                 'domains': {
                     'RIGHT_TYPE.E55' : Concept().get_e55_domain('RIGHT_TYPE.E55')
                 }
