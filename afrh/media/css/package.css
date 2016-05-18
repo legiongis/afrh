@@ -603,7 +603,7 @@ dl.score-table dd{
 }
 
 .report-section-header span {
-    background: #F9F9F9;
+    background: #fafafa;
     padding-right: 10px;
 }
 
@@ -616,6 +616,22 @@ dl.score-table dd{
     color: #428BCA;
     cursor: pointer;
     cursor: hand;
+}
+
+.report-block-description {
+    padding:0px !important;
+    background-color: #efefef !important;
+}
+
+.report-block-description .container {
+    background-color: #fafafa;
+    padding-bottom: 15px;
+    /*border-right: #CECECE solid 2px;
+    border-left: #CECECE solid 2px;*/
+}
+
+.report-list {
+    margin: 10px 0px;
 }
 
 /*
