@@ -205,7 +205,7 @@ def report(request, resourceid):
         pass
         
     try:
-        with open(r"C:\arches\afrh\catchall\report_info","wb") as log:
+        with open(r"C:\arches\afrh\catchall\report_info.json","wb") as log:
             print >> log, json.dumps(report_info['source']['graph'], sort_keys=True,indent=2, separators=(',', ': '))
     except:
         pass
