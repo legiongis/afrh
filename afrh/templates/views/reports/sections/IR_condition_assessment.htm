@@ -39,7 +39,7 @@
                         <ul>
                         {% for DISTURBANCE_TYPE_E55 in CONDITION_STATE_E3.DISTURBANCE_TYPE_E55 %}
                             <li class="arches-report-subsection-item">
-                            {{DISTURBANCE_TYPE_E55.DISTURBANCE_TYPE_E55__value|safe}}
+                            {{DISTURBANCE_TYPE_E55.DISTURBANCE_TYPE_E55__value}}
                             </li>
                         {% endfor %}
                         </ul>
@@ -49,7 +49,7 @@
                         <ul>
                         {% for THREAT_TYPE_E55 in CONDITION_STATE_E3.THREAT_TYPE_E55 %}
                             <li class="arches-report-subsection-item">
-                            {{THREAT_TYPE_E55.THREAT_TYPE_E55__value|safe}}
+                            {{THREAT_TYPE_E55.THREAT_TYPE_E55__value}}
                             </li>
                         {% endfor %}
                         </ul>
@@ -59,7 +59,7 @@
                         <ul>
                         {% for MANAGEMENT_RECOMMENDATION_E89 in CONDITION_STATE_E3.MANAGEMENT_RECOMMENDATION_E89 %}
                             <li class="arches-report-subsection-item">
-                            {{MANAGEMENT_RECOMMENDATION_E89.RECOMMENDATION_TYPE_E55__value|safe}}
+                            {{MANAGEMENT_RECOMMENDATION_E89.RECOMMENDATION_TYPE_E55__value}}
                             </li>
                         {% endfor %}
                         </ul>

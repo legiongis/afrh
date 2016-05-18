@@ -23,20 +23,14 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 <!-- End Fixed Nav for Report -->
 <div id="report-body" class="report-body">
-    
-     {% if geometry != 'null' %}
-        <!--=== Map Block ===-->
-        
-        <!--=== End Map Block ===-->
-    {% endif %}
 
     <!--=== Resource Description Section ===-->
-    <div class="block-description" style="padding-top: 30px;" id="report">
+    <div class="block-description report-block-description" id="report">
         <div class="container">
 
             <!-- Resource Report Container -->
             <div>
-                
+                {% if geometry != 'null' %}
                 <div class="report-section" >
                     <div class="report-section-header">
                         <span class="section-toggle" href="javascript:void(0);">{% trans "Map" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
@@ -47,6 +41,63 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                             
                                 {% include 'views/reports/sections/map-section.htm' %}
                             
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "Entities" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/ACT-entities.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "NCPC Reviews" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/ACT-ncpc-review.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "CFA Reviews" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/ACT-cfa-review.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "HPO/HPRB Reviews" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/ACT-hpo-hprb-review.htm' %}
+                            </div>
                         </div>
                     </div>
                 </div>
