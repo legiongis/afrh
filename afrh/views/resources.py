@@ -37,6 +37,9 @@ from arches.app.views.concept import get_preflabel_from_valueid, get_preflabel_f
 from arches.app.search.search_engine_factory import SearchEngineFactory
 from arches.app.search.elasticsearch_dsl_builder import Query, Terms, Bool, Match
 import json
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
+import os
 
 def report(request, resourceid):
     lang = request.GET.get('lang', settings.LANGUAGE_CODE)
@@ -126,12 +129,6 @@ def report(request, resourceid):
     filtertypes = get_filter_types(request)  
     related_resource_info = get_related_resources(resourceid, lang, filtertypes=filtertypes)
 
-    try:
-        with open(r"K:\arches\afrh\catchall\related_resources","wb") as log:
-            print >> log, json.dumps(related_resource_info, sort_keys=True,indent=4, separators=(',', ': '))
-    except:
-        pass
-
     # parse the related entities into a dictionary by resource type
     for related_resource in related_resource_info['related_resources']:
         information_resource_type = 'DOCUMENT'
@@ -197,19 +194,20 @@ def report(request, resourceid):
         if len(v) > 0:
             related_resource_flag = True
             break
-        
-    try:
-        with open(r"C:\arches\afrh\catchall\related_resource_dict","wb") as log:
-            print >> log, json.dumps(related_resource_dict, sort_keys=True,indent=4, separators=(',', ': '))
-    except:
-        pass
-        
-    try:
-        with open(r"C:\arches\afrh\catchall\report_info.json","wb") as log:
-            print >> log, json.dumps(report_info['source']['graph'], sort_keys=True,indent=2, separators=(',', ': '))
-    except:
-        pass
     
+    # print a few log files to help with debugging
+    if settings.DEBUG:
+        related_dict_log_path = os.path.join(settings.PACKAGE_ROOT,'logs','current_related_resource_dict.log')
+        with open(related_dict_log_path,"w") as log:
+            print >> log, json.dumps(related_resource_dict, sort_keys=True,indent=2, separators=(',', ': '))
+            
+        related_info_log_path = os.path.join(settings.PACKAGE_ROOT,'logs','current_related_resource_info.log')
+        with open(related_info_log_path,"w") as log:
+            print >> log, json.dumps(related_resource_info, sort_keys=True,indent=2, separators=(',', ': '))
+            
+        graph_log_path = os.path.join(settings.PACKAGE_ROOT,'logs','current_graph.json')
+        with open(graph_log_path,"w") as log:
+            print >> log, json.dumps(report_info['source']['graph'], sort_keys=True,indent=2, separators=(',', ': '))
     
     return render_to_response('resource-report.htm', {
             'geometry': JSONSerializer().serialize(report_info['source']['geometry']),

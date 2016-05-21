@@ -1,0 +1,101 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Scope of Work</h3>
+    </div>
+    {% if not "ACTIVITY_SCOPE_OF_WORK_E89" in report_info.source.graph %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <p class="arches-report-subsection-item">none recorded</p>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-9 col-md-8">
+        {% for ACTIVITY_SCOPE_OF_WORK_E89 in report_info.source.graph.ACTIVITY_SCOPE_OF_WORK_E89 %}
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <p class="arches-report-subsection-item"><em><strong>{{ACTIVITY_SCOPE_OF_WORK_E89.ACTIVITY_SCOPE_OF_WORK_TYPE_E55.0.ACTIVITY_SCOPE_OF_WORK_TYPE_E55__value}}</strong></em></p>
+                <p class="arches-report-subsection-item">{{ACTIVITY_SCOPE_OF_WORK_E89.ACTIVITY_SCOPE_OF_WORK_DESCRIPTION_E62.0.ACTIVITY_SCOPE_OF_WORK_DESCRIPTION_E62__value|safe}}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Treatment Recommendations</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <p class="arches-report-subsection-item"><em><strong>Buildings/Structures Recommendations</strong></em></p>
+                {% if not "BUILDING_STRUCTURES_RECOMMENDATION_E29" in report_info.source.graph %}
+                <p class="arches-report-subsection-item"><em>none recorded</em></p>
+                {% else %}
+                <ul class="report-list">
+                {% for BUILDING_STRUCTURES_RECOMMENDATION_E29 in report_info.source.graph.BUILDING_STRUCTURES_RECOMMENDATION_E29 %}
+                    <li class="arches-report-subsection-item">
+                    {{BUILDING_STRUCTURES_RECOMMENDATION_E29.BUILDING_STRUCTURES_RECOMMENDATION_TYPE_E55.0.BUILDING_STRUCTURES_RECOMMENDATION_TYPE_E55__value}}
+                    </li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <p class="arches-report-subsection-item"><em><strong>Objects Recommendations</strong></em></p>
+                {% if not "OBJECT_RECOMMENDATION_E29" in report_info.source.graph %}
+                <p class="arches-report-subsection-item"><em>none recorded</em></p>
+                {% else %}
+                <ul class="report-list">
+                {% for OBJECT_RECOMMENDATION_E29 in report_info.source.graph.OBJECT_RECOMMENDATION_E29 %}
+                    <li class="arches-report-subsection-item">
+                    {{OBJECT_RECOMMENDATION_E29.OBJECT_RECOMMENDATION_TYPE_E55.0.OBJECT_RECOMMENDATION_TYPE_E55__value}}
+                    </li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                <p class="arches-report-subsection-item"><em><strong>Landscape Recommendations</strong></em></p>
+                {% if not "LANDSCAPE_RECOMMENDATION_E29" in report_info.source.graph %}
+                <p class="arches-report-subsection-item"><em>none recorded</em></p>
+                {% else %}
+                <ul class="report-list">
+                {% for LANDSCAPE_RECOMMENDATION_E29 in report_info.source.graph.LANDSCAPE_RECOMMENDATION_E29 %}
+                    <li class="arches-report-subsection-item">
+                    {{LANDSCAPE_RECOMMENDATION_E29.LANDSCAPE_RECOMMENDATION_TYPE_E55.0.LANDSCAPE_RECOMMENDATION_TYPE_E55__value}}
+                    </li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Conditions</h3>
+    </div>
+    {% if not "ACTIVITY_CONDITION_ASSESSMENT_E14" in report_info.source.graph %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <p class="arches-report-subsection-item">none recorded</p>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+            {% for ACTIVITY_CONDITION_ASSESSMENT_E14 in report_info.source.graph.ACTIVITY_CONDITION_ASSESSMENT_E14 %}
+                <p class="arches-report-subsection-item"><strong><em>{{ACTIVITY_CONDITION_ASSESSMENT_E14.ACTIVITY_CONDITION_E3.0.ACTIVITY_CONDITION_TYPE_E55.0.ACTIVITY_CONDITION_TYPE_E55__label}}</strong></em></p>
+                <p class="arches-report-subsection-item">{{ACTIVITY_CONDITION_ASSESSMENT_E14.ACTIVITY_CONDITION_E3.0.ACTIVITY_CONDITION_NOTE_E62.0.ACTIVITY_CONDITION_NOTE_E62__label|safe}}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>

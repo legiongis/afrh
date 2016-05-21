@@ -1,0 +1,143 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Identification</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <p class="arches-report-subsection-item"><em><strong>Name</strong></em></p>
+                {% if not 'ACTIVITY_NAME_E41' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                <p class="arches-report-subsection-item">
+                {% for ACTIVITY_NAME_E41 in report_info.source.graph.ACTIVITY_NAME_E41 %}
+                    <p class="arches-report-subsection-item">{{ACTIVITY_NAME_E41.ACTIVITY_NAME_E41__label}}</p>
+                {% endfor %}
+                {% endif %}
+                
+                
+                <p class="arches-report-subsection-item"><em><strong>Work Order</strong></em></p>
+                {% if not 'WORK_ORDER_ASSIGNMENT_E13' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for WORK_ORDER_ASSIGNMENT_E13 in report_info.source.graph.WORK_ORDER_ASSIGNMENT_E13 %}
+                    <p class="arches-report-subsection-item">No. {{WORK_ORDER_ASSIGNMENT_E13.WORK_ORDER_NUMBER_E42.0.WORK_ORDER_NUMBER_E42__label}}</p>
+                    <p class="arches-report-subsection-item"><span class="text-muted"><em>Date: {{WORK_ORDER_ASSIGNMENT_E13.WORK_ORDER_DATE_TIME___SPAN_E52.0.WORK_ORDER_DATE_E49.0.WORK_ORDER_DATE_E49__label|slice:":10"}}</em>
+                    <p class="arches-report-subsection-item">{{WORK_ORDER_ASSIGNMENT_E13.WORK_ORDER_NOTE_E62.0.WORK_ORDER_NOTE_E62__label|safe}}</p>
+                {% endfor %}
+                {% endif %}
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Action Agent</h3>
+        {% if 'ACTION_AGENT_REQUEST_TIME___SPAN_E52' in report_info.source.graph %}
+            <p class="arches-report-subsection-item"><em>requested on {{report_info.source.graph.ACTION_AGENT_REQUEST_TIME___SPAN_E52.0.ACTION_AGENT_REQUEST_DATE_E49.0.ACTION_AGENT_REQUEST_DATE_E49__label|slice:":10"}}</em>
+            </p>
+        {% endif %}
+    </div>
+    <div class="col-sm-9 col-md-8">
+        
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'ACTION_AGENT_E39' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for ACTION_AGENT_E39 in report_info.source.graph.ACTION_AGENT_E39 %}
+                    <p class="arches-report-subsection-item">{{ACTION_AGENT_E39.ACTION_AGENT_E82.0.ACTION_AGENT_E82__label}} ({{ACTION_AGENT_E39.ACTION_AGENT_TYPE_E55.0.ACTION_AGENT_TYPE_E55__label}})</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Procedures</h3>
+        {% if 'ACTIVITY_PROCEDURE_NOTE_E62' in report_info.source.graph %}
+            <p class="arches-report-subsection-item">{{report_info.source.graph.ACTIVITY_PROCEDURE_NOTE_E62.0.ACTIVITY_PROCEDURE_NOTE_E62__label|safe}}
+            </p>
+        {% endif %}
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'ACTIVITY_PROCEDURE_E29' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for ACTIVITY_PROCEDURE_E29 in report_info.source.graph.ACTIVITY_PROCEDURE_E29 %}
+                    <p class="arches-report-subsection-item">{{ACTIVITY_PROCEDURE_E29.ACTIVITY_PROCEDURE_TYPE_E55.0.ACTIVITY_PROCEDURE_TYPE_E55__label}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Reviews</h3>
+        {% if 'ACTIVITY_REVIEW_NOTE_E62' in report_info.source.graph %}
+            <p class="arches-report-subsection-item">{{report_info.source.graph.ACTIVITY_REVIEW_NOTE_E62.0.ACTIVITY_REVIEW_NOTE_E62__label|safe}}
+            </p>
+        {% endif %}
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'ACTIVITY_REVIEW_E29' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for ACTIVITY_REVIEW_E29 in report_info.source.graph.ACTIVITY_REVIEW_E29 %}
+                    <p class="arches-report-subsection-item">{{ACTIVITY_REVIEW_E29.ACTIVITY_REVIEW_TYPE_E55.0.ACTIVITY_REVIEW_TYPE_E55__label}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Current Status</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'ACTION_STATUS_ASSIGNMENT_E13' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                    <p class="arches-report-subsection-item">{{report_info.source.graph.ACTION_STATUS_ASSIGNMENT_E13.0.CURRENT_ACTION_STATUS_E55.0.CURRENT_ACTION_STATUS_E55__label}}</p>
+                    <p class="arches-report-subsection-item">{{report_info.source.graph.ACTION_STATUS_ASSIGNMENT_E13.0.CURRENT_ACTION_STATUS_NOTES_E62.0.CURRENT_ACTION_STATUS_NOTES_E62__label}}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Milestones</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'ACTIVITY_MILESTONE_ACHIEVEMENT_E5' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for ACTIVITY_MILESTONE_ACHIEVEMENT_E5 in report_info.source.graph.ACTIVITY_MILESTONE_ACHIEVEMENT_E5 %}
+                    <p class="arches-report-subsection-item"><em><strong>{{ACTIVITY_MILESTONE_ACHIEVEMENT_E5.ACTIVITY_B_MILESTONE_E55.0.ACTIVITY_B_MILESTONE_E55__label}} ({{ACTIVITY_MILESTONE_ACHIEVEMENT_E5.ACTIVITY_MILESTONE_TIME___SPAN_E52.0.ACTIVITY_MILESTONE_DATE_E49.0.ACTIVITY_MILESTONE_DATE_E49__label|slice:":10"}})</strong></em></p>
+                    <p class="arches-report-subsection-item">{{ACTIVITY_MILESTONE_ACHIEVEMENT_E5.ACTIVITY_MILESTONE_NOTES_E62.0.ACTIVITY_MILESTONE_NOTES_E62__label|safe}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

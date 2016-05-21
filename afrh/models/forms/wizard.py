@@ -57,11 +57,6 @@ class MPZoneGuidelinesForm(ResourceForm):
         entities = entity.find_entities_by_type_id(entitytypeid)
         for entity in entities:
             ret.append({'nodes': entity.flatten()})
-        #print json.dumps(ret, indent=2)
-        print entitytypeid
-        for i in ret:
-            for e in i['nodes']:
-                print e
         return ret
 
     def update_nodes(self, entitytypeid, data):
@@ -106,7 +101,7 @@ class MPZoneGuidelinesForm(ResourceForm):
                         'value': generate_thumbnail(files[f])
                     }]
                 })
-
+                
         for value in data['GUIDELINE.E89']:
             for node in value['nodes']:
                 if node['entitytypeid'] == 'GUIDELINE.E89' and node['entityid'] != '':
@@ -117,7 +112,7 @@ class MPZoneGuidelinesForm(ResourceForm):
         self.update_nodes('GUIDELINE_NOTE.E62', data)
         self.update_nodes('GUIDELINE_IMAGE.E73', data)
         self.update_nodes('GUIDELINE_IMAGE_NOTE.E62', data)
-        #self.update_nodes('GUIDELINE_IMAGE_TYPE.E55', data)
+        # self.update_nodes('GUIDELINE_IMAGE_TYPE.E55', data)
         self.resource.merge_at(self.baseentity, self.resource.entitytypeid)
         self.resource.trim()
                    
@@ -126,20 +121,22 @@ class MPZoneGuidelinesForm(ResourceForm):
             'data': [],
             'domains': {
                 'GUIDELINE_TYPE.E55': Concept().get_e55_domain('GUIDELINE_TYPE.E55'),
-                'GUIDELINE_IMAGE_TYPE.E55' : Concept().get_e55_domain('GUIDELINE_IMAGE_TYPE.E55'),
+                #'GUIDELINE_IMAGE_TYPE.E55' : Concept().get_e55_domain('GUIDELINE_IMAGE_TYPE.E55'),
+                #'IMAGE_TYPE.E55' : Concept().get_e55_domain('IMAGE_TYPE.E55'),
             }
         }
         
         
         condition_assessment_entities = self.resource.find_entities_by_type_id('GUIDELINE.E89')
-        print "entities"
-        print condition_assessment_entities
 
         for entity in condition_assessment_entities:
             self.data['data'].append({
                 'GUIDELINE_TYPE.E55': {
                     'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'GUIDELINE_TYPE.E55'))
                 },
+                # 'GUIDELINE_IMAGE_TYPE.E55': {
+                    # 'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'GUIDELINE_IMAGE_TYPE.E55'))
+                # },
                 'GUIDELINE_NOTE.E62': {
                     'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'GUIDELINE_NOTE.E62'))
                 },

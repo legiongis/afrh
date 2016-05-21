@@ -247,6 +247,7 @@ class InformationResourceSummaryForm(ResourceForm):
         self.update_nodes('EXTERNAL_RESOURCE.E1', data)
         self.update_nodes('KEYWORD.E55', data)
         self.update_nodes('LANGUAGE.E55', data)
+        self.update_nodes('SENSITIVE.E62', data)
 
     def load(self, lang):
         if self.resource:
@@ -278,6 +279,10 @@ class InformationResourceSummaryForm(ResourceForm):
             self.data['KEYWORD.E55'] = {
                 'branch_lists': datetime_nodes_to_dates(self.get_nodes('KEYWORD.E55')),
                 'domains': {'KEYWORD.E55' : Concept().get_e55_domain('KEYWORD.E55')}
+            }
+
+            self.data['SENSITIVE.E62'] = {
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('SENSITIVE.E62')),
             }
 
             # self.data['primaryname_conceptid'] = self.data['TITLE.E41']['domains']['TITLE_TYPE.E55'][3]['id']

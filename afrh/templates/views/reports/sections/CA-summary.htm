@@ -1,0 +1,80 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Name</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'NAME_E48' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for NAME_E48 in report_info.source.graph.NAME_E48 %}
+                    <p class="arches-report-subsection-item">{{NAME_E48.NAME_E48__label}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Significance</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'RELATIVE_LEVEL_OF_SIGNIFICANCE_E55' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for RELATIVE_LEVEL_OF_SIGNIFICANCE_E55 in report_info.source.graph.RELATIVE_LEVEL_OF_SIGNIFICANCE_E55 %}
+                    <p class="arches-report-subsection-item">{{RELATIVE_LEVEL_OF_SIGNIFICANCE_E55.RELATIVE_LEVEL_OF_SIGNIFICANCE_E55__label}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Description</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'DESCRIPTION_E62' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for DESCRIPTION_E62 in report_info.source.graph.DESCRIPTION_E62 %}
+                    <p class="arches-report-subsection-item">{{DESCRIPTION_E62.DESCRIPTION_E62__label|safe}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Guidelines</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'GUIDELINES_E62' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for GUIDELINES_E62 in report_info.source.graph.GUIDELINES_E62 %}
+                    <p class="arches-report-subsection-item">{{GUIDELINES_E62.GUIDELINES_E62__label|safe}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Identification</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <p class="arches-report-subsection-item"><strong><em>Name</em></strong></p>
+                {% if not 'HISTORIC_AREA_NAME_E48' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for HISTORIC_AREA_NAME_E48 in report_info.source.graph.HISTORIC_AREA_NAME_E48 %}
+                    <p class="arches-report-subsection-item">{{HISTORIC_AREA_NAME_E48.HISTORIC_AREA_NAME_E48__label}}</p>
+                {% endfor %}
+                {% endif %}
+                <p class="arches-report-subsection-item"><strong><em>Designation</em></strong></p>
+                {% if not 'HISTORIC_AREA_DESIGNATION_E55' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for HISTORIC_AREA_DESIGNATION_E55 in report_info.source.graph.HISTORIC_AREA_DESIGNATION_E55 %}
+                    <p class="arches-report-subsection-item">{{HISTORIC_AREA_DESIGNATION_E55.HISTORIC_AREA_DESIGNATION_E55__label}} 
+                    {% for HISTORIC_AREA_TYPE_E55 in report_info.source.graph.HISTORIC_AREA_TYPE_E55 %}
+                        ({{HISTORIC_AREA_TYPE_E55.HISTORIC_AREA_TYPE_E55__label}})
+                    {% endfor %}
+                    </p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Resources</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <p class="arches-report-subsection-item">Contributing: 
+                    {% if not 'NUMBER_OF_CONTRIBUTING_RESOURCES_E62' in report_info.source.graph %}n/a
+                    {% else %}
+                    {{report_info.source.graph.NUMBER_OF_CONTRIBUTING_RESOURCES_E62.0.NUMBER_OF_CONTRIBUTING_RESOURCES_E62__value}}
+                    {% endif %}
+                </p>
+                <p class="arches-report-subsection-item">Non-Contributing: 
+                    {% if not 'NUMBER_OF_NON_CONTRIBUTING_RESOURCES_E62' in report_info.source.graph %}n/a
+                    {% else %}
+                    {{report_info.source.graph.NUMBER_OF_NON_CONTRIBUTING_RESOURCES_E62.0.NUMBER_OF_NON_CONTRIBUTING_RESOURCES_E62__value}}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Description</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'DESCRIPTION_E62' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for DESCRIPTION_E62 in report_info.source.graph.DESCRIPTION_E62 %}
+                    <p class="arches-report-subsection-item"><strong><em>{{DESCRIPTION_E62.HISTORIC_AREA_DESCRIPTION_TYPE_E55__label}}</em></strong></p>
+                    <p class="arches-report-subsection-item">{{DESCRIPTION_E62.DESCRIPTION_E62__label|safe}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

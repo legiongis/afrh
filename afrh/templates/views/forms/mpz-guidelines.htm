@@ -29,8 +29,8 @@
                     <div class="margin-left-5">
                         <dl class="margin-bottom-10"> 
                             <dd>
-                                <div class="form-section-subheader">
-                                    <a href="javascript:void(0)" title="Remove this condition assessment" data-bind="click: $root.deleteAssessment">
+                                <div class="">
+                                    <a href="javascript:void(0)" title="Remove this guideline" data-bind="click: $root.deleteAssessment">
                                         <i class="arches-CRUD-delete fa fa-times-circle"></i>
                                     </a>
                                     <a href="javascript:void(0)" class="" title="edit this guideline" data-bind="click: $root.editAssessment"> 
@@ -104,16 +104,12 @@
                         </dl>
                         <dl>   
                             <dt class="arches-evaluation-header">{% trans "Image Details" %}</dt>
-                            <dd style="background-color:green" data-bind="foreach: $data['GUIDELINE_IMAGE_NOTE.E62'].branch_lists" class="arches-evaluation-content">
-                                <p data-bind="foreach: nodes" style="background-color:red">
-                                
-                                <span data-bind="text: label"></span><br>
-                                
+                            <dd data-bind="foreach: $data['GUIDELINE_IMAGE_NOTE.E62'].branch_lists" class="arches-evaluation-content">
+                                <p data-bind="foreach: nodes">
+                                <span data-bind="html: label"></span><br>
                                 </p>
-                                this is inserted
-                                <!--<span data-bind="text: nodes[1].value"></span>-->
                             </dd>
-                            <dd class="arches-evaluation-content" data-bind="ifnot: $data['GUIDELINE_IMAGE_NOTE.E62'].branch_lists.length > 0">
+                            <dd data-bind="ifnot: $data['GUIDELINE_IMAGE_NOTE.E62'].branch_lists.length > 0">
                                 <span class="text-muted" data-bind="html: '(none)'"></span>
                             </dd>
                         </dl>
@@ -217,17 +213,15 @@
                                                     <i class="fa-fw fa fa-info"></i>
                                                     {% trans "You can (optionally) upload images that show the condition of the resource during your assessment." %}
                                                 </div>
-                                                <div id="files-section">   
+                                                <div id="files-section">
+                                                   
                                                     <div class="dropzone" id="mydropzone"></div>
+                                                   
                                                 </div>
+                                                
                                                 <div id="image-note-section">
                                                     <div class="row">
-                                                        <div class="col-xs-12 col-sm-10 margin-top-5">
-                                                            <div class="col-xs-12 form-section-input">
-                                                                <div class="form-group">
-                                                                    <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('GUIDELINE_IMAGE_TYPE.E55', 'value'), placeholder: '{% trans 'image type' %}', dataKey: 'GUIDELINE_IMAGE_TYPE.E55'}"></input>
-                                                                </div>
-                                                            </div>
+                                                        <div class="col-xs-12 margin-top-5">
                                                             <div class="col-xs-12 form-section-input margin-top-5">
                                                                 <div class="form-group" style="width: 100%;">
                                                                     <div class="arches-html-editor" style="width: 100%;">
@@ -236,10 +230,9 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-2 margin-top-5">
-                                                            {% include 'views/components/add-item-button.htm' %}
-                                                        </div>
                                                     </div>
+                                                </div>
+                                                <!--
                                                     <div class="row">
                                                         <div class="col-xs-12 col-sm-10">
                                                             <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must select a disturbance." %}</div>
@@ -267,6 +260,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                -->
                                             </div>
                                             <!-- End Tab 2: Upload Files -->
                                         </div>

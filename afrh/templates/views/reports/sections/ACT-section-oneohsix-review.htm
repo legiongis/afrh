@@ -107,5 +107,23 @@
             {% endif %}
         {% endfor %}
     </div>
+    <div class="col-xs-12">
+            <hr class="devider margin-top-20 margin-bottom-20"></hr>
+        </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Agreements</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        {% for SECTION_106_REVIEW_E7 in report_info.source.graph.SECTION_106_REVIEW_E7 %}
+            {% if 'SECTION_106_AGREEMENT_E5' in SECTION_106_REVIEW_E7 %}
+            <div class="row">
+                <div class="col-xs-12 arches-report-subsection-content">
+                    <p class="arches-report-subsection-item"><em><strong>{{SECTION_106_REVIEW_E7.SECTION_106_AGREEMENT_E5.0.SECTION_106_AGREEMENT_TYPE_E55.0.SECTION_106_AGREEMENT_TYPE_E55__label}}  ({{SECTION_106_REVIEW_E7.SECTION_106_AGREEMENT_E5.0.SECTION_106_AGREEMENT_EXECUTION_TIME___SPAN_E52.0.SECTION_106_AGREEMENT_EXECUTION_DATE_E49.0.SECTION_106_AGREEMENT_EXECUTION_DATE_E49__label|slice:":10"}})</strong></em></p>
+                    <p class="arches-report-subsection-item"><em>Notes: </em>{{SECTION_106_REVIEW_E7.SECTION_106_AGREEMENT_E5.0.SECTION_106_AGREEMENT_NOTES_E62.0.SECTION_106_AGREEMENT_NOTES_E62__label|safe}}</p>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
     {% endif %}
 </div>

@@ -54,52 +54,32 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 margin-bottom-10">
-            <div class="form-section-header"><span>{% trans "Number of Resources" %}</span></div>
+        <div class="col-xs-12 col-sm-10">
+            <div class="col-xs-12 col-md-7 form-section-input">
+                <dl class="score-table" style="display:inline">
+                    <div id="contributing-section">
+                        <div class="col-xs-12 form-section-input">
+                            <dt class="form-section-subheader" style="display:inline">{% trans "Contributing Resources" %}</dt>
+                            <dd style="display:inline">
+                                <div class="form-group">
+                                    <select class="form-control arches-form-input 0-200" data-bind='value: getEditedNode("NUMBER_OF_CONTRIBUTING_RESOURCES.E62", "value")'></select>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+                    <div id="non-contributing-section">
+                        <div class="col-xs-12 form-section-input margin-top-5">
+                            <dt class="form-section-subheader" style="display:inline">{% trans "Non-Contributing Resources" %}</dt>
+                            <dd style="display:inline">
+                                <div class="form-group">
+                                    <select class="form-control arches-form-input 0-200" data-bind='value: getEditedNode("NUMBER_OF_NON_CONTRIBUTING_RESOURCES.E62", "value")'></select>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+                </dl>
+            </div>
         </div>
     </div>
-    <div id="number-section">
-        <div class="row">
-            <div class="col-xs-12 col-sm-10">
-                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right">
-                    <div class="form-group">
-                        <input class="form-control arches-form-input" placeholder='{% trans "enter number" %}' data-bind='value: getEditedNode("NUMBER_OF_RESOURCES.E62", "value")'>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 form-section-input add-margin-top">
-                    <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NUMBER_OF_RESOURCES_TYPE.E55', 'value'), placeholder: '{% trans 'resource category' %}', dataKey: 'NUMBER_OF_RESOURCES_TYPE.E55'}"></input>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
-                {% include 'views/components/add-item-button.htm' %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must fill in both fields." %}</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="arches-crud-child-section">
-                    <dl>
-                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "none recorded" %}</div>   
-                            <div data-bind='foreach: getBranchLists()'>
-                                <div class="arches-crud-record">
-                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
-                                        <span data-bind="text: nodes.get('NUMBER_OF_RESOURCES.E62', 'value') + ' ' + nodes.get('NUMBER_OF_RESOURCES_TYPE.E55', 'label') + ' Resources'" style="padding-right:2px;"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </dd>
-                    </dl>
-                </div>
-            </div>
-        </div>
-    </div> 
 </div>
 {% endblock form_content %}

@@ -12,6 +12,11 @@ define(['jquery',
             
             BaseForm.prototype.initialize.apply(this);
 
+            var $select = $(".0-200");
+            for (i=0;i<=200;i++){
+                $select.append($('<option></option>').val(i).html(i))
+            }
+
             this.addBranchList(new BranchList({
                 el: this.$el.find('#description-section')[0],
                 data: this.data,
@@ -22,12 +27,17 @@ define(['jquery',
             }));
             
             this.addBranchList(new BranchList({
-                el: this.$el.find('#number-section')[0],
+                el: this.$el.find('#non-contributing-section')[0],
                 data: this.data,
-                dataKey: 'NUMBER_OF_RESOURCES.E62',
-                validateBranch: function(nodes){
-                    return this.validateHasValues(nodes);
-                }
+                dataKey: 'NUMBER_OF_NON_CONTRIBUTING_RESOURCES.E62',
+                singleEdit: true,
+            }));
+
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#contributing-section')[0],
+                data: this.data,
+                dataKey: 'NUMBER_OF_CONTRIBUTING_RESOURCES.E62',
+                singleEdit: true,
             }));
 
         }

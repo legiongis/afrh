@@ -1,0 +1,69 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Identification</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <p class="arches-report-subsection-item"><em><strong>Name</strong></em></p>
+                {% if not 'NAME_E48' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for NAME_E48 in report_info.source.graph.NAME_E48 %}
+                    <p class="arches-report-subsection-item">{{NAME_E48.NAME_E48__label}}</p>
+                {% endfor %}
+                {% endif %}
+                
+                <p class="arches-report-subsection-item"><em><strong>Zone Type</strong></em></p>
+                {% if not 'ZONE_TYPE_E55' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for ZONE_TYPE_E55 in report_info.source.graph.ZONE_TYPE_E55 %}
+                    <p class="arches-report-subsection-item">{{ZONE_TYPE_E55.ZONE_TYPE_E55__label}}</p>
+                {% endfor %}
+                {% endif %}
+                
+                <p class="arches-report-subsection-item"><em><strong>Planned Use</strong></em></p>
+                {% if not 'PLANNED_USE_E55' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for PLANNED_USE_E55 in report_info.source.graph.PLANNED_USE_E55 %}
+                    <p class="arches-report-subsection-item">{{PLANNED_USE_E55.PLANNED_USE_E55__label}}</p>
+                {% endfor %}
+                {% endif %}
+                
+                {% if not 'MASTER_PLAN_ZONE_ACTIVITY_E7' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for MASTER_PLAN_ZONE_ACTIVITY_E7 in report_info.source.graph.MASTER_PLAN_ZONE_ACTIVITY_E7 %}
+                    <p class="arches-report-subsection-item"><em><strong>{{MASTER_PLAN_ZONE_ACTIVITY_E7.MASTER_PLAN_ZONE_ACTIVITY_TYPE_E55.0.MASTER_PLAN_ZONE_ACTIVITY_TYPE_E55__label}} on {{MASTER_PLAN_ZONE_ACTIVITY_E7.MASTER_PLAN_ZONE_ACTIVITY_TIME___SPAN_E52.0.MASTER_PLAN_ZONE_ACTIVITY_DATE_E49.0.MASTER_PLAN_ZONE_ACTIVITY_DATE_E49__label|slice:":10"}}</strong></em></p>
+                    <p class="arches-report-subsection-item">{{MASTER_PLAN_ZONE_ACTIVITY_E7.MASTER_PLAN_ZONE_ACTIVITY_NOTE_E62.0.MASTER_PLAN_ZONE_ACTIVITY_NOTE_E62__label|safe}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Description</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'DESCRIPTION_E62' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for DESCRIPTION_E62 in report_info.source.graph.DESCRIPTION_E62 %}
+                    <p class="arches-report-subsection-item"><em><strong>{{DESCRIPTION_E62.ZONE_DESCRIPTION_TYPE_E55__value}}</strong></em></p>
+                    <p class="arches-report-subsection-item">{{DESCRIPTION_E62.DESCRIPTION_E62__value}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

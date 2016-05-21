@@ -1,0 +1,134 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Status</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'HISTORIC_AREA_STATUS_E55' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for HISTORIC_AREA_STATUS_E55 in report_info.source.graph.HISTORIC_AREA_STATUS_E55 %}
+                    <p class="arches-report-subsection-item">{{HISTORIC_AREA_STATUS_E55.HISTORIC_AREA_STATUS_E55__label}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Period of Significance</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'PERIOD_OF_SIGNIFICANCE_E4' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for PERIOD_OF_SIGNIFICANCE_E4 in report_info.source.graph.PERIOD_OF_SIGNIFICANCE_E4 %}
+                    <p class="arches-report-subsection-item">From: {{PERIOD_OF_SIGNIFICANCE_E4.PERIOD_OF_SIGNIFICANCE_BEGINNING_E63.0.PERIOD_OF_SIGNIFICANCE_BEGINNING_TIME___SPAN_E52.0.PERIOD_OF_SIGNIFICANCE_BEGINNING_DATE_E49.0.PERIOD_OF_SIGNIFICANCE_BEGINNING_DATE_E49__label|slice:":10"}} | To: {{PERIOD_OF_SIGNIFICANCE_E4.PERIOD_OF_SIGNIFICANCE_END_E64.0.PERIOD_OF_SIGNIFICANCE_END_TIME___SPAN_E52.0.PERIOD_OF_SIGNIFICANCE_END_DATE_E49.0.PERIOD_OF_SIGNIFICANCE_END_DATE_E49__label|slice:":10"}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">National Register Criteria</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <ul class="report-list">
+                {% if not 'NATIONAL_REGISTER_ASSESSMENT_E3' in report_info.source.graph %}
+                <li class="arches-report-subsection-item">Criterion A: n/a</li>
+                <li class="arches-report-subsection-item">Criterion B: n/a</li>
+                <li class="arches-report-subsection-item">Criterion C: n/a</li>
+                <li class="arches-report-subsection-item">Criterion D: n/a</li>
+                {% else %}
+                {% for NATIONAL_REGISTER_ASSESSMENT_E3 in report_info.source.graph.NATIONAL_REGISTER_ASSESSMENT_E3 %}
+                {% if 'NRHP_CRITERIA_E17' in NATIONAL_REGISTER_ASSESSMENT_E3 %}
+                    <li class="arches-report-subsection-item">Criterion A:
+                    {% for NRHP_CRITERIA_E17 in NATIONAL_REGISTER_ASSESSMENT_E3.NRHP_CRITERIA_E17 %}
+                    {% if 'CRITERION_A_RELEVANCE_E62' in NRHP_CRITERIA_E17 %}
+                        {{ NRHP_CRITERIA_E17.CRITERION_A_RELEVANCE_E62.0.CRITERION_A_RELEVANCE_E62__label }}
+                    {% else %}
+                    n/a</li>
+                    {% endif %}
+                    {% endfor %}
+                    <li class="arches-report-subsection-item">Criterion B:
+                    {% for NRHP_CRITERIA_E17 in NATIONAL_REGISTER_ASSESSMENT_E3.NRHP_CRITERIA_E17 %}
+                    {% if 'CRITERION_B_RELEVANCE_E62' in NRHP_CRITERIA_E17 %}
+                        {{ NRHP_CRITERIA_E17.CRITERION_B_RELEVANCE_E62.0.CRITERION_B_RELEVANCE_E62__label }}
+                    {% else %}
+                    n/a</li>
+                    {% endif %}
+                    {% endfor %}
+                    <li class="arches-report-subsection-item">Criterion C:
+                    {% for NRHP_CRITERIA_E17 in NATIONAL_REGISTER_ASSESSMENT_E3.NRHP_CRITERIA_E17 %}
+                    {% if 'CRITERION_C_RELEVANCE_E62' in NRHP_CRITERIA_E17 %}
+                        {{ NRHP_CRITERIA_E17.CRITERION_C_RELEVANCE_E62.0.CRITERION_C_RELEVANCE_E62__label }}
+                    {% else %}
+                    n/a</li>
+                    {% endif %}
+                    {% endfor %}
+                    <li class="arches-report-subsection-item">Criterion D:
+                    {% for NRHP_CRITERIA_E17 in NATIONAL_REGISTER_ASSESSMENT_E3.NRHP_CRITERIA_E17 %}
+                    {% if 'CRITERION_D_RELEVANCE_E62' in NRHP_CRITERIA_E17 %}
+                        {{ NRHP_CRITERIA_E17.CRITERION_D_RELEVANCE_E62.0.CRITERION_D_RELEVANCE_E62__label }}
+                    {% else %}
+                    n/a</li>
+                    {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Criterion Considerations</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            {% if not 'NATIONAL_REGISTER_ASSESSMENT_E3' in report_info.source.graph %}
+            <p class="arches-report-subsection-item">none recorded</p>
+            {% else %}
+            <ul class="report-list">
+                
+                {% for NATIONAL_REGISTER_ASSESSMENT_E3 in report_info.source.graph.NATIONAL_REGISTER_ASSESSMENT_E3 %}
+                {% if 'CRITERION_CONSIDERATIONS_E55' in NATIONAL_REGISTER_ASSESSMENT_E3 %}
+                    <li class="arches-report-subsection-item">{{ NATIONAL_REGISTER_ASSESSMENT_E3.CRITERION_CONSIDERATIONS_E55.0.CRITERION_CONSIDERATIONS_E55__label }}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Areas of Significance</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            {% if not 'AREA_OF_SIGNIFICANCE_E55' in report_info.source.graph %}
+            <p class="arches-report-subsection-item">none recorded</p>
+            {% else %}
+            <ul class="report-list">
+                {% for AREA_OF_SIGNIFICANCE_E55 in report_info.source.graph.AREA_OF_SIGNIFICANCE_E55 %}
+                    <li class="arches-report-subsection-item">{{ AREA_OF_SIGNIFICANCE_E55.AREA_OF_SIGNIFICANCE_E55__label }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -33,7 +33,9 @@ define(['jquery',
                                 // }
                             // }
                         // }, this);
-                        return this.validateHasValues(nodes);
+                        var ck1 = vt.nodesHaveValues(nodes,['CREATION_FORMAT_E55']);
+                        var ck2 = vt.isValidDate(nodes,['DATE_OF_CREATION_E50']);
+                        return ck1 && ck2;
                     }
                 }));
                 

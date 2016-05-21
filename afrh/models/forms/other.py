@@ -457,7 +457,7 @@ class PublicationForm(ResourceForm):
         self.update_nodes('PUBLICATION_EVENT.E12', data)
         self.update_nodes('RIGHT_TYPE.E55', data)
         return
-
+ 
     def load(self, lang):
         if self.resource:
             self.data['TIME-SPAN_RESOURCE_CREATION_EVENT.E52'] = {

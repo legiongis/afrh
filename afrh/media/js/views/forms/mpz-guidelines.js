@@ -103,9 +103,7 @@ define(['jquery',
                 el: this.$el.find('#image-note-section')[0],
                 data: currentEditedGuideline,
                 dataKey: 'GUIDELINE_IMAGE_NOTE.E62',
-                validateBranch: function (nodes) {
-                    return vt.nodesHaveValues(nodes, ['GUIDELINE_IMAGE_TYPE.E55']);
-                }
+                singleEdit: true
             }));
             
             // this.addBranchList(new BranchList({
@@ -146,12 +144,12 @@ define(['jquery',
                         self.dropzoneInstance.emit("thumbnail", mockFile, thumbnail);
 
                         // Make sure that there is no progress bar, etc...
-                        //self.dropzoneInstance.emit("complete", mockFile);
+                        // self.dropzoneInstance.emit("complete", mockFile);
 
                         // If you use the maxFiles option, make sure you adjust it to the
                         // correct amount:
                         // var existingFileCount = 1; // The number of files already uploaded
-                        // myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
+                        // self.dropzoneInstance.options.maxFiles = self.dropzoneInstance.options.maxFiles - existingFileCount;
                     }, this);
                 }
             }));

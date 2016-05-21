@@ -124,7 +124,8 @@ class DesDescriptionForm(ResourceForm):
 
     def update(self, data, files):
         self.update_nodes('DESCRIPTION.E62', data)
-        self.update_nodes('NUMBER_OF_RESOURCES.E62', data)
+        self.update_nodes('NUMBER_OF_CONTRIBUTING_RESOURCES.E62', data)
+        self.update_nodes('NUMBER_OF_NON_CONTRIBUTING_RESOURCES.E62', data)
         return
 
     def load(self, lang):
@@ -136,11 +137,12 @@ class DesDescriptionForm(ResourceForm):
                 },
         }
         
-        self.data['NUMBER_OF_RESOURCES.E62'] = {
-            'branch_lists': datetime_nodes_to_dates(self.get_nodes('NUMBER_OF_RESOURCES.E62')),
-            'domains': {
-                    'NUMBER_OF_RESOURCES_TYPE.E55' : Concept().get_e55_domain('NUMBER_OF_RESOURCES_TYPE.E55'), 
-                },
+        self.data['NUMBER_OF_CONTRIBUTING_RESOURCES.E62'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('NUMBER_OF_CONTRIBUTING_RESOURCES.E62')),
+        }
+
+        self.data['NUMBER_OF_NON_CONTRIBUTING_RESOURCES.E62'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('NUMBER_OF_NON_CONTRIBUTING_RESOURCES.E62')),
         }
         
 class ActBDescriptionForm(ResourceForm):

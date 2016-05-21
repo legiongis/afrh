@@ -63,6 +63,13 @@ define(['jquery', 'views/forms/base', 'views/forms/sections/branch-list', ], fun
                         return this.validateHasValues(nodes);
                     }
                 }));
+
+                this.addBranchList(new BranchList({
+                    el: this.$el.find('#sensitivity-section')[0],
+                    data: this.data,
+                    dataKey: 'SENSITIVE.E62',
+                    singleEdit: true,
+                }));
             }
         });
 });

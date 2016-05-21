@@ -4,6 +4,26 @@
 {% block form_content %}
 
 <div class="form-full-content">
+    <div id="sensitivity-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 col-md-7 form-section-input">
+                    <dl class="score-table" style="display:inline">
+                        <div class="col-xs-12 form-section-input">
+                            <dt style="display:inline"><strong><em>{% trans "Protect This Resource" %}</em></strong></dt>
+                            <dd style="display:inline">
+                                <div class="form-group">
+                                    <select class="form-control arches-form-input" data-bind='value: getEditedNode("SENSITIVE.E62", "value")'>
+                                        <option></option><option>Yes</option><option>No</option>
+                                    </select>
+                                </div>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-xs-12 margin-bottom-10">
             <div class="form-section-header"><span>{% trans "Title" %}</span></div>
@@ -244,6 +264,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 
 {% endblock form_content %}

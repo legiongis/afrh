@@ -1,6 +1,6 @@
 {% extends "views/forms/base.htm" %}
 {% load i18n %}
-
+ 
 {% block form_content %}
 <div class="form-full-content">
     <div class="row">
@@ -46,7 +46,7 @@
                                     <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
                                         <span data-bind='text: nodes.get("CREATION_FORMAT.E55", "label")' style="padding-right:2px;"></span>
                                         <span class="text-muted arches-crud-type-identifier"> ({% trans "type" %})&nbsp; </span>
-                                        <span data-bind='text: nodes.get("DATE_OF_CREATION.E50", "value")' style="padding-right:2px;"></span>
+                                        <span data-bind='text: nodes.get("DATE_OF_CREATION.E50", "value").slice(0,10)' style="padding-right:2px;"></span>
                                         <span class="text-muted arches-crud-type-identifier"> ({% trans "creation date" %})&nbsp; </span>
                                     </a>
                                 </div>

@@ -44,12 +44,32 @@ def home_page(request):
         }, 
         context_instance=RequestContext(request))
 
+def filter_protected(results,doc_type,entitytypeid,value):
+
+    protect_ids = []
+    for item in results['hits']['hits']:
+        if item['_type'] == doc_type:
+            res_id = item['_id']
+            for node in item['_source']['child_entities']:
+                if node['entitytypeid'] == entitytypeid:
+                    if node['value'] == value:
+                        protect_ids.append(res_id)
+
+    results['hits']['hits'] = [hit for hit in results['hits']['hits'] if not hit['_id'] in protect_ids]
+    results['hits']['total'] = results['hits']['total'] - len(protect_ids)
+
+    return results
+
 def search_results(request):
     
     allowed_types = get_allowed_types(request)
     query = build_search_results_dsl(request)
-    results = query.search(index='entity', doc_type=allowed_types) 
+    results = query.search(index='entity', doc_type=allowed_types)
+
+    #filtered_results = filter_protected(results,"INFORMATION_RESOURCE.E73","SENSITIVE.E62","Yes")
+    
     total = results['hits']['total']
+
     page = 1 if request.GET.get('page') == '' else int(request.GET.get('page', 1))
 
     all_entity_ids = ['_all']
@@ -57,6 +77,7 @@ def search_results(request):
         all_entity_ids = ['_none']
     elif request.GET.get('no_filters', '') == '':
         full_results = query.search(index='entity', doc_type='', start=0, limit=1000000, fields=[])
+        # filtered_results2 = filter_protected(full_results,"INFORMATION_RESOURCE.E73","SENSITIVE.E62","Yes")
         all_entity_ids = [hit['_id'] for hit in full_results['hits']['hits']]
 
     return get_paginator(results, total, page, settings.SEARCH_ITEMS_PER_PAGE, all_entity_ids)

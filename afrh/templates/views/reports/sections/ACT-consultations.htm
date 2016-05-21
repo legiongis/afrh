@@ -1,0 +1,44 @@
+{% load i18n %}
+<div class="row">
+    {% if 'ACTIVITY_CONSULTATION_E5' not in report_info.source.graph %}
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection"></h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <span class="arches-report-subsection-item-none">{% trans "none recorded" %}</span>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    {% for ACTIVITY_CONSULTATION_E5 in report_info.source.graph.ACTIVITY_CONSULTATION_E5 %}
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">{{ACTIVITY_CONSULTATION_E5.CONSULTATION_METHOD_E55.0.CONSULTATION_METHOD_E55__label}} Consultation</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <p class="arches-report-subsection-item">{{ACTIVITY_CONSULTATION_E5.CONSULTATION_TYPE_E55.0.CONSULTATION_TYPE_E55__label}} ({{ACTIVITY_CONSULTATION_E5.CONSULTATION_TIME___SPAN_E52.0.CONSULTATION_DATE_E49.0.CONSULTATION_DATE_E49__value|slice:":10"}})</p>
+                <p class="arches-report-subsection-item"><em><strong>Documentation</strong></em></p>
+                <ul class="report-list">
+                {% for CONSULTATION_DOCUMENTATION_TYPE_E55 in ACTIVITY_CONSULTATION_E5.CONSULTATION_DOCUMENTATION_E31.0.CONSULTATION_DOCUMENTATION_TYPE_E55 %}
+                    <li class="arches-report-subsection-item">
+                    {{CONSULTATION_DOCUMENTATION_TYPE_E55.CONSULTATION_DOCUMENTATION_TYPE_E55__value}}
+                    </li>
+                {% endfor %}
+                </ul>
+                <p class="arches-report-subsection-item"><strong><em>Attendees</strong></em></p>
+                <ul class="report-list">
+                {% for CONSULTATION_ATTENDEE_E39 in ACTIVITY_CONSULTATION_E5.CONSULTATION_ATTENDEE_E39 %}
+                    <li class="arches-report-subsection-item">
+                    {{CONSULTATION_ATTENDEE_E39.CONSULTATION_ATTENDEE_E39__value}}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>

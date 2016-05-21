@@ -16,7 +16,6 @@ require([
  
             var resize;
             var self = this;
-            var resource_geometry = $('#resource_geometry');
             
             $(".section-toggle").click(function (){ 
                 iconEl = $(this).find('i');
@@ -31,7 +30,11 @@ require([
                 $(iconEl).toggleClass("fa-folder");
             });
             
+            var resource_geometry = $('#resource_geometry');
+            console.log(resource_geometry.length);
             if(resource_geometry.length > 0){
+            // console.log(resource_geometry.val());
+            // if(resource_geometry.val() != 'null'){
                 var geom = JSON.parse(resource_geometry.val());
                 this.map = new MapView({
                     el: $('#map')
@@ -150,6 +153,11 @@ require([
                     $(list).find('.empty-message').show();
                 }
             })
+            
+            var info_el = document.getElementById("report_info");
+            if (info_el){
+                self.showRelatedResourcesGraph()
+            }
         },
         
         showRelatedResourcesGraph: function () {
@@ -238,5 +246,5 @@ require([
     });
 
     var rv = new ReportView();
-    rv.showRelatedResourcesGraph();
+    //rv.showRelatedResourcesGraph();
 });

@@ -30,6 +30,8 @@ from forms import wizard
 from forms import review
 from arches.app.models.forms import DeleteResourceForm
 from django.utils.translation import ugettext as _
+import json
+import os
 
 class Resource(ArchesResource):
     def __init__(self, *args, **kwargs):
@@ -161,6 +163,14 @@ class Resource(ArchesResource):
 
         if self.entityid != '':
             self.form_groups.append(manage_group)
+        
+        if self.entityid != '':
+            se = SearchEngineFactory().create()
+            resource = se.search(index='resource', id=self.entityid)
+            resource_graph = resource['_source']['graph']
+            log_path = os.path.join(settings.PACKAGE_ROOT,'logs','current_graph.json')
+            with open(log_path,"w") as log:
+                print >> log, json.dumps(resource_graph, sort_keys=True,indent=2, separators=(',', ': '))
 
     def get_primary_name(self):
         """

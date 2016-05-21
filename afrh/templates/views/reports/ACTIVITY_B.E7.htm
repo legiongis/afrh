@@ -27,9 +27,29 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
     <!--=== Resource Description Section ===-->
     <div class="block-description report-block-description" style="padding:0px !important;" id="report">
         <div class="container">
-
             <!-- Resource Report Container -->
             <div>
+            
+                <!-- this is here because, for some reason, the absence of the map section sets the margin-top of the
+                #report element to -40 which is super obnoxious -->
+                {% if geometry == 'null' %}
+                <div style="height:40px"></div>
+                {% endif %}
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "Summary" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/ACT-summary-B.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 {% if geometry != 'null' %}
                 <div class="report-section" >
                     <div class="report-section-header">
@@ -47,13 +67,27 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                 
                 <div class="report-section" >
                     <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "NEPA Review" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "Description" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
                     </div>
                     <div class="row report-content">
                         <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
                         <div class="col-xs-12">
                             <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/ACT-nepa-review.htm' %}
+                                {% include 'views/reports/sections/ACT-description-B.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "Consultations" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/ACT-consultations.htm' %}
                             </div>
                         </div>
                     </div>
@@ -68,6 +102,48 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                         <div class="col-xs-12">
                             <div class="right-inner arches-box-grey-border">
                                 {% include 'views/reports/sections/ACT-entities.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "ARPA Review" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/ACT-arpa-review.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "NEPA Review" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/ACT-nepa-review.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "HPO/HPRB Review" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/ACT-hpo-hprb-review.htm' %}
                             </div>
                         </div>
                     </div>
@@ -100,192 +176,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                         </div>
                     </div>
                 </div>
-                
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "HPO/HPRB Review" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/ACT-hpo-hprb-review.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "ARPA Review" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/ACT-arpa-review.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Resource Identification" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/IR_resource_identification.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Evaluation" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/IR_evaluation.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Classification" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/IR_classification.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Important Dates" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/IR_important_dates.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Location" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {# include 'views/reports/sections/map-section.htm' #}
-                                {% include 'views/reports/sections/IR_location.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Description" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/IR_description.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Function and Use" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/IR_function_and_use.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Detailed Description" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/IR_detailed_description.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                {% if report_info.type in fullreport %}
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Heritage Asset Data" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/IR_heritage_asset_information.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Maintenance Data" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/IR_maintenance_data.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="report-section" >
-                    <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Condition Assessments" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
-                    </div>
-                    <div class="row report-content">
-                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                        <div class="col-xs-12">
-                            <div class="right-inner arches-box-grey-border">
-                                {% include 'views/reports/sections/IR_condition_assessment.htm' %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                {% endif %}
                 
                 <div class="report-section" >
                     <div class="report-section-header">
