@@ -440,10 +440,18 @@ cf https://github.com/summernote/summernote/issues/187
 }
 
 .form-section-subheader {
-    padding-top: 0px;
-    padding-bottom: 5px;
-    font-size: 14px;
+    width: 100%;
+    text-align:center;
+    border-bottom: 1px solid #eee; 
+    line-height: 0.1em;
+    margin: 20px 0px 15px; 
+    font-size: 16px;
     font-weight: 500;
+}
+
+.form-section-subheader span {
+    background: #fff;
+    padding-right: 10px;
 }
 
 .form-full-content {
