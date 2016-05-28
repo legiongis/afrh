@@ -1,0 +1,3 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+EXEMPT_TYPE:1,Exempt,,SECTION_106_EXEMPTION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+EXEMPT_TYPE:2,Not Exempt,,SECTION_106_EXEMPTION_TYPE_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
