@@ -26,6 +26,7 @@ from forms import description
 from forms import location
 from forms import other
 from forms import wizard
+from forms import review
 from arches.app.models.forms import DeleteResourceForm
 from django.utils.translation import ugettext as _
 
@@ -109,10 +110,16 @@ class Resource(ArchesResource):
             
         elif self.entitytypeid == 'ACTIVITY_A.E7':
             description_group['forms'][:0] = [
+                review.Section106ReviewForm.get_info(),
+                review.NCPCReviewForm.get_info(),
+                review.CFAReviewForm.get_info(),
+                other.EntitiesForm.get_info(),
             ]
 
         elif self.entitytypeid == 'ACTIVITY_B.E7':
             description_group['forms'][:0] = [
+                review.NCPCReviewForm.get_info(),
+                review.CFAReviewForm.get_info(),
             ]
 
         if self.entityid != '':

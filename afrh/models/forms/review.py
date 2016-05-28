@@ -40,26 +40,65 @@ def datetime_nodes_to_dates(branch_list):
                 node.label = node.value
     return branch_list
 
-class ExternalReferenceForm(ResourceForm):
+class NCPCReviewForm(ResourceForm):
     @staticmethod
     def get_info():
         return {
-            'id': 'external-reference',
+            'id': 'ncpc-review',
             'icon': 'fa-random',
-            'name': _('External System References'),
-            'class': ExternalReferenceForm
+            'name': _('NCPC Review'),
+            'class': NCPCReviewForm
         }
 
     def update(self, data, files):
-        self.update_nodes('EXTERNAL_RESOURCE.E1', data)
+        self.update_nodes('NCPC_REVIEW_IDENTIFICATION.E15', data)
+        self.update_nodes('NCPC_SUBMISSION.E5', data)
         return
 
     def load(self, lang):
 
-        self.data['EXTERNAL_RESOURCE.E1'] = {
-            'branch_lists': self.get_nodes('EXTERNAL_RESOURCE.E1'),
+        self.data['NCPC_REVIEW_IDENTIFICATION.E15'] = {
+            'branch_lists': self.get_nodes('NCPC_REVIEW_IDENTIFICATION.E15'),
+        }
+        
+        self.data['NCPC_SUBMISSION.E5'] = {
+            'branch_lists': self.get_nodes('NCPC_SUBMISSION.E5'),
             'domains': {
-                'EXTERNAL_XREF_TYPE.E55': Concept().get_e55_domain('EXTERNAL_XREF_TYPE.E55'),
+                'NCPC_SUBMISSION_TYPE.E55': Concept().get_e55_domain('NCPC_SUBMISSION_TYPE.E55'),
+                'NCPC_SUBMISSION_DECISION.E55': Concept().get_e55_domain('NCPC_SUBMISSION_DECISION.E55'),
+                'NCPC_SUBMISSION_REVIEW_TYPE.E55': Concept().get_e55_domain('NCPC_SUBMISSION_REVIEW_TYPE.E55'),
+                
+            }
+        }
+        
+class CFAReviewForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'cfa-review',
+            'icon': 'fa-random',
+            'name': _('CFA Review'),
+            'class': CFAReviewForm
+        }
+
+    def update(self, data, files):
+        self.update_nodes('CFA_REVIEW_IDENTIFICATION.E15', data)
+        self.update_nodes('CFA_SUBMISSION.E5', data)
+        return
+
+    def load(self, lang):
+
+        self.data['CFA_REVIEW_IDENTIFICATION.E15'] = {
+            'branch_lists': self.get_nodes('CFA_REVIEW_IDENTIFICATION.E15'),
+        }
+        
+        self.data['CFA_SUBMISSION.E5'] = {
+            'branch_lists': self.get_nodes('CFA_SUBMISSION.E5'),
+            'domains': {
+                'CFA_SUBMISSION_TYPE.E55': Concept().get_e55_domain('CFA_SUBMISSION_TYPE.E55'),
+                'CFA_SUBMISSION_DECISION.E55': Concept().get_e55_domain('CFA_SUBMISSION_DECISION.E55'),
+                'CFA_SUBMISSION_REVIEW_TYPE.E55': Concept().get_e55_domain('CFA_SUBMISSION_REVIEW_TYPE.E55'),
+                
             }
         }
         
@@ -111,7 +150,68 @@ class DesEvaluationForm(ResourceForm):
                 'AREA_OF_SIGNIFICANCE.E55': Concept().get_e55_domain('AREA_OF_SIGNIFICANCE.E55'),
             }
         }
+        
+class Section106ReviewForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'section-oneohsix-review',
+            'icon': 'fa-random',
+            'name': _('Section 106'),
+            'class': Section106ReviewForm
+        }
 
+    def update(self, data, files):
+        update_nodes = [
+            'SECTION_106_EXEMPTION.E55',
+            'DCSHPO_URR.E42',
+            'DCSHPO_SUBMISSION.E5',
+            # 'DCSHPO_RESPONSE.E5',
+            # 'SECTION_106_NOTICIFICATION.E5',
+            # 'SECTION_106_DISPUTE_RESOLUTION_NOTES.E62',
+            # 'SECTION_106_AGREEMENT.E5',
+        ]
+        
+        for node in update_nodes:
+            self.update_nodes(node, data)
+
+        return
+
+    def load(self, lang):
+        
+        load_nodes = {
+            'SECTION_106_EXEMPTION.E55':[
+                'SECTION_106_EXEMPTION_TYPE.E55'
+            ],
+            'DCSHPO_URR.E42':[],
+            'DCSHPO_SUBMISSION.E5':[
+                'DCSHPO_SUBMISSION_TYPE.E55',
+                'DCSHPO_SUBMISSION_METHOD.E55',
+                'AFRH_DETERMINATION_OF_EFFECT.E55',
+            ],
+            # 'DCSHPO_RESPONSE.E5':[
+                # 'DCSHPO_RESPONSE_TYPE.E55',
+                # 'DCSHPO_RESPONSE_EVALUATION.E55',
+            # ],
+            # 'SECTION_106_NOTIFICATION.E5':[
+                # 'SECTION_106_NOTIFICATION_TYPE.E55',
+                # 'SECTION_106_NOTIFICATION_METHOD.E55',
+            # ],
+            # 'SECTION_106_DISPUTE_RESOLUTION_NOTES.E62':[]
+            # 'SECTION_106_AGREEMENT.E5':[
+                # 'SECTION_106_AGREEMENT_TYPE.E55',
+            # ]
+        }
+        
+        for node, domains in load_nodes.iteritems():
+
+            self.data[node] = {
+                'branch_lists': self.get_nodes(node),
+                'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
+            }
+        
+        return
+        
 class CharAreaGuidelinesForm(ResourceForm):
     @staticmethod
     def get_info():
@@ -574,70 +674,6 @@ class ActorSummaryForm(ResourceForm):
                 }
             }
 
-class EntitiesForm(ResourceForm):
-    @staticmethod
-    def get_info():
-        return {
-            'id': 'entities',
-            'icon': 'fa-flash',
-            'name': _('Entities'),
-            'class': EntitiesForm
-        }
-
-    def update(self, data, files):
-        self.update_nodes('AFRH_PROJECT_CONTACT.E39', data)
-        self.update_nodes('ACTIVITY_ARCHITECT.E39', data)
-        self.update_nodes('ACTIVITY_CONTRACTOR.E39', data)
-        self.update_nodes('ACTIVITY_ENGINEER.E39', data)
-        self.update_nodes('ACTIVITY_ARCHAEOLOGIST.E39', data)
-        self.update_nodes('ACTIVITY_CONSULTANT.E39', data)
-        self.update_nodes('ACTIVITY_CONSULTING_PARTY.E39', data)
-        self.update_nodes('ACTIVITY_NCPC_CONTACT.E39', data)
-        self.update_nodes('ACTIVITY_CFA_CONTACT.E39', data)
-        self.update_nodes('ACTIVITY_DCSHPO_CONTACT.E39', data)
-        self.update_nodes('ACTIVITY_ENTITIES_NOTE.E62', data)
-        return
-
-
-    def load(self, lang):
-
-        self.data['AFRH_PROJECT_CONTACT.E39'] = {
-            'branch_lists': self.get_nodes('AFRH_PROJECT_CONTACT.E39'),
-        }
-        self.data['ACTIVITY_ARCHITECT.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_ARCHITECT.E39'),
-        }
-        self.data['ACTIVITY_CONTRACTOR.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_CONTRACTOR.E39'),
-        }
-        self.data['ACTIVITY_ENGINEER.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_ENGINEER.E39'),
-        }
-        self.data['ACTIVITY_ARCHAEOLOGIST.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_ARCHAEOLOGIST.E39'),
-        }
-        self.data['ACTIVITY_CONSULTANT.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_CONSULTANT.E39'),
-        }
-        self.data['ACTIVITY_CONSULTING_PARTY.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_CONSULTING_PARTY.E39'),
-        }
-        self.data['ACTIVITY_NCPC_CONTACT.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_NCPC_CONTACT.E39'),
-        }
-        self.data['ACTIVITY_CFA_CONTACT.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_CFA_CONTACT.E39'),
-        }
-        self.data['ACTIVITY_DCSHPO_CONTACT.E39'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_DCSHPO_CONTACT.E39'),
-        }
-        self.data['ACTIVITY_ENTITIES_NOTE.E62'] = {
-            'branch_lists': self.get_nodes('ACTIVITY_ENTITIES_NOTE.E62'),
-        }
-
-
-        return
-        
 class PhaseForm(ResourceForm):
     @staticmethod
     def get_info():
