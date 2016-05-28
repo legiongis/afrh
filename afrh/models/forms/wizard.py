@@ -155,7 +155,11 @@ class MPZoneGuidelinesForm(ResourceForm):
         entities = entity.find_entities_by_type_id(entitytypeid)
         for entity in entities:
             ret.append({'nodes': entity.flatten()})
-
+        #print json.dumps(ret, indent=2)
+        print entitytypeid
+        for i in ret:
+            for e in i['nodes']:
+                print e
         return ret
 
     def update_nodes(self, entitytypeid, data):
@@ -187,7 +191,6 @@ class MPZoneGuidelinesForm(ResourceForm):
                         self.baseentity.merge(entity)
 
     def update(self, data, files):
-        print json.dumps(data, indent=2)
         if len(files) > 0:
             for f in files:
                 data['GUIDELINE_IMAGE.E73'].append({
@@ -209,12 +212,14 @@ class MPZoneGuidelinesForm(ResourceForm):
                     self.resource.filter(lambda entity: entity.entityid != node['entityid'])
 
         self.update_nodes('GUIDELINE_TYPE.E55', data)
+        self.update_nodes('GUIDELINE_NOTE.E62', data)
         self.update_nodes('GUIDELINE_IMAGE.E73', data)
+        self.update_nodes('GUIDELINE_IMAGE_NOTE.E62', data)
+        #self.update_nodes('GUIDELINE_IMAGE_TYPE.E55', data)
         self.resource.merge_at(self.baseentity, self.resource.entitytypeid)
         self.resource.trim()
                    
     def load(self, lang):
-
         self.data = {
             'data': [],
             'domains': {
@@ -233,14 +238,11 @@ class MPZoneGuidelinesForm(ResourceForm):
                 'GUIDELINE_NOTE.E62': {
                     'branch_lists': self.get_nodes(entity, 'GUIDELINE_NOTE.E62')
                 },
-                'GUIDELINE_IMAGE_TYPE.E55': {
-                    'branch_lists': self.get_nodes(entity, 'GUIDELINE_IMAGE_TYPE.E55')
-                },
                 'GUIDELINE_IMAGE_NOTE.E62': {
                     'branch_lists': self.get_nodes(entity, 'GUIDELINE_IMAGE_NOTE.E62')
                 },
                 'GUIDELINE_IMAGE.E73': {
-                    'branch_lists': self.get_nodes(entity, 'GUIDELINE_IMAGE.E73')
+                    'branch_lists': self.get_nodes(entity, 'GUIDELINE_IMAGE.E73'),
                 },
                 'GUIDELINE.E89': {
                     'branch_lists': self.get_nodes(entity, 'GUIDELINE.E89')
@@ -571,11 +573,9 @@ class EvaluationForm(ResourceForm):
         self.update_nodes('INTEGRITY_TYPE.E55', data)
         self.update_nodes('REASONS.E62', data)
         self.update_nodes('DATE_EVALUATED.E49', data)
-
+        
         self.resource.merge_at(self.baseentity, self.resource.entitytypeid)
         self.resource.trim()
-
-
 
     def load(self, lang):
 

@@ -103,15 +103,17 @@ define(['jquery',
                 el: this.$el.find('#image-note-section')[0],
                 data: currentEditedGuideline,
                 dataKey: 'GUIDELINE_IMAGE_NOTE.E62',
-                singleEdit: true
+                validateBranch: function (nodes) {
+                    return vt.nodesHaveValues(nodes, ['GUIDELINE_IMAGE_TYPE.E55']);
+                }
             }));
             
-            this.addBranchList(new BranchList({
-                el: this.$el.find('#image-type-section')[0],
-                data: currentEditedGuideline,
-                dataKey: 'GUIDELINE_IMAGE_TYPE.E55',
-                singleEdit: true
-            }));
+            // this.addBranchList(new BranchList({
+                // el: this.$el.find('#image-type-section')[0],
+                // data: currentEditedGuideline,
+                // dataKey: 'GUIDELINE_IMAGE_TYPE.E55',
+                // singleEdit: true
+            // }));
 
             this.filebranchlist = this.addBranchList(new BranchList({
                 el: this.$el.find('#files-section')[0],
@@ -186,12 +188,15 @@ define(['jquery',
                 'GUIDELINE_TYPE.E55': {
                     'branch_lists': []
                 },
+                'GUIDELINE_NOTE.E62': {
+                    'branch_lists': []
+                },
                 'GUIDELINE_IMAGE.E73': {
                     'branch_lists': []
                 },
-                'GUIDELINE_IMAGE_TYPE.E55': {
-                    'branch_lists': []
-                },
+                // 'GUIDELINE_IMAGE_TYPE.E55': {
+                    // 'branch_lists': []
+                // },
                 'GUIDELINE_IMAGE_NOTE.E62': {
                     'branch_lists': []
                 }

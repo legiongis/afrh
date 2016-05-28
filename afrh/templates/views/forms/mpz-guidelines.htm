@@ -3,10 +3,9 @@
 
 {% block form_content %}
 <div class="form-full-content">
-    <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "A type and valid date (yyyy-mm-dd) must be entered." %}</div>
+    <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a guideline type." %}</div>
     <div class="row">
         <div class="col-xs-12 margin-bottom-10 margin-top-5">
-            <div class="form-section-header"><span>{% trans "Guidelines" %}</span></div>
             <div class="form-section-header"><span>{% trans "Guidelines" %}</span></div>
         </div>
     </div>
@@ -34,22 +33,18 @@
                                     <a href="javascript:void(0)" title="Remove this condition assessment" data-bind="click: $root.deleteAssessment">
                                         <i class="arches-CRUD-delete fa fa-times-circle"></i>
                                     </a>
-                                    <a href="javascript:void(0)" class="" title="Edit this assessment" data-bind="click: $root.editAssessment">{% trans "Condition State on" %} 
-                                        <span data-bind="if: $data['DATE_CONDITION_ASSESSED.E49'].branch_lists.length > 0">
-                                            <span data-bind="text: $data['DATE_CONDITION_ASSESSED.E49'].branch_lists[0].nodes[0].label + ': ' + $data['CONDITION_TYPE.E55'].branch_lists[0].nodes[0].label"></span>
-                                        </span>
+                                    <a href="javascript:void(0)" class="" title="edit this guideline" data-bind="click: $root.editAssessment"> 
+                                        <span data-bind="html: $data['GUIDELINE_TYPE.E55'].branch_lists[0].nodes[0].label"></span>
                                     </a>
-                                    <br>
-                                    <em><span class="text-muted" data-bind="html: $data['CONDITION_ASSESSMENT_TYPE.E55'].branch_lists[0].nodes[0].label"></span></em>
                                 </div>
                             </dd>
                         </dl>
                         <dl>   
                             <dt class="arches-evaluation-header">{% trans "Description" %}</dt>
-                            <dd class="arches-evaluation-content" data-bind="if: $data['CONDITION_DESCRIPTION.E62'].branch_lists.length > 0">
-                                <span data-bind="html: $data['CONDITION_DESCRIPTION.E62'].branch_lists[0].nodes[0].value"></span>
+                            <dd class="arches-evaluation-content" data-bind="if: $data['GUIDELINE_NOTE.E62'].branch_lists.length > 0">
+                                <span data-bind="html: $data['GUIDELINE_NOTE.E62'].branch_lists[0].nodes[0].value"></span>
                             </dd>
-                            <dd class="arches-evaluation-content" data-bind="ifnot: $data['CONDITION_DESCRIPTION.E62'].branch_lists.length > 0">
+                            <dd class="arches-evaluation-content" data-bind="ifnot: $data['GUIDELINE_NOTE.E62'].branch_lists.length > 0">
                                 <span class="text-muted" data-bind="html: '(none)'"></span>
                             </dd>
                         </dl>
@@ -90,32 +85,39 @@
                                 </div>
                             </div>
                             <div style="margin-left: 20px; padding-top: 5px;" data-bind="attr: {'id': 'links_' + $index()}">
-                                <div data-bind="foreach: $data['CONDITION_IMAGE.E73'].branch_lists">
-                                    <span data-bind="if: nodes[0].entitytypeid == 'CONDITION_IMAGE_FILE_PATH.E62'">
+                                <div data-bind="foreach: $data['GUIDELINE_IMAGE.E73'].branch_lists">
+                                    <span data-bind="if: nodes[0].entitytypeid == 'GUIDELINE_IMAGE_FILE_PATH.E62'">
                                         <a title="" data-gallery data-bind="attr: { href: nodes[0].value, 'data-gallery': 'links_' + $parentContext.$index()}" target="_blank">
                                             <img alt="" style="width: 12.5%" data-bind="attr: { src: nodes[1].value}">
                                         </a>
                                     </span>
-                                    <span data-bind="if: nodes[0].entitytypeid == 'CONDITION_IMAGE_THUMBNAIL.E62'">
+                                    <span data-bind="if: nodes[0].entitytypeid == 'GUIDELINE_IMAGE_THUMBNAIL.E62'">
                                         <a title="" data-gallery data-bind="attr: { href: nodes[1].value, 'data-gallery': 'links_' + $parentContext.$index()}" target="_blank">
                                             <img alt="" style="width: 12.5%" data-bind="attr: { src: nodes[0].value}">
                                         </a>
                                     </span>
                                 </div>
-                                <div class="arches-evaluation-content" style="margin-left:0;" data-bind="ifnot: $data['CONDITION_IMAGE.E73'].branch_lists.length > 0">
+                                <div class="arches-evaluation-content" style="margin-left:0;" data-bind="ifnot: $data['GUIDELINE_IMAGE.E73'].branch_lists.length > 0">
                                     <span class="text-muted" data-bind="html: '(none)'"></span>
                                 </div>
                             </div>
                         </dl>
                         <dl>   
-                            <dt class="arches-evaluation-header">{% trans "Disturbances" %}</dt>
-                            <dd data-bind="foreach: $data['DISTURBANCE_TYPE.E55'].branch_lists" class="arches-evaluation-content">
-                                <span data-bind="text: nodes[0].label"></span><br>
+                            <dt class="arches-evaluation-header">{% trans "Image Details" %}</dt>
+                            <dd style="background-color:green" data-bind="foreach: $data['GUIDELINE_IMAGE_NOTE.E62'].branch_lists" class="arches-evaluation-content">
+                                <p data-bind="foreach: nodes" style="background-color:red">
+                                
+                                <span data-bind="text: label"></span><br>
+                                
+                                </p>
+                                this is inserted
+                                <!--<span data-bind="text: nodes[1].value"></span>-->
                             </dd>
-                            <dd class="arches-evaluation-content" data-bind="ifnot: $data['DISTURBANCE_TYPE.E55'].branch_lists.length > 0">
+                            <dd class="arches-evaluation-content" data-bind="ifnot: $data['GUIDELINE_IMAGE_NOTE.E62'].branch_lists.length > 0">
                                 <span class="text-muted" data-bind="html: '(none)'"></span>
                             </dd>
                         </dl>
+                        <!--
                         <dl>   
                             <dt class="arches-evaluation-header">{% trans "Threats" %}</dt>
                                 <dd data-bind="foreach: $data['THREAT_TYPE.E55'].branch_lists" class="arches-evaluation-content">
@@ -136,6 +138,7 @@
                                 <span class="text-muted" data-bind="html: '(none)'"></span>
                             </dd>
                         </dl>
+                        -->
 
                     </div>
                 </div>
@@ -214,25 +217,56 @@
                                                     <i class="fa-fw fa fa-info"></i>
                                                     {% trans "You can (optionally) upload images that show the condition of the resource during your assessment." %}
                                                 </div>
-                                                <div class="col-xs-12">
+                                                <div id="files-section">   
+                                                    <div class="dropzone" id="mydropzone"></div>
+                                                </div>
+                                                <div id="image-note-section">
                                                     <div class="row">
-                                                        <div class="col-xs-12 form-section-input" id="image-type-section">
-                                                            <div class="form-group">
-                                                                <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('GUIDELINE_IMAGE_TYPE.E55', 'value'), placeholder: '{% trans 'condition' %}', dataKey: 'GUIDELINE_IMAGE_TYPE.E55'}"></input>
+                                                        <div class="col-xs-12 col-sm-10 margin-top-5">
+                                                            <div class="col-xs-12 form-section-input">
+                                                                <div class="form-group">
+                                                                    <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('GUIDELINE_IMAGE_TYPE.E55', 'value'), placeholder: '{% trans 'image type' %}', dataKey: 'GUIDELINE_IMAGE_TYPE.E55'}"></input>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-12 form-section-input margin-top-5">
+                                                                <div class="form-group" style="width: 100%;">
+                                                                    <div class="arches-html-editor" style="width: 100%;">
+                                                                        <div class="summernote" data-bind="summernote: {value: getEditedNode('GUIDELINE_IMAGE_NOTE.E62', 'value'), options:{}}"></div>  
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xs-12 form-section-input margin-top-5" id="image-note-section">
-                                                            <div class="form-group" style="width: 100%;">
-                                                                <div class="arches-html-editor" style="width: 100%;">
-                                                                    <div class="summernote" data-bind="summernote: {value: getEditedNode('GUIDELINE_IMAGE_NOTE.E62', 'value'), options:{}}"></div>  
-                                                                </div>
+                                                        <div class="col-xs-12 col-sm-2 margin-top-5">
+                                                            {% include 'views/components/add-item-button.htm' %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-10">
+                                                            <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must select a disturbance." %}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="arches-crud-child-section">
+                                                                <dl>
+                                                                    <dd class="margin-left-15 margin-top-5" style="display: none;" data-bind="visible: true">
+                                                                        <div data-bind="visible: getBranchLists().length == 0" class="text-muted filler-text-block">{% trans "none recorded" %}</div>   
+                                                                        <div data-bind="foreach: getBranchLists()">
+                                                                            <div class="arches-crud-record" style="display:block">
+                                                                                <a href="javascript:void(0)" class="arches-CRUD-child" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                                                                <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                                                                    <span data-bind="text: nodes.get('GUIDELINE_IMAGE_TYPE.E55', 'label')" style="padding-right:2px;"></span>
+                                                                                </a>&nbsp;
+                                                                                <span class="arches-text-muted" data-bind="text: nodes.get('GUIDELINE_IMAGE_NOTE.E62', 'value')" style="padding-right:2px;"></span>
+                                                                                
+                                                                            </div>
+                                                                        </div>
+                                                                    </dd>
+                                                                </dl>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <dl id="files-section">   
-                                                    <div class="dropzone" id="mydropzone"></div>
-                                                </dl>
                                             </div>
                                             <!-- End Tab 2: Upload Files -->
                                         </div>
