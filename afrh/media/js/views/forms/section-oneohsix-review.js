@@ -49,41 +49,39 @@ define(['jquery',
                 }
             }));
             
-            // this.addBranchList(new BranchList({
-                // el: this.$el.find('#response-section')[0],
-                // data: this.data,
-                // dataKey: 'DCSHPO_RESPONSE.E5',
-                // validateBranch: function(nodes){
-                    // return this.validateHasValues(nodes);
-                // }
-            // }));
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#response-section')[0],
+                data: this.data,
+                dataKey: 'DCSHPO_RESPONSE.E5',
+                validateBranch: function(nodes){
+                    return this.validateHasValues(nodes);
+                }
+            }));
             
-            // this.addBranchList(new BranchList({
-                // el: this.$el.find('#notification-section')[0],
-                // data: this.data,
-                // dataKey: 'SECTION_106_NOTIFICATION.E5',
-                // validateBranch: function(nodes){
-                    // return this.validateHasValues(nodes);
-                // }
-            // }));
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#notification-section')[0],
+                data: this.data,
+                dataKey: 'SECTION_106_NOTIFICATION.E5',
+                validateBranch: function(nodes){
+                    return this.validateHasValues(nodes);
+                }
+            }));
             
-            // this.addBranchList(new BranchList({
-                // el: this.$el.find('#dispute-section')[0],
-                // data: this.data,
-                // dataKey: 'SECTION_106_DISPUTE_RESOLUTION_NOTES.E62',
-                // validateBranch: function(nodes){
-                    // return this.validateHasValues(nodes);
-                // }
-            // }));
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#dispute-section')[0],
+                data: this.data,
+                dataKey: 'SECTION_106_DISPUTE_RESOLUTION_NOTES.E62',
+                singleEdit: true,
+            }));
             
-            // this.addBranchList(new BranchList({
-                // el: this.$el.find('#agreement-section')[0],
-                // data: this.data,
-                // dataKey: 'SECTION_106_AGREEMENT.E5',
-                // validateBranch: function(nodes){
-                    // return this.validateHasValues(nodes);
-                // }
-            // }));
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#agreement-section')[0],
+                data: this.data,
+                dataKey: 'SECTION_106_AGREEMENT.E5',
+                validateBranch: function(nodes){
+                    return this.validateHasValues(nodes);
+                }
+            }));
 
         }
     });

@@ -166,10 +166,10 @@ class Section106ReviewForm(ResourceForm):
             'SECTION_106_EXEMPTION.E55',
             'DCSHPO_URR.E42',
             'DCSHPO_SUBMISSION.E5',
-            # 'DCSHPO_RESPONSE.E5',
-            # 'SECTION_106_NOTICIFICATION.E5',
-            # 'SECTION_106_DISPUTE_RESOLUTION_NOTES.E62',
-            # 'SECTION_106_AGREEMENT.E5',
+            'DCSHPO_RESPONSE.E5',
+            'SECTION_106_NOTIFICATION.E5',
+            'SECTION_106_DISPUTE_RESOLUTION_NOTES.E62',
+            'SECTION_106_AGREEMENT.E5',
         ]
         
         for node in update_nodes:
@@ -189,18 +189,136 @@ class Section106ReviewForm(ResourceForm):
                 'DCSHPO_SUBMISSION_METHOD.E55',
                 'AFRH_DETERMINATION_OF_EFFECT.E55',
             ],
-            # 'DCSHPO_RESPONSE.E5':[
-                # 'DCSHPO_RESPONSE_TYPE.E55',
-                # 'DCSHPO_RESPONSE_EVALUATION.E55',
-            # ],
-            # 'SECTION_106_NOTIFICATION.E5':[
-                # 'SECTION_106_NOTIFICATION_TYPE.E55',
-                # 'SECTION_106_NOTIFICATION_METHOD.E55',
-            # ],
-            # 'SECTION_106_DISPUTE_RESOLUTION_NOTES.E62':[]
-            # 'SECTION_106_AGREEMENT.E5':[
-                # 'SECTION_106_AGREEMENT_TYPE.E55',
-            # ]
+            'DCSHPO_RESPONSE.E5':[
+                'DCSHPO_RESPONSE_TYPE.E55',
+                'DCSHPO_RESPONSE_EVALUATION.E55',
+            ],
+            'SECTION_106_NOTIFICATION.E5':[
+                'SECTION_106_NOTIFICATION_TYPE.E55',
+                'SECTION_106_NOTIFICATION_METHOD.E55',
+            ],
+            'SECTION_106_DISPUTE_RESOLUTION_NOTES.E62':[],
+            'SECTION_106_AGREEMENT.E5':[
+                'SECTION_106_AGREEMENT_TYPE.E55',
+            ]
+        }
+        
+        for node, domains in load_nodes.iteritems():
+
+            self.data[node] = {
+                'branch_lists': self.get_nodes(node),
+                'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
+            }
+        
+        return
+        
+class ARPAReviewForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'arpa-review',
+            'icon': 'fa-random',
+            'name': _('ARPA Review'),
+            'class': ARPAReviewForm
+        }
+
+    def update(self, data, files):
+        update_nodes = [
+            'GROUND_DISTURBANCE.E62',
+            'GROUND_DISTURBANCE_LOCATION.E27',
+            'AFRH_ARPA_ASSESSMENT.E5',
+            'DCSHPO_NOTIFICATION.E5',
+            'ARPA_DOCUMENTATION.E31',
+            'ARPA_FIELD_INVESTIGATION.E5',
+            'ARPA_DISCOVERY.E5'
+        ]
+        
+        for node in update_nodes:
+            print node
+            print data
+            self.update_nodes(node, data)
+
+        return
+
+    def load(self, lang):
+        
+        load_nodes = {
+            'GROUND_DISTURBANCE.E62':[],
+            'GROUND_DISTURBANCE_LOCATION.E27':[
+                'GROUND_DISTURBANCE_LOCATION.E27'
+            ],
+            'AFRH_ARPA_ASSESSMENT.E5':[
+                'AFRH_ARPA_DETERMINATION.E55',
+            ],
+            'DCSHPO_NOTIFICATION.E5':[
+                'DCSHPO_NOTIFICATION_METHOD.E55',
+                'DCSHPO_NOTIFICATION_RESPONSE.E55',
+            ],
+            'ARPA_DOCUMENTATION.E31':[
+                'ARPA_DOCUMENTATION_TYPE.E55',
+                'ARPA_DOCUMENTATION_STATUS.E55',
+                'ARPA_DOCUMENTATION_SUBMISSION_METHOD.E55',
+            ],
+            'ARPA_FIELD_INVESTIGATION.E5':[
+                'ARPA_FIELD_INVESTIGATION_TYPE.E55',
+                'ARPA_FIELD_INVESTIGATION_ARTIFACT_STATUS.E55',
+            ],
+            'ARPA_DISCOVERY.E5':[
+                'ARPA_DISCOVERY_ARTIFACT_STATUS.E55',
+            ]
+        }
+        
+        for node, domains in load_nodes.iteritems():
+
+            self.data[node] = {
+                'branch_lists': self.get_nodes(node),
+                'domains': dict([(d,Concept().get_e55_domain(d)) for d in domains])
+            }
+        
+        return
+        
+class NEPAReviewForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'nepa-review',
+            'icon': 'fa-random',
+            'name': _('NEPA Review'),
+            'class': NEPAReviewForm
+        }
+
+    def update(self, data, files):
+        update_nodes = [
+            'NEPA_DOCUMENTATION.E31',
+            'EA_TYPE.E55',
+            'CATEX_TYPE.E55',
+            'EIS_TYPE.E55',
+            'NEPA_DOCUMENTATION_TYPE.E55',
+        ]
+        
+        for node in update_nodes:
+            self.update_nodes(node, data)
+
+        return
+
+    def load(self, lang):
+        
+        load_nodes = {
+            'NEPA_DOCUMENTATION.E31':[
+                'NEPA_DOCUMENTATION.E31'
+            ],
+            'EA_TYPE.E55':[
+                'EA_TYPE.E55'
+            ],
+            'CATEX_TYPE.E55':[
+                'CATEX_TYPE.E55',
+            ],
+            'EIS_TYPE.E55':[
+                'EIS_TYPE.E55',
+            ],
+            'NEPA_DOCUMENTATION_TYPE.E55':[
+                'NEPA_DOCUMENTATION_TYPE.E55',
+            ]
         }
         
         for node, domains in load_nodes.iteritems():
@@ -227,7 +345,6 @@ class CharAreaGuidelinesForm(ResourceForm):
         return
 
     def load(self, lang):
-        #if self.resource:
         self.data['GUIDELINES.E62'] = {
             'branch_lists': self.get_nodes('GUIDELINES.E62'),
         }

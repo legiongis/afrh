@@ -1,0 +1,82 @@
+{% extends "views/forms/base.htm" %}
+{% load i18n %}
+{% block form_content %}
+
+<div class="form-full-content">
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Consultations" %}</span></div>
+        </div>
+    </div>
+    <div id="consultation-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CONSULTATION_METHOD.E55', 'value'), placeholder: '{% trans 'Consultation Method' %}', dataKey: 'CONSULTATION_METHOD.E55'}"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input add-margin-top">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CONSULTATION_TYPE.E55', 'value'), placeholder: '{% trans 'Consultation Type' %}', dataKey: 'CONSULTATION_TYPE.E55'}"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CONSULTATION_DOCUMENTATION_TYPE.E55', 'value'), placeholder: '{% trans 'Documentation' %}', dataKey: 'CONSULTATION_DOCUMENTATION_TYPE.E55'}"></input>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <div class="input-group datetimepicker">
+                            <input style="font-size: 13px; height:32px;" type="text" id="date" placeholder="{% trans 'Date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('CONSULTATION_DATE.E49', 'value')} ">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <input class="form-control arches-form-input" style="width: 100%;" placeholder='{% trans "Attendees" %}' data-bind='value: getEditedNode("CONSULTATION_ATTENDEES.E74", "value")'>
+                    </div>
+                </div>
+                <div class="col-xs-12 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <div class="summernote" data-bind="summernote: {value: getEditedNode('CONSULTATION_NOTE.E62', 'value'), options:{}}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a style." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "none recorded" %}</div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record" style="display:inline;">
+                                    <a href="javascript:void(0)" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" title="{% trans 'edit' %}" data-bind='click: $parent.editItem.bind($parent)'>
+                                        <span data-bind="text: nodes.get('CONSULTATION_METHOD.E55', 'label')"></span>&nbsp;<span class="text-muted" data-bind="text: nodes.get('CONSULTATION_TYPE.E55', 'label')+' Consultation'"></span>
+                                    </a><br>
+                                    <span data-bind="text: 'Documentation: '+nodes.get('CONSULTATION_DOCUMENTATION_TYPE.E55', 'label')"></span><br>
+                                    <span data-bind="text: 'Date: '+nodes.get('CONSULTATION_DATE.E49', 'label').slice(0,10)"></span><br>
+                                    <span data-bind="text: 'Attendees: '+nodes.get('CONSULTATION_ATTENDEES.E74', 'label')"></span><br>
+                                    <span class="text-muted" data-bind="html: nodes.get('CONSULTATION_NOTE.E62', 'value')"></span><br>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock form_content %}

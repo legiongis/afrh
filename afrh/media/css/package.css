@@ -454,6 +454,11 @@ cf https://github.com/summernote/summernote/issues/187
     padding-right: 10px;
 }
 
+.col-form-subheader {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
 .form-full-content {
     margin: 10px;
 }
@@ -467,25 +472,40 @@ cf https://github.com/summernote/summernote/issues/187
     margin-bottom: 15px;
 }
 
-
-
 .form-control {
     height: 32px !important;
     padding-top: 3px;
 
 }
 
-.form-control::-webkit-input-placeholder {
-    color: #555 !important;
+option.select-placeholder {
+    color: #866 !important;
+    font-style: italic !important;
 }
-/* THESE DON'T SEEM TO BE NECESSARY...
-.form-control:-moz-placeholder { color: #eee !important; }
-.form-control::-moz-placeholder { color: red !important; }
-.form-control:-ms-input-placeholder { color: red !important; }
-*/
+
+.form-control::-webkit-input-placeholder {
+    color: #866 !important;
+    font-style: italic !important;
+}
+ 
+.form-control:-moz-placeholder { /* Firefox 18- */
+    color: #866 !important;
+    font-style: italic !important;
+}
+ 
+.form-control::-moz-placeholder {  /* Firefox 19+ */
+    color: #866 !important;
+    font-style: italic !important;
+}
+ 
+.form-control:-ms-input-placeholder {  
+    color: #866 !important;
+    font-style: italic !important;
+}
 
 .select2-default {
-    color: #555 !important;
+    color: #866 !important;
+    font-style: italic !important;
 }
 
 .select2-container .select2-choice {
@@ -738,3 +758,4 @@ img.ls-s1 {
     font-weight: 200;
     color: #888;
     margin-left: 10px;
+}

@@ -1,0 +1,3 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+AF_DET:1,Potential to affect archaeological resources,,AFRH_ARPA_DETERMINATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+AF_DET:2,No potential to affect archaeological resources,,AFRH_ARPA_DETERMINATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes

@@ -110,7 +110,10 @@ class Resource(ArchesResource):
             
         elif self.entitytypeid == 'ACTIVITY_A.E7':
             description_group['forms'][:0] = [
+                other.ActivityConsultationForm.get_info(),
                 review.Section106ReviewForm.get_info(),
+                review.ARPAReviewForm.get_info(),
+                review.NEPAReviewForm.get_info(),
                 review.NCPCReviewForm.get_info(),
                 review.CFAReviewForm.get_info(),
                 other.EntitiesForm.get_info(),

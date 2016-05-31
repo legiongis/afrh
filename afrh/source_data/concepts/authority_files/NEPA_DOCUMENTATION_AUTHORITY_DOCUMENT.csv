@@ -1,0 +1,10 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+NEPA_DOC:1,CATEX,,NEPA_DOCUMENTATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_DOC:2,Environmental Impact Statement - Draft,,NEPA_DOCUMENTATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_DOC:3,Environmental Impact Statement - Final,,NEPA_DOCUMENTATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_DOC:4,Environmental Assessment - Draft,,NEPA_DOCUMENTATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_DOC:5,Environmental Assessment - Final,,NEPA_DOCUMENTATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_DOC:6,Supplemental Environmental Impact Statement - Draft,,NEPA_DOCUMENTATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_DOC:7,Supplemental Environmental Impact Statement - Final,,NEPA_DOCUMENTATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_DOC:8,Record of Decision,,NEPA_DOCUMENTATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+NEPA_DOC:9,Other,,NEPA_DOCUMENTATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
