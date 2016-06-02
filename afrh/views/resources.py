@@ -40,6 +40,8 @@ import json
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 import os
+import geojson
+import shapely.wkt
 
 def report(request, resourceid):
     lang = request.GET.get('lang', settings.LANGUAGE_CODE)
@@ -194,6 +196,8 @@ def report(request, resourceid):
         if len(v) > 0:
             related_resource_flag = True
             break
+            
+    
     
     # print a few log files to help with debugging
     if settings.DEBUG:
@@ -208,17 +212,90 @@ def report(request, resourceid):
         graph_log_path = os.path.join(settings.PACKAGE_ROOT,'logs','current_graph.json')
         with open(graph_log_path,"w") as log:
             print >> log, json.dumps(report_info['source']['graph'], sort_keys=True,indent=2, separators=(',', ': '))
+            
+    response_dict = {
+        'geometry': JSONSerializer().serialize(report_info['source']['geometry']),
+        'resourceid': resourceid,
+        'report_template': 'views/reports/' + report_info['type'] + '.htm',
+        'report_info': report_info,
+        'related_resource_dict': related_resource_dict,
+        'related_resource_flag': related_resource_flag,
+        'main_script': 'resource-report',
+        'active_page': 'ResourceReport'
+    }
     
-    return render_to_response('resource-report.htm', {
-            'geometry': JSONSerializer().serialize(report_info['source']['geometry']),
-            'resourceid': resourceid,
-            'report_template': 'views/reports/' + report_info['type'] + '.htm',
-            'report_info': report_info,
-            'related_resource_dict': related_resource_dict,
-            'related_resource_flag': related_resource_flag,
-            'main_script': 'resource-report',
-            'active_page': 'ResourceReport'
-        },
+    # mine the result for specific geometry in certain cases and add to response dictionary
+    if report_info['type'] == "ACTIVITY_A.E7":
+        pa_geoms, ape_geoms = [], []
+        if "PLACE_E53" in report_info['source']['graph']:
+            for place in report_info['source']['graph']['PLACE_E53']:
+                if "SPATIAL_COORDINATES_GEOMETRY_E47" in place:
+                    wkt = place['SPATIAL_COORDINATES_GEOMETRY_E47'][0]['SPATIAL_COORDINATES_GEOMETRY_E47__value']
+                    
+                    g1 = shapely.wkt.loads(wkt)
+                    g2 = geojson.Feature(geometry=g1, properties={})
+                    json_geom = g2.geometry
+                    
+                    feat_type = place['SPATIAL_COORDINATES_GEOMETRY_E47'][0]['ACTIVITY_GEOMETRY_TYPE_E55__label']
+                    if feat_type == "Project Area":
+                        pa_geoms.append(json_geom)
+                    if feat_type == "Area of Potential Effect":
+                        ape_geoms.append(json_geom)
+                    
+                    
+        if len(pa_geoms) > 0:
+            pa_dict = {'type':'GeometryCollection','geometries':pa_geoms}
+            response_dict['pa_geom'] = JSONSerializer().serialize(pa_dict)
+        else:
+            response_dict['pa_geom'] = 'null'
+        if len(ape_geoms) > 0:
+            ape_dict = {'type':'GeometryCollection','geometries':ape_geoms}
+            response_dict['ape_geom'] = JSONSerializer().serialize(ape_dict)
+        else:
+            response_dict['ape_geom'] = 'null'
+            
+    if report_info['type'] == "ARCHAEOLOGICAL_ZONE.E53":
+        bounds = []
+        probs = {
+            "Historic Resources":[],
+            "Native American Resources":[],
+            "Paleosols":[],
+            "Disturbed Area":[]
+        }
+        if "PLACE_E53" in report_info['source']['graph']:
+            for place in report_info['source']['graph']['PLACE_E53']:
+                if "AREA_OF_PROBABILITY_GEOMETRY_E47" in place:
+                    wkt = place['AREA_OF_PROBABILITY_GEOMETRY_E47'][0]['AREA_OF_PROBABILITY_GEOMETRY_E47__value']
+                    
+                    g1 = shapely.wkt.loads(wkt)
+                    g2 = geojson.Feature(geometry=g1, properties={})
+                    json_geom = g2.geometry
+                    
+                    feat_type = place['AREA_OF_PROBABILITY_GEOMETRY_E47'][0]['AREA_OF_PROBABILITY_GEOMETRY_TYPE_E55__label']
+                    if feat_type in probs.keys():
+                        probs[feat_type].append(json_geom)
+                        
+                if "ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47" in place:
+                    wkt = place['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47'][0]['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47__value']
+                    
+                    g1 = shapely.wkt.loads(wkt)
+                    g2 = geojson.Feature(geometry=g1, properties={})
+                    json_geom = g2.geometry
+                    
+                    bounds.append(json_geom)
+        
+        hr_dict = {'type':'GeometryCollection','geometries':probs["Historic Resources"]}
+        response_dict['prob_hr'] = JSONSerializer().serialize(hr_dict)
+        na_dict = {'type':'GeometryCollection','geometries':probs["Native American Resources"]}
+        response_dict['prob_na'] = JSONSerializer().serialize(na_dict)
+        p_dict = {'type':'GeometryCollection','geometries':probs["Paleosols"]}
+        response_dict['prob_p'] = JSONSerializer().serialize(p_dict)
+        da_dict = {'type':'GeometryCollection','geometries':probs["Disturbed Area"]}
+        response_dict['prob_da'] = JSONSerializer().serialize(da_dict)
+        bounds_dict = {'type':'GeometryCollection','geometries':bounds}
+        response_dict['geometry'] = JSONSerializer().serialize(bounds_dict)
+    
+    return render_to_response('resource-report.htm', response_dict,
         context_instance=RequestContext(request))        
 
 def map_layers(request, entitytypeid='all', get_centroids=False):
