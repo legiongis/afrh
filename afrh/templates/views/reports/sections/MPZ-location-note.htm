@@ -1,5 +1,45 @@
 {% load i18n %}
 <div class="row">
+    {% if report_info.type == "ACTIVITY_A.E7" %}
+    <div class="row">
+        <div class="col-sm-4">
+            <img class="report-legend-img" src="{{ STATIC_URL }}img/report/ape.png"></img>
+            <h3 class="arches-report-subsection">Area of Potential Effect</h3>
+        </div>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-xs-12 arches-report-subsection-content">
+                    {% if 'PLACE_E53' in report_info.source.graph %}
+                    {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                        {% if 'AREA_OF_POTENTIAL_EFFECT_NOTE_E62' in PLACE_E53 %}
+                        <p class="arches-report-subsection-item">{{PLACE_E53.AREA_OF_POTENTIAL_EFFECT_NOTE_E62.0.AREA_OF_POTENTIAL_EFFECT_NOTE_E62__label|safe}}</p>
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <img class="report-legend-img" src="{{ STATIC_URL }}img/report/project_area.png"></img>
+            <h3 class="arches-report-subsection">Project Area</h3>
+        </div>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-xs-12 arches-report-subsection-content">
+                    {% if 'PLACE_E53' in report_info.source.graph %}
+                    {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                        {% if 'PROJECT_AREA_NOTE_E62' in PLACE_E53 %}
+                        <p class="arches-report-subsection-item">{{PLACE_E53.PROJECT_AREA_NOTE_E62.0.PROJECT_AREA_NOTE_E62__label|safe}}</p>
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
     <div class="col-xs-12">
         <div class="row">
             <div class="arches-report-subsection-content">
@@ -20,9 +60,99 @@
                         <p class="arches-report-subsection-item">{{PLACE_E53.HISTORIC_AREA_LOCATION_NOTE_E62.0.HISTORIC_AREA_LOCATION_NOTE_E62__label|safe}}</p>
                         {% endif %}
                     {% endif %}
+                    {% if report_info.type == "ARCHAEOLOGICAL_ZONE.E53" %}
+                        {% if 'ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE_E62' in PLACE_E53 %}
+                        <p class="arches-report-subsection-item">{{PLACE_E53.ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE_E62.0.ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE_E62__label|safe}}</p>
+                        {% endif %}
+                    {% endif %}
                 {% endfor %}
                 {% endif %}
             </div>
         </div>
     </div>
+    {% endif %}
+    {% if report_info.type == "ACTIVITY_B.E7" %}
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-sm-3 col-md-4">
+                <h3 class="arches-report-subsection">Notes</h3>
+            </div>
+            <div class="col-sm-9 col-md-8">
+                <div class="row">
+                    <div class="col-xs-12 arches-report-subsection-content">
+                        {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                            {% if 'DESCRIPTION_OF_LOCATION_E62' in PLACE_E53 %}
+                            <p class="arches-report-subsection-item">{{PLACE_E53.DESCRIPTION_OF_LOCATION_E62.0.DESCRIPTION_OF_LOCATION_E62__label|safe}}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-4">
+                <h3 class="arches-report-subsection">Master Plan Parcel ID</h3>
+            </div>
+            <div class="col-sm-9 col-md-8">
+                <div class="row">
+                    <div class="col-xs-12 arches-report-subsection-content">
+                        {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                            {% if 'MASTER_PLAN_PARCEL_ID_E53' in PLACE_E53 %}
+                            <p class="arches-report-subsection-item">{{PLACE_E53.MASTER_PLAN_PARCEL_ID_E53.0.MASTER_PLAN_PARCEL_ID_E53__label}}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-4">
+                <h3 class="arches-report-subsection">Address</h3>
+            </div>
+            <div class="col-sm-9 col-md-8">
+                <div class="row">
+                    <div class="col-xs-12 arches-report-subsection-content">
+                        {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                            {% if 'PLACE_ADDRESS_E45' in PLACE_E53 %}
+                            <p class="arches-report-subsection-item">{{PLACE_E53.PLACE_ADDRESS_E45.0.PLACE_ADDRESS_E45__label}}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-4">
+                <h3 class="arches-report-subsection">Square ID</h3>
+            </div>
+            <div class="col-sm-9 col-md-8">
+                <div class="row">
+                    <div class="col-xs-12 arches-report-subsection-content">
+                        {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                            {% if 'SQUARE_ID_E53' in PLACE_E53 %}
+                            <p class="arches-report-subsection-item">{{PLACE_E53.SQUARE_ID_E53.0.SQUARE_ID_E53__label}}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-4">
+                <h3 class="arches-report-subsection">Lot ID</h3>
+            </div>
+            <div class="col-sm-9 col-md-8">
+                <div class="row">
+                    <div class="col-xs-12 arches-report-subsection-content">
+                        {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                            {% if 'LOT_ID_E53' in PLACE_E53 %}
+                            <p class="arches-report-subsection-item">{{PLACE_E53.LOT_ID_E53.0.LOT_ID_E53__label}}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </div>

@@ -30,17 +30,18 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
             <!-- Resource Report Container -->
             <div>
-                {% if geometry != 'null' %}
+                {% if geometry != 'null' or prob_hr != 'null' or prob_na != 'null' or prob_p != 'null' or prob_da != 'null' %}
                 <div class="report-section" >
                     <div class="report-section-header">
-                        <span class="section-toggle" href="javascript:void(0);">{% trans "Map" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "Boundary and Areas of Probability" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
                     </div>
                     <div class="row report-content">
                         <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
                         <div class="col-xs-12">
-                            
-                                {% include 'views/reports/sections/map-section.htm' %}
-                            
+                            {% include 'views/reports/sections/AZ-map-section.htm' %}
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/MPZ-location-note.htm' %}
+                            </div>
                         </div>
                     </div>
                 </div>
