@@ -19,12 +19,14 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% load staticfiles %}
 {% load i18n %}
 
+<input type="hidden" id="resource_type" value='{{ report_info.type }}' />
+
 <!--=== Report Title ===-->
 <div class="breadcrumbs report-breadcrumb">
     <div class="container">
 
         <div class="row">
-
+            
             <!-- Project Name (screens small and bigger)-->
             <div class="hidden-sm hidden-xs col-sm-12">
                 <h1 class="pull-left arches-breadcrumb-title"><i class="fa {{RESOURCE_TYPE_CONFIGS.icon_class}}"></i>{{report_info.source.primaryname}}<small style="padding-left: 8px;">{{report_info.typename}}</small></h1>
