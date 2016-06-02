@@ -601,6 +601,14 @@ dl.score-table dd{
 
 
 /* report specific styles */
+
+.report-legend-img {
+    display: inline;
+    height: 35px !important;
+    width: 56px !important;
+}
+
+
 .report-section-header {
     width: 100%;
     text-align:center;
