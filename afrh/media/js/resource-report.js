@@ -70,27 +70,32 @@ require([
             if(resourcetypeid == "ARCHAEOLOGICAL_ZONE.E53") {
                 
                 var resource_geometry = $('#resource_geometry');
-                if(resource_geometry.length > 0){
-                    var geom = JSON.parse(resource_geometry.val());
-                    this.map = new MapView({
-                        el: $('#map')
-                    });
-                    featlvl = this.map.historicLayers.length + this.map.baseLayers.length + 1;
-
-                    ko.applyBindings(this.map, $('#basemaps-panel')[0]);
-                    ko.applyBindings(this.map, $('#historicmaps-panel')[0]);
-
-                    this.highlightFeatures(geom,[66,139,202],featlvl);
-                    this.zoomToResource('1');
-                }
+                var geom = JSON.parse(resource_geometry.val());
                 
                 var prob_hr = $('#prob_hr').val();
                 var prob_na = $('#prob_na').val();
                 var prob_p = $('#prob_p').val();
                 var prob_da = $('#prob_da').val();
                 
-                if (prob_hr != 'null' || prob_na != 'null' || prob_p != 'null' || prob_da != 'null' || geom != 'null') {
+                if (prob_hr != 'null' || prob_na != 'null' || prob_p != 'null' || prob_da != 'null' || geom != 'null' || geom.geometries.length > 0) {
+
+                this.map = new MapView({
+                        el: $('#map')
+                    });
                     
+                    ko.applyBindings(this.map, $('#basemaps-panel')[0]);
+                    ko.applyBindings(this.map, $('#historicmaps-panel')[0]);
+                    
+                    featlvl = this.map.historicLayers.length + this.map.baseLayers.length + 1;
+
+                    if(geom.geometries.length > 0){
+                        this.highlightFeatures(geom,[66,139,202],featlvl);
+                        this.zoomToResource('1');
+                        var problvl = featlvl + 1;
+                    } else {
+                        var problvl = featlvl;
+                    }
+
                     if (prob_hr != 'null') {
                         var hr_geom = JSON.parse(prob_hr);
                     } else {
@@ -108,15 +113,15 @@ require([
                     } else {
                         var p_geom = false;
                     }
-                    console.log(JSON.parse(prob_da));
+
                     if (prob_da != 'null') {
                         var da_geom = JSON.parse(prob_da);
                         
                     } else {
                         var da_geom = false;
                     }
-
-                    this.displayProbabilityAreas(hr_geom,na_geom,p_geom,da_geom,featlvl+1);
+                    
+                    this.displayProbabilityAreas(hr_geom,na_geom,p_geom,da_geom,problvl);
                 }
             }
 
@@ -329,7 +334,6 @@ require([
         displayProbabilityAreas: function(hr_geom,na_geom,p_geom,da_geom,lvl){
             var self = this;
             var f = new ol.format.GeoJSON({defaultDataProjection: 'EPSG:4326'});
-            
             if (hr_geom) {
                 var hr_layer = new ol.layer.Vector({
                     source: new ol.source.GeoJSON(),
@@ -348,10 +352,10 @@ require([
                     'geometry':  hr_geom
                 };
                 hr_layer.getSource().addFeature(f.readFeature(hr_feature, {featureProjection: 'EPSG:3857'}))
-                
                 this.map.map.addLayer(hr_layer);
                 this.map.map.getLayers().setAt(lvl,hr_layer);
             }
+
             if (na_geom) {
                 var na_layer = new ol.layer.Vector({
                     source: new ol.source.GeoJSON(),
