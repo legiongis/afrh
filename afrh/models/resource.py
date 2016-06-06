@@ -218,6 +218,7 @@ class Resource(ArchesResource):
                 se.index_data('resource', self.entitytypeid, report_document, id=self.entityid)
 
             geojson_documents = self.prepare_documents_for_map_index(geom_entities=document['geometries'])
+            
             for geojson in geojson_documents:
                 se.index_data('maplayers', self.entitytypeid, geojson, idfield='id')
 
@@ -262,9 +263,12 @@ class Resource(ArchesResource):
                 entity_data = []
                 for node in entity_nodes:
                     if get_label:
-                        entity_data.append(node.label)
+                        ret = node.label
                     else:
-                        entity_data.append(str(node.value))
+                        ret = str(node.value)
+                    if node.businesstablename == "dates":
+                        return ret[:10]
+                    entity_data.append(ret)
                 entity_data = ', '.join(entity_data)
             return entity_data
         
