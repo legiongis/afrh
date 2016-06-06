@@ -23,16 +23,6 @@ define(['jquery',
                     data: this.data,
                     dataKey: 'TIME-SPAN_RESOURCE_CREATION_EVENT.E52',
                     validateBranch: function (nodes) {
-                        // var valid = true;
-                        // var primaryname_count = 0;
-                        // var primaryname_conceptid = this.viewModel.primaryname_conceptid;
-                        // _.each(nodes, function (node) {
-                            // if (node.entitytypeid === 'INFORMATION_RESOURCE_TYPE.E55') {
-                                // if (node.value === ''){
-                                    // valid = false;
-                                // }
-                            // }
-                        // }, this);
                         var ck1 = vt.nodesHaveValues(nodes,['CREATION_FORMAT_E55']);
                         var ck2 = vt.isValidDate(nodes,['DATE_OF_CREATION_E50']);
                         return ck1 && ck2;
