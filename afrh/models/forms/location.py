@@ -131,8 +131,6 @@ class LocationForm(ResourceForm):
         }
 
     def update(self, data, files):
-        
-        
         self.update_nodes('DESCRIPTION_OF_LOCATION.E62', data)
         if self.resource.entitytypeid in ['INVENTORY_RESOURCE.E18','ACTIVITY.E7']:
             self.update_nodes('SPATIAL_COORDINATES_GEOMETRY.E47', data)
@@ -142,19 +140,8 @@ class LocationForm(ResourceForm):
         if self.resource.entitytypeid  == 'INFORMATION_RESOURCE.E73':
             self.update_nodes('SPATIAL_COORDINATES_GEOMETRY.E47', data)
             self.update_nodes('COLLECTION.E78', data)
-            #self.update_nodes('TEMPORAL_COVERAGE_TIME-SPAN.E52', data)
         if self.resource.entitytypeid  != 'INFORMATION_RESOURCE.E73':
             self.update_nodes('PLACE_ADDRESS.E45', data)
-        
-##        if self.resource.entitytypeid not in ['ACTOR.E39']:
-##            self.update_nodes('SPATIAL_COORDINATES_GEOMETRY.E47', data)
-##            self.update_nodes('ADMINISTRATIVE_SUBDIVISION_NAME.E55', data)
-##        if self.resource.entitytypeid not in ['ACTOR.E39', 'ACTIVITY.E7', 'HISTORICAL_EVENT.E5']:
-##            self.update_nodes('PLACE_APPELLATION_CADASTRAL_REFERENCE.E44', data)
-##        if self.resource.entitytypeid not in ['ACTOR.E39', 'ACTIVITY.E7', 'HERITAGE_RESOURCE_GROUP.E27', 'HISTORICAL_EVENT.E5']:
-##            self.update_nodes('SETTING_TYPE.E55', data)
-##        self.update_nodes('PLACE_ADDRESS.E45', data)
-##        self.update_nodes('DESCRIPTION_OF_LOCATION.E62', data)
         return
 
     def load(self, lang):
@@ -196,11 +183,6 @@ class LocationForm(ResourceForm):
             'domains': {
                 'ARCHAEOLOGICAL_ZONE.E44': Concept().get_e55_domain('ARCHAEOLOGICAL_ZONE.E44')
             }
-        }
-        
-        self.data['TEMPORAL_COVERAGE_TIME-SPAN.E52'] = {
-            'branch_lists': datetime_nodes_to_dates(self.get_nodes('TEMPORAL_COVERAGE_TIME-SPAN.E52')),
-            'domains': {}
         }
         
         self.data['COLLECTION.E78'] = {
