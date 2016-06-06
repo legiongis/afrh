@@ -613,9 +613,6 @@ def edit_history(request, resourceid=''):
     if resourceid != '':
         dates = models.EditLog.objects.filter(resourceid = resourceid).values_list('timestamp', flat=True).order_by('-timestamp').distinct('timestamp')[start:limit]
         # dates = models.EditLog.objects.datetimes('timestamp', 'second', order='DESC')
-        for date in dates:
-            #ret[str(date)] = models.EditLog.objects.filter(resourceid = self.resource.entityid, timestamp = date)
-            print str(date)
 
         for log in models.EditLog.objects.filter(resourceid = resourceid, timestamp__in = dates).values().order_by('-timestamp', 'attributeentitytypeid'):
             if str(log['timestamp']) != current:
@@ -666,7 +663,6 @@ def get_allowed_types(request):
             t,res = p.split(".")[:2]
             if not t == "VIEW":
                 continue
-            print p
             if k.startswith(res):
                 allowedtypes.append(k)
 
