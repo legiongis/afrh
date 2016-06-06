@@ -1,0 +1,139 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Identification</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                <p class="arches-report-subsection-item"><em><strong>Title</strong></em></p>
+                {% if not 'TITLE_E41' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for TITLE_E41 in report_info.source.graph.TITLE_E41 %}
+                    <p class="arches-report-subsection-item">{{TITLE_E41.TITLE_E41__label}} <em>({{TITLE_E41.TITLE_TYPE_E55__label}} Title)</em></p> 
+                {% endfor %}
+                {% endif %}
+                {% if 'EXTERNAL_RESOURCE_E1' in report_info.source.graph %}
+                {% for EXTERNAL_RESOURCE_E1 in report_info.source.graph.EXTERNAL_RESOURCE_E1 %}
+                    <p class="arches-report-subsection-item"><em><strong>{{EXTERNAL_RESOURCE_E1.EXTERNAL_XREF_E42.0.EXTERNAL_XREF_TYPE_E55__label}}</strong></em></p>
+                    <p class="arches-report-subsection-item">{{EXTERNAL_RESOURCE_E1.EXTERNAL_XREF_E42.0.EXTERNAL_XREF_E42__label}}</p> 
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Type</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'INFORMATION_RESOURCE_TYPE_ASSIGNMENT_E17' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for INFORMATION_RESOURCE_TYPE_ASSIGNMENT_E17 in report_info.source.graph.INFORMATION_RESOURCE_TYPE_ASSIGNMENT_E17 %}
+                    <p class="arches-report-subsection-item">{{INFORMATION_RESOURCE_TYPE_ASSIGNMENT_E17.INFORMATION_RESOURCE_TYPE_E55.0.INFORMATION_RESOURCE_TYPE_E55__label }}</p> 
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Keywords</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'KEYWORD_E55' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for KEYWORD_E55 in report_info.source.graph.KEYWORD_E55 %}
+                    <p class="arches-report-subsection-item">{{KEYWORD_E55.KEYWORD_E55__label}}</p> 
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Language</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'LANGUAGE_E55' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for LANGUAGE_E55 in report_info.source.graph.LANGUAGE_E55 %}
+                    <p class="arches-report-subsection-item">{{LANGUAGE_E55.LANGUAGE_E55__label}}</p> 
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Description</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'DESCRIPTION_E62' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for DESCRIPTION_E62 in report_info.source.graph.DESCRIPTION_E62 %}
+                    <p class="arches-report-subsection-item"><em><strong>{{DESCRIPTION_E62.DESCRIPTION_TYPE_E55__label}}</strong></em></p>
+                    <p class="arches-report-subsection-item">{{DESCRIPTION_E62.DESCRIPTION_E62__value|safe}}</p> 
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Collection Location</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'COLLECTION_E78' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for COLLECTION_E78 in report_info.source.graph.COLLECTION_E78 %}
+                    <p class="arches-report-subsection-item">{{COLLECTION_E78.COLLECTION_TYPE_E55.0.COLLECTION_TYPE_E55__label}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Sensitive Material?</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'SENSITIVE_E62' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">unknown</p>
+                {% else %}
+                <p class="arches-report-subsection-item">{{report_info.source.graph.SENSITIVE_E62.0.SENSITIVE_E62__label}}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

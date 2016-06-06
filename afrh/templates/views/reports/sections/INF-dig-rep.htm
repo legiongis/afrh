@@ -1,0 +1,37 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if 'FILE_PATH_E62' in report_info.source.graph %}
+                    {% if report_info.source.graph.FILE_PATH_E62.0.FILE_PATH_E62__label|slice:"-4:"|lower == ".mp3" %}
+                        <dd class="arches-report-subsection-item">
+                            <div class="audioplayer">
+                                <audio controls>
+                                    <source src="{{MEDIA_URL}}{{report_info.source.graph.FILE_PATH_E62.0.FILE_PATH_E62__label}}" type="audio/mpeg" /><a href="{{MEDIA_URL}}{{report_info.source.graph.FILE_PATH_E62.0.FILE_PATH_E62__label}}"></a>
+                                </audio>
+                            </div>
+                        </dd>
+                    {% endif %}
+                    {% if 'THUMBNAIL_E62' in report_info.source.graph %}
+                        <dd class="arches-report-subsection-item">
+                            <div id="" style="margin-top: 5px;">
+                                <img src="{{MEDIA_URL}}{{report_info.source.graph.FILE_PATH_E62.0.FILE_PATH_E62__label}}" alt="" class="" style="width: 100%; margin-bottom: 30px; border: solid 1px #555;" onerror="this.src='{{STATIC_URL}}img/photo_missing.png';">
+                            </div>
+                        </dd>
+                    {% else %}
+                        <dd class="arches-report-subsection-item">
+                            <div id="" style="margin-top: 5px;">
+                                <a href="{{MEDIA_URL}}{{report_info.source.graph.FILE_PATH_E62.0.FILE_PATH_E62__label}}" title="{% trans 'View document' %}">
+                                    <i class="fa fa-file-text-o"></i> {% trans "link to file" %}
+                                </a>
+                            </div>
+                        </dd>
+                    {% endif %}
+                {% else %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

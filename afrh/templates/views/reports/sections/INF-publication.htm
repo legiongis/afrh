@@ -1,0 +1,82 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Format/Date</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'RESOURCE_CREATION_EVENT_E65' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for RESOURCE_CREATION_EVENT_E65 in report_info.source.graph.RESOURCE_CREATION_EVENT_E65 %}
+                    {% if 'TIME___SPAN_RESOURCE_CREATION_EVENT_E52' in RESOURCE_CREATION_EVENT_E65 %}
+                    <p class="arches-report-subsection-item"><strong>{{RESOURCE_CREATION_EVENT_E65.TIME___SPAN_RESOURCE_CREATION_EVENT_E52.0.CREATION_FORMAT_E55.0.CREATION_FORMAT_E55__label}}</strong> {{RESOURCE_CREATION_EVENT_E65.TIME___SPAN_RESOURCE_CREATION_EVENT_E52.0.DATE_OF_CREATION_E50.0.DATE_OF_CREATION_E50__value|slice:":10"}}</p>
+                    {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Creator(s)</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'RESOURCE_CREATION_EVENT_E65' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for RESOURCE_CREATION_EVENT_E65 in report_info.source.graph.RESOURCE_CREATION_EVENT_E65 %}
+                    {% if 'CREATOR_E39' in RESOURCE_CREATION_EVENT_E65 %}
+                    <p class="arches-report-subsection-item"><strong>{{RESOURCE_CREATION_EVENT_E65.CREATOR_E39.0.CREATOR_APPELLATION_E82__label}}</strong> {{RESOURCE_CREATION_EVENT_E65.CREATOR_E39.0.CREATOR_TYPE_E55__label}}<br><em>{{RESOURCE_CREATION_EVENT_E65.CREATOR_E39.0.CREATOR_NOTE_E62__label}}</em></p>
+                    {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Publication</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'PUBLICATION_EVENT_E12' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for PUBLICATION_EVENT_E12 in report_info.source.graph.PUBLICATION_EVENT_E12 %}
+                    <p class="arches-report-subsection-item"><strong>{{PUBLICATION_EVENT_E12.PUBLISHER_E39.0.PUBLISHER_APPELLATION_E82.0.PUBLISHER_APPELLATION_E82__label}}</strong> {% if 'TIME___SPAN_PUBLICATION_EVENT_E52' in PUBLICATION_EVENT_E12 %}
+                        {{PUBLICATION_EVENT_E12.TIME___SPAN_PUBLICATION_EVENT_E52.0.DATE_OF_PUBLICATION_E50.0.DATE_OF_PUBLICATION_E50__value|slice:":10"}}{% endif %}</p>
+                            
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Rights</h3>
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'RIGHT_DESCRIPTION_E30' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for RIGHT_DESCRIPTION_E30 in report_info.source.graph.RIGHT_DESCRIPTION_E30 %}
+                    <p class="arches-report-subsection-item">{{RIGHT_DESCRIPTION_E30.RIGHT_TYPE_E55__value}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
