@@ -102,6 +102,15 @@ ul.select2-choices {
     font-weight: 500;
 }
 
+.disclaimer-modal-footer {
+    margin-top: 0px !important;
+    background: #f7f7f7;
+}
+
+.disclaimer-modal-header {
+    background: #f7f7f7;
+}
+
 .arches-map-tools {
     width: 165px;
     height: 46px;
