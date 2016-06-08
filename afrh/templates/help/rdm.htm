@@ -6,67 +6,76 @@
         <span>Using the RDM (Reference Data Manager)</span>
     </div>
     <div class="col-md-12">
-        <div class="topic-button" id="topic1">
-            <a href="javascript:void(0);">
-                <h5>Introduction</h5>
-                <i class="expand-symbol fa fa-chevron-right" id="topic1"></i>
-            </a>
+        <div class="help-section" >
+            <div class="help-toggle help-button">
+                <a href="javascript:void(0);">
+                    <h5>Introduction</h5>
+                    <i class="expand-symbol fa fa-chevron-right"></i>
+                </a>
+            </div>
+            <div class="help-content">
+                <p>The RDM is a robust way of handling all of the behind-the-scenes concepts used in the AFRH-W database. While creating new resources, or editing existing resources, you will notice that most data entry is done by selecting from predetermined dropdown lists, also known as <b>controlled vocabularies</b>. Controlled vocabularies ensure clean data, and the RDM is where you manage them.</p>
+                <p>In the panel on the left, you can see the following four menus:</p>
+                <ul>
+                    <li>The <b>Arches</b> menu holds <em>all</em> of the concept schemes in the database</li>
+                    <li>The <b>Dropdown Lists</b> menu holds the controlled vocabularies that are passed to the data input forms</li>
+                    <li>The <b>Entity Nodes</b> menu lists all of the entity nodes (types of information collected) present in the database</li>
+                    <li>The <b>Candidates</b> menu is used for more advanced procedures, and is not necessary for the actions described below</li>
+                </ul>
+            </div>
         </div>
-        <div class="topic-content" id="topic1">
-            <p>The RDM is a robust way of handling all of the behind-the-scenes concepts used in the AFRH-W database. While creating new resources, or editing existing resources, you will notice that most data entry is done by selecting from predetermined dropdown lists, also known as <b>controlled vocabularies</b>. Controlled vocabularies ensure clean data, and the RDM is where you manage them.</p>
-            <p>In the panel on the left, you can see the following four menus:</p>
-            <ul>
-                <li>The <b>Arches</b> menu holds <em>all</em> of the concept schemes in the database</li>
-                <li>The <b>Dropdown Lists</b> menu holds the controlled vocabularies that are passed to the data input forms</li>
-                <li>The <b>Entity Nodes</b> menu lists all of the entity nodes (types of information collected) present in the database</li>
-                <li>The <b>Candidates</b> menu is used for more advanced procedures, and is not necessary for the actions described below</li>
+        <div class="help-section" >
+            <div class="help-toggle help-button">
+                <a href="javascript:void(0);">
+                    <h5>Adding a New Concept</h5>
+                    <i class="expand-symbol fa fa-chevron-right"></i>
+                </a>
+            </div>
+            <div class="help-content">
+                <p>Undoubtedly, new concepts will need to be added to the database in the future. The following steps will explain how to add <em>Staircase</em> as a new Component Type concept.</p>
+                <ol>
+                    <li>Open the <b>Arches</b> menu, scroll down and select the <b>Component Type</b> concept scheme. In the right panel, you can see all of the existing concepts.</li>
+                    <li>Click the <b>Manage</b> menu, and select <b>Add Child</b>.</li>
+                    <li>Type <em>Staircase</em> into the <b>Label</b> box. You can add a note to this concept if you like; it will be visible to anyone who views the concept in the RDM later.</li>
+                    <li>Click <b>Save Changes</b>. You have now added a new Component Type, and you'll see <em>Staircase</em> in the list of Keyword concepts.</li>
+                </ol>
+                <p>Now that you have added the new concept in the Arches concept scheme, you need to add it to the appropriate dropdown menu.</p>
+                <ol>
+                    <li>Open the <b>Dropdown Lists</b> menu, and scroll down to the <b>Component_Type.E55</b> dropdown. In the right panel, you can see the current contents of the dropdown.</li>
+                    <li>Click on <b>Add dropdown entry</b>, and begin to type <em>Staircase</em>. The new keyword will appear in the search bar, now that it has been added to the Arches concept scheme.</li>
+                    <li>Select the concept, and click <b>Save</b>.</li>
+                </ol>
+                <p>The new concept <em>Staircase</em> will now be available to any Component Type dropdown.</p>
+            </div>
         </div>
-        <div class="topic-button" id="topic2">
-            <a href="javascript:void(0);">
-                <h5>Adding a New Concept</h5>
-                <i class="expand-symbol fa fa-chevron-right" id="topic2"></i>
-            </a>
+        <div class="help-section" >
+            <div class="help-toggle help-button">
+                <a href="javascript:void(0);">
+                    <h5>Adding an Alternate Label</h5>
+                    <i class="expand-symbol fa fa-chevron-right"></i>
+                </a>
+            </div>
+            <div class="help-content">
+                <p>In some cases, it may be desirable to use two completely different terms for the same concept. For example, <em>Chimney</em> and <em>Smokestack</em>. That way, searches or entries using either name will be treated the same.  The following steps will show how to add <em>Smokestack</em> as an alternate label for the concept <em>Chimney</em>.</p>
+                <ol>
+                    <li>Open the <b>Arches</b> menu, scroll down and select the <b>Component Type</b> concept scheme.</li>
+                    <li>Click on <b>Chimney</b>.</li>
+                    <li>Click <b>Add label</b>, and the Add Concept Label window will open.</li>
+                    <li>Type in <em>Smokestack</em>, and indicate that this is an <b>altLabel</b> ("alternate label"). Click <b>Save</b>.</li>
+                </ol>
+                <p>Now, if a resource is entered that includes <em>Chimney</em> as a component, a search for <em>Smokestack</em> will also find it.</p>
+            </div>
         </div>
-        <div class="topic-content" id="topic2">
-            <p>Undoubtedly, new concepts will need to be added to the database in the future. The following steps will explain how to add <em>Staircase</em> as a new Component Type concept.</p>
-            <ol>
-                <li>Open the <b>Arches</b> menu, scroll down and select the <b>Component Type</b> concept scheme. In the right panel, you can see all of the existing concepts.</li>
-                <li>Click the <b>Manage</b> menu, and select <b>Add Child</b>.</li>
-                <li>Type <em>Staircase</em> into the <b>Label</b> box. You can add a note to this concept if you like; it will be visible to anyone who views the concept in the RDM later.</li>
-                <li>Click <b>Save Changes</b>. You have now added a new Component Type, and you'll see <em>Staircase</em> in the list of Keyword concepts.</li>
-            </ol>
-            <p>Now that you have added the new concept in the Arches concept scheme, you need to add it to the appropriate dropdown menu.</p>
-            <ol>
-                <li>Open the <b>Dropdown Lists</b> menu, and scroll down to the <b>Component_Type.E55</b> dropdown. In the right panel, you can see the current contents of the dropdown.</li>
-                <li>Click on <b>Add dropdown entry</b>, and begin to type <em>Staircase</em>. The new keyword will appear in the search bar, now that it has been added to the Arches concept scheme.</li>
-                <li>Select the concept, and click <b>Save</b>.</li>
-            </ol>
-            <p>The new concept <em>Staircase</em> will now be available to any Component Type dropdown.</p>
-        </div>
-        <div class="topic-button" id="topic3">
-            <a href="javascript:void(0);">
-                <h5>Adding an Alternate Label</h5>
-                <i class="expand-symbol fa fa-chevron-right" id="topic3"></i>
-            </a>
-        </div>
-        <div class="topic-content" id="topic3">
-            <p>In some cases, it may be desirable to use two completely different terms for the same concept. For example, <em>Chimney</em> and <em>Smokestack</em>. That way, searches or entries using either name will be treated the same.  The following steps will show how to add <em>Smokestack</em> as an alternate label for the concept <em>Chimney</em>.</p>
-            <ol>
-                <li>Open the <b>Arches</b> menu, scroll down and select the <b>Component Type</b> concept scheme.</li>
-                <li>Click on <b>Chimney</b>.</li>
-                <li>Click <b>Add label</b>, and the Add Concept Label window will open.</li>
-                <li>Type in <em>Smokestack</em>, and indicate that this is an <b>altLabel</b> ("alternate label"). Click <b>Save</b>.</li>
-            </ol>
-            <p>Now, if a resource is entered that includes <em>Chimney</em> as a component, a search for <em>Smokestack</em> will also find it.</p>
-        </div>
-        <div class="topic-button" id="topic4">
-            <a href="javascript:void(0);">
-                <h5>More Information</h5>
-                <i class="expand-symbol fa fa-chevron-right" id="topic4"></i>
-            </a>
-        </div>
-        <div class="topic-content" id="topic4">
-            </p>There's more to learn about the RDM! Visit the official Arches <a href="http://arches3.readthedocs.org/en/latest/rdm/">documentation</a> to continue learning.</p>
+        <div class="help-section" >
+            <div class="help-toggle help-button">
+                <a href="javascript:void(0);">
+                    <h5>More Information</h5>
+                    <i class="expand-symbol fa fa-chevron-right"></i>
+                </a>
+            </div>
+            <div class="help-content">
+                </p>There's more to learn about the RDM! Visit the official Arches <a href="http://arches3.readthedocs.org/en/latest/rdm/">documentation</a> to continue learning.</p>
+            </div>
         </div>
     </div>
 </div>

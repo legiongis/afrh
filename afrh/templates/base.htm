@@ -362,6 +362,19 @@
                 $('[data-toggle="popover"]').popover();
             });
             
+            $(".help-toggle").click(function (){ 
+                iconEl = $(this).find('i');
+                sectionEl = $(this).closest('.help-section');
+                contentEl = $(sectionEl).find('.help-content');
+                if (contentEl.is(":visible")){
+                    contentEl.slideUp();
+                } else {
+                    contentEl.slideDown();
+                }
+                $(iconEl).toggleClass("fa-chevron-down");
+                $(iconEl).toggleClass("fa-chevron-right");
+            });
+            
             var help_on = false;
             function toggleHelp() {
                 $("#help-button").click(function(){
@@ -375,20 +388,6 @@
                     help_on = !help_on
                 });
             };
-            
-            function toggleTopic() {
-                $(".topic-button").click(function(){
-                    $(".topic-content#"+this.id).slideToggle();
-                    if ($(".expand-symbol#"+this.id).hasClass("fa-chevron-right")) {
-                        $(".expand-symbol#"+this.id).removeClass("fa-chevron-right");
-                        $(".expand-symbol#"+this.id).addClass("fa-chevron-down");
-                    } else {
-                        $(".expand-symbol#"+this.id).removeClass("fa-chevron-down");
-                        $(".expand-symbol#"+this.id).addClass("fa-chevron-right");
-                    }
-                });
-            };
-            
             
             var c1 = "public.affairs";
             var c2 = "@";

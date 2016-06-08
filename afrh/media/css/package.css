@@ -359,12 +359,12 @@ cf https://github.com/summernote/summernote/issues/187
     display:block;
 }
 
-.topic-button a {
+.help-button a {
     text-decoration: none;
     color #555;
 }
 
-.topic-button h5 {
+.help-button h5 {
     font-weight: bold;
     color: #555;
     display: inline;
@@ -374,18 +374,18 @@ cf https://github.com/summernote/summernote/issues/187
     color: #555;
 }
 
-.topic-content {
+.help-content {
     display: none;
     margin-left: 5px;
     margin-right: 5px;
     font-family: 'Open Sans', sans-serif;
 }
 
-.topic-content  p {
+.help-content  p {
     margin: 3px 0px 3px 0px;
 }
 
-.topic-content  ul, ol {
+.help-content  ul, ol {
     margin: 3px 0px 3px 0px;
 }
 
