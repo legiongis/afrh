@@ -151,6 +151,138 @@ class MPZoneGuidelinesForm(ResourceForm):
                 }
             })
             
+class ArchZoneInvestigationForm(ResourceForm):
+    baseentity = None
+
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'arch-investigation',
+            'icon': 'fa-asterisk',
+            'name': _('Investigations'),
+            'class': ArchZoneInvestigationForm
+        }
+
+    def get_nodes(self, entity, entitytypeid):
+        ret = []
+        entities = entity.find_entities_by_type_id(entitytypeid)
+        for entity in entities:
+            ret.append({'nodes': entity.flatten()})
+        return ret
+
+    def update_nodes(self, entitytypeid, data):
+        if self.schema == None:
+            self.schema = Entity.get_mapping_schema(self.resource.entitytypeid)
+
+        for value in data[entitytypeid]:
+            if entitytypeid == 'INVESTIGATION_IMAGE.E73':
+                temp = None
+                for newentity in value['nodes']:
+                    if newentity['entitytypeid'] != 'INVESTIGATION_IMAGE.E73':
+                        entity = Entity()
+                        entity.create_from_mapping(self.resource.entitytypeid, self.schema[newentity['entitytypeid']]['steps'], newentity['entitytypeid'], newentity['value'], newentity['entityid'])
+
+                        if temp == None:
+                            temp = entity
+                        else:
+                            temp.merge(entity)
+
+                self.baseentity.merge_at(temp, 'INVESTIGATION.E7')
+            else:
+                for newentity in value['nodes']:
+                    entity = Entity()
+                    entity.create_from_mapping(self.resource.entitytypeid, self.schema[newentity['entitytypeid']]['steps'], newentity['entitytypeid'], newentity['value'], newentity['entityid'])
+
+                    if self.baseentity == None:
+                        self.baseentity = entity
+                    else:
+                        self.baseentity.merge(entity)
+
+    def update(self, data, files):
+        if len(files) > 0:
+            for f in files:
+                data['INVESTIGATION_IMAGE.E73'].append({
+                    'nodes':[{
+                        'entitytypeid': 'INVESTIGATION_IMAGE_FILE_PATH.E62',
+                        'entityid': '',
+                        'value': files[f]
+                    },{
+                        'entitytypeid': 'INVESTIGATION_IMAGE_THUMBNAIL.E62',
+                        'entityid': '',
+                        'value': generate_thumbnail(files[f])
+                    }]
+                })
+        
+        print data
+        for value in data['INVESTIGATION.E7']:
+            for node in value['nodes']:
+                if node['entitytypeid'] == 'INVESTIGATION.E7' and node['entityid'] != '':
+                    #remove the node
+                    self.resource.filter(lambda entity: entity.entityid != node['entityid'])
+
+        self.update_nodes('INVESTIGATION_ASSESSMENT.E55', data)
+        self.update_nodes('INVESTIGATION_METHOD.E55', data)
+        self.update_nodes('INVESTIGATION_DATE.E49', data)
+        self.update_nodes('DCSHPO_REPORT_NUMBER.E42', data)
+        self.update_nodes('INVESTIGATION_DESCRIPTION.E62', data)
+        self.update_nodes('TEST_PIT.E7', data)
+        self.update_nodes('INVESTIGATION_IMAGE.E73', data)
+        self.update_nodes('TEST_PIT_LOCATIONS_GEOMETRY.E47', data)
+
+        
+        # self.update_nodes('TEST_PIT_METHOD.E55', data)
+        # self.update_nodes('GUIDELINE_IMAGE_NOTE.E62', data)
+        # self.update_nodes('GUIDELINE_IMAGE_TYPE.E55', data)
+        self.resource.merge_at(self.baseentity, self.resource.entitytypeid)
+        self.resource.trim()
+                   
+    def load(self, lang):
+        self.data = {
+            'data': [],
+            'domains': {
+                'INVESTIGATION_ASSESSMENT.E55': Concept().get_e55_domain('INVESTIGATION_ASSESSMENT.E55'),
+                'INVESTIGATION_METHOD.E55' : Concept().get_e55_domain('INVESTIGATION_METHOD.E55'),
+                'TEST_PIT_METHOD.E55': Concept().get_e55_domain('TEST_PIT_METHOD.E55'),
+                'TEST_PIT_SENSITIVITY.E55': Concept().get_e55_domain('TEST_PIT_SENSITIVITY.E55'),
+                'TEST_PIT_RESULTS.E55': Concept().get_e55_domain('TEST_PIT_RESULTS.E55'),
+                #'IMAGE_TYPE.E55' : Concept().get_e55_domain('IMAGE_TYPE.E55'),
+            }
+        }
+        
+        investigation_entities = self.resource.find_entities_by_type_id('INVESTIGATION.E7')
+        print investigation_entities
+        
+        for entity in investigation_entities:
+            self.data['data'].append({
+                'INVESTIGATION.E7': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'INVESTIGATION.E7'))
+                },
+                'INVESTIGATION_ASSESSMENT.E55': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'INVESTIGATION_ASSESSMENT.E55'))
+                },
+                'INVESTIGATION_METHOD.E55': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'INVESTIGATION_METHOD.E55'))
+                },
+                'INVESTIGATION_DATE.E49': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'INVESTIGATION_DATE.E49'))
+                },
+                'DCSHPO_REPORT_NUMBER.E42': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'DCSHPO_REPORT_NUMBER.E42'))
+                },
+                'INVESTIGATION_DESCRIPTION.E62': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'INVESTIGATION_DESCRIPTION.E62'))
+                },
+                'TEST_PIT.E7': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'TEST_PIT.E7'))
+                },
+                'INVESTIGATION_IMAGE.E73': {
+                    'branch_lists': self.get_nodes(entity, 'INVESTIGATION_IMAGE.E73')
+                },
+                'TEST_PIT_LOCATIONS_GEOMETRY.E47': {
+                    'branch_lists': self.get_nodes(entity, 'TEST_PIT_LOCATIONS_GEOMETRY.E47')
+                }
+            })
+            
 class ConditionForm(ResourceForm):
     baseentity = None
 

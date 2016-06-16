@@ -15,6 +15,9 @@ define([
             var map = new MapView({
                 el: this.$el.find('.map')
             });
+            
+            console.log("Map View?");
+            console.log(map);
 
             var addFeature = function (feature, editing) {
                 var branch = koMapping.fromJS({
@@ -421,5 +424,9 @@ define([
             }
             return branch;
         },
+        
+        printsomething: function(){
+            console.log("assaas");
+        }
     });
 });
