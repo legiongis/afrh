@@ -43,10 +43,18 @@ define([
     binghyb.showInfo = false;
     binghyb.maxzoom = 19; */
 
-    //streets ol layer (use osm from mapquest)
+    //streets ol layer (use osm from mapquest 6/20 updating to OpenCycleMap for better building rendering)
     var streetLyr = new ol.layer.Tile({
-        source: new ol.source.MapQuest({
-            layer: 'osm',
+        // source: new ol.source.MapQuest({
+            // layer: 'osm',
+        // }),
+        source: new ol.source.XYZ({
+            url: 'https://a.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
+            attributions: [
+                new ol.Attribution({
+                    html: '<a href="http://atlas.lsu.edu" target="_blank">Atlas: The Louisiana Statewide GIS</a>. LSU Department of Geography and Anthropology, Baton Rouge, LA.'
+                })
+            ],
         }),
         visible: false,
     });
@@ -170,6 +178,7 @@ define([
         name: "relief",
         source: new ol.source.XYZ({
             url: 'http://crhim.canerivernha.org/tiles/hillshade/{z}/{x}/{y}.png',
+            https://[abc].tile.thunderforest.com/cycle/{z}/{x}/{y}.png
             attributions: [
                 new ol.Attribution({
                     html: '<a href="http://atlas.lsu.edu" target="_blank">Atlas: The Louisiana Statewide GIS</a>. LSU Department of Geography and Anthropology, Baton Rouge, LA.'
