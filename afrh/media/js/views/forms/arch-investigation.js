@@ -120,9 +120,6 @@ define(['jquery',
                 data: currentEditedInvestigation,
                 dataKey: 'DCSHPO_REPORT_NUMBER.E42',
                 singleEdit: true,
-                validateBranch: function (nodes) {
-                    return this.validateHasValues(nodes);
-                }
             }));
             
             this.addBranchList(new BranchList({
@@ -130,9 +127,6 @@ define(['jquery',
                 data: currentEditedInvestigation,
                 dataKey: 'INVESTIGATION_DESCRIPTION.E62',
                 singleEdit: true,
-                validateBranch: function (nodes) {
-                    return this.validateHasValues(nodes);
-                }
             }));
             
             this.addBranchList(new BranchList({
@@ -140,19 +134,43 @@ define(['jquery',
                 data: currentEditedInvestigation,
                 dataKey: 'TEST_PIT.E7',
                 validateBranch: function (nodes) {
+                    return vt.nodesHaveValues(nodes,['TEST_PIT_ID.E42','TEST_PIT_METHOD.E55']);
+                }
+            }));
+            
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#prehist-section')[0],
+                data: currentEditedInvestigation,
+                dataKey: 'PREHISTORIC_SITE_POTENTIAL_ASSESSMENT.E14',
+                validateBranch: function (nodes) {
                     return this.validateHasValues(nodes);
                 }
             }));
             
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#native-section')[0],
+                data: currentEditedInvestigation,
+                dataKey: 'NATIVE_AMERICAN_SITE_POTENTIAL_ASSESSMENT.E14',
+                validateBranch: function (nodes) {
+                    return this.validateHasValues(nodes);
+                }
+            }));
             
-            // this.locationBranch = this.addBranchList(new LocationBranchList({
-                // el: this.$el.find('#geom-list-section')[0],
-                // data: currentEditedInvestigation,
-                // dataKey: 'TEST_PIT_LOCATIONS_GEOMETRY.E47',
-                // initialize: function () {
-                    // console.log("initialize function");
-                // }
-            // }));
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#historic-section')[0],
+                data: currentEditedInvestigation,
+                dataKey: 'HISTORIC_SITE_POTENTIAL_ASSESSMENT.E14',
+                validateBranch: function (nodes) {
+                    return this.validateHasValues(nodes);
+                }
+            }));
+            
+            this.addBranchList(new BranchList({
+                el: this.$el.find('#recs-section')[0],
+                data: currentEditedInvestigation,
+                dataKey: 'INVESTIGATION_RECOMMENDATIONS.E62',
+                singleEdit: true,
+            }));
 
             this.filebranchlist = this.addBranchList(new BranchList({
                 el: this.$el.find('#files-section')[0],
@@ -211,7 +229,6 @@ define(['jquery',
             }, this);
 
             this.filebranchlist.addMockFiles();
-            //this.locationBranch.printsomething();
             
             this.toggleEditor();
             
@@ -226,12 +243,7 @@ define(['jquery',
                     // }
                 // }));
             // });
-            
-            this.addBranchList(new LocationBranchList({
-                el: this.$el.find('#geom-list-section')[0],
-                data: conditionAssessmentData,
-                dataKey: 'TEST_PIT_LOCATIONS_GEOMETRY.E47',
-            }));
+
         },
 
         prepareData: function(assessmentNode){
@@ -267,10 +279,18 @@ define(['jquery',
                 'INVESTIGATION_IMAGE.E73': {
                     'branch_lists': []
                 },
-                'TEST_PIT_LOCATIONS_GEOMETRY.E47': {
+                'PREHISTORIC_SITE_POTENTIAL_ASSESSMENT.E14': {
                     'branch_lists': []
                 },
-                
+                'NATIVE_AMERICAN_SITE_POTENTIAL_ASSESSMENT.E14': {
+                    'branch_lists': []
+                },
+                'HISTORIC_SITE_POTENTIAL_ASSESSMENT.E14': {
+                    'branch_lists': []
+                },
+                'INVESTIGATION_RECOMMENDATIONS.E62': {
+                    'branch_lists': []
+                },
                 // 'GUIDELINE_IMAGE_NOTE.E62': {
                     // 'branch_lists': []
                 // }

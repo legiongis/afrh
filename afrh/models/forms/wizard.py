@@ -227,7 +227,12 @@ class ArchZoneInvestigationForm(ResourceForm):
         self.update_nodes('INVESTIGATION_DESCRIPTION.E62', data)
         self.update_nodes('TEST_PIT.E7', data)
         self.update_nodes('INVESTIGATION_IMAGE.E73', data)
-        self.update_nodes('TEST_PIT_LOCATIONS_GEOMETRY.E47', data)
+        self.update_nodes('PREHISTORIC_SITE_POTENTIAL_ASSESSMENT.E14', data)
+        self.update_nodes('NATIVE_AMERICAN_SITE_POTENTIAL_ASSESSMENT.E14', data)
+        self.update_nodes('HISTORIC_SITE_POTENTIAL_ASSESSMENT.E14', data)
+        self.update_nodes('INVESTIGATION_RECOMMENDATIONS.E62', data)
+        
+        #self.update_nodes('TEST_PIT_LOCATIONS_GEOMETRY.E47', data)
 
         
         # self.update_nodes('TEST_PIT_METHOD.E55', data)
@@ -278,9 +283,21 @@ class ArchZoneInvestigationForm(ResourceForm):
                 'INVESTIGATION_IMAGE.E73': {
                     'branch_lists': self.get_nodes(entity, 'INVESTIGATION_IMAGE.E73')
                 },
-                'TEST_PIT_LOCATIONS_GEOMETRY.E47': {
-                    'branch_lists': self.get_nodes(entity, 'TEST_PIT_LOCATIONS_GEOMETRY.E47')
-                }
+                'PREHISTORIC_SITE_POTENTIAL_ASSESSMENT.E14': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'PREHISTORIC_SITE_POTENTIAL_ASSESSMENT.E14'))
+                },
+                'NATIVE_AMERICAN_SITE_POTENTIAL_ASSESSMENT.E14': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'NATIVE_AMERICAN_SITE_POTENTIAL_ASSESSMENT.E14'))
+                },
+                'HISTORIC_SITE_POTENTIAL_ASSESSMENT.E14': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'HISTORIC_SITE_POTENTIAL_ASSESSMENT.E14'))
+                },
+                'INVESTIGATION_RECOMMENDATIONS.E62': {
+                    'branch_lists': datetime_nodes_to_dates(self.get_nodes(entity, 'INVESTIGATION_RECOMMENDATIONS.E62'))
+                },
+                # 'TEST_PIT_LOCATIONS_GEOMETRY.E47': {
+                    # 'branch_lists': self.get_nodes(entity, 'TEST_PIT_LOCATIONS_GEOMETRY.E47')
+                # }
             })
             
 class ConditionForm(ResourceForm):

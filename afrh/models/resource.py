@@ -94,6 +94,7 @@ class Resource(ArchesResource):
                 location.SimpleLocationForm.get_info(),
                 location.ProbabilityAreaForm.get_info(),
                 wizard.ArchZoneInvestigationForm.get_info(),
+                location.InvestigationLocationForm.get_info(),
             ]
             
         if self.entitytypeid == 'HISTORIC_AREA.E53':

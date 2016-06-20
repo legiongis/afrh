@@ -240,6 +240,29 @@ class ProbabilityAreaForm(ResourceForm):
         }
 
         return
+        
+class InvestigationLocationForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'shovel-test-location',
+            'icon': 'fa-spoon',
+            'name': _('Investigation Locations'),
+            'class': InvestigationLocationForm
+        }
+
+    def update(self, data, files):
+        
+        
+        self.update_nodes('SHOVEL_TEST_GEOMETRY.E47', data)
+        return
+
+    def load(self, lang):
+        self.data['SHOVEL_TEST_GEOMETRY.E47'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('SHOVEL_TEST_GEOMETRY.E47')),
+        }
+
+        return
 
 class ActALocationForm(ResourceForm):
     @staticmethod
