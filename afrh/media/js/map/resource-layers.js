@@ -46,12 +46,17 @@ define([
 
             //select which layer model to use based on resource type layer_model value
             var newLayerModel = layerModelMap[item.layerModel];
+            
+            if (entitytypeid == "ARCHAEOLOGICAL_ZONE.E53"){
+                item.infoContent = "this is the content";
+            }
 
             layers.push(new newLayerModel(item, function(features) {
                 resourceFeatures(resourceFeatures().concat(features));
             }));
             
             if (entitytypeid == "ARCHAEOLOGICAL_ZONE.E53"){
+                item.infoContent = "this is the content";
                 arch_invest_item = {
                     'active':false,
                     'color':"#f600f1",

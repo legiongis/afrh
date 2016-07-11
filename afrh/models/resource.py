@@ -256,8 +256,6 @@ class Resource(ArchesResource):
         """
         documents = super(Resource, self).prepare_documents_for_map_index(geom_entities=geom_entities)
         
-        
-        
         def get_entity_data(entitytypeid, get_label=False):
             entity_data = _('None specified')
             entity_nodes = self.find_entities_by_type_id(entitytypeid)
@@ -288,23 +286,28 @@ class Resource(ArchesResource):
         if self.entitytypeid == 'INVENTORY_RESOURCE.E18':
 
             document_data['resource_type'] = get_entity_data('NRHP_RESOURCE_TYPE.E55', get_label=True)
-            document_data['address'] = _('None specified')
-            address_nodes = self.find_entities_by_type_id('PLACE_ADDRESS.E45')
-            for node in address_nodes:
-                if node.find_entities_by_type_id('ADDRESS_TYPE.E55')[0].label == 'Primary':
-                    document_data['address'] = node.value
+            document_data['building_number'] = get_entity_data('BUILDING_NUMBER.E42', get_label=True)
+            document_data['description'] = get_entity_data('DESCRIPTION.E62')
+            if len(document_data['description'].split(" ")) > 30:
+                words30 = document_data['description'].split(" ")[:30]
+                document_data['description'] = " ".join(words30) + "...</p>"
 
-        if self.entitytypeid == 'HERITAGE_RESOURCE_GROUP.E27':
-            document_data['resource_type'] = get_entity_data('HERITAGE_RESOURCE_GROUP_TYPE.E55', get_label=True)
+        if self.entitytypeid == 'CHARACTER_AREA.E53':
+            document_data['significance'] = get_entity_data('RELATIVE_LEVEL_OF_SIGNIFICANCE.E55', get_label=True)
+            document_data['description'] = get_entity_data('DESCRIPTION.E62')
+            if len(document_data['description'].split(" ")) > 30:
+                words30 = document_data['description'].split(" ")[:30]
+                document_data['description'] = " ".join(words30) + "...</p>"
 
-        if self.entitytypeid == 'ACTIVITY.E7':
-            document_data['resource_type'] = get_entity_data('ACTIVITY_TYPE.E55', get_label=True)
+        if self.entitytypeid == 'MASTER_PLAN_ZONE.E53':
+            document_data['zone_type'] = get_entity_data('ZONE_TYPE.E55', get_label=True)
+            document_data['planned_use'] = get_entity_data('PLANNED_USE.E55', get_label=True)
 
-        if self.entitytypeid == 'HISTORICAL_EVENT.E5':
-            document_data['resource_type'] = get_entity_data('HISTORICAL_EVENT_TYPE.E55', get_label=True)
-
-        if self.entitytypeid == 'ACTOR.E39':
-            document_data['resource_type'] = get_entity_data('ACTOR_TYPE.E55', get_label=True)
+        if self.entitytypeid == 'ARCHAEOLOGICAL_ZONE.E53':
+            document_data['description'] = get_entity_data('DESCRIPTION.E62')
+            if len(document_data['description'].split(" ")) > 30:
+                words30 = document_data['description'].split(" ")[:30]
+                document_data['description'] = " ".join(words30) + "...</p>"
 
         if self.entitytypeid == 'INFORMATION_RESOURCE.E73':
             document_data['resource_type'] = get_entity_data('INFORMATION_RESOURCE_TYPE.E55', get_label=True)

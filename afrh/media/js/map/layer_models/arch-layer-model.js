@@ -32,30 +32,75 @@ define([
                 
                 var iconSize = mouseOver ? 38 : 32;
 
-                if (feature.get('type') == 'boundary'){
-                    var thickcolor = 'rgba(' + strokergb.r + ',' + strokergb.g + ',' + strokergb.b + ',0.25)';
-                    var thincolor = 'rgba(' + strokergb.r + ',' + strokergb.g + ',' + strokergb.b + ',0.9)';
-                } else {
-                    var thickcolor = 'rgba(45,11,244,0.25)';
-                    var thincolor = 'rgba(45,11,244,0.9)';
-                };
-
-                var styles = [
+                var featType = feature.get('type');
+                
+                var boundStyle = [
                     new ol.style.Style({
                         stroke: new ol.style.Stroke({
-                            color: thickcolor,
-                            width: 8
+                            color: 'rgba(' + strokergb.r + ',' + strokergb.g + ',' + strokergb.b+',0.25)',
+                            width: 8,
                         }),
                         zIndex: mouseOver ? zIndex*1000000000: zIndex
                     }),new ol.style.Style({
                         stroke: new ol.style.Stroke({
-                            color: thincolor,
-                            width: 2
+                            color: 'rgba(' + strokergb.r + ',' + strokergb.g + ',' + strokergb.b+',0.9)',
+                            width: 2,
                         }),
                         zIndex: mouseOver ? zIndex*2000000000: zIndex
                     })
                 ];
                 
+                var probColors = {
+                    'Historic Resources':'rgba(255, 255, 0',
+                    'Native American Resources':'rgba(255, 88, 0',
+                    'Paleosols':'rgba(202, 0, 224',
+                    'Disturbed Area':'rgba(255, 0, 8',
+                };
+
+                var probStyle = [
+                    new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            color: probColors[featType]+',0.25)',
+                            width: 8,
+                            lineDash: [5, 8],
+                        }),
+                        zIndex: mouseOver ? zIndex*1000000000: zIndex
+                    }),new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            color: probColors[featType]+',0.9)',
+                            width: 2,
+                            lineDash: [5, 8],
+                        }),
+                        zIndex: mouseOver ? zIndex*2000000000: zIndex
+                    })
+                ];
+                
+                var stStyle = [
+                    new ol.style.Style({
+                        image: new ol.style.Circle({
+                            radius: 3,
+                            fill: new ol.style.Fill({
+                              color: '#000000',
+                              opacity: 0.6
+                            }),
+                            stroke: new ol.style.Stroke({
+                              color: '#ffffff',
+                              opacity: 0.4
+                            })
+                       })
+                    })
+                ];
+                
+                if (featType == 'boundary') {
+                    var styles = boundStyle;
+                } else {
+                    if (featType == 'shovel test') {
+                        var styles = stStyle;
+                    } else {
+                        var styles = probStyle;
+                    }
+                } 
+
                 zIndex += 2;
 
                 // styleCache[text] = styles;
