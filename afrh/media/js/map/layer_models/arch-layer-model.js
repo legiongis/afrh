@@ -61,7 +61,7 @@ define([
                     new ol.style.Style({
                         stroke: new ol.style.Stroke({
                             color: probColors[featType]+',0.25)',
-                            width: 8,
+                            width: 6,
                             lineDash: [5, 8],
                         }),
                         zIndex: mouseOver ? zIndex*1000000000: zIndex
