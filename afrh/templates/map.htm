@@ -252,28 +252,28 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                         <div class="modal-body modal-layer-list" style="overflow-y: scroll; height: 319px;" data-bind="foreach: layers">
                             
                             <!-- List overlays -->
-                            <div class="row">
+                            <div class="row" style="background: #f9f9f9;">
                                     <!-- Layer Entry -->
 
                                     <div class="" data-bind="css: {hidden: !onMap()}">
-                                        <div data-bind="css: { 'arches-ll-selected': active() }" class="row arches-overlay-item" style="background-color: #fafafa; border-radius: 3px;">
+                                        <div data-bind="css: { 'arches-ll-selected': active() }, style: { 'background-color': active() ? '#EAEAEA' : '#FAFAFA'}" class="arches-overlay-item" style="border-radius: 3px;">
 
                                             <!-- Layer Thumbnail -->
                                             <div class="col-xs-2" style="padding-right: 0px; padding-left: 0px;">
-                                                <div class="arches-thumbnail" data-bind="style: { opacity: active() ? 1 : 0.5 }" style="vertical-align: middle;text-align: center;width: 64px; height: 64px;">
+                                                <div class="arches-thumbnail" data-bind="style: { opacity: active() ? 1 : 0.5, color: active() ? iconColor : '#000000'}" style="vertical-align: middle;text-align: center;width: 64px; height: 64px;">
                                                     <div style="display: table-cell;vertical-align: middle;text-align: center;width: 64px; height: 64px; ">
-                                                        <div data-bind="attr: { class: icon + ' fa-2x layer-thumb', style: 'display: inline-block;text-align: left;color: ' + iconColor + ';' }"></div>
+                                                        <div data-bind="attr: { class: icon + ' fa-2x layer-thumb', style: 'display: inline-block;text-align: left'}"></div>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <!-- Layer Title and Controls -->
-                                            <div class="col-xs-10">
+                                            <div class="col-xs-10" style="height:64px;">
                                                 
                                                 <!-- Layer Title -->
-                                                <div class="row" style="margin-top: 5px;">
-                                                    <div class="col-xs-12">
-                                                        <a href="javascript:void(0);" class="overlay-entry layer-selector visibility-toggle" style="margin-left: 15px;" id="map-layer-10-button" data-bind="attr: {'data-layerid': id}"><i class="fa" data-bind="css:{'fa-ban':!active()}"></i> <span data-bind="text: name"></span></a>
+                                                <div class="row" style="margin-top: 5px; margin-bottom: 3px;">
+                                                    <div class="">
+                                                        <a href="javascript:void(0);" class="overlay-entry layer-selector visibility-toggle" style="margin-left: 15px;" id="map-layer-10-button" data-bind="attr: {'data-layerid': id}"><span data-bind="text: name"></span></a>
                                                     </div>
                                                 </div>
 
@@ -287,9 +287,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                                                             <div style="margin-top: -63px; margin-left: 47px;">
                                                                 <a href="javascript:void(0);" class="zoom layer-zoom" title="zoom to overlay" data-bind="if: isArchesLayer, attr: {'data-layerid': id}"><i class="fa fa-2x fa-search" style="color: #65a5da;"></i></a> &nbsp;
 
-                                                                <a href="javascript:void(0);" data-toggle="popover" data-container="body" data-placement="right" data-bind="if: infoContent, attr: {'data-content': infoContent}" data-html="true" title="Layer info" ><i class="fa fa-2x fa-info-circle" style="color: #65a5da;"></i></a>
+                                                                <a href="javascript:void(0);" data-toggle="popover" data-container="body" data-placement="right" data-bind="if: infoContent, attr: {'data-content': $('#arch-legend').html()}" data-html="true" title="Legend" ><i class="fa fa-2x fa-info-circle" style="color: #65a5da;"></i></a>
 
                                                             </div>
+                                                            
 
                                                         </div>
                                                     </div>
@@ -308,38 +309,73 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                 </div>
             </div>
             <!-- End Overlays Panel -->
-
-                <!-- Map Tools  -->
-                <div class="row" style="margin-left:0px;">
-                    <div class="" style="margin-top: -53px;margin-left: 0px;">
-
-                        <div class="btn-group">
-
-                            <button id="inventory-basemaps" type="button" class="btn btn-primary arches-map-tools inventory-basemaps map-tools-reduce-width" style="border-bottom-left-radius:3px;"><i class="fa fa-globe"></i><span class="hidden-xs"> {% trans 'Basemaps' %}</span>
-                            </button>
-                            
-                            <button id="inventory-historicmaps" type="button" class="btn btn-primary arches-map-tools map-tools-reduce-width" style="" ><i class="fa fa-newspaper-o"></i><span class="hidden-xs"> {% trans 'Historic Maps' %}</span>
-                            </button>
-                            
-                            <button id="inventory-overlays" type="button" class="btn btn-primary arches-map-tools map-tools-reduce-width" style="border-bottom-right-radius:3px;"><i class="fa fa-align-justify"></i><span class="hidden-xs"> {% trans 'Overlays' %}</span>
-                            </button>
-                            
-                        </div>
-                       
-                        
-
+            
+            <div class="container-fluid hidden" id="arch-legend">
+                <dt class="txt-color-blue">{% trans 'Areas of Probability' %}</dt>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <img class="popup-legend-img" src="{{ STATIC_URL }}img/report/historic-resource.png"></img>
+                        <dd class="txt-color-blue arches-map-panel-list" style="display:inline">Historic Resources</dd>
                     </div>
-                
-                
-                 <div class="new-map-loading" style="">
-                                    
-                    <img src="{{ STATIC_URL }}img/spinner.gif" height="28" width="28" style="margin-top: 2px;"></img>
-                    <p class="new-map-loading-text">{% trans 'Loading resources...' %}</p>
-                   </div>
                 </div>
-                
-                <!-- End Map Tools -->
-                <!-- Info Panel -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <img class="popup-legend-img" src="{{ STATIC_URL }}img/report/native-american.png"></img>
+                        <dd class="txt-color-blue arches-map-panel-list" style="display:inline">Native American Resources</dd>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <img class="popup-legend-img" src="{{ STATIC_URL }}img/report/Paleosols.png"></img>
+                        <dd class="txt-color-blue arches-map-panel-list" style="display:inline">Paleosols</dd>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <img class="popup-legend-img" src="{{ STATIC_URL }}img/report/disturbed-area.png"></img>
+                        <dd class="txt-color-blue arches-map-panel-list" style="display:inline">Disturbed Area</dd>
+                    </div>
+                </div>
+                <dt class="txt-color-blue">{% trans 'Field Investigations' %}</dt>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <img class="popup-legend-img" src="{{ STATIC_URL }}img/report/st-point.png"></img>
+                        <dd class="txt-color-blue arches-map-panel-list" style="display:inline">Shovel Test Location</dd>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Tools  -->
+            <div class="row" style="margin-left:0px;">
+                <div class="" style="margin-top: -53px;margin-left: 0px;">
+
+                    <div class="btn-group">
+
+                        <button id="inventory-basemaps" type="button" class="btn btn-primary arches-map-tools inventory-basemaps map-tools-reduce-width" style="border-bottom-left-radius:3px;"><i class="fa fa-globe"></i><span class="hidden-xs"> {% trans 'Basemaps' %}</span>
+                        </button>
+                        
+                        <button id="inventory-historicmaps" type="button" class="btn btn-primary arches-map-tools map-tools-reduce-width" style="" ><i class="fa fa-newspaper-o"></i><span class="hidden-xs"> {% trans 'Historic Maps' %}</span>
+                        </button>
+                        
+                        <button id="inventory-overlays" type="button" class="btn btn-primary arches-map-tools map-tools-reduce-width" style="border-bottom-right-radius:3px;"><i class="fa fa-align-justify"></i><span class="hidden-xs"> {% trans 'Overlays' %}</span>
+                        </button>
+                        
+                    </div>
+                   
+                    
+
+                </div>
+            
+            
+             <div class="new-map-loading" style="">
+                                
+                <img src="{{ STATIC_URL }}img/spinner.gif" height="28" width="28" style="margin-top: 2px;"></img>
+                <p class="new-map-loading-text">{% trans 'Loading resources...' %}</p>
+               </div>
+            </div>
+            
+            <!-- End Map Tools -->
+            <!-- Info Panel -->
             <div id="resource-info" class="row" style="display:none;">
 
                 <!-- Setup display, hide for xs screens -->
@@ -374,14 +410,14 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                         </div>
 
                         <!-- Body Content -->
-                        <div class="modal-body padding-top-0 padding-bottom-0">
+                        <div class="modal-body" style="padding: 0px 20px;">
                             <p> 
                                 {% include 'map/resource-popup.htm' %}
                             </p>
                         </div>
                         <!-- End Body Content -->
 
-                        <div class="modal-footer" style="padding-top: 10px; padding-bottom: 10px;">
+                        <div class="modal-footer" style="padding-top: 10px; padding-bottom: 10px; margin-top: 0px">
                             <button type="button" class="btn btn-default resource-info-closer">
                                 {% trans 'Close' %}
                             </button>
