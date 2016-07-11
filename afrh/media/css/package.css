@@ -700,6 +700,14 @@ dl.score-table dd{
     margin-left: 5px;
 }
 
+.popup-legend-img {
+    display: inline;
+    height: 30px !important;
+    width: 48px !important;
+}
+
+
+
 /* index rules */
 .index-purchase {
     background: #5F6265;
