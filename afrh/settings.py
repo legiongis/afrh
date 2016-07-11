@@ -154,6 +154,32 @@ def RESOURCE_TYPE_CONFIGS():
                 'view':'all'
                 }
         },
+        'HISTORIC_AREA.E53': {
+            'resourcetypeid': 'HISTORIC_AREA.E53',
+            'name': _('Historic Area'),
+            'icon_class': 'fa fa-flag',
+            'default_page': 'des-summary',
+            'default_description': 'no description available',
+            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
+            'categories': [_('Resource')],
+            'has_layer': True,
+            'on_map': True,
+            'marker_color': '#8D45F8',
+            'stroke_color': '#9367d5',
+            'fill_color': '#c3b5d8',
+            'primary_name_lookup': {
+                'entity_type': 'HISTORIC_AREA_NAME.E48',
+                'lookup_value': False
+            },
+            'sort_order': 3,
+            'layer_model': 'area',
+            'permissions': {
+                'create':['admin1','admin2'],
+                'edit':['admin1','admin2'],
+                'fullreport':'all',
+                'view':'all'
+                }
+        },
         'MASTER_PLAN_ZONE.E53': {
             'resourcetypeid': 'MASTER_PLAN_ZONE.E53',
             'name': _('Master Plan Zone'),
@@ -171,7 +197,7 @@ def RESOURCE_TYPE_CONFIGS():
                 'entity_type': 'NAME.E48',
                 'lookup_value': False
             },
-            'sort_order': 3,
+            'sort_order': 4,
             'layer_model': 'area',
             'permissions': {
                 'create':['admin1','admin2'],
@@ -190,14 +216,14 @@ def RESOURCE_TYPE_CONFIGS():
             'categories': [_('Resource')],
             'has_layer': True,
             'on_map': True,
-            'marker_color': '#FF1000',
-            'stroke_color': '#FF1000',
-            'fill_color': '#FF1000',
+            'marker_color': '#00FF00',
+            'stroke_color': '#00FF00',
+            'fill_color': '#00FF00',
             'primary_name_lookup': {
                 'entity_type': 'ARCHAEOLOGICAL_ZONE_NAME.E48',
                 'lookup_value': False
             },
-            'sort_order': 4,
+            'sort_order': 5,
             'layer_model': 'arch',
             'permissions': {
                 'create':['admin1','admin2'],
@@ -206,32 +232,7 @@ def RESOURCE_TYPE_CONFIGS():
                 'view':'all'
                 }
         },
-        'HISTORIC_AREA.E53': {
-            'resourcetypeid': 'HISTORIC_AREA.E53',
-            'name': _('Historic Area'),
-            'icon_class': 'fa fa-flag',
-            'default_page': 'des-summary',
-            'default_description': 'no description available',
-            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
-            'categories': [_('Resource')],
-            'has_layer': True,
-            'on_map': True,
-            'marker_color': '#8D45F8',
-            'stroke_color': '#9367d5',
-            'fill_color': '#c3b5d8',
-            'primary_name_lookup': {
-                'entity_type': 'HISTORIC_AREA_NAME.E48',
-                'lookup_value': False
-            },
-            'sort_order': 5,
-            'layer_model': 'area',
-            'permissions': {
-                'create':['admin1','admin2'],
-                'edit':['admin1','admin2'],
-                'fullreport':'all',
-                'view':'all'
-                }
-        },
+        
         'ACTOR.E39': {
             'resourcetypeid': 'ACTOR.E39',
             'name': _('Person/Organization'),
