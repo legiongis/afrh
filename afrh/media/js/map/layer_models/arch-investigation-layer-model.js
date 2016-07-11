@@ -8,17 +8,23 @@ define([
 ], function($, ol, _, arches, LayerModel, utils) {
     return function(config, featureCallback) {
         config = _.extend({
-            entitytypeid: 'all',
+            //entitytypeid: 'all',
             vectorColor: '#808080'
         }, config);
 
+        console.log("when is this run?");
+            
         var layer = function () {
             var rgb = utils.hexToRgb(config.vectorColor);
             var zIndex = 0;
             var styleCache = {};
 
             var style = function(feature, resolution) {
-                var mouseOver = feature.get('mouseover');
+                console.log(feature);
+                var mouseOver = feature.get('id');
+                console.log("MO");
+                console.log(mouseOver);
+                
                 var text = '1 ' + mouseOver;
 
                 if (!feature.get('arches_marker')) {
@@ -53,16 +59,11 @@ define([
                 return styles;
             };
 
-            var layerConfig = {
-                projection: 'EPSG:3857'
-            };
+            var source = new ol.source.GeoJSON({
+                projection: 'EPSG:3857',
+                url: arches.urls.invest_layer
+            });
             
-            if (config.entitytypeid !== null) {
-                layerConfig.url = arches.urls.map_markers + config.entitytypeid;
-            }
-
-            var source = new ol.source.GeoJSON(layerConfig);
-
             $('.new-map-loading').show();
             var loadListener = source.on('change', function(e) {
                 if (source.getState() == 'ready') {
