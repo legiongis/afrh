@@ -395,30 +395,78 @@ def arch_layer(request, boundtype=''):
     query = Query(se, limit=limit)
 
     args = {
-        'index':'entity',
-        'doc_type':'ARCHAEOLOGICAL_ZONE.E53',
+        'index':'resource',
+        '_type':'ARCHAEOLOGICAL_ZONE.E53',
     }
 
-    data = query.search(**args)
-
+    #data = query.search(**args)
+    
+    data = se.search(index='resource', doc_type='ARCHAEOLOGICAL_ZONE.E53')
+    
+    pre_collection = []
+    
     for item in data['hits']['hits']:
-        for geom in item['_source']['geometries']:
-            if geom['entitytypeid'] == 'ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY.E47':
-                boundtype = 'boundary'
-            if geom['entitytypeid'] == 'AREA_OF_PROBABILITY_GEOMETRY.E47':
-                boundtype = 'probability_areas'
+        #print json.dumps(item,indent=2)
+        print "\n"
+        if "PLACE_E53" in item['_source']['graph']:
+            for geom in item['_source']['graph']['PLACE_E53']:
+                
+                if "AREA_OF_PROBABILITY_GEOMETRY_E47" in geom:
 
-            feat = {
-                'geometry':geom['value'],
-                'type':"Feature",
-                'id':item['_source']['entityid'],
-                'properties':{
-                    'type':boundtype
+                    wkt = geom['AREA_OF_PROBABILITY_GEOMETRY_E47'][0]['AREA_OF_PROBABILITY_GEOMETRY_E47__value']
+                    g1 = shapely.wkt.loads(wkt)
+                    g2 = geojson.Feature(geometry=g1, properties={})
+                    
+                    feat = {
+                        'geometry':g2.geometry,
+                        'type':"Feature",
+                        'id':item['_source']['entityid'],
+                        'properties':{
+                            'type':geom['AREA_OF_PROBABILITY_GEOMETRY_E47'][0]['AREA_OF_PROBABILITY_GEOMETRY_TYPE_E55__label']
+                        }
+                    }
+
+                    geojson_collection['features'].append(feat)
+
+                if "ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47" in geom:
+                    # for geom in item['_source']['graph']['PLACE_E53'][0]['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47']:
+                    wkt = geom['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47'][0]['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47__value']
+                    
+                    g1 = shapely.wkt.loads(wkt)
+                    g2 = geojson.Feature(geometry=g1, properties={})
+                    #json_geom = g2.geometry
+                    # feat_type = 'boundary'
+                    # pre_collection.append((json_geom,feat_type))
+                    feat = {
+                        'geometry':g2.geometry,
+                        'type':"Feature",
+                        'id':item['_source']['entityid'],
+                        'properties':{
+                            'type':'boundary'
+                        }
+                    }
+                    geojson_collection['features'].append(feat)
+                
+        if "SHOVEL_TEST_E7" in item['_source']['graph']:
+            for st in item['_source']['graph']['SHOVEL_TEST_E7']:
+                wkt = st['SHOVEL_TEST_GEOMETRY_E47'][0]['SHOVEL_TEST_GEOMETRY_E47__value']
+
+                g1 = shapely.wkt.loads(wkt)
+                g2 = geojson.Feature(geometry=g1, properties={})
+                # json_geom = g2.geometry
+                # feat_type = "shovel test"
+                # pre_collection.append((json_geom,feat_type))
+                feat = {
+                    'geometry':g2.geometry,
+                    'type':"Feature",
+                    'id':item['_source']['entityid'],
+                    'properties':{
+                        'type':"shovel test"
+                    }
                 }
-            }
-            
-            geojson_collection['features'].append(feat)
+                geojson_collection['features'].append(feat)
 
+    print json.dumps(geojson_collection['features'],indent=2)
     return JSONResponse(geojson_collection)
     
 def arch_investigation_layer(request, boundtype=''):
