@@ -279,19 +279,13 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
                                                 <!-- Layer Controls -->
                                                 <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="knobs-demo" data-bind="css: { 'hidden': !active() }" style="margin-left: 15px; display: block;">
+                                                    <div class="col-xs-12" data-bind="css: { 'hidden': !active() }">
+                                                        <div class="knobs-demo"  style="margin-left: 15px; display: block;">
                                                             
                                                             <input class="knob" style="font-weight: normal;" data-width="32" data-height="60" data-fgColor="#65a5da" data-angleOffset=-145 data-angleArc=290 value="100" data-thickness=.3 data-bind="attr: {'data-layerid': id}">
-
-                                                            <div style="margin-top: -63px; margin-left: 47px;">
-                                                                <a href="javascript:void(0);" class="zoom layer-zoom" title="zoom to overlay" data-bind="if: isArchesLayer, attr: {'data-layerid': id}"><i class="fa fa-2x fa-search" style="color: #65a5da;"></i></a> &nbsp;
-
-                                                                <a href="javascript:void(0);" data-toggle="popover" data-container="body" data-placement="right" data-bind="if: infoContent, attr: {'data-content': $('#arch-legend').html()}" data-html="true" title="Legend" ><i class="fa fa-2x fa-info-circle" style="color: #65a5da;"></i></a>
-
-                                                            </div>
-                                                            
-
+                                                        </div>
+                                                        <div style="margin-left: 55px">
+                                                            <a href="javascript:void(0);" data-toggle="popover" data-container="body" data-placement="right" data-bind="if: infoContent, attr: {'data-content': $('#arch-legend').html()}" data-html="true" title="Legend" ><i class="fa fa-2x fa-info-circle" style="color: #65a5da;"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -311,7 +305,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
             <!-- End Overlays Panel -->
             
             <div class="container-fluid hidden" id="arch-legend">
-                <dt class="txt-color-blue">{% trans 'Areas of Probability' %}</dt>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <dt class="txt-color-blue">{% trans 'Areas of Probability' %}</dt>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <img class="popup-legend-img" src="{{ STATIC_URL }}img/report/historic-resource.png"></img>
@@ -336,7 +334,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
                         <dd class="txt-color-blue arches-map-panel-list" style="display:inline">Disturbed Area</dd>
                     </div>
                 </div>
-                <dt class="txt-color-blue">{% trans 'Field Investigations' %}</dt>
+                <div class="row" style="padding-top: 5px;">
+                    <div class="col-xs-12">
+                        <dt class="txt-color-blue">{% trans 'Field Investigations' %}</dt>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <img class="popup-legend-img" src="{{ STATIC_URL }}img/report/st-point.png"></img>
