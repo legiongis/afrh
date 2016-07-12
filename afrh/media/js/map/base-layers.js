@@ -49,7 +49,10 @@ define([
             // layer: 'osm',
         // }),
         source: new ol.source.XYZ({
-            url: 'https://a.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
+            //url: 'https://a.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
+            url: 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            //url: 'https://a.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png',
+          
             attributions: [
                 new ol.Attribution({
                     html: '<a href="http://atlas.lsu.edu" target="_blank">Atlas: The Louisiana Statewide GIS</a>. LSU Department of Geography and Anthropology, Baton Rouge, LA.'
