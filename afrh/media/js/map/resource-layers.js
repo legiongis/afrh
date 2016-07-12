@@ -4,7 +4,6 @@ define([
         'knockout',
         'arches',
         'resource-layer-info',
-        'map/resource-layer-model',
         'map/layer_models/marker-layer-model',
         'map/layer_models/full-layer-model',
         'map/layer_models/polygon-layer-model',
@@ -13,7 +12,7 @@ define([
         'resource-types',
         'user-info'
 
-], function(ol, _, ko, arches, resourceLayerInfo, ResourceLayerModel, MarkerLayerModel, FullLayerModel, PolygonLayerModel, AreaLayerModel, ArchLayerModel, resourceTypes, userInfo) {
+], function(ol, _, ko, arches, resourceLayerInfo, MarkerLayerModel, FullLayerModel, PolygonLayerModel, AreaLayerModel, ArchLayerModel, resourceTypes, userInfo) {
         var resourceFeatures = ko.observableArray();
         var layers = [];
         
