@@ -50,7 +50,7 @@ define([
         // }),
         source: new ol.source.XYZ({
             //url: 'https://a.tile.thunderforest.com/cycle/{z}/{x}/{y}.png',
-            url: 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             //url: 'https://a.tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png',
           
             attributions: [
