@@ -3,7 +3,7 @@ define([
     'openlayers',
     'underscore',
     'arches',
-    'map/layer-model',
+    'map/layer-models/base-layer-model',
     'utils'
 ], function($, ol, _, arches, LayerModel, utils) {
     return function(config, featureCallback) {
@@ -34,24 +34,14 @@ define([
 
                 var styles = [new ol.style.Style({
                     stroke: new ol.style.Stroke({
-                        color: 'rgba(' + strokergb.r + ',' + strokergb.g + ',' + strokergb.b + ',0.25)',
-                        width: 8
-                    }),
-                    //fill: new ol.style.Fill({
-                    //    color: 'rgba(' + fillrgb.r + ',' + fillrgb.g + ',' + fillrgb.b + ',0.45)'
-                    //}),
-                    zIndex: mouseOver ? zIndex*1000000000: zIndex
-                }),new ol.style.Style({
-                    stroke: new ol.style.Stroke({
                         color: 'rgba(' + strokergb.r + ',' + strokergb.g + ',' + strokergb.b + ',0.9)',
                         width: 2
                     }),
-                    //fill: new ol.style.Fill({
-                    //    color: 'rgba(' + fillrgb.r + ',' + fillrgb.g + ',' + fillrgb.b + ',0.45)'
-                    //}),
-                    zIndex: mouseOver ? zIndex*2000000000: zIndex
-                })
-                ];
+                    fill: new ol.style.Fill({
+                        color: 'rgba(' + fillrgb.r + ',' + fillrgb.g + ',' + fillrgb.b + ',0.45)'
+                    }),
+                    zIndex: mouseOver ? zIndex*1000000000: zIndex
+                })];
                 
                 zIndex += 2;
 
@@ -86,6 +76,7 @@ define([
                 visible: config.entitytypeid == "INVENTORY_RESOURCE.E18",
                 is_arches_layer: true,
             });
+            
             return output_layer
         };
         

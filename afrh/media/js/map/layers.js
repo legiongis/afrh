@@ -1,7 +1,7 @@
 define([
     'openlayers',
     'map/resource-layers',
-    'map/layer-model',
+    'map/layer-models/base-layer-model',
 ], function(ol, resourceLayers, LayerModel) {
     var layers = resourceLayers.layers;
 

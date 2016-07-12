@@ -3,7 +3,7 @@ define([
     'openlayers',
     'underscore',
     'arches',
-    'map/layer-model',
+    'map/layer-models/base-layer-model',
     'utils'
 ], function($, ol, _, arches, LayerModel, utils) {
     return function(config, featureCallback) {

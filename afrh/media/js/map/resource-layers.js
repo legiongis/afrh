@@ -4,11 +4,11 @@ define([
         'knockout',
         'arches',
         'resource-layer-info',
-        'map/layer_models/marker-layer-model',
-        'map/layer_models/full-layer-model',
-        'map/layer_models/polygon-layer-model',
-        'map/layer_models/area-layer-model',
-        'map/layer_models/arch-layer-model',
+        'map/layer-models/marker-layer-model',
+        'map/layer-models/full-layer-model',
+        'map/layer-models/polygon-layer-model',
+        'map/layer-models/area-layer-model',
+        'map/layer-models/arch-layer-model',
         'resource-types',
         'user-info'
 
