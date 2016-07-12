@@ -131,6 +131,27 @@ define([
     };
     hybrid.layer.id = hybrid.id
     hybrid.maxzoom = 20;
+    
+    //Make blank base layer in order to show no basemap
+    var blankLyr = new ol.layer.Tile({
+        name: "blank",
+        source: new ol.source.XYZ({
+            url: arches.urls.media + 'img/map/white_256x256.png',
+        }),
+        visible: false
+    });  
+    var blank = {
+        id: 'blank',
+        name: 'None',
+        icon: arches.urls.media + 'img/map/thb_blank.png',
+        layer: blankLyr,
+        altlayer: false,
+        alttext: 'Click to remove basemap',
+        showInfo: 'When viewing some historic maps, it may be useful to remove the basemap altogether.',
+    };
+    blank.layer.matchid = blank.id;
+    blank.maxzoom = 20;
+    
 /*     
     // ------------------------------------ NOT CURRENTLY USED ---------------------------------------
     
@@ -201,25 +222,7 @@ define([
     relief.altlayer.matchid = relief.id;
     relief.maxzoom = 18;
 
-    //Make blank base layer in order to show no basemap
-    var blankLyr = new ol.layer.Tile({
-        name: "blank",
-        source: new ol.source.XYZ({
-            url: arches.urls.media + 'img/map/white_256x256.png',
-        }),
-        visible: false
-    });  
-    var blank = {
-        id: 'blank',
-        name: 'None',
-        icon: arches.urls.media + 'img/map/thb_blank.png',
-        layer: blankLyr,
-        altlayer: false,
-        alttext: 'Click to remove basemap',
-        showInfo: 'When viewing some historic maps, it may be useful to remove the basemap altogether.',
-    };
-    blank.layer.matchid = blank.id;
-    blank.maxzoom = 20;
+    
     
     //Make blank base layer in order to show no basemap
     var amcemLyr = new ol.layer.Tile({
@@ -252,7 +255,8 @@ define([
     var baseLayers = [
         street,
         imagery,
-        hybrid,
+        //hybrid,
+        blank,
     ];  
 
     //set default map style to Bing
