@@ -256,7 +256,7 @@ class Resource(ArchesResource):
         """
         documents = super(Resource, self).prepare_documents_for_map_index(geom_entities=geom_entities)
         
-        def get_entity_data(entitytypeid, get_label=False):
+        def get_entity_data(entitytypeid, get_label=False, leave_blank=False):
             entity_data = _('None specified')
             entity_nodes = self.find_entities_by_type_id(entitytypeid)
             if len(entity_nodes) > 0:
@@ -267,9 +267,13 @@ class Resource(ArchesResource):
                     else:
                         ret = str(node.value)
                     if node.businesstablename == "dates":
+                        print "this is the ret"
+                        print ret
                         return ret[:10]
                     entity_data.append(ret)
                 entity_data = ', '.join(entity_data)
+            if leave_blank and entity_data == "None specified":
+                entity_data = None
             return entity_data
         
         # NOT USED
@@ -284,7 +288,6 @@ class Resource(ArchesResource):
         document_data = {}
         
         if self.entitytypeid == 'INVENTORY_RESOURCE.E18':
-
             document_data['resource_type'] = get_entity_data('NRHP_RESOURCE_TYPE.E55', get_label=True)
             document_data['building_number'] = get_entity_data('BUILDING_NUMBER.E42', get_label=True)
             document_data['description'] = get_entity_data('DESCRIPTION.E62')
@@ -298,6 +301,10 @@ class Resource(ArchesResource):
             if len(document_data['description'].split(" ")) > 30:
                 words30 = document_data['description'].split(" ")[:30]
                 document_data['description'] = " ".join(words30) + "...</p>"
+                
+        if self.entitytypeid == 'HISTORIC_AREA.E53':
+            document_data['designation'] = get_entity_data('HISTORIC_AREA_DESIGNATION.E55', get_label=True)
+            document_data['area_type'] = get_entity_data('HISTORIC_AREA_TYPE.E55', get_label=True)
 
         if self.entitytypeid == 'MASTER_PLAN_ZONE.E53':
             document_data['zone_type'] = get_entity_data('ZONE_TYPE.E55', get_label=True)
@@ -311,14 +318,37 @@ class Resource(ArchesResource):
 
         if self.entitytypeid == 'INFORMATION_RESOURCE.E73':
             document_data['resource_type'] = get_entity_data('INFORMATION_RESOURCE_TYPE.E55', get_label=True)
-            document_data['creation_date'] = get_entity_data('DATE_OF_CREATION.E50')
-            document_data['publication_date'] = get_entity_data('DATE_OF_PUBLICATION.E50')
-            document_data['file_path'] = get_entity_data('FILE_PATH.E62', get_label=True)
+            document_data['creation_date'] = get_entity_data('DATE_OF_CREATION.E50', leave_blank=True)
+            document_data['publication_date'] = get_entity_data('DATE_OF_PUBLICATION.E50', leave_blank=True)
             
-        if self.entitytypeid == 'HISTORICAL_EVENT.E5' or self.entitytypeid == 'ACTIVITY.E7' or self.entitytypeid == 'ACTOR.E39':
-            document_data['start_date'] = get_entity_data('BEGINNING_OF_EXISTENCE.E63')
-            document_data['end_date'] = get_entity_data('END_OF_EXISTENCE.E64')
+            document_data['file_path'] = get_entity_data('FILE_PATH.E62', get_label=True)
+            if not document_data['file_path'] == "None specified":
+ 
+                document_data['img'],document_data['audio'],document_data['other'] = False,False,False
+                ext = os.path.splitext(document_data['file_path'])[1].lower()
+                
+                audio_ext = [".mp3",".wav",".mp4"]
+                image_ext = [".png",".jpg",".jpeg",".tif"]
+                
+                if ext in image_ext:
+                    document_data['img'] = True
+                    document_data['thumbnail'] = get_entity_data('THUMBNAIL.E62', get_label=True)
+                elif ext in audio_ext:
+                    document_data['audio'] = True
+                else:
+                    document_data['other'] = True
+            
+        if self.entitytypeid == 'ACTIVITY_A.E7':
+            document_data['work_order'] = get_entity_data('WORK_ORDER_NUMBER.E42')
+            document_data['procedure'] = get_entity_data('ACTIVITY_PROCEDURE_TYPE.E55', get_label=True)
+            document_data['review'] = get_entity_data('ACTIVITY_REVIEW_TYPE.E55', get_label=True)
+            document_data['status'] = get_entity_data('CURRENT_ACTION_STATUS.E55', get_label=True)
 
+        if self.entitytypeid == 'ACTIVITY_B.E7':
+            document_data['building_permit'] = get_entity_data('BUILDING_PERMIT_NUMBER.E42')
+            document_data['review'] = get_entity_data('ACTIVITY_REVIEW_TYPE.E55', get_label=True)
+            document_data['project'] = get_entity_data('ACTIVITY_B_PROJECT_TYPE.E55', get_label=True)
+        
         for document in documents:
             for key in document_data:
                 document['properties'][key] = document_data[key]

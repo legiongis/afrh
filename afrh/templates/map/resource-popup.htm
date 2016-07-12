@@ -17,67 +17,100 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 -->
 {% load staticfiles %}
 {% load i18n %}   
-<dl class="">
+<dl class="" style="margin-bottom: 15px">
     <div data-bind="if: selectedResource()['entitytypeid'] === 'INVENTORY_RESOURCE.E18'">
-        <dt class="txt-color-blue">{% trans 'Resource Type' %}</dt>
+        <dt class="txt-color-blue">{% trans 'NRHP Resource Type' %}</dt>
         <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().resource_type : ''"></dd>
         
-        <dt class="txt-color-blue">{% trans 'Address' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().address : ''"></dd>
-
-        <dt class="txt-color-blue">{% trans 'Designations' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().designations : ''"></dd>
+        <dt class="txt-color-blue">{% trans 'Building Number' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().building_number : ''"></dd>
+        
+        <dt class="txt-color-blue">{% trans 'Description' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().description : ''"></dd>
     </div>
-    <div data-bind="if: selectedResource()['entitytypeid'] === 'HERITAGE_RESOURCE_GROUP.E27'">
-        <dt class="txt-color-blue">{% trans 'Historic District Type' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().resource_type : ''"></dd>
-
-        <dt class="txt-color-blue">{% trans 'Designations' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().designations : ''"></dd>
+    
+    <div data-bind="if: selectedResource()['entitytypeid'] === 'CHARACTER_AREA.E53'">
+        <dt class="txt-color-blue">{% trans 'Significance Level' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().significance : ''"></dd>
+        
+        <dt class="txt-color-blue">{% trans 'Description' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().description : ''"></dd>
+        
     </div>
-    <div data-bind="if: selectedResource()['entitytypeid'] === 'ACTIVITY.E7'">
-        <dt class="txt-color-blue">{% trans 'Activity Type' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().resource_type : ''"></dd>
-
-        <dt class="txt-color-blue">{% trans 'Start of Occurrence' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().start_date : ''"></dd>
-
-        <dt class="txt-color-blue">{% trans 'End of Occurrence' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().end_date : ''"></dd>
+    
+    <div data-bind="if: selectedResource()['entitytypeid'] === 'HISTORIC_AREA.E53'">
+        <dt class="txt-color-blue">{% trans 'Designation' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().designation : ''"></dd>
+        
+        <dt class="txt-color-blue">{% trans 'Area Type' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().area_type : ''"></dd>
+        
     </div>
-    <div data-bind="if: selectedResource()['entitytypeid'] === 'HISTORICAL_EVENT.E5'">
-        <dt class="txt-color-blue">{% trans 'Historic Event Type' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().resource_type : ''"></dd>
-
-        <dt class="txt-color-blue">{% trans 'Start of Occurrence' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().start_date : ''"></dd>
-
-        <dt class="txt-color-blue">{% trans 'End of Occurrence' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().end_date : ''"></dd>
+    
+    <div data-bind="if: selectedResource()['entitytypeid'] === 'MASTER_PLAN_ZONE.E53'">
+        <dt class="txt-color-blue">{% trans 'Zone Type' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().zone_type : ''"></dd>
+        
+        <dt class="txt-color-blue">{% trans 'Planned Use' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().planned_use : ''"></dd>
     </div>
-    <div data-bind="if: selectedResource()['entitytypeid'] === 'ACTOR.E39'">
-        <dt class="txt-color-blue">{% trans 'Person/Organization Type' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().resource_type : ''"></dd>
-
-        <dt class="txt-color-blue">{% trans 'Birth Date/Start of Existence' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().start_date : ''"></dd>
-
-        <dt class="txt-color-blue">{% trans 'Death Date/End of Existence' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().end_date : ''"></dd>
+    
+    <div data-bind="if: selectedResource()['entitytypeid'] === 'ARCHAEOLOGICAL_ZONE.E53'">
+        <dt class="txt-color-blue">{% trans 'Description' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().description : ''"></dd>
+        
     </div>
+
+    
     <div data-bind="if: selectedResource()['entitytypeid'] === 'INFORMATION_RESOURCE.E73'">
         <dt class="txt-color-blue">{% trans 'Information Resource Type' %}</dt>
         <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().resource_type : ''"></dd>
 
         <dt class="txt-color-blue">{% trans 'Date of Creation' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().creation_date : ''"></dd>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource().creation_date ? selectedResource().creation_date : 'None specified'"></dd>
 
         <dt class="txt-color-blue">{% trans 'Date of Publication' %}</dt>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().publication_date : ''"></dd>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource().publication_date ? selectedResource().publication_date : 'None specified'"></dd>
+         
+        <div data-bind="if: selectedResource().audio">
+            <dt class="txt-color-blue">{% trans 'Audio' %}</dt>
+            <div class="audioplayer">
+                <audio controls>
+                    <source data-bind="attr: {src: {{MEDIA_URL}} + selectedResource().file_path }" type="audio/mpeg" /><a data-bind="attr: {href: {{MEDIA_URL}} + selectedResource().file_path}"></a>
+                </audio>
+            </div>
+        </div>
         
+        <div data-bind="if: selectedResource().img">
+            <dt class="txt-color-blue">{% trans 'Image' %}</dt>
+            <img data-bind="attr: {src: {{MEDIA_URL}} + selectedResource().thumbnail }" alt="" class="" style="margin-bottom: 10px; border: solid 1px #555;" onerror="this.src='{{STATIC_URL}}img/photo_missing.png';">
+        </div>
         
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="attr: { href: selectedResource().file_path, title: 'link?'"></dd>
-        <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().file_path : 'no file path'"></dd>
-
+        <div data-bind="if: selectedResource().other">
+            <a data-bind="attr: {href: {{MEDIA_URL}} + selectedResource().file_path}" alt="" class="">
+                <dt class="" style="color: #962a3d !important">{% trans 'Link to File' %}</dt>
+            </a>
+        </div>
     </div>
+    
+    <div data-bind="if: selectedResource()['entitytypeid'] === 'ACTIVITY_A.E7'">
+        <dt class="txt-color-blue">{% trans 'Work Order Number' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().work_order : ''"></dd>
+        <dt class="txt-color-blue">{% trans 'Procedure(s)' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().procedure : ''"></dd>
+        <dt class="txt-color-blue">{% trans 'Review(s)' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().review : ''"></dd>
+        <dt class="txt-color-blue">{% trans 'Status' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().status : ''"></dd>
+    </div>
+    
+    <div data-bind="if: selectedResource()['entitytypeid'] === 'ACTIVITY_B.E7'">
+        <dt class="txt-color-blue">{% trans 'Building Permit Number' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().building_permit : ''"></dd>
+        <dt class="txt-color-blue">{% trans 'Review(s)' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().review : ''"></dd>
+        <dt class="txt-color-blue">{% trans 'Project Type' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().project : ''"></dd>
+    </div>
+    
 </dl>
