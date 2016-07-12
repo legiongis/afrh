@@ -213,7 +213,8 @@ define([
 
                 var clusterLayer = new ol.layer.Vector({
                     source: clusterSource,
-                    style: clusterStyle
+                    style: clusterStyle,
+                    is_arches_layer: true,
                 });
 
                 clusterLayer.vectorSource = source;

@@ -123,13 +123,14 @@ define([
                 }
             });
             
-            var boundaryLayer = new ol.layer.Vector({
+            var arch_layer = new ol.layer.Vector({
                 source: json_source,
                 style: superStyle,
                 visible: false,
+                is_arches_layer: true,
             });
-            
-            return boundaryLayer
+
+            return arch_layer
         };
         
         return new LayerModel(_.extend({

@@ -58,10 +58,10 @@ require([
                     }
                     if (add) {
                         map.map.addLayer(layer.layer);
-                        elevateArchesResourceLayers();
                     } else {
                         map.map.removeLayer(layer.layer);
                     }
+                    elevateArchesResourceLayers();
                 });
                 layer.active = ko.observable(layer.active);
                 layers[index].active.subscribe(function(show) {
@@ -394,6 +394,7 @@ require([
                         }
                     }
                 }
+                elevateArchesResourceLayers();
             });
             
             //dismiss all popovers when clicking on body

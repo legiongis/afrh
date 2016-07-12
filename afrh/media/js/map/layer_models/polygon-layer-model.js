@@ -73,7 +73,8 @@ define([
             output_layer = new ol.layer.Vector({
                 source: json_source,
                 style: polyStyle,
-                visible: config.entitytypeid == "INVENTORY_RESOURCE.E18"
+                visible: config.entitytypeid == "INVENTORY_RESOURCE.E18",
+                is_arches_layer: true,
             });
             
             return output_layer
