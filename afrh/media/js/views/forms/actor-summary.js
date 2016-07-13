@@ -62,7 +62,9 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'BEGINNING_OF_EXISTENCE.E63',
                 validateBranch: function (nodes) {
-                    return vt.isValidDate(nodes,'START_DATE_OF_EXISTENCE.E49');
+                    var ck1 = vt.isValidDate(nodes,'START_DATE_OF_EXISTENCE.E49');
+                    var ck2 = this.validateHasValues(nodes);
+                    return ck1 && ck2;
                 }
             }));
 
@@ -71,7 +73,9 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'END_OF_EXISTENCE.E64',
                 validateBranch: function (nodes) {
-                    return vt.isValidDate(nodes,'END_DATE_OF_EXISTENCE.E49');
+                    var ck1 = vt.isValidDate(nodes,'END_DATE_OF_EXISTENCE.E49');
+                    var ck2 = this.validateHasValues(nodes);
+                    return ck1 && ck2;
                 }
             }));
         }

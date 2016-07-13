@@ -46,7 +46,7 @@ define(['jquery',
                     data: this.data,
                     dataKey: 'WORK_ORDER_ASSIGNMENT.E13',
                     validateBranch: function(nodes){
-                        return this.validateHasValues(nodes);
+                        return vt.nodesHaveValues(nodes,["WORK_ORDER_DATE.E49","WORK_ORDER_NUMBER.E42"]);
                     }
                 }));
                 
@@ -117,8 +117,8 @@ define(['jquery',
                     if (resourcetypeid == 'ACTIVITY_B.E7') {
                         var typenode = 'ACTIVITY_B_MILESTONE.E55';
                     }
-                    var ck1 = vt.nodesHaveValues(nodes,[typenode,'ACTIVITY_MILESTONE_DATE.E49'])
-                    var ck2 = vt.isValidDate(nodes,'ACTIVITY_MILESTONE_DATE.E49')
+                    var ck1 = vt.nodesHaveValues(nodes,[typenode,'ACTIVITY_MILESTONE_DATE.E49']);
+                    var ck2 = vt.isValidDate(nodes,'ACTIVITY_MILESTONE_DATE.E49');
                     return ck1 && ck2;
                 }
             }));

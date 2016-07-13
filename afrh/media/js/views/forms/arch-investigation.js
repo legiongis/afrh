@@ -27,8 +27,6 @@ define(['jquery',
             date_picker.on('dp.change', function(evt){
                 $(this).find('input').trigger('change'); 
             });
-            
-            
 
             // detect if dropzone is attached, and if not init
             if (!dropzoneEl.hasClass('dz-clickable')) {
@@ -83,6 +81,13 @@ define(['jquery',
             this.addBranchList(new BranchList({
                 data: currentEditedInvestigation,
                 dataKey: 'INVESTIGATION.E7',
+                validateBranch: function (nodes) {
+                    var ck1 = vt.nodesHaveValues(nodes,['INVESTIGATION_ASSESSMENT.E55','INVESTIGATION_METHOD.E55','INVESTIGATION_DATE.E49']);
+                    var ck2 = vt.isValidDate(nodes,'INVESTIGATION_DATE.E49');
+                    console.log(ck1);
+                    console.log(ck2);
+                    return ck1 && ck2;
+                }
             }));
 
             this.addBranchList(new BranchList({
