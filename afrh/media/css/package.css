@@ -461,6 +461,7 @@ cf https://github.com/summernote/summernote/issues/187
 .form-section-subheader span {
     background: #fff;
     padding-right: 10px;
+    padding-left: 10px;
 }
 
 .col-form-subheader {
