@@ -394,11 +394,23 @@
             var c3 = "afrh.gov";
             var email = c1+c2+c3
             
+            function fillErrorMessages() {
+                $(".er-select").html('{% trans "You must make a selection." %}');
+                $(".er-fill-both").html('{% trans "You must populate both fields." %}');
+                $(".er-fill-single").html('{% trans "You must fill this field." %}');
+                $(".nr").html('{% trans "none recorded" %}');
+                $(".er-fill-both-date").html('{% trans "You must populate both fields (date format: YYYY-MM-DD)." %}');
+            }
+            
             $(document).ready(function() {
                 toggleHelp();
                 document.getElementById('contact').textContent = email;
                 document.getElementById('contact').href = "mailto:"+email;
+                fillErrorMessages();
             });
+            
+            
+            
             
         });
         
