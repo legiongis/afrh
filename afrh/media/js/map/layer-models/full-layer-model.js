@@ -189,26 +189,23 @@ define([
                         radius = mouseOver ? 14 : 12;
                     }
 
-                    var styles = [new ol.style.Style({
-                        image: new ol.style.Circle({
-                            radius: radius,
-                            stroke: new ol.style.Stroke({
-                                color: 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.4)',
-                                width: radius
-                            }),
-                            fill: new ol.style.Fill({
-                                color: 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.8)',
-                            })
-                        }),
-                        text: new ol.style.Text({
-                            text: size.toString(),
-                            fill: new ol.style.Fill({
-                                color: '#fff'
-                            })
+                    var stStyle = [
+                        new ol.style.Style({
+                            image: new ol.style.Circle({
+                                radius: 3,
+                                fill: new ol.style.Fill({
+                                  color: '#000000',
+                                  opacity: 0.6
+                                }),
+                                stroke: new ol.style.Stroke({
+                                  color: '#ffffff',
+                                  opacity: 0.4
+                                })
+                           })
                         })
-                    })];
-                    styleCache[text] = styles;
-                    return styles;
+                    ];
+                    styleCache[text] = stStyle;
+                    return stStyle;
                 };
 
                 var clusterLayer = new ol.layer.Vector({

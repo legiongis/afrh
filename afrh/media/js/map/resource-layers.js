@@ -9,10 +9,11 @@ define([
         'map/layer-models/polygon-layer-model',
         'map/layer-models/area-layer-model',
         'map/layer-models/arch-layer-model',
+        'map/layer-models/point-layer-model',
         'resource-types',
         'user-info'
 
-], function(ol, _, ko, arches, resourceLayerInfo, MarkerLayerModel, FullLayerModel, PolygonLayerModel, AreaLayerModel, ArchLayerModel, resourceTypes, userInfo) {
+], function(ol, _, ko, arches, resourceLayerInfo, MarkerLayerModel, FullLayerModel, PolygonLayerModel, AreaLayerModel, ArchLayerModel, PointLayerModel, resourceTypes, userInfo) {
         var resourceFeatures = ko.observableArray();
         var layers = [];
         
@@ -21,6 +22,7 @@ define([
             'poly':PolygonLayerModel,
             'marker':MarkerLayerModel,
             'arch':ArchLayerModel,
+            'point':PointLayerModel,
         }
         
         _.each(resourceTypes, function (item, entitytypeid) {
