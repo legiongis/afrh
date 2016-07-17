@@ -111,6 +111,56 @@ class DesEvaluationForm(ResourceForm):
                 'AREA_OF_SIGNIFICANCE.E55': Concept().get_e55_domain('AREA_OF_SIGNIFICANCE.E55'),
             }
         }
+        
+class InvestRecForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'invest-recommendations',
+            'icon': 'fa-list',
+            'name': _('Recommendations'),
+            'class': InvestRecForm
+        }
+
+    def update(self, data, files):
+        self.update_nodes('INVESTIGATION_RECOMMENDATIONS.E62', data)
+        return
+
+    def load(self, lang):
+
+        self.data['INVESTIGATION_RECOMMENDATIONS.E62'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('INVESTIGATION_RECOMMENDATIONS.E62')),
+        }
+        
+class InvestAssessmentForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'invest-assessment',
+            'icon': 'fa-random',
+            'name': _('Assessments'),
+            'class': InvestAssessmentForm
+        }
+
+    def update(self, data, files):
+        self.update_nodes('NATIVE_AMERICAN_SITE_POTENTIAL_ASSESSMENT.E14', data)
+        self.update_nodes('PREHISTORIC_SITE_POTENTIAL_ASSESSMENT.E14', data)
+        self.update_nodes('HISTORIC_SITE_POTENTIAL_ASSESSMENT.E14', data)
+        return
+
+    def load(self, lang):
+
+        self.data['PREHISTORIC_SITE_POTENTIAL_ASSESSMENT.E14'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('PREHISTORIC_SITE_POTENTIAL_ASSESSMENT.E14')),
+        }
+        
+        self.data['NATIVE_AMERICAN_SITE_POTENTIAL_ASSESSMENT.E14'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('NATIVE_AMERICAN_SITE_POTENTIAL_ASSESSMENT.E14')),
+        }
+        
+        self.data['HISTORIC_SITE_POTENTIAL_ASSESSMENT.E14'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('HISTORIC_SITE_POTENTIAL_ASSESSMENT.E14')),
+        }
 
 class CharAreaGuidelinesForm(ResourceForm):
     @staticmethod
@@ -568,3 +618,75 @@ class RelatedResourcesForm(ResourceForm):
             self.data['resource-id'] = self.resource.entityid
         except IndexError:
             pass
+            
+class InvestImageForm(ResourceForm):
+    baseentity = None
+
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'invest-image',
+            'icon': 'fa-image',
+            'name': _('Photographs'),
+            'class': InvestImageForm
+        }
+
+    # def get_nodesOLD(self, entity, entitytypeid):
+        # ret = []
+        # entities = entity.find_entities_by_type_id(entitytypeid)
+        # for entity in entities:
+            # ret.append({'nodes': entity.flatten()})
+        # return ret
+
+    # def update_nodesOLD(self, entitytypeid, data):
+        # if self.schema == None:
+            # self.schema = Entity.get_mapping_schema(self.resource.entitytypeid)
+
+        # for value in data[entitytypeid]:
+            # if entitytypeid == 'GUIDELINE_IMAGE.E73':
+                # temp = None
+                # for newentity in value['nodes']:
+                    # if newentity['entitytypeid'] != 'GUIDELINE_IMAGE.E73':
+                        # entity = Entity()
+                        # entity.create_from_mapping(self.resource.entitytypeid, self.schema[newentity['entitytypeid']]['steps'], newentity['entitytypeid'], newentity['value'], newentity['entityid'])
+
+                        # if temp == None:
+                            # temp = entity
+                        # else:
+                            # temp.merge(entity)
+
+                # self.baseentity.merge_at(temp, 'GUIDELINE.E89')
+            # else:
+                # for newentity in value['nodes']:
+                    # entity = Entity()
+                    # entity.create_from_mapping(self.resource.entitytypeid, self.schema[newentity['entitytypeid']]['steps'], newentity['entitytypeid'], newentity['value'], newentity['entityid'])
+
+                    # if self.baseentity == None:
+                        # self.baseentity = entity
+                    # else:
+                        # self.baseentity.merge(entity)
+
+    def update(self, data, files):
+        if len(files) > 0:
+            for f in files:
+                data['INVESTIGATION_IMAGE.E73'].append({
+                    'nodes':[{
+                        'entitytypeid': 'INVESTIGATION_IMAGE_FILE_PATH.E62',
+                        'entityid': '',
+                        'value': files[f]
+                    },{
+                        'entitytypeid': 'INVESTIGATION_IMAGE_THUMBNAIL.E62',
+                        'entityid': '',
+                        'value': generate_thumbnail(files[f])
+                    }]
+                })
+
+                self.update_nodes('INVESTIGATION_IMAGE.E73', data)
+        # self.resource.merge_at(self.baseentity, self.resource.entitytypeid)
+        # self.resource.trim()
+                   
+    def load(self, lang):
+    
+        self.data['INVESTIGATION_IMAGE.E73'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('INVESTIGATION_IMAGE.E73')),
+        }

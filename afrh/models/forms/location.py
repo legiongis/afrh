@@ -193,6 +193,32 @@ class LocationForm(ResourceForm):
         }
         
         return
+        
+class InvestLocationForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'invest-location',
+            'icon': 'fa-map-marker',
+            'name': _('Shovel Tests'),
+            'class': InvestLocationForm
+        }
+
+    def update(self, data, files):
+        self.update_nodes('TEST_PIT_LOCATIONS_GEOMETRY.E47', data)
+        return
+
+    def load(self, lang):
+        self.data['TEST_PIT_LOCATIONS_GEOMETRY.E47'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('TEST_PIT_LOCATIONS_GEOMETRY.E47')),
+            'domains': {
+                'TEST_PIT_METHOD.E55': Concept().get_e55_domain('TEST_PIT_METHOD.E55'),
+                'TEST_PIT_SENSITIVITY.E55': Concept().get_e55_domain('TEST_PIT_SENSITIVITY.E55'),
+                'TEST_PIT_RESULTS.E55': Concept().get_e55_domain('TEST_PIT_RESULTS.E55'),
+            }
+        }
+        
+        return
 
 class ProbabilityAreaForm(ResourceForm):
     @staticmethod

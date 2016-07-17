@@ -632,6 +632,7 @@ class FileUploadForm(ResourceForm):
         }
 
     def update(self, data, files):
+    
         self.resource.prune(entitytypes=['FILE_PATH.E62', 'THUMBNAIL.E62'])
         self.resource.trim()
 
@@ -653,13 +654,51 @@ class FileUploadForm(ResourceForm):
     
         image_formats = ['jpg','png','tif']
         
+        top_node = self.resource.entitytypeid
+        
         if self.resource:
-            self.data['INFORMATION_RESOURCE.E73'] = {
-                'branch_lists': datetime_nodes_to_dates(self.get_nodes('INFORMATION_RESOURCE.E73')),
+            self.data[top_node] = {
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes(top_node)),
                 'is_image': is_image(self.resource)
             }
 
-        return   
+        return
+        
+class FileUploadForm2(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'file-upload-two',
+            'icon': 'fa-image',
+            'name': _('Photographs'),
+            'class': FileUploadForm2
+        }
+
+    def update(self, data, files):
+        self.resource.prune(entitytypes=['INVESTIGATION_IMAGE_FILE_PATH2.E62', 'INVESTIGATION_IMAGE_THUMBNAIL2.E62'])
+        self.resource.trim()
+
+        if files:
+            for key, value in files.items():
+                self.resource.set_entity_value('INVESTIGATION_IMAGE_FILE_PATH2.E62', value)
+                
+                thumbnail = generate_thumbnail(value)
+                if thumbnail != None:
+                    self.resource.set_entity_value('INVESTIGATION_IMAGE_THUMBNAIL2.E62', thumbnail)
+        return
+
+
+    def load(self, lang):
+    
+        image_formats = ['jpg','png','tif']
+        
+        #if self.resource:
+        self.data['FIELD_INVESTIGATION.E7'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('FIELD_INVESTIGATION.E7')),
+            'is_image': is_image(self.resource)
+        }
+
+        return
 
 def is_image(resource):
     for format_type in resource.find_entities_by_type_id('INFORMATION_CARRIER_FORMAT_TYPE.E55'):

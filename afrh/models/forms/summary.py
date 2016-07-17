@@ -137,6 +137,60 @@ class InventorySummaryForm(ResourceForm):
                 self.data['primaryname_conceptid'] = self.data['NAME.E41']['domains']['NAME_TYPE.E55'][0]['id']
             except IndexError:
                 pass
+                
+class InvestSummaryForm(ResourceForm):
+    @staticmethod
+    def get_info():
+        return {
+            'id': 'invest-summary',
+            'icon': 'fa-tag',
+            'name': _('Summary'),
+            'class': InvestSummaryForm
+        }
+
+    def update(self, data, files):
+        self.update_nodes('INVESTIGATION_ASSESSMENT.E55', data)
+        self.update_nodes('INVESTIGATION_METHOD.E55', data)
+        self.update_nodes('ARCHAEOLOGICAL_ZONE.E55', data)
+        self.update_nodes('INVESTIGATION_DATE.E49', data)
+        self.update_nodes('INVESTIGATION_DESCRIPTION.E62', data)
+        self.update_nodes('DCSHPO_REPORT_NUMBER.E42', data)
+        
+    def load(self, lang):
+    
+        self.data['INVESTIGATION_ASSESSMENT.E55'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('INVESTIGATION_ASSESSMENT.E55')),
+            'domains': {
+                'INVESTIGATION_ASSESSMENT.E55' : Concept().get_e55_domain('INVESTIGATION_ASSESSMENT.E55')
+            }
+        }
+        
+        self.data['INVESTIGATION_METHOD.E55'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('INVESTIGATION_METHOD.E55')),
+            'domains': {
+                'INVESTIGATION_METHOD.E55' : Concept().get_e55_domain('INVESTIGATION_METHOD.E55')
+            }
+        }
+        
+        self.data['INVESTIGATION_DATE.E49'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('INVESTIGATION_DATE.E49')),
+        }
+        
+        self.data['DCSHPO_REPORT_NUMBER.E42'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('DCSHPO_REPORT_NUMBER.E42')),
+        }
+        
+        self.data['ARCHAEOLOGICAL_ZONE.E55'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('ARCHAEOLOGICAL_ZONE.E55')),
+            'domains': {
+                'ARCHAEOLOGICAL_ZONE.E55' : Concept().get_e55_domain('ARCHAEOLOGICAL_ZONE.E55')
+            }
+        }
+
+        self.data['INVESTIGATION_DESCRIPTION.E62'] = {
+            'branch_lists': datetime_nodes_to_dates(self.get_nodes('INVESTIGATION_DESCRIPTION.E62')),
+        }
+        
 
 class CharAreaSummaryForm(ResourceForm):
     @staticmethod
