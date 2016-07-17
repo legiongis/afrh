@@ -1,0 +1,203 @@
+{% extends "views/forms/base.htm" %}
+{% load i18n %}
+{% block form_content %}
+
+<div class="form-full-content">
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Investigation Details" %}</span></div>
+        </div>
+    </div>
+    <div id="assessment-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('INVESTIGATION_ASSESSMENT.E55', 'value'), placeholder: '{% trans 'Assessment Type' %}', dataKey: 'INVESTIGATION_ASSESSMENT.E55'}"></input>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert er-select" role="alert" style="display:none;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record" style="display:inline;">
+                                    <a href="javascript:void(0)" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" title="{% trans 'edit' %}" data-bind='click: $parent.editItem.bind($parent)'>
+                                        <span data-bind="text: nodes.get('INVESTIGATION_ASSESSMENT.E55', 'label')"></span>
+                                    </a>
+                                    <span class="text-muted" data-bind="html: nodes.get('ACTIVITY_SCOPE_OF_WORK_DESCRIPTION.E62', 'value')"></span>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div id="method-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('INVESTIGATION_METHOD.E55', 'value'), placeholder: '{% trans 'Method' %}', dataKey: 'INVESTIGATION_METHOD.E55'}"></input>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert er-select" role="alert" style="display:none;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" title="{% trans 'edit' %}" data-bind='click: $parent.editItem.bind($parent)'>
+                                        <span data-bind="text: nodes.get('INVESTIGATION_METHOD.E55', 'label')"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="date-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group">
+                        <div class="input-group datetimepicker">
+                            <input type="text" id="date" placeholder="{% trans 'Date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('INVESTIGATION_DATE.E49', 'value')} ">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a date (yyyy-mm-dd)." %}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record" style="display:block;">
+                                    <a href="javascript:void(0)" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" title="{% trans 'edit' %}" data-bind='click: $parent.editItem.bind($parent)'>
+                                        <span data-bind="text: nodes.get('INVESTIGATION_DATE.E49', 'value').slice(0,10)"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="report-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group" style="width:100%;">
+                        <input class="form-control arches-form-input geometry-selection" id="geometry-selection" placeholder='{% trans "DCSHPO Report Number" %}' data-bind='value: getEditedNode("DCSHPO_REPORT_NUMBER.E42", "value")'>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert er-select" role="alert" style="display:none;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" title="{% trans 'edit' %}" data-bind='click: $parent.editItem.bind($parent)'>
+                                        <span data-bind="text: nodes.get('DCSHPO_REPORT_NUMBER.E42', 'value')"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Archaeological Zone Location" %}</span></div>
+        </div>
+    </div>
+    <div id="zone-section">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('ARCHAEOLOGICAL_ZONE.E55', 'value'), placeholder: '{% trans 'Archaeological Zone Location' %}', dataKey: 'ARCHAEOLOGICAL_ZONE.E55'}"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10 margin-top-10">
+            <div class="form-section-header"><span>{% trans "Description" %}</span></div>
+        </div>
+    </div>
+    <div id="description-section">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-xs-12 form-section-input margin-top-5">
+                    <div class="form-group">
+                        <div class="arches-html-editor">
+                            <div class="summernote" data-bind="summernote: {value: getEditedNode('INVESTIGATION_DESCRIPTION.E62', 'value'), options:{}}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock form_content %}

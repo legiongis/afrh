@@ -1,0 +1,15 @@
+{% extends "views/forms/base.htm" %}
+{% load i18n %}
+{% block form_content %}
+
+<div class="form-full-content">
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Investigation Photographs" %}</span></div>
+        </div>
+    </div>
+    <div id="image-section">
+        <div class="dropzone" id="mydropzone"></div>
+    </div>
+</div>
+{% endblock form_content %}

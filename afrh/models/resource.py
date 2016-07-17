@@ -97,6 +97,16 @@ class Resource(ArchesResource):
                 location.InvestigationLocationForm.get_info(),
             ]
             
+        if self.entitytypeid == 'FIELD_INVESTIGATION.E7':
+            description_group['forms'] = [
+                summary.InvestSummaryForm.get_info(),
+                location.InvestLocationForm.get_info(),
+                other.InvestAssessmentForm.get_info(),
+                wizard.FileUploadForm.get_info(),
+                other.InvestRecForm.get_info(),
+                
+            ]
+            
         if self.entitytypeid == 'HISTORIC_AREA.E53':
             description_group['forms'][:0] = [
                 summary.DesSummaryForm.get_info(),

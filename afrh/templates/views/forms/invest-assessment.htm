@@ -1,0 +1,163 @@
+{% extends "views/forms/base.htm" %}
+{% load i18n %}
+{% block form_content %}
+
+<div class="form-full-content">
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Prehistoric Site Potential" %}</span></div>
+        </div>
+    </div>
+    <div id="prehistoric-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="input-group datetimepicker">
+                        <input type="text" id="date" placeholder="{% trans 'Assessment Date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('PREHISTORIC_SITE_POTENTIAL_ASSESSMENT_DATE.E49', 'value')} ">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 form-section-input margin-top-5" id="description-section">
+                    <div class="form-group">
+                        <div class="arches-html-editor">
+                            <div class="summernote" data-bind="summernote: {value: getEditedNode('PREHISTORIC_SITE_POTENTIAL_NOTE.E62', 'value'), options:{}}"></div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert er-fill-both-date" role="alert" style="display:none;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                        <span data-bind="text: nodes.get('PREHISTORIC_SITE_POTENTIAL_ASSESSMENT_DATE.E49', 'value')" style="padding-right:2px;"></span><br>
+                                        <span class="text-muted" data-bind="html: nodes.get('PREHISTORIC_SITE_POTENTIAL_NOTE.E62', 'value')"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Native American Site Potential" %}</span></div>
+        </div>
+    </div>
+    <div id="native-american-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="input-group datetimepicker">
+                        <input type="text" id="date" placeholder="{% trans 'Assessment Date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('NATIVE_AMERICAN_SITE_POTENTIAL_ASSESSMENT_DATE.E49', 'value')} ">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 form-section-input margin-top-5" id="description-section">
+                    <div class="form-group">
+                        <div class="arches-html-editor">
+                            <div class="summernote" data-bind="summernote: {value: getEditedNode('NATIVE_AMERICAN_SITE_POTENTIAL_NOTE.E62', 'value'), options:{}}"></div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert er-fill-both-date" role="alert" style="display:none;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                        <span data-bind="text: nodes.get('NATIVE_AMERICAN_SITE_POTENTIAL_ASSESSMENT_DATE.E49', 'value')" style="padding-right:2px;"></span><br>
+                                        <span class="text-muted" data-bind="html: nodes.get('NATIVE_AMERICAN_SITE_POTENTIAL_NOTE.E62', 'value')"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Historic Site Potential" %}</span></div>
+        </div>
+    </div>
+    <div id="historic-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="col-xs-12 form-section-input">
+                    <div class="input-group datetimepicker">
+                        <input type="text" id="date" placeholder="{% trans 'Assessment Date' %}" class="form-control datepicker" data-date-format="YYYY-MM-DD" data-bind="{value: getEditedNode('HISTORIC_SITE_POTENTIAL_ASSESSMENT_DATE.E49', 'value')} ">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 form-section-input margin-top-5" id="description-section">
+                    <div class="form-group">
+                        <div class="arches-html-editor">
+                            <div class="summernote" data-bind="summernote: {value: getEditedNode('HISTORIC_SITE_POTENTIAL_NOTE.E62', 'value'), options:{}}"></div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 add-button-column add-margin-top">
+                {% include 'views/components/add-item-button.htm' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10">
+                <div class="alert alert-danger branch-invalid-alert er-fill-both-date" role="alert" style="display:none;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="arches-crud-child-section">
+                    <dl>
+                        <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
+                            <div data-bind='foreach: getBranchLists()'>
+                                <div class="arches-crud-record">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
+                                        <span data-bind="text: nodes.get('HISTORIC_SITE_POTENTIAL_ASSESSMENT_DATE.E49', 'value')" style="padding-right:2px;"></span><br>
+                                        <span class="text-muted" data-bind="html: nodes.get('HISTORIC_SITE_POTENTIAL_NOTE.E62', 'value')"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock form_content %}

@@ -232,7 +232,32 @@ def RESOURCE_TYPE_CONFIGS():
                 'view':'all'
                 }
         },
-        
+        'FIELD_INVESTIGATION.E7': {
+            'resourcetypeid': 'FIELD_INVESTIGATION.E7',
+            'name': _('Field Investigation'),
+            'icon_class': 'fa fa-tag',
+            'default_page': 'invest-summary',
+            'default_description': 'no description available',
+            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
+            'categories': [_('Resource')],
+            'has_layer': True,
+            'on_map': True,
+            'marker_color': '#000000',
+            'stroke_color': '#000000',
+            'fill_color': '#000000',
+            'primary_name_lookup': {
+                'entity_type': 'ARCHAEOLOGICAL_ZONE_NAME.E48',
+                'lookup_value': False
+            },
+            'sort_order': 6,
+            'layer_model': 'point',
+            'permissions': {
+                'create':['admin1','admin2'],
+                'edit':['admin1','admin2'],
+                'fullreport':['admin1','admin2','afrh_staff'],
+                'view':'all'
+                }
+        },
         'ACTOR.E39': {
             'resourcetypeid': 'ACTOR.E39',
             'name': _('Person/Organization'),
@@ -250,7 +275,7 @@ def RESOURCE_TYPE_CONFIGS():
                 'entity_type': 'ACTOR_APPELLATION.E82',
                 'lookup_value': ('ACTOR_NAME_TYPE.E55','Primary')
             },
-            'sort_order': 6,
+            'sort_order': 7,
             'permissions': {
                 'create':['admin1','admin2'],
                 'edit':['admin1','admin2'],
@@ -275,7 +300,7 @@ def RESOURCE_TYPE_CONFIGS():
                 'entity_type': 'TITLE.E41',
                 'lookup_value': ('TITLE_TYPE.E55','Primary')
             },
-            'sort_order': 7,
+            'sort_order': 8,
             'layer_model': 'marker',
             'permissions': {
                 'create':['admin1','admin2'],
@@ -301,7 +326,7 @@ def RESOURCE_TYPE_CONFIGS():
                 'entity_type': 'ACTIVITY_NAME.E41',
                 'lookup_value': False
             },
-            'sort_order': 8,
+            'sort_order': 9,
             'layer_model': 'marker',
             'restricted': True,
             'permissions': {
@@ -328,7 +353,7 @@ def RESOURCE_TYPE_CONFIGS():
                 'entity_type': 'ACTIVITY_NAME.E41',
                 'lookup_value': False
             },
-            'sort_order': 9,
+            'sort_order': 10,
             'layer_model': 'marker',
             'restricted': True,
             'permissions': {
