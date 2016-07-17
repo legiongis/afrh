@@ -29,7 +29,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a reference." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-fill-both" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -37,7 +37,7 @@
                 <div class="arches-crud-child-section">
                    <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no references" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>

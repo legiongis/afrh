@@ -28,7 +28,7 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'ACTIVITY_ARCHITECT.E39',
                 validateBranch: function(nodes){
-                    return this.validateHasValues(nodes);
+                    return vt.nodesHaveValues(nodes, "ACTIVITY_ARCHITECT_NAME.E82");
                 }
             }));
             
@@ -37,7 +37,7 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'ACTIVITY_CONTRACTOR.E39',
                 validateBranch: function(nodes){
-                    return this.validateHasValues(nodes);
+                    return vt.nodesHaveValues(nodes, "ACTIVITY_CONTRACTOR_NAME.E82");
                 }
             }));
             
@@ -46,7 +46,7 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'ACTIVITY_ENGINEER.E39',
                 validateBranch: function(nodes){
-                    return this.validateHasValues(nodes);
+                    return vt.nodesHaveValues(nodes, "ACTIVITY_ENGINEER_NAME.E82");
                 }
             }));
             
@@ -64,7 +64,7 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'ACTIVITY_CONSULTANT.E39',
                 validateBranch: function(nodes){
-                    return this.validateHasValues(nodes);
+                    return vt.nodesHaveValues(nodes, "ACTIVITY_CONSULTANT_NAME.E82");
                 }
             }));
             

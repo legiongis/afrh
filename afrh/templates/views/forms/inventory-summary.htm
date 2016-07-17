@@ -13,7 +13,7 @@
             <div class="col-xs-12 col-sm-10">
                 <div class="col-xs-12 form-section-input">
                     <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NRHP_RESOURCE_TYPE.E55', 'value'), placeholder: '{% trans 'NRHP resource type' %}', dataKey: 'NRHP_RESOURCE_TYPE.E55'}"></input>
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NRHP_RESOURCE_TYPE.E55', 'value'), placeholder: '{% trans 'NRHP Resource Type' %}', dataKey: 'NRHP_RESOURCE_TYPE.E55'}"></input>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a resource type." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-select" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -31,7 +31,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no types defined" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:inline;">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -52,7 +52,7 @@
             <div class="col-xs-12 col-sm-10">
                 <div class="col-xs-12 form-section-input">
                     <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NRHP_RESOURCE_CATEGORY.E55', 'value'), placeholder: '{% trans 'NRHP resource category' %}', dataKey: 'NRHP_RESOURCE_CATEGORY.E55'}"></input>
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NRHP_RESOURCE_CATEGORY.E55', 'value'), placeholder: '{% trans 'NRHP Resource Category' %}', dataKey: 'NRHP_RESOURCE_CATEGORY.E55'}"></input>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a category." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-select" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -70,7 +70,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no categories defined" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:inline;">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans "remove" %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -91,7 +91,7 @@
             <div class="col-xs-12 col-sm-10">
                 <div class="col-xs-12 form-section-input">
                     <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NRHP_RESOURCE_SUBCATEGORY.E55', 'value'), placeholder: '{% trans 'NRHP resource subcategory' %}', dataKey: 'NRHP_RESOURCE_SUBCATEGORY.E55'}"></input>
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('NRHP_RESOURCE_SUBCATEGORY.E55', 'value'), placeholder: '{% trans 'NRHP Resource Subcategory' %}', dataKey: 'NRHP_RESOURCE_SUBCATEGORY.E55'}"></input>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a subcategory." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-select" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -109,7 +109,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no subcategories defined" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:inline;">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans "remove" %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -130,7 +130,7 @@
             <div class="col-xs-12 col-sm-10">
                 <div class="col-xs-12 form-section-input">
                     <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('WUZIT.E55', 'value'), placeholder: '{% trans 'Wuzit (original purpose)' %}', dataKey: 'WUZIT.E55'}"></input>
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('WUZIT.E55', 'value'), placeholder: '{% trans 'Wuzit (Original Purpose)' %}', dataKey: 'WUZIT.E55'}"></input>
                     </div>
                 </div>
             </div>
@@ -140,7 +140,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a wuzit. Wuzza wuzza wuzit." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-select" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -148,7 +148,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "no wuzits defined" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:inline;">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans "remove" %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -189,7 +189,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must populate both fields." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-fill-both" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -197,7 +197,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no names defined" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -236,7 +236,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must populate both fields." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-fill-both" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -244,7 +244,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no numbers" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -309,7 +309,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no dates added" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -326,11 +326,6 @@
                     </dl>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 margin-bottom-10">
-            <div class="form-section-header"><span>{% trans '...would still like to add "associations with actors" function...' %}</span></div>
         </div>
     </div>
 </div>

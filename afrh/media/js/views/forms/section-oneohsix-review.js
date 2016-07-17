@@ -54,7 +54,14 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'DCSHPO_RESPONSE.E5',
                 validateBranch: function(nodes){
-                    return this.validateHasValues(nodes);
+                    ck1 = vt.nodesHaveValues(nodes,[
+                        'DCSHPO_RESPONSE_TYPE.E55',
+                        'DCSHPO_RESPONSE_EVALUATION.E55',
+                        'DCSHPO_RESPONSE_FILE_NUMBER.E42',
+                        'DCSHPO_RESPONSE_DATE.E49'
+                    ]);
+                    var ck2 = vt.isValidDate(nodes,'DCSHPO_RESPONSE_DATE.E49');
+                    return ck1 && ck2;
                 }
             }));
             
@@ -63,7 +70,13 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'SECTION_106_NOTIFICATION.E5',
                 validateBranch: function(nodes){
-                    return this.validateHasValues(nodes);
+                    ck1 = vt.nodesHaveValues(nodes,[
+                        'SECTION_106_NOTIFICATION_TYPE.E55',
+                        'SECTION_106_NOTIFICATION_METHOD.E55',
+                        'SECTION_106_NOTIFICATION_DATE.E49'
+                    ]);
+                    var ck2 = vt.isValidDate(nodes,'SECTION_106_NOTIFICATION_DATE.E49');
+                    return ck1 && ck2;
                 }
             }));
             

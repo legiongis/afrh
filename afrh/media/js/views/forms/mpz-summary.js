@@ -49,7 +49,9 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'MASTER_PLAN_ZONE_ACTIVITY.E7',
                 validateBranch: function(nodes){
-                    return this.validateHasValues(nodes);
+                    var ck1 = vt.nodesHaveValues(nodes,["MASTER_PLAN_ZONE_ACTIVITY_TYPE.E55","MASTER_PLAN_ZONE_ACTIVITY_DATE.E49"]);
+                    var ck2 = vt.isValidDate(nodes,"MASTER_PLAN_ZONE_ACTIVITY_DATE.E49");
+                    return ck1 && ck2;
                 }
             }));
 

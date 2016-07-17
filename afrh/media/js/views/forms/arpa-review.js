@@ -70,7 +70,15 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'ARPA_DOCUMENTATION.E31',
                 validateBranch: function (nodes) {
-                    return this.validateHasValues(nodes);
+                    var ck0 = vt.nodesHaveValues(nodes, [
+                        'ARPA_DOCUMENTATION_TYPE.E55',
+                        'ARPA_DOCUMENTATION_STATUS.E55',
+                        'ARPA_DOCUMENTATION_DATE.E49'
+                    ]);
+                    var ck1 = vt.isValidDate(nodes,'ARPA_DOCUMENTATION_DATE.E49');
+                    var ck2 = vt.isValidDate(nodes,'ARPA_DOCUMENTATION_RESPONSE_DATE.E49');
+                    var ck3 = vt.isValidDate(nodes,'ARPA_DOCUMENTATION_SUBMISSION_DATE.E49');
+                    return ck0 && ck1 && ck2 && ck3;
                 }
             }));
             

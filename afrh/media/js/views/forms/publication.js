@@ -23,8 +23,8 @@ define(['jquery',
                     data: this.data,
                     dataKey: 'TIME-SPAN_RESOURCE_CREATION_EVENT.E52',
                     validateBranch: function (nodes) {
-                        var ck1 = vt.nodesHaveValues(nodes,['CREATION_FORMAT_E55']);
-                        var ck2 = vt.isValidDate(nodes,['DATE_OF_CREATION_E50']);
+                        var ck1 = vt.nodesHaveValues(nodes,['CREATION_FORMAT.E55']);
+                        var ck2 = vt.isValidDate(nodes,['DATE_OF_CREATION.E50']);
                         return ck1 && ck2;
                     }
                 }));
@@ -44,7 +44,9 @@ define(['jquery',
                     data: this.data,
                     dataKey: 'PUBLICATION_EVENT.E12',
                     validateBranch: function (nodes) {
-                        return this.validateHasValues(nodes);
+                        var ck1 = vt.nodesHaveValues(nodes,['PUBLISHER_APPELLATION.E82']);
+                        var ck2 = vt.isValidDate(nodes,['DATE_OF_PUBLICATION.E50']);
+                        return ck1 && ck2;
                     }
                 }));
 

@@ -44,7 +44,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a function and type, and any dates must be correctly formatted (yyyy-mm-dd)." %}</div>
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a function and indicate its time-span, and any dates must be correctly formatted (yyyy-mm-dd)." %}</div>
             </div>
         </div>
         <div class="row">
@@ -52,11 +52,11 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no functions added" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
-                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="remove this component"><i data-bind='click: $parent.deleteItem.bind($parent)' class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind='click: $parent.editItem.bind($parent)' title="Edit this record">
+                                    <a href="javascript:void(0)" class="arches-CRUD-child" title="remove"><i data-bind='click: $parent.deleteItem.bind($parent)' class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind='click: $parent.editItem.bind($parent)' title="edit">
                                         <span data-bind='text: nodes.get("FUNCTION.E62", "value")' style="padding-right:2px;"></span>
                                         <span class="text-muted arches-crud-type-identifier">
                                             (<span data-bind="text: nodes.get('FUNCTION_PERIOD.E55', 'label')"></span>)
@@ -137,7 +137,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no functions added" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>

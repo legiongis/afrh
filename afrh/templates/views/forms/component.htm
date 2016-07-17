@@ -57,7 +57,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a component and have a properly formatted date." %}</div>
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must select a component (date format: YYYY-MM-DD." %}</div>
             </div>
         </div>
         <div class="row">
@@ -65,7 +65,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "no components" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="remove this component"><i data-bind='click: $parent.deleteItem.bind($parent)' class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -125,7 +125,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must select a modification and have a properly formatted date." %}</div>
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must select a modification (date format: YYYY-MM-DD." %}</div>
             </div>
         </div>
         <div class="row">
@@ -133,7 +133,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue">{% trans "no modifications" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="remove this component"><i data-bind='click: $parent.deleteItem.bind($parent)' class="arches-CRUD-delete fa fa-times-circle"></i></a>

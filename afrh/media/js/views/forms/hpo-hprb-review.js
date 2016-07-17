@@ -31,7 +31,10 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'HPO-HPRB_SUBMISSION.E5',
                 validateBranch: function(nodes){
-                    return true;
+                    var ck1 = vt.nodesHaveValues(nodes,["HPO-HPRB_SUBMISSION_TYPE.E55","HPO-HPRB_SUBMISSION_DATE.E49"]);
+                    var ck2 = vt.isValidDate("HPO-HPRB_SUBMISSION_DATE.E49");
+                    var ck3 = vt.isValidDate("HPO-HPRB_SUBMISSION_REVIEW_DATE.E49");
+                    return ck1 && ck2 && ck3;
                 }
             }));
 

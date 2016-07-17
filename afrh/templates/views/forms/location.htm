@@ -220,7 +220,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must populate both fields." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-select" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -228,7 +228,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "none recorded" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -273,7 +273,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must populate both fields." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-fill-both" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -281,7 +281,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "none recorded" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -328,7 +328,7 @@
             <div class="col-xs-12 col-sm-10">
                 <div class="col-xs-12 form-section-input">
                     <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CHARACTER_AREA.E44', 'value'), placeholder: '{% trans 'character area' %}', dataKey: 'CHARACTER_AREA.E44'}"></input>
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('CHARACTER_AREA.E44', 'value'), placeholder: '{% trans 'Character Area' %}', dataKey: 'CHARACTER_AREA.E44'}"></input>
                     </div>
                 </div>
             </div>
@@ -338,7 +338,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose an area." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-select" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -346,7 +346,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "none recorded" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:inline;">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -367,7 +367,7 @@
             <div class="col-xs-12 col-sm-10">
                 <div class="col-xs-12 form-section-input">
                     <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('MASTER_PLAN_ZONE.E44', 'value'), placeholder: '{% trans 'master plan zone' %}', dataKey: 'MASTER_PLAN_ZONE.E44'}"></input>
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('MASTER_PLAN_ZONE.E44', 'value'), placeholder: '{% trans 'Master Plan Zone' %}', dataKey: 'MASTER_PLAN_ZONE.E44'}"></input>
                     </div>
                 </div>
             </div>
@@ -377,7 +377,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a zone." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-select" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -385,7 +385,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "none recorded" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:inline;">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -406,7 +406,7 @@
             <div class="col-xs-12 col-sm-10">
                 <div class="col-xs-12 form-section-input">
                     <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('ARCHAEOLOGICAL_ZONE.E44', 'value'), placeholder: '{% trans 'archaeological zone' %}', dataKey: 'ARCHAEOLOGICAL_ZONE.E44'}"></input>
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('ARCHAEOLOGICAL_ZONE.E44', 'value'), placeholder: '{% trans 'Archaeological Zone' %}', dataKey: 'ARCHAEOLOGICAL_ZONE.E44'}"></input>
                     </div>
                 </div>
             </div>
@@ -416,7 +416,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must choose a zone." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-select" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -424,7 +424,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline">{% trans "none recorded" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-inline nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:inline;">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>

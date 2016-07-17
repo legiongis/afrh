@@ -28,7 +28,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must fill all fields." %}</div>
+                <div class="alert alert-danger branch-invalid-alert er-fill-both" role="alert" style="display:none;"></div>
             </div>
         </div>
         <div class="row">
@@ -36,7 +36,7 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "none recorded" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record" style="display:block;">
                                     <a href="javascript:void(0)" title="remove"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
@@ -116,7 +116,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-10">
-                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must enter a name." %}</div>
+                <div class="alert alert-danger branch-invalid-alert" role="alert" style="display:none;">{% trans "You must select a type and date (date format: YYYY-MM-DD)." %}</div>
             </div>
         </div>
         <div class="row">
@@ -124,14 +124,14 @@
                 <div class="arches-crud-child-section">
                     <dl>
                         <dd class="margin-left-5" style="display: none;" data-bind="visible: true">
-                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block">{% trans "none recorded" %}</div>   
+                            <div data-bind="visible: getBranchLists().length == 0" class="txt-color-blue filler-text-block nr"></div>   
                             <div data-bind='foreach: getBranchLists()'>
                                 <div class="arches-crud-record">
                                     <a href="javascript:void(0)" class="arches-CRUD-child" title="{% trans 'remove' %}"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
                                     <a href="javascript:void(0)" class="arches-CRUD-child arches-CRUD-edit" data-bind="click: $parent.editItem.bind($parent)" title="{% trans 'edit' %}">
                                         <span data-bind="text: nodes.get('CFA_SUBMISSION_TYPE.E55', 'label')+' Submission'" style="padding-right:2px;"></span>
                                     </a><br>
-                                    <span data-bind="text: ' Submitted on '+ nodes.get('CFA_SUBMISSION_REVIEW_DATE.E49', 'value').slice(0,10)"></span><br>
+                                    <span data-bind="text: ' Submitted on '+ nodes.get('CFA_SUBMISSION_DATE.E49', 'value').slice(0,10)"></span><br>
                                     <span data-bind="text: nodes.get('CFA_SUBMISSION_REVIEW_TYPE.E55', 'label')+' Review on '+ nodes.get('CFA_SUBMISSION_REVIEW_DATE.E49', 'value').slice(0,10)"></span><br>
                                     <span data-bind="text: 'Decision: ' + nodes.get('CFA_SUBMISSION_DECISION.E55', 'label')"></span><br>
                                     <span data-bind="text: 'Conditions? ' + nodes.get('CFA_SUBMISSION_CONDITIONS.E62', 'value')"></span><br>

@@ -31,7 +31,9 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'CFA_SUBMISSION.E5',
                 validateBranch: function(nodes){
-                    return true;
+                    var ck1 = vt.nodesHaveValues(nodes,["CFA_SUBMISSION_TYPE","CFA_SUBMISSION_DATE.E49"]);
+                    var ck2 = vt.isValidDate(nodes,"CFA_SUBMISSION_DATE.E49");
+                    return ck1 && ck2;
                 }
             }));
 

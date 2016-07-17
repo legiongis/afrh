@@ -17,7 +17,7 @@ define(['jquery',
                     data: this.data,
                     dataKey: 'FORM_TYPE.E55',
                     validateBranch: function (nodes) {
-                        return this.validateHasValues(nodes);
+                        return vt.nodesHaveValues(nodes,["FORM_TYPE.E55"]);
                     }
                 }));
 
@@ -26,7 +26,7 @@ define(['jquery',
                     data: this.data,
                     dataKey: 'MEASUREMENT_TYPE.E55',
                     validateBranch: function (nodes) {
-                        return this.validateHasValues(nodes);
+                        return vt.nodesHaveValues(nodes,["VALUE_OF_MEASUREMENT.E60","UNIT_OF_MEASUREMENT.E55");
                     }
                 }));
             }

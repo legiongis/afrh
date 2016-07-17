@@ -17,6 +17,8 @@ define(['jquery',
             var self = this;
             var filetoupload;
             var dropzoneEl = this.$el.find('.dropzone');
+            
+            var resourcetypeid = $('#resourcetypeid').val();
 
             // detect if dropzone is attached, and if not init
             if (!dropzoneEl.hasClass('dz-clickable')) {
@@ -51,11 +53,11 @@ define(['jquery',
                 });
 
             }
-
+            
             this.inforesourcebranch = this.addBranchList(new BranchList({
                 el: this.$el.find('#file-section')[0],
                 data: this.data,
-                dataKey: 'INFORMATION_RESOURCE.E73',
+                dataKey: resourcetypeid,
                 validate: function(){
                     return true;
                 },
