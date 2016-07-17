@@ -246,7 +246,7 @@ def RESOURCE_TYPE_CONFIGS():
             'stroke_color': '#000000',
             'fill_color': '#000000',
             'primary_name_lookup': {
-                'entity_type': 'ARCHAEOLOGICAL_ZONE_NAME.E48',
+                'entity_type': 'INVESTIGATION_ASSESSMENT.E55',
                 'lookup_value': False
             },
             'sort_order': 6,

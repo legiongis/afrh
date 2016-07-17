@@ -196,9 +196,9 @@ class Resource(ArchesResource):
         for name in names:
             if lookup:
                 if name.find_entities_by_type_id(lookup[0])[0].label == lookup[1]:
-                    displayname = name.value
+                    displayname = name.label
             else:
-                displayname = name.value
+                displayname = name.label
                 break
         return displayname
 
@@ -325,6 +325,10 @@ class Resource(ArchesResource):
             if len(document_data['description'].split(" ")) > 30:
                 words30 = document_data['description'].split(" ")[:30]
                 document_data['description'] = " ".join(words30) + "...</p>"
+                
+        if self.entitytypeid == 'FIELD_INVESTIGATION.E7':
+            document_data['method'] = get_entity_data('INVESTIGATION_METHOD.E55', get_label=True)
+            document_data['invest_date'] = get_entity_data('INVESTIGATION_DATE.E49', leave_blank=True)
 
         if self.entitytypeid == 'INFORMATION_RESOURCE.E73':
             document_data['resource_type'] = get_entity_data('INFORMATION_RESOURCE_TYPE.E55', get_label=True)

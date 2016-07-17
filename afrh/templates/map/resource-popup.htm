@@ -58,7 +58,13 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
     <div data-bind="if: selectedResource()['entitytypeid'] === 'ARCHAEOLOGICAL_ZONE.E53'">
         <dt class="txt-color-blue">{% trans 'Description' %}</dt>
         <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().description : ''"></dd>
-        
+    </div>
+    
+    <div data-bind="if: selectedResource()['entitytypeid'] === 'FIELD_INVESTIGATION.E7'">
+        <dt class="txt-color-blue">{% trans 'Method' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().method : ''"></dd>
+        <dt class="txt-color-blue">{% trans 'Date' %}</dt>
+        <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().invest_date : ''"></dd>
     </div>
 
     
