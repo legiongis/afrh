@@ -49,7 +49,6 @@ require([
                     if (pa_val != 'null') {
                         var pa_geom = JSON.parse(pa_val);
                         pa_lvl = this.map.historicLayers.length + this.map.baseLayers.length + 1;
-                        //this.highlightFeatures(pa_geom,[16,199,272],pa_lvl);
                     } else {
                         var pa_geom = false;
                     }
@@ -57,7 +56,6 @@ require([
                     if (ape_val != 'null') {
                         var ape_geom = JSON.parse(ape_val);
                         ape_lvl = this.map.historicLayers.length + this.map.baseLayers.length + 2;
-                        //this.highlightFeatures(ape_geom,[69,89,2],ape_lvl);
                     } else {
                         var ape_geom = false;
                     }
@@ -89,7 +87,7 @@ require([
                     featlvl = this.map.historicLayers.length + this.map.baseLayers.length + 1;
 
                     if(geom.geometries.length > 0){
-                        this.highlightFeatures(geom,[66,139,202],featlvl);
+                        this.highlightFeatures(geom,[66,139,202],featlvl,resourcetypeid);
                         this.zoomToResource('1');
                         var problvl = featlvl + 1;
                     } else {
@@ -138,7 +136,7 @@ require([
                 
                 // set this level so the feature will always be on top of the historic map layers
                 featlvl = this.map.historicLayers.length + this.map.baseLayers.length + 1;
-                this.highlightFeatures(geom,[66,139,202],featlvl);
+                this.highlightFeatures(geom,[66,139,202],featlvl,resourcetypeid);
                 this.zoomToResource('1');
             }
             
@@ -260,7 +258,6 @@ require([
         
         zoomToResource: function(resourceid){
             this.cancelFitBaseLayer = true;
-            console.log(resourceid)
             var feature = this.selectedFeatureLayer.getSource().getFeatureById(resourceid);
             if(feature.getGeometry().getGeometries().length > 1){
                 var extent = feature.getGeometry().getExtent();
@@ -424,16 +421,38 @@ require([
             }
         },
 
-        highlightFeatures: function(geometry,rgb,lvl){
+        highlightFeatures: function(geometry,rgb,lvl,resourcetypeid){
             var source, geometries;
             var self = this;
             var f = new ol.format.GeoJSON({defaultDataProjection: 'EPSG:4326'});
-            console.log(1);
             if(!this.selectedFeatureLayer){
                 var zIndex = 100;
                 var styleCache = {};
-                console.log(2);
                 var style = function(feature, resolution) {
+                    if(resourcetypeid == "FIELD_INVESTIGATION.E7") {
+                        var img = new ol.style.Circle({
+                            radius: 3,
+                            fill: new ol.style.Fill({
+                              color: '#000000',
+                              opacity: 0.6
+                            }),
+                            stroke: new ol.style.Stroke({
+                              color: '#ffffff',
+                              opacity: 0.4
+                            })
+                        });
+                    } else {
+                    var img = new ol.style.Circle({
+                        radius: 10,
+                        fill: new ol.style.Fill({
+                            color: 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+', 0.4)',
+                        }),
+                        stroke: new ol.style.Stroke({
+                            color: 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+', 0.9)',
+                            width: 2
+                        })
+                    })
+                    }
                     return [new ol.style.Style({
                         fill: new ol.style.Fill({
                             color: 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+', 0.4)',
@@ -442,16 +461,7 @@ require([
                             color: 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+', 0.9)',
                             width: 2
                         }),
-                        image: new ol.style.Circle({
-                            radius: 10,
-                            fill: new ol.style.Fill({
-                                color: 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+', 0.4)',
-                            }),
-                            stroke: new ol.style.Stroke({
-                                color: 'rgba('+rgb[0]+','+rgb[1]+','+rgb[2]+', 0.9)',
-                                width: 2
-                            })
-                        })
+                        image: img
                     })];
                 };                     
                 this.selectedFeatureLayer = new ol.layer.Vector({
@@ -463,18 +473,12 @@ require([
                 this.map.map.getLayers().setAt(lvl,this.selectedFeatureLayer);
             }
             this.selectedFeatureLayer.getSource().clear();
-            console.log(3);
             feature = {
                 'type': 'Feature',
                 'id': '1',
                 'geometry':  geometry
             };
-            console.log(this.selectedFeatureLayer);
-            console.log(this.selectedFeatureLayer.getSource());
-            console.log(feature);
-            //console.log(this.selectedFeatureLayer);
             this.selectedFeatureLayer.getSource().addFeature(f.readFeature(feature, {featureProjection: 'EPSG:3857'}));
-            console.log(4);
         }
     });
 
