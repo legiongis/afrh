@@ -5,6 +5,22 @@
 <div class="form-full-content">
     <div class="row">
         <div class="col-xs-12 margin-bottom-10">
+            <div class="form-section-header"><span>{% trans "Archaeological Zone Location" %}</span></div>
+        </div>
+    </div>
+    <div id="zone-section">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-xs-12 form-section-input">
+                    <div class="form-group">
+                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('ARCHAEOLOGICAL_ZONE.E55', 'value'), placeholder: '{% trans 'Archaeological Zone Location' %}', dataKey: 'ARCHAEOLOGICAL_ZONE.E55'}"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-10">
             <div class="form-section-header"><span>{% trans "Investigation Details" %}</span></div>
         </div>
     </div>
@@ -160,23 +176,6 @@
                             </div>
                         </dd>
                     </dl>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-xs-12 margin-bottom-10">
-            <div class="form-section-header"><span>{% trans "Archaeological Zone Location" %}</span></div>
-        </div>
-    </div>
-    <div id="zone-section">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="col-xs-12 form-section-input">
-                    <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('ARCHAEOLOGICAL_ZONE.E55', 'value'), placeholder: '{% trans 'Archaeological Zone Location' %}', dataKey: 'ARCHAEOLOGICAL_ZONE.E55'}"></input>
-                    </div>
                 </div>
             </div>
         </div>

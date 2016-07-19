@@ -190,45 +190,51 @@
         </div>
         <div class="row margin-bottom-10">
             <div class="col-xs-12">
-                <div class="col-xs-12 col-sm-4 form-section-input add-padding-right">
-                    <div class="form-group" style="width:100%;">
-                        <input class="form-control arches-form-input geometry-selection" id="geometry-selection" placeholder='{% trans "Shovel Test ID" %}' data-bind='value: getEditedNode("SHOVEL_TEST_ID.E42", "value")'>
+                <div class="row" style="margin-right:0px;margin-left:0px">
+                    <div class="col-xs-12 col-sm-4 form-section-input add-padding-right">
+                        <div class="form-group">
+                            <input class="form-control arches-form-input geometry-selection" id="geometry-selection" placeholder='{% trans "Shovel Test ID" %}' data-bind='value: getEditedNode("SHOVEL_TEST_ID.E42", "value")'>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 form-section-input add-margin-top add-padding-right">
+                        <div class="form-group">
+                            <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('TEST_PIT_METHOD.E55', 'value'), placeholder: '{% trans 'Method' %}', dataKey: 'TEST_PIT_METHOD.E55'}"></input>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 form-section-input add-margin-top">
+                        <div class="form-group">
+                            <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('TEST_PIT_SENSITIVITY.E55', 'value'), placeholder: '{% trans 'Sensitivity' %}', dataKey: 'TEST_PIT_SENSITIVITY.E55'}"></input>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-4 form-section-input add-margin-top add-padding-right">
-                    <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('TEST_PIT_METHOD.E55', 'value'), placeholder: '{% trans 'Method' %}', dataKey: 'TEST_PIT_METHOD.E55'}"></input>
+                <div class="row" style="margin-right:0px;margin-left:0px">
+                    <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
+                        <div class="form-group">
+                            <input class="form-control arches-form-input geometry-selection" id="geometry-selection" placeholder='{% trans "Predicted Fill" %}' data-bind='value: getEditedNode("TEST_PIT_PREDICTED_FILL.E62", "value")'>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
+                        <div class="form-group">
+                            <input class="form-control arches-form-input geometry-selection" id="geometry-selection" placeholder='{% trans "Actual Fill" %}' data-bind='value: getEditedNode("TEST_PIT_ACTUAL_FILL.E62", "value")'>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-4 form-section-input add-margin-top">
-                    <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('TEST_PIT_SENSITIVITY.E55', 'value'), placeholder: '{% trans 'Sensitivity' %}', dataKey: 'TEST_PIT_SENSITIVITY.E55'}"></input>
+                <div class="row" style="margin-right:0px;margin-left:0px">
+                    <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
+                        <div class="form-group">
+                            <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('TEST_PIT_RESULTS.E55', 'value'), placeholder: '{% trans 'Results' %}', dataKey: 'TEST_PIT_RESULTS.E55'}"></input>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
-                    <div class="form-group">
-                        <input class="form-control arches-form-input geometry-selection" id="geometry-selection" placeholder='{% trans "Predicted Fill" %}' data-bind='value: getEditedNode("TEST_PIT_PREDICTED_FILL.E62", "value")'>
+                    <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
+                        <div class="form-group">
+                            <input class="form-control arches-form-input geometry-selection" id="geometry-selection" placeholder='{% trans "Artifacts" %}' data-bind='value: getEditedNode("TEST_PIT_ARTIFACTS.E62", "value")'>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
-                    <div class="form-group">
-                        <input class="form-control arches-form-input geometry-selection" id="geometry-selection" placeholder='{% trans "Actual Fill" %}' data-bind='value: getEditedNode("TEST_PIT_ACTUAL_FILL.E62", "value")'>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 form-section-input add-padding-right margin-top-5">
-                    <div class="form-group">
-                        <input class="select2 arches-select2-crud-form" data-bind="select2: {value: getEditedNode('TEST_PIT_RESULTS.E55', 'value'), placeholder: '{% trans 'Results' %}', dataKey: 'TEST_PIT_RESULTS.E55'}"></input>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 form-section-input margin-top-5">
-                    <div class="form-group">
-                        <input class="form-control arches-form-input geometry-selection" id="geometry-selection" placeholder='{% trans "Artifacts" %}' data-bind='value: getEditedNode("TEST_PIT_ARTIFACTS.E62", "value")'>
-                    </div>
-                </div>
-                <div class="col-xs-12 form-section-input margin-top-5" id="note-section">
-                    <div class="form-group">
-                        <div class="arches-html-editor">
-                            <div class="summernote" data-bind="summernote: {value: getEditedNode('TEST_PIT_NOTES.E62', 'value'), options:{}}"></div>  
+                    <div class="col-xs-12 form-section-input margin-top-5" id="note-section">
+                        <div class="form-group">
+                            <div class="arches-html-editor">
+                                <div class="summernote" data-bind="summernote: {value: getEditedNode('TEST_PIT_NOTES.E62', 'value'), options:{}}"></div>  
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -242,8 +248,10 @@
                         <div data-bind="visible: getBranchLists().length == 0" class="margin-left-5 txt-color-blue filler-text-block">{% trans "no shovel tests recorded yet" %}</div>   
                         <dd class="margin-left-5" data-bind='foreach: getBranchLists()'>
                             <div class="arches-crud-record">
-                                <a href="javascript:void(0);" class="arches-CRUD-child" title="remove this geometry"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                <a href="javascript:void(0);" class="arches-CRUD-child" data-bind="click: $parent.editItem.bind($parent), text: 'Shovel Test ID: ' + nodes.get('SHOVEL_TEST_ID.E42', 'label'), attr: { 'style': editing() ? 'font-weight:bold;' : '' }" title="edit"></a><br>
+                                <div class="row">
+                                    <p><a href="javascript:void(0);" class="arches-CRUD-child" title="remove this geometry"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
+                                    <a href="javascript:void(0);" class="arches-CRUD-child" data-bind="click: $parent.editItem.bind($parent), text: 'Shovel Test ID: ' + nodes.get('SHOVEL_TEST_ID.E42', 'label'), attr: { 'style': editing() ? 'font-weight:bold;' : '' }" title="edit"></a></p>
+                                </div>
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-6">
                                         <p class="text-muted">Method: <em><span class="arches-crud-type-identifier" data-bind="text: nodes.get('TEST_PIT_METHOD.E55', 'label')"></span></em><br>Sensitivity: <em><span class="arches-crud-type-identifier" data-bind="text: nodes.get('TEST_PIT_SENSITIVITY.E55', 'label')"></span></em></p>
@@ -258,6 +266,7 @@
                                         <p class="text-muted">Notes: <em><span class="arches-crud-type-identifier" data-bind="text: nodes.get('TEST_PIT_NOTES.E62', 'label')"></span></em></p>
                                     </div>
                                 </div>
+                                <hr>
                             </div>
                         </dd>
                     </dl>
