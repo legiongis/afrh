@@ -1,0 +1,102 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Investigation Assessment</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'INVESTIGATION_ASSESSMENT_E55' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for INVESTIGATION_ASSESSMENT_E55 in report_info.source.graph.INVESTIGATION_ASSESSMENT_E55 %}
+                    <p class="arches-report-subsection-item">{{INVESTIGATION_ASSESSMENT_E55.INVESTIGATION_ASSESSMENT_E55__label}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Method</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'INVESTIGATION_METHOD_E55' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for INVESTIGATION_METHOD_E55 in report_info.source.graph.INVESTIGATION_METHOD_E55 %}
+                    <p class="arches-report-subsection-item">{{INVESTIGATION_METHOD_E55.INVESTIGATION_METHOD_E55__label}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">DCSHPO Report Number</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'DCSHPO_REPORT_NUMBER_E42' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for DCSHPO_REPORT_NUMBER_E42 in report_info.source.graph.DCSHPO_REPORT_NUMBER_E42 %}
+                    <p class="arches-report-subsection-item">{{DCSHPO_REPORT_NUMBER_E42.DCSHPO_REPORT_NUMBER_E42__value}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Investigation Date</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'INVESTIGATION_TIME___SPAN_E52' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for INVESTIGATION_TIME___SPAN_E52 in report_info.source.graph.INVESTIGATION_TIME___SPAN_E52 %}
+                    {% for INVESTIGATION_DATE_E49 in INVESTIGATION_TIME___SPAN_E52.INVESTIGATION_DATE_E49 %}
+                        <p class="arches-report-subsection-item">{{INVESTIGATION_DATE_E49.INVESTIGATION_DATE_E49__label|slice:"0:10"}}</p>
+                    {% endfor %}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <hr class="devider margin-top-20 margin-bottom-20"></hr>
+    </div>
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Archaeological Zone Location</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'ARCHAEOLOGICAL_ZONE_E55' in report_info.source.graph %}
+                <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for ARCHAEOLOGICAL_ZONE_E55 in report_info.source.graph.ARCHAEOLOGICAL_ZONE_E55 %}
+                    <p class="arches-report-subsection-item">{{ARCHAEOLOGICAL_ZONE_E55.ARCHAEOLOGICAL_ZONE_E55__label}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

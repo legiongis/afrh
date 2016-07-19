@@ -1,0 +1,29 @@
+{% load i18n %}
+<div class="row">
+
+    <div class="row">
+        <div class="col-sm-4">
+            <h3 class="arches-report-subsection">Shovel Test Details</h3>
+        </div>
+        <div class="col-sm-8">
+            {% if 'SHOVEL_TEST_E7' in report_info.source.graph %}
+            {% for SHOVEL_TEST_E7 in report_info.source.graph.SHOVEL_TEST_E7 %}
+            <div class="row">
+                
+                <div class="col-xs-12 arches-report-subsection-content">
+                    <h3 class="arches-report-subsection">{{SHOVEL_TEST_E7.TEST_PIT_LOCATIONS_GEOMETRY_E47.0.SHOVEL_TEST_ID_E42__value}}</h3>
+                    <p class="arches-report-subsection-item">Method: <span class="text-muted">{{SHOVEL_TEST_E7.TEST_PIT_LOCATIONS_GEOMETRY_E47.0.TEST_PIT_METHOD_E55__label}}</span><br>
+                    Sensitivity: <span class="text-muted">{{SHOVEL_TEST_E7.TEST_PIT_LOCATIONS_GEOMETRY_E47.0.TEST_PIT_SENSITIVITY_E55__label}}</span><br>
+                    Predicted Fill: <span class="text-muted">{{SHOVEL_TEST_E7.TEST_PIT_LOCATIONS_GEOMETRY_E47.0.TEST_PIT_PREDICTED_FILL_E62__label}}</span><br>
+                    Actual Fill: <span class="text-muted">{{SHOVEL_TEST_E7.TEST_PIT_LOCATIONS_GEOMETRY_E47.0.TEST_PIT_ACTUAL_FILL_E62__label}}</span><br>
+                    Results:</strong> <span class="text-muted">{{SHOVEL_TEST_E7.TEST_PIT_LOCATIONS_GEOMETRY_E47.0.TEST_PIT_RESULTS_E55__label}}</span><br>
+                    Artifacts: <span class="text-muted">{{SHOVEL_TEST_E7.TEST_PIT_LOCATIONS_GEOMETRY_E47.0.TEST_PIT_ARTIFACTS_E62__label}}</span><br>
+                    Notes: <span class="text-muted">{{SHOVEL_TEST_E7.TEST_PIT_LOCATIONS_GEOMETRY_E47.0.TEST_PIT_NOTES_E62__label}}</span><br>
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>

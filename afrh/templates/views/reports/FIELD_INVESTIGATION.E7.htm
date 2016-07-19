@@ -1,0 +1,99 @@
+
+<!--
+ARCHES - a program developed to inventory and manage immovable cultural heritage.
+Copyright (C) 2013 J. Paul Getty Trust and World Monuments Fund
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+{% load staticfiles %}
+{% load i18n %}
+
+{% include 'views/reports/title.htm' %}
+
+<!-- End Fixed Nav for Report -->
+<div id="report-body" class="report-body">
+
+    <!--=== Resource Description Section ===-->
+    <div class="block-description report-block-description" style="padding:0px !important;" id="report">
+        <div class="container">
+
+            <!-- Resource Report Container -->
+            <div>
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "Summary" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/FI_summary.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                {% if geometry%}
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "Shovel Test Locations" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            {% include 'views/reports/sections/AZ-map-section.htm' %}
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/FI-location-note.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "Assessments" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/FI_assessments.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-section" >
+                    <div class="report-section-header">
+                        <span class="section-toggle" href="javascript:void(0);">{% trans "Recommendations" %}<i class="rounded-x fa fa-folder-open" style="padding-left:15px;"></i></span>
+                    </div>
+                    <div class="row report-content">
+                        <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
+                        <div class="col-xs-12">
+                            <div class="right-inner arches-box-grey-border">
+                                {% include 'views/reports/sections/FI_recommendation.htm' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'footer.htm' %}
+    {% include 'copyright.htm' %}
+</div>

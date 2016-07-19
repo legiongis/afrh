@@ -1,0 +1,20 @@
+{% load i18n %}
+<div class="row">
+    <div class="col-sm-3 col-md-4">
+        <h3 class="arches-report-subsection">Recommendations</h3>
+        
+    </div>
+    <div class="col-sm-9 col-md-8">
+        <div class="row">
+            <div class="col-xs-12 arches-report-subsection-content">
+                {% if not 'INVESTIGATION_RECOMMENDATIONS_E62' in report_info.source.graph %}
+                    <p class="arches-report-subsection-item">none recorded</p>
+                {% else %}
+                {% for INVESTIGATION_RECOMMENDATIONS_E62 in report_info.source.graph.INVESTIGATION_RECOMMENDATIONS_E62 %}
+                    <p class="arches-report-subsection-item">{{INVESTIGATION_RECOMMENDATIONS_E62.INVESTIGATION_RECOMMENDATIONS_E62__value|safe}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
