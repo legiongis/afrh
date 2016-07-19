@@ -19,51 +19,6 @@ MEDIA_ROOT =  os.path.join(PACKAGE_ROOT, 'uploadedfiles')
 DEBUG = False
 ALLOWED_HOSTS = ['*'] # also acceptable is ['.domain.com']
 
-# Set up default users
-EXAMPLE_USERS = {
-    'admin1_user':{
-        'first_name':'Admin1',
-        'last_name':'Justforfun',
-        'password':'admin1_pw',
-        'email':'admin1@legiongis.com',
-        'groups':['admin1'],
-        'permissions':[],
-        'is_staff':False,
-        'superuser':False,
-    },
-    'admin2_user':{
-        'first_name':'Admin2',
-        'last_name':'Maybeyou',
-        'password':'admin2_pw',
-        'email':'admin2@legiongis.com',
-        'groups':['admin2'],
-        'permissions':[],
-        'is_staff':False,
-        'superuser':False,
-    },
-    'afrh_staff_user':{
-        'first_name':'AFRH Staff',
-        'last_name':'Nicegiraffe',
-        'password':'afrh_staff_pw',
-        'email':'afrh_staff@legiongis.com',
-        'groups':['afrh_staff'],
-        'permissions':[],
-        'is_staff':False,
-        'superuser':False,
-    },
-    'development_user':{
-        'first_name':'Development',
-        'last_name':'Trevelopment',
-        'password':'development_pw',
-        'email':'development@legiongis.com',
-        'groups':['development'],
-        'permissions':[],
-        'is_staff':False,
-        'superuser':False,
-    }
-}
-
-
 # Map settings
 DEFAULT_MAP_X = -8572820
 DEFAULT_MAP_Y = 4712543
@@ -238,7 +193,7 @@ def RESOURCE_TYPE_CONFIGS():
             'icon_class': 'fa fa-tag',
             'default_page': 'invest-summary',
             'default_description': 'no description available',
-            'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),
+            'description_node': _('INVESTIGATION_DESCRIPTION_E62'),
             'categories': [_('Resource')],
             'has_layer': True,
             'on_map': True,
