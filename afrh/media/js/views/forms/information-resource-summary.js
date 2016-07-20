@@ -3,8 +3,6 @@ define(['jquery', 'views/forms/base', 'views/forms/sections/branch-list', ], fun
             initialize: function() {
                 BaseForm.prototype.initialize.apply(this);                
                 var self = this;
-                
-                console.log(this.data);
 
                 this.addBranchList(new BranchList({
                     el: this.$el.find('#titles-section')[0],
@@ -65,9 +63,9 @@ define(['jquery', 'views/forms/base', 'views/forms/sections/branch-list', ], fun
                 }));
 
                 this.addBranchList(new BranchList({
-                    el: this.$el.find('#sensitivity-section')[0],
+                    el: this.$el.find('#protection-section')[0],
                     data: this.data,
-                    dataKey: 'SENSITIVE.E62',
+                    dataKey: 'PROTECTION_LEVEL.E55',
                     singleEdit: true,
                 }));
             }

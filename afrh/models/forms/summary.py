@@ -295,13 +295,13 @@ class InformationResourceSummaryForm(ResourceForm):
         }   
 
     def update(self, data, files):
-        print data
+
         self.update_nodes('TITLE.E41', data)
         self.update_nodes('INFORMATION_RESOURCE_TYPE_ASSIGNMENT.E17', data)
         self.update_nodes('EXTERNAL_RESOURCE.E1', data)
         self.update_nodes('KEYWORD.E55', data)
         self.update_nodes('LANGUAGE.E55', data)
-        self.update_nodes('SENSITIVE.E62', data)
+        self.update_nodes('PROTECTION_LEVEL.E55', data)
 
     def load(self, lang):
         if self.resource:
@@ -335,8 +335,9 @@ class InformationResourceSummaryForm(ResourceForm):
                 'domains': {'KEYWORD.E55' : Concept().get_e55_domain('KEYWORD.E55')}
             }
 
-            self.data['SENSITIVE.E62'] = {
-                'branch_lists': datetime_nodes_to_dates(self.get_nodes('SENSITIVE.E62')),
+            self.data['PROTECTION_LEVEL.E55'] = {
+                'branch_lists': datetime_nodes_to_dates(self.get_nodes('PROTECTION_LEVEL.E55')),
+                'domains': {'PROTECTION_LEVEL.E55' : Concept().get_e55_domain('PROTECTION_LEVEL.E55')}
             }
 
             # self.data['primaryname_conceptid'] = self.data['TITLE.E41']['domains']['TITLE_TYPE.E55'][3]['id']
