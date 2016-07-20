@@ -187,7 +187,7 @@
                         <dd class="margin-left-5" data-bind='foreach: getBranchLists()'>
                             <div class="arches-crud-record">
                                 <a href="javascript:void(0);" class="arches-CRUD-child" title="remove this geometry"><i data-bind="click: $parent.deleteItem.bind($parent)" class="arches-CRUD-delete fa fa-times-circle"></i></a>
-                                <a href="javascript:void(0);" class="arches-CRUD-child" data-bind="click: $parent.editItem.bind($parent), text: nodes.get('AREA_OF_PROBABILITY_GEOMETRY.E47', 'value').split('(')[0].toLowerCase(), attr: { 'style': editing() ? 'font-weight:bold;' : '' }" title="Edit this geometry"></a>
+                                <a href="javascript:void(0);" class="arches-CRUD-child" data-bind="click: $parent.editItem.bind($parent), text: nodes.get('AREA_OF_PROBABILITY_GEOMETRY.E47', 'value').split('(')[0].toLowerCase(), attr: { 'style': editing() ? 'font-weight:bold;' : '' }" title="edit this geometry"></a>
                                 &nbsp;<span class="text-muted arches-crud-type-identifier" data-bind="text: nodes.get('AREA_OF_PROBABILITY_GEOMETRY_TYPE.E55', 'label')"></span>
                             </div>
                         </dd>
