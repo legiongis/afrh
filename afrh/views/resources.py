@@ -815,4 +815,4 @@ def get_allowed_types(request):
             if k.startswith(res):
                 allowedtypes.append(k)
 
-    return allowedtypes  
+    return allowedtypes
