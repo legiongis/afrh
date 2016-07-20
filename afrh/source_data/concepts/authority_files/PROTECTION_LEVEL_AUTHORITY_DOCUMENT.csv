@@ -1,0 +1,3 @@
+conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider
+PROTEC:1,Protected,,PROTECTION_LEVEL_AUTHORITY_DOCUMENT.csv,Index,PRESERVEscapes
+PROTEC:2,Not Protected,,PROTECTION_LEVEL_AUTHORITY_DOCUMENT.csv,Index,PRESERVEscapes
