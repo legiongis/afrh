@@ -494,7 +494,47 @@ def arch_layer(request, boundtype=''):
                 geojson_collection['features'].append(feat)
     return JSONResponse(geojson_collection)
 
+def act_a_layer(request, boundtype=''):
 
+    data = []
+    geom_param = request.GET.get('geom', None)
+
+    bbox = request.GET.get('bbox', '')
+    limit = request.GET.get('limit', settings.MAP_LAYER_FEATURE_LIMIT)
+    geojson_collection = {
+      "type": "FeatureCollection",
+      "features": []
+    }
+
+    se = SearchEngineFactory().create()
+    query = Query(se, limit=limit)
+
+    data = se.search(index='resource', doc_type='ACTIVITY_A.E7')
+    
+    pre_collection = []
+    
+    for item in data['hits']['hits']:
+        if "PLACE_E53" in item['_source']['graph']:
+            for geom in item['_source']['graph']['PLACE_E53']:
+                
+                if geom['SPATIAL_COORDINATES_GEOMETRY_E47'][0]["ACTIVITY_GEOMETRY_TYPE_E55__label"] == "Project Area":
+                    wkt = geom['SPATIAL_COORDINATES_GEOMETRY_E47'][0]['SPATIAL_COORDINATES_GEOMETRY_E47__value']
+                    g1 = shapely.wkt.loads(wkt)
+                    feat = geojson.Feature(geometry=g1, properties={})
+                    feat['properties']['type'] = "Project Area"
+                    feat['id'] = item['_source']['entityid']
+                    geojson_collection['features'].append(feat)
+                
+                if geom['SPATIAL_COORDINATES_GEOMETRY_E47'][0]["ACTIVITY_GEOMETRY_TYPE_E55__label"] == "Area of Potential Effect":
+                    wkt = geom['SPATIAL_COORDINATES_GEOMETRY_E47'][0]['SPATIAL_COORDINATES_GEOMETRY_E47__value']
+                    g1 = shapely.wkt.loads(wkt)
+                    feat = geojson.Feature(geometry=g1, properties={})
+                    feat['properties']['type'] = "Area of Potential Effect"
+                    feat['id'] = item['_source']['entityid']
+                    geojson_collection['features'].append(feat)
+    
+    print json.dumps(geojson_collection,indent=2)
+    return JSONResponse(geojson_collection)
     
 def arch_investigation_layer(request, boundtype=''):
 

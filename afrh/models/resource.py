@@ -267,7 +267,7 @@ class Resource(ArchesResource):
         documents = super(Resource, self).prepare_documents_for_map_index(geom_entities=geom_entities)
         
         def get_entity_data(entitytypeid, get_label=False, leave_blank=False):
-            entity_data = _('None specified')
+            entity_data = _('none recorded')
             entity_nodes = self.find_entities_by_type_id(entitytypeid)
             if len(entity_nodes) > 0:
                 entity_data = []
@@ -276,13 +276,9 @@ class Resource(ArchesResource):
                         ret = node.label
                     else:
                         ret = str(node.value)
-                    if node.businesstablename == "dates":
-                        print "this is the ret"
-                        print ret
-                        return ret[:10]
                     entity_data.append(ret)
                 entity_data = ', '.join(entity_data)
-            if leave_blank and entity_data == "None specified":
+            if leave_blank and entity_data == _("none recorded"):
                 entity_data = None
             return entity_data
         

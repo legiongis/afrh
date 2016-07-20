@@ -282,7 +282,7 @@ def RESOURCE_TYPE_CONFIGS():
                 'lookup_value': False
             },
             'sort_order': 9,
-            'layer_model': 'marker',
+            'layer_model': 'act-a',
             'restricted': True,
             'permissions': {
                 'create':['admin1','admin2','afrh_staff'],
@@ -301,15 +301,15 @@ def RESOURCE_TYPE_CONFIGS():
             'categories': [_('Resource')],
             'has_layer': True,
             'on_map': True,
-            'marker_color': '#a44b0f',
-            'stroke_color': '#a7673d',
-            'fill_color': '#c8b2a3',
+            'marker_color': '#69310b',
+            'stroke_color': '#69310b',
+            'fill_color': '#69310b',
             'primary_name_lookup': {
                 'entity_type': 'ACTIVITY_NAME.E41',
                 'lookup_value': False
             },
             'sort_order': 10,
-            'layer_model': 'marker',
+            'layer_model': 'area',
             'restricted': True,
             'permissions': {
                 'create':['admin1','admin2','development'],

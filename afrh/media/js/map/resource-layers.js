@@ -10,10 +10,11 @@ define([
         'map/layer-models/area-layer-model',
         'map/layer-models/arch-layer-model',
         'map/layer-models/point-layer-model',
+        'map/layer-models/act-a-layer-model',
         'resource-types',
         'user-info'
 
-], function(ol, _, ko, arches, resourceLayerInfo, MarkerLayerModel, FullLayerModel, PolygonLayerModel, AreaLayerModel, ArchLayerModel, PointLayerModel, resourceTypes, userInfo) {
+], function(ol, _, ko, arches, resourceLayerInfo, MarkerLayerModel, FullLayerModel, PolygonLayerModel, AreaLayerModel, ArchLayerModel, PointLayerModel, ActALayerModel, resourceTypes, userInfo) {
         var resourceFeatures = ko.observableArray();
         var layers = [];
         
@@ -23,6 +24,7 @@ define([
             'marker':MarkerLayerModel,
             'arch':ArchLayerModel,
             'point':PointLayerModel,
+            'act-a':ActALayerModel,
         }
         
         _.each(resourceTypes, function (item, entitytypeid) {
@@ -43,14 +45,14 @@ define([
             if (entitytypeid == "INVENTORY_RESOURCE.E18"){
                 item.active = true;
             }
-
-            //select which layer model to use based on resource type layer_model value
-            var newLayerModel = layerModelMap[item.layerModel];
             
             if (entitytypeid == "ARCHAEOLOGICAL_ZONE.E53"){
                 item.infoContent = true;
             }
-
+            
+            //select which layer model to use based on resource type layer_model value
+            var newLayerModel = layerModelMap[item.layerModel];
+            
             layers.push(new newLayerModel(item, function(features) {
                 resourceFeatures(resourceFeatures().concat(features));
             }));
