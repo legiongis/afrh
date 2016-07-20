@@ -1,5 +1,5 @@
 conceptid,Value,ValueType,Provider
-OTHER_AFRH_DESIG_STATUS:1,1,sortorder,preserveSCAPES
-OTHER_AFRH_DESIG_STATUS:2,2,sortorder,preserveSCAPES
-OTHER_AFRH_DESIG_STATUS:3,3,sortorder,preserveSCAPES
-OTHER_AFRH_DESIG_STATUS:4,4,sortorder,preserveSCAPES
+OTHER_AFRH_DESIG_STATUS:1,1,sortorder,PRESERVE/scapes
+OTHER_AFRH_DESIG_STATUS:2,2,sortorder,PRESERVE/scapes
+OTHER_AFRH_DESIG_STATUS:3,3,sortorder,PRESERVE/scapes
+OTHER_AFRH_DESIG_STATUS:4,4,sortorder,PRESERVE/scapes

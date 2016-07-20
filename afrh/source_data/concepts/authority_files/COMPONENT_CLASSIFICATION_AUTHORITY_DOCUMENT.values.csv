@@ -1,4 +1,4 @@
 conceptid,Value,ValueType,Provider
-COMP_CLASS:1,1,sortorder,preserveSCAPES
-COMP_CLASS:2,2,sortorder,preserveSCAPES
-COMP_CLASS:3,3,sortorder,preserveSCAPES
+COMP_CLASS:1,1,sortorder,PRESERVE/scapes
+COMP_CLASS:2,2,sortorder,PRESERVE/scapes
+COMP_CLASS:3,3,sortorder,PRESERVE/scapes

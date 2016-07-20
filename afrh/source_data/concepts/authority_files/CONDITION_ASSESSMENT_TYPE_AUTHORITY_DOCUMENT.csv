@@ -1,8 +1,8 @@
 conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider 
-COND_ASSESS_TYPE:1,Scheduled,,CONDITION_ASSESSMENT_TYPE_AUTHORITY_DOCUMENT.csv,Collector,preserveSCAPES
-COND_ASSESS_TYPE:2,Exterior Historic Preservation Maintenance Assessment,,COND_ASSESS_TYPE:1,Index,preserveSCAPES
-COND_ASSESS_TYPE:3,Interior Historic Preservation Maintenance Assessment,,COND_ASSESS_TYPE:1,Index,preserveSCAPES
-COND_ASSESS_TYPE:4,Historic Resource Monitoring,,COND_ASSESS_TYPE:1,Index,preserveSCAPES
-COND_ASSESS_TYPE:5,Unscheduled,,CONDITION_ASSESSMENT_TYPE_AUTHORITY_DOCUMENT.csv,Collector,preserveSCAPES
-COND_ASSESS_TYPE:6,Emergency,,COND_ASSESS_TYPE:5,Index,preserveSCAPES
-COND_ASSESS_TYPE:7,Other,,COND_ASSESS_TYPE:5,Index,preserveSCAPES
+COND_ASSESS_TYPE:1,Scheduled,,CONDITION_ASSESSMENT_TYPE_AUTHORITY_DOCUMENT.csv,Collector,PRESERVE/scapes
+COND_ASSESS_TYPE:2,Exterior Historic Preservation Maintenance Assessment,,COND_ASSESS_TYPE:1,Index,PRESERVE/scapes
+COND_ASSESS_TYPE:3,Interior Historic Preservation Maintenance Assessment,,COND_ASSESS_TYPE:1,Index,PRESERVE/scapes
+COND_ASSESS_TYPE:4,Historic Resource Monitoring,,COND_ASSESS_TYPE:1,Index,PRESERVE/scapes
+COND_ASSESS_TYPE:5,Unscheduled,,CONDITION_ASSESSMENT_TYPE_AUTHORITY_DOCUMENT.csv,Collector,PRESERVE/scapes
+COND_ASSESS_TYPE:6,Emergency,,COND_ASSESS_TYPE:5,Index,PRESERVE/scapes
+COND_ASSESS_TYPE:7,Other,,COND_ASSESS_TYPE:5,Index,PRESERVE/scapes

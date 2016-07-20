@@ -1,7 +1,7 @@
 conceptid,Value,ValueType,Provider
-OP_STATUS:1,1,sortorder,preserveSCAPES
-OP_STATUS:2,2,sortorder,preserveSCAPES
-OP_STATUS:3,3,sortorder,preserveSCAPES
-OP_STATUS:4,4,sortorder,preserveSCAPES
-OP_STATUS:5,5,sortorder,preserveSCAPES
-OP_STATUS:6,6,sortorder,preserveSCAPES
+OP_STATUS:1,1,sortorder,PRESERVE/scapes
+OP_STATUS:2,2,sortorder,PRESERVE/scapes
+OP_STATUS:3,3,sortorder,PRESERVE/scapes
+OP_STATUS:4,4,sortorder,PRESERVE/scapes
+OP_STATUS:5,5,sortorder,PRESERVE/scapes
+OP_STATUS:6,6,sortorder,PRESERVE/scapes

@@ -1,4 +1,4 @@
 conceptid,Value,ValueType,Provider
-OTHER_DESIG:1,1,sortorder,preserveSCAPES
-OTHER_DESIG:5,2,sortorder,preserveSCAPES
-OTHER_DESIG:9,3,sortorder,preserveSCAPES
+OTHER_DESIG:1,1,sortorder,PRESERVE/scapes
+OTHER_DESIG:5,2,sortorder,PRESERVE/scapes
+OTHER_DESIG:9,3,sortorder,PRESERVE/scapes

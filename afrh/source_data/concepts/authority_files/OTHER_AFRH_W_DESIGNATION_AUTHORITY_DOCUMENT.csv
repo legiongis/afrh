@@ -1,4 +1,4 @@
 conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider 
-OTHER_AFRH_DESIG:1,U.S. Soldiers' and Airmen's Home National Historic Landmark,,OTHER_AFRH_W_DESIGNATION_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
-OTHER_AFRH_DESIG:2,Soldiers' Home and President Lincoln's Cottage National Monument,,OTHER_AFRH_W_DESIGNATION_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
-OTHER_AFRH_DESIG:3,Other,,OTHER_AFRH_W_DESIGNATION_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+OTHER_AFRH_DESIG:1,U.S. Soldiers' and Airmen's Home National Historic Landmark,,OTHER_AFRH_W_DESIGNATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+OTHER_AFRH_DESIG:2,Soldiers' Home and President Lincoln's Cottage National Monument,,OTHER_AFRH_W_DESIGNATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+OTHER_AFRH_DESIG:3,Other,,OTHER_AFRH_W_DESIGNATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes

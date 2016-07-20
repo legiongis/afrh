@@ -1,4 +1,4 @@
 conceptid,PrefLabel,AltLabels,ParentConceptid,ConceptType,Provider 
-COMP_CLASS:1,original/historic- intact,,COMPONENT_CLASSIFICATION_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
-COMP_CLASS:2,original/historic - altered,,COMPONENT_CLASSIFICATION_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
-COMP_CLASS:3,not original/historic,,COMPONENT_CLASSIFICATION_AUTHORITY_DOCUMENT.csv,Index,preserveSCAPES
+COMP_CLASS:1,original/historic- intact,,COMPONENT_CLASSIFICATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+COMP_CLASS:2,original/historic - altered,,COMPONENT_CLASSIFICATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
+COMP_CLASS:3,not original/historic,,COMPONENT_CLASSIFICATION_AUTHORITY_DOCUMENT.csv,Index,PRESERVE/scapes
