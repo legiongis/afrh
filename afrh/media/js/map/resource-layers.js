@@ -46,8 +46,12 @@ define([
                 item.active = true;
             }
             
+            // set infoContent to equal the HTML content of a legend div in map.htm
             if (entitytypeid == "ARCHAEOLOGICAL_ZONE.E53"){
-                item.infoContent = true;
+                item.infoContent = $("#arch-legend").html();
+            }
+            if (entitytypeid == "ACTIVITY_A.E7"){
+                item.infoContent = $("#act-a-legend").html();
             }
             
             //select which layer model to use based on resource type layer_model value
