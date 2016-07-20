@@ -83,6 +83,7 @@ def build_auth_system():
         'admin1':Group.objects.get_or_create(name='Admin 1')[0],
         'admin2':Group.objects.get_or_create(name='Admin 2')[0],
         'afrh_staff':Group.objects.get_or_create(name='AFRH - Staff')[0],
+        'afrh_volunteer':Group.objects.get_or_create(name='AFRH - Volunteer')[0],
         'development':Group.objects.get_or_create(name='Development')[0],
     }
     print "done."
@@ -117,6 +118,8 @@ def build_auth_system():
     admin2_user.groups.add(group_dict['admin2'])
     afrh_staff_user = User.objects.create_user("afrh_staff","","pw")
     afrh_staff_user.groups.add(group_dict['afrh_staff'])
+    afrh_staff_user = User.objects.create_user("afrh_volunteer","","pw")
+    afrh_staff_user.groups.add(group_dict['afrh_volunteer'])
     development_user = User.objects.create_user("development","","pw")
     development_user.groups.add(group_dict['development'])
     print "done."

@@ -34,6 +34,9 @@ PACKAGE_VALIDATOR = "arches.app.utils.mock_package_validator"
 
 LOCAL_DOMAIN = "afrh.adamcfcox.com"
 
+SEARCH_ITEMS_PER_PAGE = 10
+SEARCH_EXPORT_ITEMS_PER_PAGE = 10
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
@@ -258,8 +261,8 @@ def RESOURCE_TYPE_CONFIGS():
             'sort_order': 8,
             'layer_model': 'marker',
             'permissions': {
-                'create':['admin1','admin2'],
-                'edit':['admin1','admin2'],
+                'create':['admin1','admin2','afrh_volunteer'],
+                'edit':['admin1','admin2','afrh_volunteer'],
                 'fullreport':'all',
                 'view':'all'
                 }
