@@ -799,7 +799,6 @@ def get_filter_types(request):
     
 def get_allowed_types(request):
     ''' references the user permissions in the request and returns a list of resource types to allow in a search query'''
-
     allowedtypes = []
     permissions = request.user.get_all_permissions()
 
