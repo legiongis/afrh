@@ -276,7 +276,10 @@ class Resource(ArchesResource):
                         ret = node.label
                     else:
                         ret = str(node.value)
-                    entity_data.append(ret)
+                    if node.businesstablename == "dates":
+                        entity_data.append(ret[:10])
+                    else:
+                        entity_data.append(ret)
                 entity_data = ', '.join(entity_data)
             if leave_blank and entity_data == _("none recorded"):
                 entity_data = None
