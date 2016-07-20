@@ -199,7 +199,7 @@ def report(request, resourceid):
             
     
     
-    # print a few log files to help with debugging
+    # create a few log files to help with debugging
     if settings.DEBUG:
         related_dict_log_path = os.path.join(settings.PACKAGE_ROOT,'logs','current_related_resource_dict.log')
         with open(related_dict_log_path,"w") as log:
@@ -295,6 +295,33 @@ def report(request, resourceid):
         bounds_dict = {'type':'GeometryCollection','geometries':bounds}
         response_dict['geometry'] = JSONSerializer().serialize(bounds_dict)
     
+    ## THIS WAS AN ILL-FATED ATTEMPT TO NAME NAMES TO THE GEOMETRIES, NO WAIT, FEATURES, THAT ARE PASSED TO THE REPORTS
+    ## FIX IF STATEMENT TO TRY AGAIN
+    if report_info['type'] == "FIELD_INVLESTIGATION.E7":
+        # return a FeatureCollection instead of a GeometryCollection for the field investigation report
+        features = []
+        if "SHOVEL_TEST_E7" in report_info['source']['graph']:
+            for place in report_info['source']['graph']['SHOVEL_TEST_E7']:
+                if "TEST_PIT_LOCATIONS_GEOMETRY_E47" in place:
+                    wkt = place['TEST_PIT_LOCATIONS_GEOMETRY_E47'][0]['TEST_PIT_LOCATIONS_GEOMETRY_E47__value']
+                    try:
+                        feat_name = place['TEST_PIT_LOCATIONS_GEOMETRY_E47'][0]['SHOVEL_TEST_ID_E42__label']
+                    except:
+                        feat_name = ""
+                    
+                    g1 = shapely.wkt.loads(wkt)
+                    g2 = geojson.Feature(geometry=g1, properties={"name":feat_name})
+                    features.append(g2)
+                    # print json.dumps(g2,indent=2)
+                    # json_geom = g2.geometry
+                    # json_geom['properties'] = {"name":feat_name}
+
+                    # points.append(json_geom)
+                    
+        # print json.dumps(points[0],indent=2)
+        points_dict = {'type':'FeatureCollection','features':features}
+        response_dict['geometry'] = JSONSerializer().serialize(points_dict)
+    
     return render_to_response('resource-report.htm', response_dict,
         context_instance=RequestContext(request))        
 
@@ -379,6 +406,8 @@ def polygon_layers(request, entitytypeid='all'):
 
     return JSONResponse(geojson_collection)
     
+    
+    
 def arch_layer(request, boundtype=''):
 
     data = []
@@ -406,8 +435,6 @@ def arch_layer(request, boundtype=''):
     pre_collection = []
     
     for item in data['hits']['hits']:
-        #print json.dumps(item,indent=2)
-        print "\n"
         if "PLACE_E53" in item['_source']['graph']:
             for geom in item['_source']['graph']['PLACE_E53']:
                 
@@ -465,9 +492,9 @@ def arch_layer(request, boundtype=''):
                     }
                 }
                 geojson_collection['features'].append(feat)
-
-    print json.dumps(geojson_collection['features'],indent=2)
     return JSONResponse(geojson_collection)
+
+
     
 def arch_investigation_layer(request, boundtype=''):
 
@@ -493,6 +520,7 @@ def arch_investigation_layer(request, boundtype=''):
     for item in data['hits']['hits']:
         for geom in item['_source']['geometries']:
             if geom['entitytypeid'] == 'SHOVEL_TEST_GEOMETRY.E47':
+                print json.dumps(geom,indent=2)
                 feat = {
                     'geometry':geom['value'],
                     'type':"Feature",
