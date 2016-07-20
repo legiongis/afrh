@@ -21,6 +21,7 @@ from django.conf import settings
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.db.models import Max, Min
+from django.core.paginator import Paginator
 from arches.app.models import models
 from arches.app.views.search import get_paginator
 from arches.app.views.search import build_search_results_dsl as build_base_search_results_dsl
@@ -92,7 +93,7 @@ def search_results(request):
     query = build_search_results_dsl(request)
     
     # filter protected resources for any non-logged in users
-    if request.user.username != 'anonymous':
+    if request.user.username == 'anonymous':
         query = add_neg_filter(query)
     
     results = query.search(index='entity', doc_type=allowed_types, )
@@ -106,3 +107,46 @@ def search_results(request):
         all_entity_ids = [hit['_id'] for hit in full_results['hits']['hits']]
 
     return get_paginator(results, total, page, settings.SEARCH_ITEMS_PER_PAGE, all_entity_ids)
+    
+def build_search_results_dsl(request):
+    temporal_filters = JSONDeserializer().deserialize(request.GET.get('temporalFilter', None))
+
+    query = build_base_search_results_dsl(request)  
+    boolfilter = Bool()
+
+    if 'filters' in temporal_filters:
+        for temporal_filter in temporal_filters['filters']:
+            date_type = ''
+            date = ''
+            date_operator = ''
+            for node in temporal_filter['nodes']:
+                if node['entitytypeid'] == 'DATE_COMPARISON_OPERATOR.E55':
+                    date_operator = node['value']
+                elif node['entitytypeid'] == 'date':
+                    date = node['value']
+                else:
+                    date_type = node['value']
+
+            terms = Terms(field='date_groups.conceptid', terms=date_type)
+            boolfilter.must(terms)
+
+            date_value = datetime.strptime(date, '%Y-%m-%d').isoformat()
+
+            if date_operator == '1': # equals query
+                range = Range(field='date_groups.value', gte=date_value, lte=date_value)
+            elif date_operator == '0': # greater than query 
+                range = Range(field='date_groups.value', lt=date_value)
+            elif date_operator == '2': # less than query
+                range = Range(field='date_groups.value', gt=date_value)
+
+            if 'inverted' not in temporal_filters:
+                temporal_filters['inverted'] = False
+
+            if temporal_filters['inverted']:
+                boolfilter.must_not(range)
+            else:
+                boolfilter.must(range)
+
+            query.add_filter(boolfilter)
+
+    return query
