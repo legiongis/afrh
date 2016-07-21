@@ -34,6 +34,7 @@ from arches.app.utils.betterJSONSerializer import JSONSerializer, JSONDeserializ
 from arches.app.utils.JSONResponse import JSONResponse
 from arches.app.views.concept import get_preflabel_from_valueid, get_preflabel_from_conceptid
 #from arches.app.views.resources import get_related_resources
+from arches.app.views.search import build_search_results_dsl as build_base_search_results_dsl
 from arches.app.search.search_engine_factory import SearchEngineFactory
 from arches.app.search.elasticsearch_dsl_builder import Query, Terms, Bool, Match
 import json
@@ -128,8 +129,9 @@ def report(request, resourceid):
         'ACTIVITY_B': []  
     }
 
-    filtertypes = get_filter_types(request)  
-    related_resource_info = get_related_resources(resourceid, lang, filtertypes=filtertypes)
+    allowedtypes = get_allowed_types(request)
+    anon = request.user.username == "anonymous"
+    related_resource_info = get_related_resources(resourceid, lang, allowedtypes=allowedtypes,is_anon=anon)
 
     # parse the related entities into a dictionary by resource type
     for related_resource in related_resource_info['related_resources']:
@@ -351,8 +353,19 @@ def map_layers(request, entitytypeid='all', get_centroids=False):
         return JSONResponse(geojson_collection)
 
     data = query.search(**args)
+    
+    # if anonymous user, get list of protected entity ids to be excluded from map
+    protected = []
+    
+    if request.user.username == 'anonymous':
+        protected = get_protected_entityids()
+        print protected
 
     for item in data['hits']['hits']:
+        if item['_id'] in protected:
+            print "hide this one"
+            print json.dumps(item,indent=2)
+            continue
         if get_centroids:
             item['_source']['geometry'] = item['_source']['properties']['centroid']
             item['_source'].pop('properties', None)
@@ -653,14 +666,17 @@ def resource_manager(request, resourcetypeid='', form_id='default', resourceid='
 @csrf_exempt
 def related_resources(request, resourceid):
 
-    ## filter out resource types here
-    filtertypes = get_filter_types(request)
+    ## get allowed resource types based on permissions
+    allowedtypes = get_allowed_types(request)
+    is_anon = False
+    if request.user.username == "anonymous":
+        is_anon = True
     
     if request.method == 'GET':
         lang = request.GET.get('lang', settings.LANGUAGE_CODE)
         start = request.GET.get('start', 0)
-        return JSONResponse(get_related_resources(resourceid, lang, start=start, limit=15,
-                                                  filtertypes=filtertypes), indent=4,)
+        resources = get_related_resources(resourceid, lang, start=start, limit=15, allowedtypes=allowedtypes, is_anon=is_anon)
+        return JSONResponse(resources, indent=4)
     
     if 'edit' in request.user.user_groups and request.method == 'DELETE':
         se = SearchEngineFactory().create()
@@ -674,8 +690,8 @@ def related_resources(request, resourceid):
         se.delete(index='resource_relations', doc_type='all', id=resourcexid)
         return JSONResponse({ 'success': True })
 
-def get_related_resources(resourceid, lang, limit=1000, start=0, filtertypes=[]):
-    
+def get_related_resources(resourceid, lang, limit=1000, start=0, allowedtypes=[], is_anon=False):
+
     ret = {
         'resource_relationships': [],
         'related_resources': []
@@ -685,14 +701,10 @@ def get_related_resources(resourceid, lang, limit=1000, start=0, filtertypes=[])
     query = Query(se, limit=limit, start=start)
     query.add_filter(Terms(field='entityid1', terms=resourceid).dsl, operator='or')
     query.add_filter(Terms(field='entityid2', terms=resourceid).dsl, operator='or')
-    resource_relations = query.search(index='resource_relations', doc_type='all')
+    resource_relations = query.search(index='resource_relations', doc_type="all")
 
     entityids = set()
     for relation in resource_relations['hits']['hits']:
-        ## this filter should be done by passing the allowed doc types to the search function
-        ## used allowed types function below
-        if Entity(relation['_source']['entityid1']).entitytypeid in filtertypes:
-             continue
         relation['_source']['preflabel'] = get_preflabel_from_valueid(relation['_source']['relationshiptype'], lang)
         ret['resource_relationships'].append(relation['_source'])
         entityids.add(relation['_source']['entityid1'])
@@ -700,58 +712,67 @@ def get_related_resources(resourceid, lang, limit=1000, start=0, filtertypes=[])
     if len(entityids) > 0:
         entityids.remove(resourceid)
 
-    ret['total'] = len(entityids)
-
+    # can't figure why passing allowed types to doc_type param doesn't work,
+    # so filter is carried out later
     related_resources = se.search(index='entity', doc_type='_all', id=list(entityids))
+
     filtered_ids = []
     if related_resources:
         for resource in related_resources['docs']:
-            if resource['_type'] in filtertypes:
+            if not resource['_type'] in allowedtypes:
                 filtered_ids.append(resource['_source']['entityid'])
                 continue
+            
+            if is_anon:
+                # filter out protected resources if user is anonymous
+                # (this is basically a subset of the get_protected_entityids below
+                # they should be combined probably)
+                from search import get_protection_conceptids
+                protect_id = get_protection_conceptids(settings.PROTECTION_LEVEL_NODE)
+                conceptids = [d['conceptid'] for d in resource['_source']['domains']]
+                if protect_id in conceptids:
+                    filtered_ids.append(resource['_source']['entityid'])
+                    continue
             ret['related_resources'].append(resource['_source'])
-
-    return ret
-
-def map_layers(request, entitytypeid='all', get_centroids=False):
-    data = []
-    geom_param = request.GET.get('geom', None)
-
-    bbox = request.GET.get('bbox', '')
-    limit = request.GET.get('limit', settings.MAP_LAYER_FEATURE_LIMIT)
-    entityids = request.GET.get('entityid', '')
-    geojson_collection = {
-      "type": "FeatureCollection",
-      "features": []
-    }
     
-    se = SearchEngineFactory().create()
-    query = Query(se, limit=limit)
+    if len(filtered_ids) > 0:
+        # remove all relationships in ret that match a filtered id (this lc is yuge but I think concise)
+        filtered_relationships = [rel for rel in ret['resource_relationships'] if not rel['entityid1'] in filtered_ids and not rel['entityid2'] in filtered_ids]
+        
+        # update ret values
+        ret['resource_relationships'] = filtered_relationships
+        
+    ret['total'] = len(ret['resource_relationships'])
+    
+    return ret
+    
+def filter_protected(results,doc_type,entitytypeid,value):
+    print "a"
+    protect_ids = []
+    print "b"
+    print results
+    #all_entity_ids = [hit['_id'] for hit in results['hits']['hits']]
+    print "c"
+    for item in results['docs']:
+        print item
+        if item['_type'] == doc_type:
+            res_id = item['_id']
+            print res_id
+            print json.dumps(item,indent=2)
+            for node in item['_source']['child_entities']:
+                #print json.dumps(node,indent=2)
+                if node['entitytypeid'] == entitytypeid:
+                    if node['value'] == value:
+                        protect_ids.append(res_id)
+                    else:
+                        all_entity_ids.append(res_id)
 
-    args = { 'index': 'maplayers' }
-    if entitytypeid != 'all':
-        args['doc_type'] = entitytypeid
-    if entityids != '':
-        for entityid in entityids.split(','):
-            geojson_collection['features'].append(se.search(index='maplayers', id=entityid)['_source'])
-        return JSONResponse(geojson_collection)
+    results['hits']['hits'] = [hit for hit in results['hits']['hits'] if not hit['_id'] in protect_ids]
+    results['hits']['total'] = results['hits']['total'] - len(protect_ids)
 
-    data = query.search(**args)
-
-    for item in data['hits']['hits']:
-        if get_centroids:
-            item['_source']['geometry'] = item['_source']['properties']['centroid']
-            item['_source'].pop('properties', None)
-        elif geom_param != None:
-            item['_source']['geometry'] = item['_source']['properties'][geom_param]
-            item['_source']['properties'].pop('extent', None)
-            item['_source']['properties'].pop(geom_param, None)
-        else:
-            item['_source']['properties'].pop('extent', None)
-            item['_source']['properties'].pop('centroid', None)
-        geojson_collection['features'].append(item['_source'])
-
-    return JSONResponse(geojson_collection)
+    #good_eids = [i for i in all_entity_ids if not i in protect_ids]
+    
+    return results, good_eids
 
 def edit_history(request, resourceid=''):
     ret = []
@@ -815,3 +836,22 @@ def get_allowed_types(request):
                 allowedtypes.append(k)
 
     return allowedtypes
+    
+def get_protected_entityids():
+    '''returns list of entity ids for protected resources'''
+    
+    from search import get_protection_conceptids
+    protect_id = get_protection_conceptids(settings.PROTECTION_LEVEL_NODE)
+    filtered_ids = []
+    se = SearchEngineFactory().create()
+    
+    # for some reason doc_type must be speficied with INFORMATION RESOURCE in order for that type
+    # to be queried. right now this is ok, because it's the only type with protection levels,
+    # but this is very strange.
+    all_resources = se.search(index='entity', doc_type="INFORMATION_RESOURCE.E73")['hits']['hits']
+    for resource in all_resources:
+        conceptids = [d['conceptid'] for d in resource['_source']['domains']]
+        if protect_id in conceptids:
+            filtered_ids.append(resource['_source']['entityid'])
+
+    return filtered_ids
