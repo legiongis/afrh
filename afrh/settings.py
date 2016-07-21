@@ -37,6 +37,9 @@ LOCAL_DOMAIN = "afrh.adamcfcox.com"
 SEARCH_ITEMS_PER_PAGE = 10
 SEARCH_EXPORT_ITEMS_PER_PAGE = 10
 
+## add setting for system-wide node name that stores the protection level concepts
+PROTECTION_LEVEL_NODE = "PROTECTION_LEVEL.E55"
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
