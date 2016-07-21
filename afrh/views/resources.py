@@ -613,7 +613,6 @@ def resource_manager(request, resourcetypeid='', form_id='default', resourceid='
     form = resource.get_form(form_id)
 
     if request.method == 'DELETE':
-        filtertypes = get_filter_types(request)
         resource.delete_index()
         se = SearchEngineFactory().create()
         relationships = resource.get_related_resources(return_entities=False)
@@ -800,24 +799,6 @@ def get_admin_areas(request):
     intersection = models.Overlays.objects.filter(geometry__intersects=geom)
     return JSONResponse({'results': intersection}, indent=4)
 
-def get_filter_types(request):
-    ''' references the user permissions in the request and returns a list of resource types to filter'''
-
-    if request.user.username == 'anonymous':
-        return ['ACTIVITY_A.E7','ACTIVITY_B.E7']
-        
-    filtertypes = settings.RESOURCE_TYPE_CONFIGS().keys()
-    permissions = request.user.get_all_permissions()
-    for k in settings.RESOURCE_TYPE_CONFIGS().keys():
-        for p in permissions:
-            t,res = p.split(".")[:2]
-            if not t == "VIEW":
-                continue
-            if k.startswith(res):
-                filtertypes.remove(k)
-
-    return filtertypes
-    
 def get_allowed_types(request):
     ''' references the user permissions in the request and returns a list of resource types to allow in a search query'''
     allowedtypes = []
