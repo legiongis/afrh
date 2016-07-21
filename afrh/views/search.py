@@ -65,16 +65,24 @@ def filter_protected(results,doc_type,entitytypeid,value):
     good_eids = [i for i in all_entity_ids if not i in protect_ids]
     
     return results, good_eids
+
+def get_protection_conceptids(protection_level_node):
+    '''simple function to retrive the conecptid of the "protected" concept.
+could be modified to return a more complex set of conceptids.'''
+    
+    entries = Concept().get_e55_domain(protection_level_node)
+    for entry in entries:
+        if entry['text'] == 'Protected':
+            conceptid = entry['conceptid']
+            
+    return conceptid
     
 def add_neg_filter(query):
     '''adds a boolfilter that omits any resource that is protected with a certain
 conceptid, this is simply a negative test for a specific conceptid'''
     
     # get all the protection level conceptid
-    entries = Concept().get_e55_domain('PROTECTION_LEVEL.E55')
-    for entry in entries:
-        if entry['text'] == 'Protected':
-            conceptid = entry['conceptid']
+    conceptid = get_protection_conceptids(settings.PROTECTION_LEVEL_NODE)
 
     # create boolfilter
     boolfilter = Bool()
