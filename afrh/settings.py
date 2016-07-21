@@ -77,7 +77,7 @@ def RESOURCE_TYPE_CONFIGS():
             'fill_color': '#C4171D',
             'primary_name_lookup': {
                 'entity_type': 'NAME.E41',
-                'lookup_value': ('NAME_TYPE.E55','Current')
+                'lookup_value': ('NAME_TYPE.E55','Current Primary')
             },
             'sort_order': 1,
             'show_polygons':True,
