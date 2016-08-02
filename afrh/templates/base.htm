@@ -368,9 +368,9 @@
                 sectionEl = $(this).closest('.help-section');
                 contentEl = $(sectionEl).find('.help-content');
                 if (contentEl.is(":visible")){
-                    contentEl.slideUp();
+                    contentEl.hide("fast");
                 } else {
-                    contentEl.slideDown();
+                    contentEl.show("fast");
                 }
                 $(iconEl).toggleClass("fa-chevron-down");
                 $(iconEl).toggleClass("fa-chevron-right");
