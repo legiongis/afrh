@@ -6,21 +6,6 @@
         <span>General Help</span>
     </div>
     <div class="col-md-12">
-        <!--
-        <div class="help-section" >
-            <div class="report-section-header">
-                <span class="section-toggle" href="javascript:void(0);"><i class="rounded-x fa fa-chevron-right" style="padding-left:15px;"></i></span>
-            </div>
-            <div class="row report-content">
-                <div class="hidden-sm hidden-md hidden-lg margin-bottom-20"></div>
-                <div class="col-xs-12">
-                    <div class="right-inner arches-box-grey-border">
-                        {# include 'views/reports/sections/CA-summary.htm' #}
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
         <div class="help-section" >
             <div class="help-toggle help-button">
                 <a href="javascript:void(0);">
@@ -61,22 +46,48 @@
         <div class="help-section" >
             <div class="help-toggle help-button">
                 <a href="javascript:void(0);">
-                    <h5>Your Account Summary</h5>
+                    <h5>Your Permissions</h5>
                     <i class="expand-symbol fa fa-chevron-right"></i>
                 </a>
             </div>
             <div class="help-content">
-                <p>RDM Access: <b>{{user_permissions.can_rdm}}</b></p>
-                {% if user_permissions.can_create %}
-                    <p>You can <b>create or edit</b> new resources of the following types:</p>
-                {% else %}
-                    <p>You can <b>edit</b> existing resources of the following types:</p>
+                {% if user.groups.all|length > 0 %}
+                <p>Group membership: 
+                    {% for group in user.groups.all %}
+                        <strong>{{group.name}}</strong>
+                    {% endfor %}
+                </p>
                 {% endif %}
-                <ul>
-                {% for restype in user_permissions.entities_allowed %}
-                    <li>{{restype}}</li>
-                {% endfor %}
-                </ul>
+                <p>Access to the Resource Data Manager (RDM): <strong>{{rdm}}</strong></p>
+                <p>Resource permissions:
+                    <ul class="permission-list">
+                    {% for type, type_data in resource_types %}
+                        <li style="margin-bottom:5px;"><strong><i class="{{type_data.icon_class}}"></i>&nbsp;&nbsp;{{type_data.name}}</strong><br>
+                        &nbsp;&nbsp;
+                        {% if type in create %}
+                            <div class="perm-green">CREATE</div>
+                        {% else %}
+                            <div class="perm-red">CREATE</div>
+                        {% endif %}&nbsp;|&nbsp;
+                        {% if type in edit %}
+                            <div class="perm-green">EDIT</div>
+                        {% else %}
+                            <div class="perm-red">EDIT</div>
+                        {% endif %}&nbsp;|&nbsp;
+                        {% if type in view %}
+                            <div class="perm-green">VIEW</div>
+                        {% else %}
+                            <div class="perm-red">VIEW</div>
+                        {% endif %}&nbsp;|&nbsp;
+                        {% if type in fullreport %}
+                            <div class="perm-green">FULL REPORT</div>
+                        {% else %}
+                            <div class="perm-red">FULL REPORT</div>
+                        {% endif %}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </p>
             </div>
         </div>
         {% endif %}

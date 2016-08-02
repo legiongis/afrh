@@ -835,3 +835,23 @@ body {
     background: #222222 !important;
     background-color: #222222 !important;
 }
+
+.permission-list {
+    list-style-type:none;
+}
+
+.permission-list span {
+    list-style-type:none;
+}
+
+.perm-green {
+    color:green;
+    font-size:10pt;
+    display: inline;
+}
+
+.perm-red {
+    color:red;
+    font-size:10pt;
+    display: inline;
+}
