@@ -68,7 +68,7 @@ class DesEvaluationForm(ResourceForm):
     def get_info():
         return {
             'id': 'des-evaluation',
-            'icon': 'fa-random',
+            'icon': 'fa-tag',
             'name': _('Evaluation'),
             'class': DesEvaluationForm
         }
@@ -117,7 +117,7 @@ class InvestRecForm(ResourceForm):
     def get_info():
         return {
             'id': 'invest-recommendations',
-            'icon': 'fa-list',
+            'icon': 'fa-calendar-check-o',
             'name': _('Recommendations'),
             'class': InvestRecForm
         }
@@ -137,7 +137,7 @@ class InvestAssessmentForm(ResourceForm):
     def get_info():
         return {
             'id': 'invest-assessment',
-            'icon': 'fa-random',
+            'icon': 'fa-tags',
             'name': _('Assessments'),
             'class': InvestAssessmentForm
         }
@@ -167,7 +167,7 @@ class CharAreaGuidelinesForm(ResourceForm):
     def get_info():
         return {
             'id': 'char-area-guidelines',
-            'icon': 'fa-flash',
+            'icon': 'fa-legal',
             'name': _('Guidelines'),
             'class': CharAreaGuidelinesForm
         }
@@ -189,7 +189,7 @@ class ComponentForm(ResourceForm):
     def get_info():
         return {
             'id': 'component',
-            'icon': 'fa fa-bar-chart-o',
+            'icon': 'fa fa-sitemap',
             'name': _('Components'),
             'class': ComponentForm
         }
@@ -338,7 +338,7 @@ class FunctionAndUseForm(ResourceForm):
     def get_info():
         return {
             'id': 'function-and-use',
-            'icon': 'fa-tag',
+            'icon': 'fa-magic',
             'name': _('Function and Use'),
             'class': FunctionAndUseForm
         }
@@ -373,7 +373,7 @@ class FormDimensionForm(ResourceForm):
     def get_info():
         return {
             'id': 'form-dimension',
-            'icon': 'fa-th-large',
+            'icon': 'fa-codepen',
             'name': _('Form and Dimensions'),
             'class': FormDimensionForm
         }
@@ -404,7 +404,7 @@ class EntitiesForm(ResourceForm):
     def get_info():
         return {
             'id': 'entities',
-            'icon': 'fa-flash',
+            'icon': 'fa-users',
             'name': _('Entities'),
             'class': EntitiesForm
         }
@@ -496,7 +496,7 @@ class PublicationForm(ResourceForm):
     def get_info():
         return {
             'id': 'publication',
-            'icon': 'fa-flash',
+            'icon': 'fa-pencil',
             'name': _('Creation and Publication'),
             'class': PublicationForm
         }

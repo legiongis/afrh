@@ -46,7 +46,7 @@ class CharAreaDescriptionForm(ResourceForm):
     def get_info():
         return {
             'id': 'char-area-description',
-            'icon': 'fa-flash',
+            'icon': 'fa-align-left',
             'name': _('Description'),
             'class': CharAreaDescriptionForm
         }
@@ -66,7 +66,7 @@ class ActADescriptionForm(ResourceForm):
     def get_info():
         return {
             'id': 'activity-a-description',
-            'icon': 'fa-flash',
+            'icon': 'fa-align-left',
             'name': _('Description'),
             'class': ActADescriptionForm
         }
@@ -117,7 +117,7 @@ class DesDescriptionForm(ResourceForm):
     def get_info():
         return {
             'id': 'des-description',
-            'icon': 'fa-flash',
+            'icon': 'fa-align-left',
             'name': _('Description'),
             'class': DesDescriptionForm
         }
@@ -150,7 +150,7 @@ class ActBDescriptionForm(ResourceForm):
     def get_info():
         return {
             'id': 'activity-b-description',
-            'icon': 'fa-flash',
+            'icon': 'fa-align-left',
             'name': _('Description'),
             'class': ActBDescriptionForm
         }
@@ -181,7 +181,7 @@ class InventoryDescriptionForm(ResourceForm):
     def get_info():
         return {
             'id': 'inventory-description',
-            'icon': 'fa-picture-o',
+            'icon': 'fa-align-left',
             'name': _('Description'),
             'class': InventoryDescriptionForm
         }

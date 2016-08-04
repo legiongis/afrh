@@ -47,7 +47,7 @@ class MPZoneGuidelinesForm(ResourceForm):
     def get_info():
         return {
             'id': 'mpz-guidelines',
-            'icon': 'fa-asterisk',
+            'icon': 'fa-legal',
             'name': _('Guidelines'),
             'class': MPZoneGuidelinesForm
         }
@@ -307,7 +307,7 @@ class ConditionForm(ResourceForm):
     def get_info():
         return {
             'id': 'condition',
-            'icon': 'fa-asterisk',
+            'icon': 'fa-bar-chart',
             'name': _('Condition Assessment'),
             'class': ConditionForm
         }
@@ -434,7 +434,7 @@ class ActivityConsultationForm(ResourceForm):
     def get_info():
         return {
             'id': 'activity-consultation',
-            'icon': 'fa-asterisk',
+            'icon': 'fa-paper-plane',
             'name': _('Consultations'),
             'class': ActivityConsultationForm
         }
@@ -526,7 +526,7 @@ class RelatedFilesForm(ResourceForm):
     def get_info():
         return {
             'id': 'related-files',
-            'icon': 'fa-file-text-o',
+            'icon': 'fa-file-image-o',
             'name': _('Images and Files'),
             'class': RelatedFilesForm
         }

@@ -45,7 +45,7 @@ class InventorySummaryForm(ResourceForm):
     def get_info():
         return {
             'id': 'inventory-summary',
-            'icon': 'fa-tag',
+            'icon': 'fa-list-ul',
             'name': _('Summary'),
             'class': InventorySummaryForm
         }
@@ -143,7 +143,7 @@ class InvestSummaryForm(ResourceForm):
     def get_info():
         return {
             'id': 'invest-summary',
-            'icon': 'fa-tag',
+            'icon': 'fa-list-ul',
             'name': _('Summary'),
             'class': InvestSummaryForm
         }
@@ -197,7 +197,7 @@ class CharAreaSummaryForm(ResourceForm):
     def get_info():
         return {
             'id': 'char-area-summary',
-            'icon': 'fa-tag',
+            'icon': 'fa-list-ul',
             'name': _('Summary'),
             'class': CharAreaSummaryForm
         }
@@ -222,7 +222,7 @@ class ArchZoneSummaryForm(ResourceForm):
     def get_info():
         return {
             'id': 'arch-summary',
-            'icon': 'fa-tag',
+            'icon': 'fa-list-ul',
             'name': _('Summary'),
             'class': ArchZoneSummaryForm
         }
@@ -246,7 +246,7 @@ class DesSummaryForm(ResourceForm):
     def get_info():
         return {
             'id': 'des-summary',
-            'icon': 'fa-tag',
+            'icon': 'fa-list-ul',
             'name': _('Summary'),
             'class': DesSummaryForm
         }
@@ -289,7 +289,7 @@ class InformationResourceSummaryForm(ResourceForm):
     def get_info():
         return {
             'id': 'information-resource-summary',
-            'icon': 'fa-tag',
+            'icon': 'fa-list-ul',
             'name': _('Summary'),
             'class': InformationResourceSummaryForm
         }   
@@ -347,7 +347,7 @@ class MPZoneSummaryForm(ResourceForm):
     def get_info():
         return {
             'id': 'mpz-summary',
-            'icon': 'fa-picture-o',
+            'icon': 'fa-list-ul',
             'name': _('Summary'),
             'class': MPZoneSummaryForm
         }
@@ -392,7 +392,7 @@ class ActorSummaryForm(ResourceForm):
     def get_info():
         return {
             'id': 'actor-summary',
-            'icon': 'fa-tag',
+            'icon': 'fa-list-ul',
             'name': _('Summary'),
             'class': ActorSummaryForm
         }
@@ -435,7 +435,7 @@ class ActivityForm(ResourceForm):
     def get_info():
         return {
             'id': 'activity-summary',
-            'icon': 'fa-tag',
+            'icon': 'fa-list-ul',
             'name': _('Summary'),
             'class': ActivityForm
         }

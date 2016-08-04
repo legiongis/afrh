@@ -45,7 +45,7 @@ class NCPCReviewForm(ResourceForm):
     def get_info():
         return {
             'id': 'ncpc-review',
-            'icon': 'fa-random',
+            'icon': 'fa-paperclip',
             'name': _('NCPC Review'),
             'class': NCPCReviewForm
         }
@@ -76,7 +76,7 @@ class HPOHPRBReviewForm(ResourceForm):
     def get_info():
         return {
             'id': 'hpo-hprb-review',
-            'icon': 'fa-random',
+            'icon': 'fa-paperclip',
             'name': _('HPO/HPRB Review'),
             'class': HPOHPRBReviewForm
         }
@@ -107,7 +107,7 @@ class CFAReviewForm(ResourceForm):
     def get_info():
         return {
             'id': 'cfa-review',
-            'icon': 'fa-random',
+            'icon': 'fa-paperclip',
             'name': _('CFA Review'),
             'class': CFAReviewForm
         }
@@ -138,7 +138,7 @@ class Section106ReviewForm(ResourceForm):
     def get_info():
         return {
             'id': 'section-oneohsix-review',
-            'icon': 'fa-random',
+            'icon': 'fa-paperclip',
             'name': _('Section 106'),
             'class': Section106ReviewForm
         }
@@ -198,7 +198,7 @@ class ARPAReviewForm(ResourceForm):
     def get_info():
         return {
             'id': 'arpa-review',
-            'icon': 'fa-random',
+            'icon': 'fa-paperclip',
             'name': _('ARPA Review'),
             'class': ARPAReviewForm
         }
@@ -263,7 +263,7 @@ class NEPAReviewForm(ResourceForm):
     def get_info():
         return {
             'id': 'nepa-review',
-            'icon': 'fa-random',
+            'icon': 'fa-paperclip',
             'name': _('NEPA Review'),
             'class': NEPAReviewForm
         }

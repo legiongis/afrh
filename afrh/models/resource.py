@@ -93,8 +93,9 @@ class Resource(ArchesResource):
                 summary.ArchZoneSummaryForm.get_info(),
                 location.SimpleLocationForm.get_info(),
                 location.ProbabilityAreaForm.get_info(),
-                wizard.ArchZoneInvestigationForm.get_info(),
-                location.InvestigationLocationForm.get_info(),
+                ## deprecated in favor of new investigation locations resource type
+                # wizard.ArchZoneInvestigationForm.get_info(),
+                # location.InvestigationLocationForm.get_info(),
             ]
             
         if self.entitytypeid == 'FIELD_INVESTIGATION.E7':
@@ -110,8 +111,8 @@ class Resource(ArchesResource):
         if self.entitytypeid == 'HISTORIC_AREA.E53':
             description_group['forms'][:0] = [
                 summary.DesSummaryForm.get_info(),
-                location.SimpleLocationForm.get_info(),
                 description.DesDescriptionForm.get_info(),
+                location.SimpleLocationForm.get_info(),
                 other.DesEvaluationForm.get_info(),
             ]
 

@@ -222,7 +222,7 @@ def RESOURCE_TYPE_CONFIGS():
         'ACTOR.E39': {
             'resourcetypeid': 'ACTOR.E39',
             'name': _('Person/Organization'),
-            'icon_class': 'fa fa-group',
+            'icon_class': 'fa fa-user',
             'default_page': 'actor-summary',
             'default_description': 'no description available',
             'description_node': _('INSERT RESOURCE DESCRIPTION NODE HERE'),

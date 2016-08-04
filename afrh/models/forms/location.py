@@ -199,7 +199,7 @@ class InvestLocationForm(ResourceForm):
     def get_info():
         return {
             'id': 'invest-location',
-            'icon': 'fa-map-marker',
+            'icon': 'fa-spoon',
             'name': _('Shovel Tests'),
             'class': InvestLocationForm
         }
@@ -266,8 +266,10 @@ class ProbabilityAreaForm(ResourceForm):
         }
 
         return
-        
+
 class InvestigationLocationForm(ResourceForm):
+    ''' this form is deprecated '''
+    
     @staticmethod
     def get_info():
         return {
@@ -295,7 +297,7 @@ class ActALocationForm(ResourceForm):
     def get_info():
         return {
             'id': 'activity-a-location',
-            'icon': 'fa-map-marker',
+            'icon': 'fa-object-ungroup',
             'name': _('Location'),
             'class': ActALocationForm
         }
