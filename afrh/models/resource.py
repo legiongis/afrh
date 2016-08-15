@@ -300,14 +300,14 @@ class Resource(ArchesResource):
         if self.entitytypeid == 'INVENTORY_RESOURCE.E18':
             document_data['resource_type'] = get_entity_data('NRHP_RESOURCE_TYPE.E55', get_label=True)
             document_data['building_number'] = get_entity_data('BUILDING_NUMBER.E42', get_label=True)
-            document_data['description'] = get_entity_data('DESCRIPTION.E62')
+            document_data['description'] = get_entity_data('DESCRIPTION.E62', get_label=True)
             if len(document_data['description'].split(" ")) > 30:
                 words30 = document_data['description'].split(" ")[:30]
                 document_data['description'] = " ".join(words30) + "...</p>"
 
         if self.entitytypeid == 'CHARACTER_AREA.E53':
             document_data['significance'] = get_entity_data('RELATIVE_LEVEL_OF_SIGNIFICANCE.E55', get_label=True)
-            document_data['description'] = get_entity_data('DESCRIPTION.E62')
+            document_data['description'] = get_entity_data('DESCRIPTION.E62', get_label=True)
             if len(document_data['description'].split(" ")) > 30:
                 words30 = document_data['description'].split(" ")[:30]
                 document_data['description'] = " ".join(words30) + "...</p>"
@@ -321,7 +321,7 @@ class Resource(ArchesResource):
             document_data['planned_use'] = get_entity_data('PLANNED_USE.E55', get_label=True)
 
         if self.entitytypeid == 'ARCHAEOLOGICAL_ZONE.E53':
-            document_data['description'] = get_entity_data('DESCRIPTION.E62')
+            document_data['description'] = get_entity_data('DESCRIPTION.E62', get_label=True)
             if len(document_data['description'].split(" ")) > 30:
                 words30 = document_data['description'].split(" ")[:30]
                 document_data['description'] = " ".join(words30) + "...</p>"
@@ -353,13 +353,13 @@ class Resource(ArchesResource):
                     document_data['other'] = True
             
         if self.entitytypeid == 'ACTIVITY_A.E7':
-            document_data['work_order'] = get_entity_data('WORK_ORDER_NUMBER.E42')
+            document_data['work_order'] = get_entity_data('WORK_ORDER_NUMBER.E42', get_label=True)
             document_data['procedure'] = get_entity_data('ACTIVITY_PROCEDURE_TYPE.E55', get_label=True)
             document_data['review'] = get_entity_data('ACTIVITY_REVIEW_TYPE.E55', get_label=True)
             document_data['status'] = get_entity_data('CURRENT_ACTION_STATUS.E55', get_label=True)
 
         if self.entitytypeid == 'ACTIVITY_B.E7':
-            document_data['building_permit'] = get_entity_data('BUILDING_PERMIT_NUMBER.E42')
+            document_data['building_permit'] = get_entity_data('BUILDING_PERMIT_NUMBER.E42', get_label=True)
             document_data['review'] = get_entity_data('ACTIVITY_REVIEW_TYPE.E55', get_label=True)
             document_data['project'] = get_entity_data('ACTIVITY_B_PROJECT_TYPE.E55', get_label=True)
         
