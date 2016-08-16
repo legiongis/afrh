@@ -77,7 +77,7 @@ def build_auth_system():
 
     ## using blank model for the content type, as described in this post, maybe not a good long-term solution
     ## http://stackoverflow.com/questions/13932774/how-can-i-use-django-permissions-without-defining-a-content-type-or-model
-    
+    ## create all groups inside of a dictionary, so they can be referenced as objects later
     print "  creating groups...",
     group_dict = {
         'admin1':Group.objects.get_or_create(name='Admin 1')[0],
@@ -88,6 +88,8 @@ def build_auth_system():
     }
     print "done."
 
+    ## create all possible resource-related permissions by referencing each resource type
+    ## also, add each permission to the appropriate group object (created above)
     print "  creating permissions and adding to groups...",
     perm_types = ['create','edit','fullreport','view']
     
@@ -105,23 +107,22 @@ def build_auth_system():
                         continue
                     for group in groups:
                         group_dict[group].permissions.add(this_perm)
-
+    
+    ## create separate permission object to just handle RDM access
     content_type = ContentType.objects.get_or_create(app_label="AFRH", model="afrh")
     rdm = Permission.objects.create(codename='rdm_access', name='RDM Access', content_type=content_type[0])
+    
+    ## add RDM access to the admin1 gourp. THIS IS HARD-CODED HERE.
     group_dict['admin1'].permissions.add(rdm)
     print "done."
     
-    print "  creating users...",
-    admin1_user = User.objects.create_user("admin1","","pw")
-    admin1_user.groups.add(group_dict['admin1'])
-    admin2_user = User.objects.create_user("admin2","","pw")
-    admin2_user.groups.add(group_dict['admin2'])
-    afrh_staff_user = User.objects.create_user("afrh_staff","","pw")
-    afrh_staff_user.groups.add(group_dict['afrh_staff'])
-    afrh_staff_user = User.objects.create_user("afrh_volunteer","","pw")
-    afrh_staff_user.groups.add(group_dict['afrh_volunteer'])
-    development_user = User.objects.create_user("development","","pw")
-    development_user.groups.add(group_dict['development'])
-    print "done."
+    ## create one sample user for each group. username and password is the group name.
+    print "  creating sample users..."
+    print "  ",
+    for name in group_dict.keys():
+        print name,
+        newuser = User.objects.create_user(name,"",name)
+        newuser.groups.add(group_dict[name])
+    print "\ndone."
     print ""
     
