@@ -45,7 +45,7 @@ Each group is automatically assigned specific permissions, as defined in setting
 
 A full summary of the permissions are shown in the table below.
 
-| Name|RDM|Inventory Resources||||Master Plan Zones||||Character Areas||||Archaeological Zones||||Designations||||Management Activities A||||Management Activities B||||Information Resources|
+|Name|RDM|Inventory Resources||||Master Plan Zones||||Character Areas||||Archaeological Zones||||Designations||||Management Activities A||||Management Activities B||||Information Resources|
 ||Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit
 Public|No|No|No|Yes - Filtered|Yes|No|No|Yes - All|Yes|No|No|Yes - All|Yes|No|No|Yes - Filtered|Yes|No|No|Yes - All|Yes|No|No|No|No|No|No|No|No|No|No
 Admin 1|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes
