@@ -31,7 +31,7 @@ define(['jquery',
                 data: this.data,
                 dataKey: 'NCPC_SUBMISSION.E5',
                 validateBranch: function(nodes){
-                    var ck1 = vt.nodesHaveValues(nodes,["NCPC_SUBMISSION_TYPE.E55","NCPC_SUBMISSION_DATE.E49");
+                    var ck1 = vt.nodesHaveValues(nodes,["NCPC_SUBMISSION_TYPE.E55","NCPC_SUBMISSION_DATE.E49"]);
                     var ck2 = vt.isValidDate(nodes,"NCPC_SUBMISSION_DATE.E49");
                     var ck3 = vt.isValidDate(nodes,"NCPC_SUBMISSION_REVIEW_DATE.E49");
                     return ck1 && ck2 && ck3;

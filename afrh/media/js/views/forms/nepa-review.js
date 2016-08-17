@@ -59,7 +59,7 @@ define(['jquery',
                 dataKey: 'NEPA_DOCUMENTATION.E31',
                 validateBranch: function(nodes){
                     var ck1 = vt.isValidDate(nodes, 'NEPA_DOCUMENTATION_DATE.E49');
-                    var ck2 = vt.nodesHaveValues(nodes,['NEPA_DOCUMENTATION.E31','NEPA_DOCUMENTATION_DATE.E49');
+                    var ck2 = vt.nodesHaveValues(nodes,['NEPA_DOCUMENTATION.E31','NEPA_DOCUMENTATION_DATE.E49']);
                     return ck1 && ck2;
                 }
             }));
