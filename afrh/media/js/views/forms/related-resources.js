@@ -11,13 +11,16 @@ define([
     'views/search/time-filter',
     'views/search/search-results',
     'views/forms/sections/branch-list',
+    'views/forms/sections/validation',
     'views/forms/base',
     'plugins/bootstrap-slider/bootstrap-slider.min',
     'bootstrap-datetimepicker',
     'plugins/knockout-select2',
     'summernote'
-], function ($, _, ko, koMapping, ol, arches, resourceTypes, TermFilter, MapFilter, TimeFilter, SearchResults, BranchList, BaseForm) {
+], function ($, _, ko, koMapping, ol, arches, resourceTypes, TermFilter, MapFilter, TimeFilter, SearchResults, BranchList, ValidationTools, BaseForm) {
+    
     var wkt = new ol.format.WKT();
+    var vt = new ValidationTools;
 
     return BaseForm.extend({
 
@@ -63,7 +66,6 @@ define([
 
             BaseForm.prototype.initialize.apply(this);
             var resourceId = this.data['resource-id'];
-            console.log(this.data);
             var defaultRelationshipType = this.data['related-resources']['default_relationship_type'];
 
             var relationBranchList = new BranchList({
@@ -71,6 +73,9 @@ define([
                 data: this.data,
                 dataKey: 'related-resources',
                 validateBranch: function (nodes) {
+                    console.log("validating");
+                    console.log(nodes);
+                    console.log(this.validateHasValues(nodes));
                     return this.validateHasValues(nodes);
                 },
                 addBlankEditBranch: function(){
@@ -175,6 +180,9 @@ define([
                         $.each(this._source.child_entities, function(i, entity){
                             if (entity.entitytypeid === descriptionNode){
                                 description = entity.value;
+                                if (description.length > 150) {
+                                    description = description.split(/\s+/).slice(0,50).join(" ")+"...";
+                                };
                             }
                         })
 
