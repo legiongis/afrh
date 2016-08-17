@@ -10,7 +10,7 @@ The Armed Forces Retirement Home - Washington implementation of Arches is based 
 
 ## Resource Types
 
-The AFRH database comprises the following ten resource type:
+The AFRH database comprises the following ten resource types:
 
 + *Inventory Resource* The 250 historic resources (buildings, sites, objects) managed by the AFRH-W.
 + *Character Area* The character defining areas throughout the grounds
@@ -82,6 +82,12 @@ The app has the following permission groups:
 Each group is automatically assigned specific permissions, as defined in settings.RESOURCE_TYPE_CONFIGS(). During the install of this app, a sample user is made for each group, whose name and password are one of the groups listed above.
 
 A full summary of the permissions are shown in the table below.
+
+| Group | RDM | Inventory Resource - CREATE | EDIT | FULLREPORT | VIEW | Character Area - CREATE | EDIT | FULLREPORT | VIEW |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| admin1 | yes | yes | yes | yes | yes | yes | yes | yes | yes |
+
+
 
 |Group Name|RDM|Inventory Resources||||Master Plan Zones||||Character Areas||||Archaeological Zones||||Designations||||Management Activities A||||Management Activities B||||Information Resources|
 ||Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit
