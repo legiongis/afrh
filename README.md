@@ -84,22 +84,10 @@ Each group is automatically assigned specific permissions, as defined in setting
 A full summary of the permissions are shown in the table below.
 
 [google sheet](https://docs.google.com/a/preservescapes.com/spreadsheets/d/1chESyXrU5NizBBQ6tc4SCFMbYll7-NuKQKcDZYfPW9g/pubhtml)
-<iframe src="https://docs.google.com/a/preservescapes.com/spreadsheets/d/1chESyXrU5NizBBQ6tc4SCFMbYll7-NuKQKcDZYfPW9g/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
-| Group | RDM | Inventory Resource - CREATE | EDIT | FULLREPORT | VIEW | Master Plan Zone - CREATE | EDIT | FULLREPORT | VIEW | Character Area - CREATE | EDIT | FULLREPORT | VIEW |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| admin1 | yes | yes | yes | yes | yes | yes | x | **x** | &#10004; |
-
-
-
-|Group Name|RDM|Inventory Resources||||Master Plan Zones||||Character Areas||||Archaeological Zones||||Designations||||Management Activities A||||Management Activities B||||Information Resources|
-||Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit|Report|See/Search|Add|Edit
-Public|No|No|No|Yes - Filtered|Yes|No|No|Yes - All|Yes|No|No|Yes - All|Yes|No|No|Yes - Filtered|Yes|No|No|Yes - All|Yes|No|No|No|No|No|No|No|No|No|No
-Admin 1|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes
-Admin 2|No|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes|Yes - All|Yes|Yes|Yes
-AFRH - STAFF|No|No|No|Yes - All|Yes|No|No|Yes - All|Yes|No|No|Yes - All|Yes|No|No|Yes - All|Yes|No|No|Yes - All|Yes|Yes|Yes|Yes - All|Yes|No|No|Yes - All|Yes|Yes|Yes
-AFRH - VOL|No|No|No|Yes - Filtered|Yes|No|No|Yes - All|Yes|No|No|Yes - All|Yes|No|No|Yes - Filtered|Yes|No|No|Yes - All|Yes|No|No|No|No|No|No|No|No|Yes|Yes
-Development|No|No|No|Yes - Filtered|Yes|No|No|Yes - All|Yes|No|No|Yes - All|Yes|No|No|Yes - Filtered|Yes|No|No|Yes - All|Yes|No|No|No|No|Yes|Yes|Yes - All|Yes|No|No
+| Group  | RDM      | Inventory Resource - CREATE | EDIT     | FULLREPORT | VIEW     | Master Plan Zone - CREATE | EDIT     | FULLREPORT | VIEW     | Character Area - CREATE   | EDIT     | FULLREPORT | VIEW     | Archaeological Zone - CREATE | EDIT     | FULLREPORT | VIEW     | Master Plan Zone - CREATE | EDIT     | FULLREPORT | VIEW     |
+| ------ | :------: | :-------------------------: | :------: | :--------: | :------: | :-----------------------: | :------: | :--------: | :------: | :-----------------------: | :------: | :--------: | :------: | :--------------------------: | :------: | :--------: | :------: | :-----------------------: | :------: | :--------: | :------: |
+| admin1 | &#10004; | &#10004;                    | &#10004; | &#10004;   | &#10004; | &#10004;                  | &#10004; | &#10004;   | &#10004; | &#10004;                  | &#10004; | &#10004;   | &#10004; | &#10004;                     | &#10004; | &#10004;   | &#10004; | &#10004;                  | &#10004; | &#10004;   | &#10004; |
 
 ## Database Browsing
 
