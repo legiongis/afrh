@@ -83,6 +83,8 @@ Each group is automatically assigned specific permissions, as defined in setting
 
 A full summary of the permissions are shown in the table below.
 
+[google sheet](https://docs.google.com/a/preservescapes.com/spreadsheets/d/1chESyXrU5NizBBQ6tc4SCFMbYll7-NuKQKcDZYfPW9g/pubhtml)
+
 | Group | RDM | Inventory Resource - CREATE | EDIT | FULLREPORT | VIEW | Master Plan Zone - CREATE | EDIT | FULLREPORT | VIEW | Character Area - CREATE | EDIT | FULLREPORT | VIEW |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | admin1 | yes | yes | yes | yes | yes | yes | x | **x** | &#10004; |
