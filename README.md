@@ -85,7 +85,7 @@ A full summary of the permissions are shown in the table below.
 
 | Group | RDM | Inventory Resource - CREATE | EDIT | FULLREPORT | VIEW | Character Area - CREATE | EDIT | FULLREPORT | VIEW |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| admin1 | yes | yes | yes | yes | yes | yes | x | *x* | &#10004; |
+| admin1 | yes | yes | yes | yes | yes | yes | x | _x_ | &#10004; |
 
 
 
