@@ -855,3 +855,25 @@ body {
     font-size:10pt;
     display: inline;
 }
+
+/* front page button */
+.super-button {
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    font-family: 'Open Sans', sans-serif !important;
+    color: #5f6265;
+    border: solid 2px;
+}
+
+.super-button:hover {
+    background-color: #ef5876;
+    color: white;
+}
+
+.button-holder {
+    display: table;
+    margin-top: 25px;
+    margin-right: auto;
+    margin-left: auto;
+}

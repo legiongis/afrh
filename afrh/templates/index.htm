@@ -181,9 +181,16 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 <!--=== HIP Title Block ===-->
         <div class="row" style="background: rgba(255,255,255,.3); margin: 0px; padding: 15px; text-align: left; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px;">
-            <div class="col-md-12 animated fadeInLeft" style="color: white;">
+            <div class="col-md-9 animated fadeInLeft" style="color: white;">
                 <h3 class="">Welcome to the Armed Forces Retirement Home!</h3>
                 <p style="color:white;">This database offers a new and exciting way to explore and manage the historic resources of the Armed Forces Retirement Home - Washington. To get started, head to the MAP VIEW to see our resources and understand the layout of the AFRH-W grounds. Be sure to try out some of the historic maps that we have included as transparent overlays! To look for specific resources, or resources that wouldn't show up on a map (like photos or people), head to the SEARCH tab. Every page has built-in help in case you get stuck--just click the SHOW HELP link at the top of the page. Enjoy, and please contact our team if you have any questions, comments or suggestions.</p>
+            </div>
+            <div class="col-md-3 animated fadeInRight" style="color: white;">
+                <div class="button-holder">
+                    <a href="{% url 'map' %}">
+                        <button class="super-button"><strong>START<br>EXPLORING<br>NOW!</strong></button>
+                    </a>
+                </div>
             </div>
         </div>
         
