@@ -32,7 +32,7 @@ RESOURCE_MODEL = {'default': '{}.models.resource.Resource'.format(PACKAGE_NAME)}
 ## change to the default arches validator so non-Arches-HIP resources can load
 PACKAGE_VALIDATOR = "arches.app.utils.mock_package_validator"
 
-LOCAL_DOMAIN = "afrh.adamcfcox.com"
+LOCAL_DOMAIN = "www.afrh-iris.com"
 
 SEARCH_ITEMS_PER_PAGE = 10
 SEARCH_EXPORT_ITEMS_PER_PAGE = 10
