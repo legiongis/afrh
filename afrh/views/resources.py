@@ -471,6 +471,11 @@ def arch_layer(request, boundtype=''):
                 if "ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47" in geom:
                     # for geom in item['_source']['graph']['PLACE_E53'][0]['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47']:
                     wkt = geom['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47'][0]['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47__value']
+                    # if item['_source']['primaryname'] == "Zone 7":
+                        # print "yes"
+                        # print wkt
+                        
+                    #print wkt
                     
                     g1 = shapely.wkt.loads(wkt)
                     g2 = geojson.Feature(geometry=g1, properties={})
@@ -545,8 +550,7 @@ def act_a_layer(request, boundtype=''):
                     feat['properties']['type'] = "Area of Potential Effect"
                     feat['id'] = item['_source']['entityid']
                     geojson_collection['features'].append(feat)
-    
-    print json.dumps(geojson_collection,indent=2)
+
     return JSONResponse(geojson_collection)
     
 def arch_investigation_layer(request, boundtype=''):
