@@ -76,7 +76,7 @@ define([
     });
     
     var ms_attr = new ol.Attribution({
-        html: '<a href="https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer" target="_blank">MISSISSIPPI</a> &copy; <a href="http://octo.dc.gov/service/dc-gis-services" target="_blank">DC GIS</a>.'
+        html: '<a href="http://www.gis.ms.gov/portal/service.aspx?service=Aerial%20Photography" target="_blank">Mississippi Digital Earth Model, 2006</a>.'
     })
     
     // ol3 ortho layer which is a group, consisting of separate dc and ms hi-res orthos
