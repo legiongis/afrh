@@ -351,7 +351,7 @@ BUSISNESS_DATA_FILES = (
     # os.path.normpath(os.path.join(PACKAGE_ROOT, 'source_data', 'business_data', 'sample.arches')),
 )
 
-APP_NAME = 'AFRH Arches v3'
+APP_NAME = 'AFRH-IRIS'
 
 LOGGING = {
     'version': 1,
