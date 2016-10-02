@@ -73,19 +73,39 @@ define([
     
     var dc_attr = new ol.Attribution({
         html: '<a href="https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer" target="_blank">Ortho 2013 Map Service</a> &copy; <a href="http://octo.dc.gov/service/dc-gis-services" target="_blank">DC GIS</a>.'
-    })
-    
-    //ol3 ortho layer from DC GIS
-    orthoLyr = new ol.layer.Tile({
-        name: 'dcgis_imagery',
-        preload: Infinity,
-        source: new ol.source.XYZ({
-            url: 'http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer/tile/{z}/{y}/{x}',
-            attributions: [dc_attr],
-        }),
-        visible: false,
     });
     
+    var ms_attr = new ol.Attribution({
+        html: '<a href="https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer" target="_blank">MISSISSIPPI</a> &copy; <a href="http://octo.dc.gov/service/dc-gis-services" target="_blank">DC GIS</a>.'
+    })
+    
+    // ol3 ortho layer which is a group, consisting of separate dc and ms hi-res orthos
+    var orthoLyr = new ol.layer.Group({
+        style: 'dcgis_imagery',
+        layers: [
+            
+            //ol3 ortho layer from MS web services
+            new ol.layer.Tile({
+                preload: Infinity,
+                source: new ol.source.TileArcGISRest({
+                    url: 'http://www.maris.state.ms.us/arcgis2/rest/services/MDEM/MDEM_2006/MapServer',
+                }),
+                extent: [-10548293.782819713, 3491322.48132465, -9277237.966125775, 4199470.940998869],
+            }),
+            //ol3 ortho layer from DC GIS
+            new ol.layer.Tile({
+                preload: Infinity,
+                source: new ol.source.XYZ({
+                    url: 'http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer/tile/{z}/{y}/{x}',
+                    // turns out, attributions are taken from the top last layer in the list, not cumulatively from all.
+                    attributions: [dc_attr,ms_attr]
+                }),
+            }),
+            
+        ],
+        visible: false,
+    });
+
     //arches ortho layer
     var imagery = {
         id: "imagery",
