@@ -40,7 +40,7 @@
                             </dd>
                         </dl>
                         <dl>   
-                            <dt class="arches-evaluation-header">{% trans "Description" %}</dt>
+                            <dt class="arches-evaluation-header"><em>{% trans "Description" %}</em></dt>
                             <dd class="arches-evaluation-content" data-bind="if: $data['GUIDELINE_NOTE.E62'].branch_lists.length > 0">
                                 <span data-bind="html: $data['GUIDELINE_NOTE.E62'].branch_lists[0].nodes[0].value"></span>
                             </dd>
@@ -49,7 +49,7 @@
                             </dd>
                         </dl>
                         <dl>
-                            <dt class="arches-evaluation-header">{% trans "Images" %}</dt>
+                            <dt class="arches-evaluation-header"><em>{% trans "Images" %}</em></dt>
                             <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
                             <div id="blueimp-gallery" class="blueimp-gallery">
                                 <!-- The container for the modal slides -->
@@ -72,12 +72,12 @@
                                             <div class="modal-body next"></div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default pull-left prev">
-                                                    <i class="glyphicon glyphicon-chevron-left"></i>
+                                                    <i class="fa fa-chevron-left"></i>
                                                     {% trans "Previous" %}
                                                 </button>
                                                 <button type="button" class="btn btn-primary next">
                                                     {% trans "Next" %}
-                                                    <i class="glyphicon glyphicon-chevron-right"></i>
+                                                    <i class="fa fa-chevron-right"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -103,13 +103,13 @@
                             </div>
                         </dl>
                         <dl>   
-                            <dt class="arches-evaluation-header">{% trans "Image Details" %}</dt>
+                            <dt class="arches-evaluation-header"><em>{% trans "Image Details" %}</em></dt>
                             <dd data-bind="foreach: $data['GUIDELINE_IMAGE_NOTE.E62'].branch_lists" class="arches-evaluation-content">
                                 <p data-bind="foreach: nodes">
                                 <span data-bind="html: label"></span><br>
                                 </p>
                             </dd>
-                            <dd data-bind="ifnot: $data['GUIDELINE_IMAGE_NOTE.E62'].branch_lists.length > 0">
+                            <dd style="margin-left: 20px;" data-bind="ifnot: $data['GUIDELINE_IMAGE_NOTE.E62'].branch_lists.length > 0">
                                 <span class="text-muted" data-bind="html: '(none)'"></span>
                             </dd>
                         </dl>
