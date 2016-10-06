@@ -60,7 +60,7 @@
                 {% else %}
                 {% for DESCRIPTION_E62 in report_info.source.graph.DESCRIPTION_E62 %}
                     <p class="arches-report-subsection-item"><em><strong>{{DESCRIPTION_E62.ZONE_DESCRIPTION_TYPE_E55__value}}</strong></em></p>
-                    <p class="arches-report-subsection-item">{{DESCRIPTION_E62.DESCRIPTION_E62__value}}</p>
+                    <p class="arches-report-subsection-item">{{DESCRIPTION_E62.DESCRIPTION_E62__value|safe}}</p>
                 {% endfor %}
                 {% endif %}
             </div>

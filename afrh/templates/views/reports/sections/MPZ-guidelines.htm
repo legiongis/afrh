@@ -1,4 +1,6 @@
 {% load i18n %}
+
+
 <div class="row">
     <div class="col-sm-3 col-md-4">
         <h3 class="arches-report-subsection">Guidelines</h3>
@@ -7,77 +9,38 @@
     <div class="col-sm-9 col-md-8">
         <div class="row">
             <div class="col-xs-12 arches-report-subsection-content">
-                {% if not 'GUIDELINE_E89' in report_info.source.graph %}
-                <p class="arches-report-subsection-item">none recorded</p>
-                {% else %}
-                {% for GUIDELINE_E89 in report_info.source.graph.GUIDELINE_E89 %}
-                <p class="arches-report-subsection-item"><em><strong>{{GUIDELINE_E89.GUIDELINE_TYPE_E55.0.GUIDELINE_TYPE_E55__label}}</strong></em></p>
-                <p class="arches-report-subsection-item">{{GUIDELINE_E89.GUIDELINE_NOTE_E62.0.GUIDELINE_NOTE_E62__label|safe}}</p>
-                
-                
-                <div class="row">
-                    <div class="col-xs-12">
-                        <dl>
-                            <dd class="arches-report-subsection-item">
-                                <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
-                                <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-use-bootstrap-modal="false">
-                                    <!-- The container for the modal slides -->
-                                    <div class="slides"></div>
-                                    
-                                    <!-- Controls for the borderless lightbox -->
-                                    <h3 class="title"></h3>
-                                    <a class="prev">‹</a>
-                                    <a class="next">›</a>
-                                    <a class="close">×</a>
-                                    <a class="play-pause"></a>
-                                    <ol class="indicator"></ol>
-                                    
-                                    <!-- The modal dialog, which will be used to wrap the lightbox content 
-                                         (to use the model, toggle data-use-bootstrap-modal to "true" in #blueimp-gallery -->
-                                    <div class="modal fade">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" aria-hidden="true">&times;</button>
-                                                    <h4 class="modal-title"></h4>
-                                                </div>
-                                                <div class="modal-body next"></div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default pull-left prev">
-                                                        <i class="glyphicon glyphicon-chevron-left"></i>
-                                                        {% trans "Previous" %}
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary next">
-                                                        {% trans "Next" %}
-                                                        <i class="glyphicon glyphicon-chevron-right"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Links for Image Gallery Supply Image in the href, thumbnails in the img tags -->
-                                <div id="links" style="margin-left: 10px; margin-top: 5px;">
-                                    {% if 'GUIDELINE_IMAGE_E73' not in GUIDELINE_E89 %}
-                                        <dd class="arches-report-subsection-item">
-                                            {% trans "NONE recorded" %}
-                                        </dd>
-                                    {% else %}
-                                        {% for GUIDELINE_IMAGE_E73 in GUIDELINE_E89.GUIDELINE_IMAGE_E73 %}
-                                            <a href="{{GUIDELINE_IMAGE_E73.GUIDELINE_IMAGE_FILE_PATH_E62.0.GUIDELINE_IMAGE_FILE_PATH_E62__value}}" title="" data-gallery>
-                                                <img src="{{GUIDELINE_IMAGE_E73.GUIDELINE_IMAGE_THUMBNAIL_E62.0.GUIDELINE_IMAGE_THUMBNAIL_E62__value}} ">
-                                            </a>
-                                        {% endfor %}
-                                    {% endif %}
-                                </div>
-                                <!-- End Links for Image Gallery -->
-                            </dd>
-                        </dl>
-                    </div>
+            {% if not 'GUIDELINE_E89' in report_info.source.graph %}
+            <p class="arches-report-subsection-item">none recorded</p>
+            {% else %}
+            {% for GUIDELINE_E89 in report_info.source.graph.GUIDELINE_E89 %}
+                <div class="arches-report-subsection-item margin-bottom-10">
+                    <p class="arches-report-subsection-item"><em><strong>{{GUIDELINE_E89.GUIDELINE_TYPE_E55.0.GUIDELINE_TYPE_E55__label}}</strong></em></p>
+                    {{GUIDELINE_E89.GUIDELINE_NOTE_E62.0.GUIDELINE_NOTE_E62__label|safe}}
                 </div>
-                <p class="arches-report-subsection-item"><em>Image notes:</em><br>{{GUIDELINE_E89.GUIDELINE_IMAGE_NOTE_E62.0.GUIDELINE_IMAGE_NOTE_E62__label|safe}}</p>
-                {% endfor %}
+                {% if 'GUIDELINE_IMAGE_E73' in GUIDELINE_E89 %}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <dl>
+                                <dd class="arches-report-subsection-item">
+                                    <!-- Links for Image Gallery Supply Image in the href, thumbnails in the img tags -->
+                                    <div id="links" class="links" style="margin-left: 10px; margin-top: 5px;">
+                                    {% for GUIDELINE_IMAGE_E73 in GUIDELINE_E89.GUIDELINE_IMAGE_E73 %}
+                                        <a href="{{GUIDELINE_IMAGE_E73.GUIDELINE_IMAGE_FILE_PATH_E62.0.GUIDELINE_IMAGE_FILE_PATH_E62__value}}" title="" data-gallery data-gallery="links" target="_blank">
+                                            <img src="{{GUIDELINE_IMAGE_E73.GUIDELINE_IMAGE_THUMBNAIL_E62.0.GUIDELINE_IMAGE_THUMBNAIL_E62__value}}">
+                                        </a>
+                                    {% endfor %}
+                                    </div>
+                                    <p class="arches-report-subsection-item"><em>Image notes:</em><br>
+                                    <!-- End Links for Image Gallery -->
+                                    {{GUIDELINE_E89.GUIDELINE_IMAGE_NOTE_E62.0.GUIDELINE_IMAGE_NOTE_E62__label|safe}}</p>
+                                    
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
                 {% endif %}
+            {% endfor %}
+            {% endif %}
             </div>
         </div>
     </div>
