@@ -31,6 +31,7 @@ require([
             var mapLayers = [];
             var elevateArchesResourceLayers = function () {
                 map.map.getLayers().forEach(function(layer, index) {
+                    
                     if (layer.get('is_arches_layer') == "nobutclose") {
                         map.map.removeLayer(layer);
                         map.map.addLayer(layer);
@@ -38,6 +39,19 @@ require([
                 });
                 map.map.getLayers().forEach(function(layer, index) {
                     if (layer.get('is_arches_layer') == true) {
+                        map.map.removeLayer(layer);
+                        map.map.addLayer(layer);
+                    }
+                });
+                // force the layering of point overlays on the very top.
+                map.map.getLayers().forEach(function(layer, index) {
+                    if (layer.get('name') == 'FIELD_INVESTIGATION.E7') {
+                        map.map.removeLayer(layer);
+                        map.map.addLayer(layer);
+                    }
+                });
+                map.map.getLayers().forEach(function(layer, index) {
+                    if (layer.get('name') == 'INVENTORY_RESOURCE.E18') {
                         map.map.removeLayer(layer);
                         map.map.addLayer(layer);
                     }
@@ -114,8 +128,6 @@ require([
                 clusterFeatures: ko.observableArray(),
                 showEdit: ko.observable('')
             };
-            
-            console.log(self.viewModel.selectedResource);
 
             self.map = map;
             var clusterFeaturesCache = {};
@@ -125,7 +137,6 @@ require([
                 var feature = _.find(features, function (feature) {
                     return feature.getId() === selectedResourceId;
                 });
-                console.log(feature);
                 if (feature) {
                     var geom = geoJSON.readGeometry(feature.get('geometry_collection'));
                     geom.transform(ol.proj.get('EPSG:4326'), ol.proj.get('EPSG:3857'));
@@ -300,13 +311,10 @@ require([
                 _.each(feature.getKeys(), function (key) {
                     resourceData[key] = feature.get(key);
                 });
-                console.log(feature);
-                console.log(feature.getKeys());
                 
                 selectFeatureOverlay.getFeatures().clear();
                 selectFeatureOverlay.getFeatures().push(feature);
                 self.viewModel.selectedResource(resourceData);
-                console.log(resourceData);
                 self.viewModel.showEdit(userPerms['edit'][feature.get('entitytypeid')]);
                 $('#resource-info').show();
             };
