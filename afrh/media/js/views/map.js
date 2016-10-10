@@ -44,8 +44,6 @@ define([
                 layers.push(historicLayer.layer);
             });
 
-            console.log("pushed layers");
-
             dragAndDropInteraction.on('addfeatures', function(event) {
                 var vectorSource = new ol.source.Vector({
                     features: event.features,
@@ -145,14 +143,10 @@ define([
             this.map.on('click', function(e) {
                 var pixels = [e.originalEvent.layerX,e.originalEvent.layerY];
                 var clickFeature = self.map.forEachFeatureAtPixel(pixels, function (feature, layer) {
-                //var clickFeature = self.map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
-                    
-                    //console.log(clickFeature);
                     return feature;
                 });
                 self.trigger('mapClicked', e, clickFeature);
             });
-            console.log("map.js view fully initialized.");
         },
 
         handleMouseMove: function(e) {
@@ -178,8 +172,6 @@ define([
             var overFeature = this.map.forEachFeatureAtPixel(pixels, function (feature, layer) {
                 return feature;
             });
-            //console.log("overfeature?");
-            //console.log(overFeature);
             coords = point.transform("EPSG:3857", "EPSG:4326").getCoordinates();
             // swap order of coords so that they read "lat, long" not "long, lat"
             var coords_latlong = [Number(coords[1]), Number(coords[0])];
