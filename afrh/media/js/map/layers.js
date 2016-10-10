@@ -109,9 +109,9 @@ define([
     });
     
     layers.push(
-        char_areas,
-        mp_zones,
-        arch_zones
+        // char_areas,
+        // mp_zones,
+        // arch_zones
     );
 
     return layers;
