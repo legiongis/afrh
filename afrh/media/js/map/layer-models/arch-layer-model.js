@@ -128,6 +128,7 @@ define([
                 style: superStyle,
                 visible: false,
                 is_arches_layer: true,
+                name: config.entitytypeid,
             });
 
             return arch_layer

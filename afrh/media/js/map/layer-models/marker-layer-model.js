@@ -138,6 +138,7 @@ define([
 
             clusterLayer.vectorSource = source;
             clusterLayer.set('is_arches_layer', true);
+            clusterLayer.set('name', config.entitytypeid);
 
             return clusterLayer;
         };

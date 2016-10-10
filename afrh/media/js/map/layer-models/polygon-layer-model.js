@@ -75,6 +75,7 @@ define([
                 style: polyStyle,
                 visible: config.entitytypeid == "INVENTORY_RESOURCE.E18",
                 is_arches_layer: true,
+                name: config.entitytypeid,
             });
             
             return output_layer
