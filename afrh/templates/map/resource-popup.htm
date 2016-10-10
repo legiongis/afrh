@@ -22,8 +22,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
         <dt class="txt-color-blue">{% trans 'NRHP Resource Type' %}</dt>
         <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().resource_type : ''"></dd>
         
+        <div data-bind="if: selectedResource().building_number != 'none recorded'">
         <dt class="txt-color-blue">{% trans 'Building Number' %}</dt>
         <dd class="txt-color-blue arches-map-panel-list" data-bind="text:selectedResource() ? selectedResource().building_number : ''"></dd>
+        </div>
         
         <dt class="txt-color-blue">{% trans 'Description' %}</dt>
         <dd class="txt-color-blue arches-map-panel-list" data-bind="html:selectedResource() ? selectedResource().description : ''"></dd>

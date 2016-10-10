@@ -25,6 +25,7 @@
 
     </div>
 </div>
+{% if 'BUILDING_NUMBER_E42' in report_info.source.graph %}
 <hr class="devider devider-subsection"></hr>
 <div class="row">
     <div class="col-sm-3 col-md-4">
@@ -36,17 +37,14 @@
     <div class="col-sm-9 col-md-8">
         <div class="row">
             <div class="col-xs-12 arches-report-subsection-content">
-                {% if 'BUILDING_NUMBER_E42' not in report_info.source.graph %}
-                    <span class="arches-report-subsection-item-none text-muted">{% trans "none recorded" %}</span>
-                {% else %}
-                    {% for BUILDING_NUMBER_E42 in report_info.source.graph.BUILDING_NUMBER_E42 %}
-                        <p class="arches-report-subsection-item">
-                            {{ BUILDING_NUMBER_E42.BUILDING_NUMBER_E42__value }} <span class="arches-report-subsection-item-type">({{BUILDING_NUMBER_E42.BUILDING_NUMBER_TYPE_E55__value}} Number)</span>
-                        </p>
-                    {% endfor %}           
-                {% endif %}
+                {% for BUILDING_NUMBER_E42 in report_info.source.graph.BUILDING_NUMBER_E42 %}
+                    <p class="arches-report-subsection-item">
+                        {{ BUILDING_NUMBER_E42.BUILDING_NUMBER_E42__value }} <span class="arches-report-subsection-item-type">({{BUILDING_NUMBER_E42.BUILDING_NUMBER_TYPE_E55__value}} Number)</span>
+                    </p>
+                {% endfor %}           
             </div>
         </div>
     </div>
 </div>
+{% endif %}
 
