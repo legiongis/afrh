@@ -35,7 +35,7 @@ PACKAGE_VALIDATOR = "arches.app.utils.mock_package_validator"
 LOCAL_DOMAIN = "www.afrh-iris.com"
 
 SEARCH_ITEMS_PER_PAGE = 10
-SEARCH_EXPORT_ITEMS_PER_PAGE = 10
+SEARCH_EXPORT_ITEMS_PER_PAGE = 1000000
 
 ## add setting for system-wide node name that stores the protection level concepts
 PROTECTION_LEVEL_NODE = "PROTECTION_LEVEL.E55"
