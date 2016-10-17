@@ -2,7 +2,9 @@
 
 Arches v3 package in development by Legion GIS, LLC for PRESERVE/scapes and the Armed Forces Retirement Home - Washington.
 
-currently hosted here: [afrh.legiongis.com](http://afrh.legiongis.com)
+currently hosted here: [www.afrh-iris.com](http://www.afrh-iris.com)
+
+playground version is here: [arches3.legiongis.com/afrh](http://arches3.legiongis.com/afrh), and you can login with the default username = admin and password = admin if you like. Don't worry, you won't ruin anything.
 
 # features
 
