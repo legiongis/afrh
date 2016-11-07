@@ -38,7 +38,7 @@ RESOURCE_MODEL = {'default': '{}.models.resource.Resource'.format(PACKAGE_NAME)}
 ## change to the default arches validator so non-Arches-HIP resources can load
 PACKAGE_VALIDATOR = "arches.app.utils.mock_package_validator"
 
-LOCAL_DOMAIN = "www.afrh-iris.com"
+LOCAL_DOMAIN = "arches3.legiongis.com/afrh"
 
 SEARCH_ITEMS_PER_PAGE = 10
 SEARCH_EXPORT_ITEMS_PER_PAGE = 1000000
@@ -357,7 +357,7 @@ BUSISNESS_DATA_FILES = (
     # os.path.normpath(os.path.join(PACKAGE_ROOT, 'source_data', 'business_data', 'sample.arches')),
 )
 
-APP_NAME = 'AFRH-IRIS'
+APP_NAME = 'Demo of AFRH-IRIS'
 
 LOGGING = {
     'version': 1,
