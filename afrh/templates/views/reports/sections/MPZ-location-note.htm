@@ -42,37 +42,43 @@
     </div>
     {% else %}
     <div class="col-xs-12">
+        
         <div class="row">
-            <div class="arches-report-subsection-content">
-                {% if 'PLACE_E53' in report_info.source.graph %}
-                {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
-                    {% if report_info.type == "CHARACTER_AREA.E53" %}
-                        {% if 'CHARACTER_AREA_PLACE_NOTE_E62' in PLACE_E53 %}
-                        <p class="arches-report-subsection-item">{{PLACE_E53.CHARACTER_AREA_PLACE_NOTE_E62.0.CHARACTER_AREA_PLACE_NOTE_E62__label|safe}}</p>
+            <div class="col-sm-3 col-md-4">
+                <h3 class="arches-report-subsection">Location Notes</h3>
+            </div>
+            <div class="col-sm-9 col-md-8">
+                <div class="arches-report-subsection-content">
+                    {% if 'PLACE_E53' in report_info.source.graph %}
+                    {% for PLACE_E53 in report_info.source.graph.PLACE_E53 %}
+                        {% if report_info.type == "CHARACTER_AREA.E53" %}
+                            {% if 'CHARACTER_AREA_PLACE_NOTE_E62' in PLACE_E53 %}
+                            <p class="arches-report-subsection-item">{{PLACE_E53.CHARACTER_AREA_PLACE_NOTE_E62.0.CHARACTER_AREA_PLACE_NOTE_E62__label|safe}}</p>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
-                    {% if report_info.type == "MASTER_PLAN_ZONE.E53" %}
-                        {% if 'PLACE_DESCRIPTION_E62' in PLACE_E53 %}
-                        <p class="arches-report-subsection-item">{{PLACE_E53.PLACE_DESCRIPTION_E62.0.PLACE_DESCRIPTION_E62__label|safe}}</p>
+                        {% if report_info.type == "MASTER_PLAN_ZONE.E53" %}
+                            {% if 'PLACE_DESCRIPTION_E62' in PLACE_E53 %}
+                            <p class="arches-report-subsection-item">{{PLACE_E53.PLACE_DESCRIPTION_E62.0.PLACE_DESCRIPTION_E62__label|safe}}</p>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
-                    {% if report_info.type == "HISTORIC_AREA.E53" %}
-                        {% if 'HISTORIC_AREA_LOCATION_NOTE_E62' in PLACE_E53 %}
-                        <p class="arches-report-subsection-item">{{PLACE_E53.HISTORIC_AREA_LOCATION_NOTE_E62.0.HISTORIC_AREA_LOCATION_NOTE_E62__label|safe}}</p>
+                        {% if report_info.type == "HISTORIC_AREA.E53" %}
+                            {% if 'HISTORIC_AREA_LOCATION_NOTE_E62' in PLACE_E53 %}
+                            <p class="arches-report-subsection-item">{{PLACE_E53.HISTORIC_AREA_LOCATION_NOTE_E62.0.HISTORIC_AREA_LOCATION_NOTE_E62__label|safe}}</p>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
-                    {% if report_info.type == "ARCHAEOLOGICAL_ZONE.E53" %}
-                        {% if 'ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE_E62' in PLACE_E53 %}
-                        <p class="arches-report-subsection-item">{{PLACE_E53.ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE_E62.0.ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE_E62__label|safe}}</p>
+                        {% if report_info.type == "ARCHAEOLOGICAL_ZONE.E53" %}
+                            {% if 'ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE_E62' in PLACE_E53 %}
+                            <p class="arches-report-subsection-item">{{PLACE_E53.ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE_E62.0.ARCHAEOLOGICAL_ZONE_BOUNDARY_NOTE_E62__label|safe}}</p>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
-                    {% if report_info.type == "INFORMATION_RESOURCE.E73" %}
-                        {% if 'SPATIAL_COVERAGE_E53' in PLACE_E53 %}
-                        <p class="arches-report-subsection-item">{{PLACE_E53.SPATIAL_COVERAGE_E53.0.DESCRIPTION_OF_LOCATION_E62.0.DESCRIPTION_OF_LOCATION_E62__value|safe}}</p>
+                        {% if report_info.type == "INFORMATION_RESOURCE.E73" %}
+                            {% if 'SPATIAL_COVERAGE_E53' in PLACE_E53 %}
+                            <p class="arches-report-subsection-item">{{PLACE_E53.SPATIAL_COVERAGE_E53.0.DESCRIPTION_OF_LOCATION_E62.0.DESCRIPTION_OF_LOCATION_E62__value|safe}}</p>
+                            {% endif %}
                         {% endif %}
+                    {% endfor %}
                     {% endif %}
-                {% endfor %}
-                {% endif %}
+                </div>
             </div>
         </div>
     </div>
@@ -204,7 +210,7 @@
     </div>
         <div class="row">
         <div class="col-sm-4">
-            <img class="report-legend-img" src="{{ STATIC_URL }}img/report/Paleosols.png"></img>
+            <img class="report-legend-img" src="{{ STATIC_URL }}img/report/paleosols.png"></img>
             <h3 class="arches-report-subsection">Paleosols</h3>
             <p><em>(Area of Probability)</em></p>
         </div>
