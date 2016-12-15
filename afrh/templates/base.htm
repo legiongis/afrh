@@ -401,7 +401,8 @@
                 $('[data-toggle="popover"]').popover();
             });
             
-            $(".help-toggle").click(function (){ 
+            // toggle help sections
+            $(".help-toggle").click(function (){
                 iconEl = $(this).find('i');
                 sectionEl = $(this).closest('.help-section');
                 contentEl = $(sectionEl).find('.help-content');
@@ -414,6 +415,7 @@
                 $(iconEl).toggleClass("fa-chevron-right");
             });
             
+            // open help for given page
             var help_on = false;
             function toggleHelp() {
                 $("#help-button").click(function(){
