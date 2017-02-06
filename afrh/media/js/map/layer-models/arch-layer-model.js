@@ -4,8 +4,9 @@ define([
     'underscore',
     'arches',
     'map/layer-models/base-layer-model',
-    'utils'
-], function($, ol, _, arches, LayerModel, utils) {
+    'utils',
+    'user-info'
+], function($, ol, _, arches, LayerModel, utils, userInfo) {
     return function(config, featureCallback) {
         config = _.extend({
             entitytypeid: 'all',
