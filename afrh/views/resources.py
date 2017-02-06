@@ -255,7 +255,6 @@ def report(request, resourceid):
             response_dict['ape_geom'] = JSONSerializer().serialize(ape_dict)
         else:
             response_dict['ape_geom'] = 'null'
-            
     if report_info['type'] == "ARCHAEOLOGICAL_ZONE.E53":
         bounds = []
         probs = {
@@ -266,7 +265,7 @@ def report(request, resourceid):
         }
         if "PLACE_E53" in report_info['source']['graph']:
             for place in report_info['source']['graph']['PLACE_E53']:
-                if "AREA_OF_PROBABILITY_GEOMETRY_E47" in place:
+                if "AREA_OF_PROBABILITY_GEOMETRY_E47" in place and not anon:
                     wkt = place['AREA_OF_PROBABILITY_GEOMETRY_E47'][0]['AREA_OF_PROBABILITY_GEOMETRY_E47__value']
                     
                     g1 = shapely.wkt.loads(wkt)
@@ -451,7 +450,7 @@ def arch_layer(request, boundtype=''):
         if "PLACE_E53" in item['_source']['graph']:
             for geom in item['_source']['graph']['PLACE_E53']:
                 
-                if "AREA_OF_PROBABILITY_GEOMETRY_E47" in geom:
+                if "AREA_OF_PROBABILITY_GEOMETRY_E47" in geom and request.user.username != "anonymous":
 
                     wkt = geom['AREA_OF_PROBABILITY_GEOMETRY_E47'][0]['AREA_OF_PROBABILITY_GEOMETRY_E47__value']
                     g1 = shapely.wkt.loads(wkt)
