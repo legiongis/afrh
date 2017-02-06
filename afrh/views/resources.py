@@ -265,7 +265,7 @@ def report(request, resourceid):
         }
         if "PLACE_E53" in report_info['source']['graph']:
             for place in report_info['source']['graph']['PLACE_E53']:
-                if "AREA_OF_PROBABILITY_GEOMETRY_E47" in place and not anon:
+                if "AREA_OF_PROBABILITY_GEOMETRY_E47" in place:
                     wkt = place['AREA_OF_PROBABILITY_GEOMETRY_E47'][0]['AREA_OF_PROBABILITY_GEOMETRY_E47__value']
                     
                     g1 = shapely.wkt.loads(wkt)
@@ -274,7 +274,10 @@ def report(request, resourceid):
                     
                     feat_type = place['AREA_OF_PROBABILITY_GEOMETRY_E47'][0]['AREA_OF_PROBABILITY_GEOMETRY_TYPE_E55__label']
                     if feat_type in probs.keys():
-                        probs[feat_type].append(json_geom)
+                        if not anon:
+                            probs[feat_type].append(json_geom)
+                        else:
+                            response_dict['prob_present'] = True
                         
                 if "ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47" in place:
                     wkt = place['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47'][0]['ARCHAEOLOGICAL_ZONE_BOUNDARY_GEOMETRY_E47__value']
