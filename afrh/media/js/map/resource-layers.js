@@ -48,7 +48,9 @@ define([
             
             // set infoContent to equal the HTML content of a legend div in map.htm
             if (entitytypeid == "ARCHAEOLOGICAL_ZONE.E53"){
-                item.infoContent = $("#arch-legend").html();
+                if (userInfo.name != 'anonymous') {
+                    item.infoContent = $("#arch-legend").html();
+                }
             }
             if (entitytypeid == "ACTIVITY_A.E7"){
                 item.infoContent = $("#act-a-legend").html();
