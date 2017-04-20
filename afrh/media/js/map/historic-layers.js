@@ -184,7 +184,7 @@ define([
             source: new ol.source.TileWMS({
                 url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
                 params: {
-                    'LAYERS':'historicmaps:1914_Topo',
+                    'LAYERS':'historicmaps:1944_Topo',
                     'TILED':true,
                 },
                 serverType: 'geoserver'
