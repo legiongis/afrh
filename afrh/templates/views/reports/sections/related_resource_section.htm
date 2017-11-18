@@ -233,23 +233,25 @@
     
     <div class="col-sm-8">
         <div class="row">
-            <div class="col-xs-12 arches-report-subsection-content">
+            <div class="arches-report-subsection-content">
                 {% for related_resource in related_resource_dict.INFORMATION_RESOURCE_IMAGE %}
-                <p class="arches-report-subsection-item">
-                    <a href="{% url 'report' related_resource.entityid %}" title="{% trans 'View Report' %}">
-                        <img src="{{related_resource.thumbnail}}" alt="" class="arches-report-image-thumbnail" style="width: 25%; margin-bottom: 20px; border: solid 1px #999;" onerror="this.src='{{STATIC_URL}}img/photo_missing.png';">
-                    </a>
-                </p>
-                <p class="arches-report-subsection-item">
-                    <a href="{% url 'report' related_resource.entityid %}" class="" title="{% trans 'View Report' %}">
-                        {{related_resource.primaryname}}
-                    </a>
-                    <span class="arches-report-subsection-item-type">
-                        {% if related_resource.relationship|length > 0 %}
-                            ({{related_resource.relationship|join:", "}})
-                        {% endif %}
-                    </span>
-                </p>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="arches-report-subsection-item">
+                        <a href="{% url 'report' related_resource.entityid %}" title="{% trans 'View Report' %}">
+                            <img src="{{related_resource.thumbnail}}" alt="" class="arches-report-image-thumbnail" style="width: 25%; margin-bottom: 20px; border: solid 1px #999;" onerror="this.src='{{STATIC_URL}}img/photo_missing.png';">
+                        </a>
+                    </div>
+                    <div class="arches-report-subsection-item">
+                        <a href="{% url 'report' related_resource.entityid %}" class="" title="{% trans 'View Report' %}">
+                            {{related_resource.primaryname}}
+                        </a>
+                        <span class="arches-report-subsection-item-type">
+                            {% if related_resource.relationship|length > 0 %}
+                                ({{related_resource.relationship|join:", "}})
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
                 {% endfor %}
             </div>
         </div>
