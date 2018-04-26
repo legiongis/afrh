@@ -33,6 +33,8 @@ DEFAULT_MAP_ZOOM = 15
 MAP_MAX_ZOOM = 20
 # MAP_EXTENT = '-13228037.69691764,3981296.0184014924,-13123624.71628009,4080358.407059081'
 
+ANALYSIS_COORDINATE_SYSTEM_SRID = 32618
+
 RESOURCE_MODEL = {'default': '{}.models.resource.Resource'.format(PACKAGE_NAME)}
 
 ## change to the default arches validator so non-Arches-HIP resources can load
