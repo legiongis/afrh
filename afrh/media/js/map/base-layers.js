@@ -6,7 +6,7 @@ define([
 ], function($, ol, _, arches) {
     
     var osm_attr = new ol.Attribution({
-        html: '&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors.'
+        html: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors.'
     });
 
     //streets ol layer
@@ -36,7 +36,7 @@ define([
     });
     
     var ms_attr = new ol.Attribution({
-        html: '<a href="http://www.gis.ms.gov/portal/service.aspx?service=Aerial%20Photography" target="_blank">Mississippi Digital Earth Model, 2006</a>.'
+        html: '<a href="https://www.gis.ms.gov/portal/service.aspx?service=Aerial%20Photography" target="_blank">Mississippi Digital Earth Model, 2006</a>.'
     })
     
     // ol3 ortho layer which is a group, consisting of separate dc and ms hi-res orthos
@@ -48,7 +48,7 @@ define([
             new ol.layer.Tile({
                 preload: Infinity,
                 source: new ol.source.TileArcGISRest({
-                    url: 'http://www.maris.state.ms.us/arcgis2/rest/services/MDEM/MDEM_2006/MapServer',
+                    url: 'https://www.maris.state.ms.us/arcgis2/rest/services/MDEM/MDEM_2006/MapServer',
                 }),
                 extent: [-10548293.782819713, 3491322.48132465, -9277237.966125775, 4199470.940998869],
             }),
@@ -56,7 +56,7 @@ define([
             new ol.layer.Tile({
                 preload: Infinity,
                 source: new ol.source.XYZ({
-                    url: 'http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer/tile/{z}/{y}/{x}',
+                    url: 'https://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Ortho2013_WebMercator/MapServer/tile/{z}/{y}/{x}',
                     // turns out, attributions are taken from the top last layer in the list, not cumulatively from all.
                     attributions: [dc_attr,ms_attr]
                 }),
