@@ -8,37 +8,41 @@ define(['jquery',
             
             var valid = true;
             _.each(nodes, function(node){
-                console.log(nodes);
-                console.log(node_name);
                 if (node["entitytypeid"] == node_name) {
                     
                     var date_string = node["value"];
-                    console.log("validating: "+date_string);
                     justDate = date_string.split("T")[0];
                     
-                    // Change to acceptable db format
-                    var replaceDate = justDate.replace(/\//g,"-");
-                    
                     // Deal with empty dates (they're ok!)
-                    if(replaceDate == ""){
-                        console.log("blank date: OK");
+                    if(justDate == ""){
                         return;
                     }
-
-                    // First check for the pattern
-                    if(!/^\d{4}\-\d{1,2}\-\d{1,2}$/.test(replaceDate)){
-                        console.log("pattern fail");
+                    
+                    // Return false if the date has / or \ in it
+                    if (justDate.indexOf('/') > -1){
+                        valid = false;
+                    }
+                    if (justDate.indexOf('\\') > -1){
                         valid = false;
                     }
 
-                    // Parse the date parts, rebuild replaceDate
-                    var parts = replaceDate.split("-");
+                    // The following was used before to replace / with -, but the new text was
+                    // never passed on, and therefore this was a misleading test (/ fails on save)
+                    //var replaceDate = justDate.replace(/\//g,"-");
+
+                    // First check for the pattern
+                    if(!/^\d{4}\-\d{1,2}\-\d{1,2}$/.test(justDate)){
+                        valid = false;
+                    }
+
+                    // Parse the date parts, rebuild justDate
+                    var parts = justDate.split("-");
                     for (i=1; i==2; i++) {
                         if (parts[i].length == i) {
                             parts[i] = "0"+parts[i];
                         }
                     }
-                    replaceDate = parts.join("-");
+                    justDate = parts.join("-");
                     
                     // make parts into integers for processing
                     var day = parseInt(parts[2], 10);
@@ -47,7 +51,6 @@ define(['jquery',
 
                     // Check the ranges of month and year
                     if(year > 3000 || month == 0 || month > 12){
-                        console.log("year/month fail");
                         valid = false;
                     }
                     var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];

@@ -4,6 +4,9 @@ define([
     'underscore',
     'arches'
 ], function($, ol, _, arches) {
+
+    // set url for all geoserver layers
+    var geoserver_url = "https://afrh-iris.com/geoserver/historicmaps/wms/"
     
     // 1851 george riggs farm map
     var hm1851 = {
@@ -12,7 +15,7 @@ define([
         icon: arches.urls.media + 'img/map/1850_George_Riggs_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
                     'LAYERS':'historicmaps:1850_George_Riggs',
                     'TILED':true,
@@ -33,7 +36,7 @@ define([
         icon: arches.urls.media + 'img/map/1865_Barnard_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
                     'LAYERS':'historicmaps:1865_Barnard',
                     'TILED':true,
@@ -56,7 +59,7 @@ define([
         icon: arches.urls.media + 'img/map/1866-67_Michler_Memory_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
                     'LAYERS':'historicmaps:1866-67_Michler_Memory',
                     'TILED':true,
@@ -77,7 +80,7 @@ define([
         icon: arches.urls.media + 'img/map/1873_Bootes_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
                     'LAYERS':'historicmaps:1873_Bootes',
                     'TILED':true,
@@ -98,7 +101,7 @@ define([
         icon: arches.urls.media + 'img/map/1877_JC_Entwhistle_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
                     'LAYERS':'historicmaps:1877_JC_Entwhistle',
                     'TILED':true,
@@ -119,7 +122,7 @@ define([
         icon: arches.urls.media + 'img/map/1892_USGS_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
                     'LAYERS':'historicmaps:1892_USGS',
                     'TILED':true,
@@ -140,7 +143,7 @@ define([
         icon: arches.urls.media + 'img/map/1903_Army_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
                     'LAYERS':'historicmaps:1903_ACoE',
                     'TILED':true,
@@ -161,7 +164,7 @@ define([
         icon: arches.urls.media + 'img/map/1914_Topographic_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
                     'LAYERS':'historicmaps:1914_Topo',
                     'TILED':true,
@@ -182,9 +185,9 @@ define([
         icon: arches.urls.media + 'img/map/1944_Topo_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
-                    'LAYERS':'historicmaps:1914_Topo',
+                    'LAYERS':'historicmaps:1944_Topo',
                     'TILED':true,
                 },
                 serverType: 'geoserver'
@@ -203,7 +206,7 @@ define([
         icon: arches.urls.media + 'img/map/1953_Master_Plan_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
                     'LAYERS':'historicmaps:1953_Master_Plan',
                     'TILED':true,
@@ -224,7 +227,7 @@ define([
         icon: arches.urls.media + 'img/map/1967_Topographic_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
                     'LAYERS':'historicmaps:1967_Topo',
                     'TILED':true,
@@ -244,7 +247,7 @@ define([
         icon: arches.urls.media + 'img/map/1975_Shedule_icon.png',
         layer: new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: 'http://52.27.146.197/geoserver/historicmaps/wms/',
+                url: geoserver_url,
                 params: {
                     'LAYERS':'historicmaps:1975_Schedule_of_Structures',
                     'TILED':true,

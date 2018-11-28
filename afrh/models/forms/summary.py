@@ -63,23 +63,21 @@ class InventorySummaryForm(ResourceForm):
         for branch_list in data['important_dates']:
             for node in branch_list['nodes']:
                 if node['entitytypeid'] == 'BEGINNING_OF_EXISTENCE_TYPE.E55':
-                    print "BEGINNING_OF_EXISTENCE_TYPE.E55 branchlist:"
-                    print branch_list
                     beginning_of_existence_nodes.append(branch_list)
                 if node['entitytypeid'] == 'END_OF_EXISTENCE_TYPE.E55':
-                    print "END_OF_EXISTENCE_TYPE.E55 branchlist:"
-                    print branch_list
                     end_of_existence_nodes.append(branch_list)
 
         for branch_list in beginning_of_existence_nodes:
-            for node in branch_list['nodes']:        
+            for node in branch_list['nodes']:
                 if node['entitytypeid'] == 'START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49':
                     node['entitytypeid'] = 'START_DATE_OF_EXISTENCE.E49'
                 if node['entitytypeid'] == 'BEGINNING_OF_EXISTENCE_NOTE.E62,END_OF_EXISTENCE_NOTE.E62':
                     node['entitytypeid'] = 'BEGINNING_OF_EXISTENCE_NOTE.E62'
 
         for branch_list in end_of_existence_nodes:
-            for node in branch_list['nodes']:        
+            for node in branch_list['nodes']:
+                if node['entitytypeid'] == 'BEGINNING_OF_EXISTENCE_QUALIFIER.E55':
+                    node['entitytypeid'] = 'END_OF_EXISTENCE_QUALIFIER.E55'
                 if node['entitytypeid'] == 'START_DATE_OF_EXISTENCE.E49,END_DATE_OF_EXISTENCE.E49':
                     node['entitytypeid'] = 'END_DATE_OF_EXISTENCE.E49'
                 if node['entitytypeid'] == 'BEGINNING_OF_EXISTENCE_NOTE.E62,END_OF_EXISTENCE_NOTE.E62':
